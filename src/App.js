@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TestReducer from './pages/TestReducer';
 
 function App() {
   return (
@@ -18,6 +19,11 @@ function App() {
         >
           Learn React
         </a>
+
+        <div>
+          <label>Testing Redux store</label>
+          <TestReducer />
+        </div>
       </header>
     </div>
   );
