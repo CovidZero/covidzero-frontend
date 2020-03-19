@@ -2,8 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleIncrement, handleDecrement } from "./actions";
 
-const TestReducer = () => {
-
+function TestReducer() {
   const dispatch = useDispatch();
 
   const { counter } = useSelector(state => state.testReducer);
@@ -14,7 +13,7 @@ const TestReducer = () => {
       <button onClick={() => dispatch(handleDecrement())}>Decrement</button>
       <button onClick={() => dispatch(handleIncrement())}>Increment</button>
     </div>
-  )
+  );
 }
 
 export default TestReducer;
