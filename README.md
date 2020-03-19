@@ -81,3 +81,74 @@ Para importar um componente/funçao a partir da pasta `src`, em qualquer nível 
 // example
 import something from "~/pages/something";
 ```
+
+## i18n (Só funciona em Functional Components)
+
+Para utilizar a `i18n`, siga o exemplo:
+
+```jsx
+import { useTranslation } from "react-i18next"; // importe essa função
+
+// desestruture essa função
+
+const [t, i18n] = useTranslation();
+```
+
+A função `t`, é a função que substitui as palavras pelos indices do Dicionário, localizado em `/public/locales/pt` ou `/en`, ela recebe uma string como parâmetro, e você pode acessar as palavars do seu Dicionário Json como se fosse um Objeto no javascript.
+
+Ex:
+
+```json
+// /public/locales/pt/tranaslation.json
+
+{
+  "titulo": {
+    "primeiro": "Este é um Título",
+    "segundo": "Este ṕe outro título"
+  }
+}
+```
+
+```jsx
+return (
+  <h1>{t('titulo.primeiro')}</h1>
+  <h1>{t('titulo.segundo')}</h1>
+)
+```
+
+**É importante salientar em relação aos dicionários, o JSON propriamente dito do Dicionário para ambas as Linguagens devem ter a mesma estrutura.**
+
+Já a função `i18n` é utilizada pra fazer a troca da linguagem, também para verificar qual é a linguagem ativa no momento e etc.
+
+ex:
+
+```jsx
+import React from "react";
+import TestReducer from "./pages/TestReducer";
+import { useTranslation } from "react-i18next";
+
+function App() {
+  const [t, i18n] = useTranslation();
+
+  function handleChangeLang(lang) {
+    i18n.changeLanguage(lang);
+  }
+
+  return (
+    <div>
+      <label>{t("title")}</label>
+      <div>
+        <button type="button" onClick={() => handleChangeLang("pt")}>
+          PT-BR
+        </button>
+        <button type="button" onClick={() => handleChangeLang("en")}>
+          EN
+        </button>
+      </div>
+      <TestReducer />
+    </div>
+  );
+}
+
+export default App;
+```
