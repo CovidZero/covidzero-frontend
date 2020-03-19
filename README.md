@@ -4,7 +4,7 @@
 
 ## Import
 
-Para importar um componente/funçao a partir da pasta `src`, em eualquer nível de pasta, utilize da seguinte forma:
+Para importar um componente/funçao a partir da pasta `src`, em qualquer nível de pasta que você esteja, utilize da seguinte forma:
 
 ```jsx
 // example
