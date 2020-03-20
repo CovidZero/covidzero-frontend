@@ -1,7 +1,7 @@
-import React from 'react';
-import logo from './assets/images/logo.png'
-import './App.css';
-import TestReducer from './pages/TestReducer';
+import React from "react";
+import logo from "./assets/images/logo.png";
+import "./App.css";
+import TestReduxSaga from "./pages/TestReduxSaga";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
 
         <div>
           <label>Testing Redux store</label>
-          <TestReducer />
+          <TestReduxSaga />
         </div>
       </header>
     </div>
