@@ -3,15 +3,19 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 function Menu(props) {
-    const [t] = useTranslation();
+  const [t] = useTranslation();
 
-    const { routes = [] } = props;
+  const { routes = [] } = props;
 
-    return (
-        <div>
-            {routes.map(item => <NavLink to={item.router} key={item.router}>{t(item.title)}</NavLink>)}
-        </div>
-    );
+  return (
+    <div>
+      {routes.map(item => (
+        <NavLink to={item.router} key={item.router}>
+          {t(item.title)}
+        </NavLink>
+      ))}
+    </div>
+  );
 }
 
 export default Menu;

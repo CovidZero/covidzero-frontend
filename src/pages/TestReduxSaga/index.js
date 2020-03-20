@@ -1,27 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import styled from 'styled-components'
 
 import { getGithubInfo } from "./actions";
-
-const Button = styled.button`
-  background: "#f04d57";
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid #f04d57;
-  border-radius: 3px;
-`;
-
-const Input = styled.input`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: "#f04d57";
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
-`;
+import { Input, Button } from "./styles";
 
 const TestReduxSaga = () => {
   const [username, setUsername] = useState("");

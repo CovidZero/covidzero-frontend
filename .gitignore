@@ -26,3 +26,6 @@ yarn.lock
 package-lock.json
 
 .env
+
+# IDE
+/.vscode
