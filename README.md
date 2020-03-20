@@ -53,6 +53,28 @@ export const nameReducer = (state = initialState, action) => {
 };
 ```
 
+## Redux-Saga
+
+Para se utilizar do Redux-Saga é precisar criar uma pasta no seu componente chamada 'sagas', criar um arquivo e então você poderá usar as generator functions.
+
+- Exemplo:
+
+```javascript
+import { put } from "redux-saga/effects";
+import http from "~/utils/config/http";
+
+import { action } from "../actions";
+
+export function* method({ data }) {
+  try {
+    const resp = yield http.get(`/api/${data}`);
+    yield put(action(resp.data));
+  } catch (error) {
+    //error
+  }
+}
+```
+
 ## Hooks
 
 Com os hooks que o redux disponibiliza, podemos acessar e manipular a store do redux da seguinte forma:
