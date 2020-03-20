@@ -1,7 +1,9 @@
 import React from "react";
 import TestReduxSaga from "./pages/TestReduxSaga";
+import Menu from "./components/Menu";
 import { useTranslation } from "react-i18next";
 import logo from "~/assets/images/logo.png";
+import Routes from "./Router";
 
 function App() {
   const [t, i18n] = useTranslation();
@@ -9,6 +11,14 @@ function App() {
   function handleChangeLang(lang) {
     i18n.changeLanguage(lang);
   }
+
+  const routes = [
+    { title: "menu.map", router: "map" },
+    { title: "menu.cities", router: "cities" },
+    { title: "menu.area", router: "" },
+    { title: "menu.help", router: "help" },
+    { title: "menu.news", router: "news" }
+  ];
 
   return (
     <div>
@@ -22,7 +32,8 @@ function App() {
           EN
         </button>
       </div>
-      <TestReduxSaga />
+      <Menu routes={routes} />
+      <Routes />
     </div>
   );
 }

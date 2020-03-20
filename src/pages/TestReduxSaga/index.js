@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { getGithubInfo } from "./actions";
 
-const TestReducer = () => {
+const TestReduxSaga = () => {
   const [username, setUsername] = useState("");
 
   const [t] = useTranslation();
@@ -39,4 +39,4 @@ const TestReducer = () => {
   );
 };
 
-export default TestReducer;
+export default TestReduxSaga;
