@@ -3,5 +3,12 @@
   "buttons": {
     "1": "Diminuir",
     "2": "Adicionar"
+  },
+  "menu": {
+    "map": "Mapa",
+    "cities": "Cidades",
+    "area": "Sua área",
+    "help": "Ajuda",
+    "news": "Notícias"
   }
 }
