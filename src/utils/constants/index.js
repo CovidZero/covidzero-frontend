@@ -1,1 +1,1 @@
-export const API_URL = "https://avatars.githubusercontent.com";
+export const API_URL = "https://api.github.com";

@@ -1,0 +1,8 @@
+{
+  "title": "Testando o store do Redux",
+  "buttons": {
+    "1": "Diminuir",
+    "2": "Adicionar"
+  },
+  "searchGithub": "Pesquisar suas informações do Github"
+}

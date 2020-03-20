@@ -1,11 +1,11 @@
 import { put } from "redux-saga/effects";
 import http from "~/utils/config/http";
 
-import { setGithubAvatar } from "../actions";
+import { setGithubInfo } from "../actions";
 
-export function* getGithubAvatar({ username }) {
+export function* getGithubInfo({ username }) {
   try {
-    const resp = yield http.get(`/${username}`);
-    yield put(setGithubAvatar(resp.data));
+    const resp = yield http.get(`/users/${username}`);
+    yield put(setGithubInfo(resp.data));
   } catch (error) {}
 }
