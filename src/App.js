@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <img src={logo} alt="CovidZero" width={200} height={200} />
+      <img src={logo} alt="CovidZero" width="30%" />
       <label>{t("title")}</label>
       <div>
         <button type="button" onClick={() => handleChangeLang("pt")}>

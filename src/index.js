@@ -9,11 +9,13 @@ import store from "./store/store";
 import history from "./services/history";
 import "./i18n";
 import theme from "./styles/theme";
+import GrobalFonts from "./styles/fonts";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <ThemeProvider theme={theme}>
+        <GrobalFonts />
         <Suspense fallback={<div>Loading...</div>}>
           <App />
         </Suspense>

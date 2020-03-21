@@ -8,6 +8,8 @@ export const Button = styled.button`
   padding: 0.25em 1em;
   border: none;
   border-radius: ${props => props.theme.borderRadius};
+  font-family: "Ubuntu";
+  font-weight: 700;
 `;
 
 export const Input = styled.input`
