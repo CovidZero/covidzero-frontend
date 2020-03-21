@@ -4,9 +4,12 @@ import { useTranslation } from "react-i18next";
 
 import { getGithubInfo } from "./actions";
 import { Input, Button } from "./styles";
+import usePosition from '../../services/usePosition';
+
 
 const TestReduxSaga = () => {
   const [username, setUsername] = useState("");
+  const { latitude, longitude, error } = usePosition();
 
   const [t] = useTranslation();
   const dispatch = useDispatch();
@@ -36,6 +39,18 @@ const TestReduxSaga = () => {
           <li>{data.location}</li>
         </ul>
       )}
+      <h3>Localização</h3>
+      <div>
+        {error
+          ? (<p>error: {error}</p>)
+          : (
+            <>
+              <p>latitude: {latitude}<br /></p>
+              <p>longitude: {longitude}<br /></p>
+            </>
+          )
+        }
+      </div>
     </div>
   );
 };
