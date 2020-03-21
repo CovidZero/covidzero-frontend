@@ -1,5 +1,5 @@
 import React from "react";
-import { ContainerBox, Input as InputStyle, InputIcon } from '../styles'
+import { ContainerBox, Input as InputStyle, InputIcon } from './styles'
 
 const Input = (props) => {
   return (
