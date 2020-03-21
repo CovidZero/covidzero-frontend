@@ -1,0 +1,15 @@
+{
+  "title": "Testing Redux store",
+  "buttons": {
+    "1": "Decrement",
+    "2": "Increment"
+  },
+  "menu": {
+    "map": "Map",
+    "cities": "Cities",
+    "area": "Your area",
+    "help": "Help",
+    "news": "News"
+  },
+  "searchGithub": "Search your Github informations"
+}
