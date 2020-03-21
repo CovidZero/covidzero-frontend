@@ -25,15 +25,6 @@ export const Input = styled.input`
   ::-webkit-input-placeholder {
       font-style: italic;
   }
-  :-moz-placeholder {
-      font-style: italic;  
-  }
-  ::-moz-placeholder {
-      font-style: italic;  
-  }
-  :-ms-input-placeholder {  
-      font-style: italic; 
-  }
 `;
 
 export const InputIcon = styled.div`
