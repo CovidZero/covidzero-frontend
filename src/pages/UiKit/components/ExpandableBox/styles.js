@@ -15,7 +15,8 @@ export const ExpandableBoxHeader = styled.div`
   flex: 1;
   align-items: center;
   position: relative;
-  padding: 1em;
+  padding: 0 1em;
+  min-height: 50px;
 `
 export const ExpandableBoxHeaderIcon = styled.div`
   position: absolute;
