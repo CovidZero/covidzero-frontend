@@ -174,3 +174,9 @@ function App() {
 
 export default App;
 ```
+
+## Componentes do Uikit
+
+Os componentes que componhe os UiKit (inputs, selected, containers e etc), que são compartilhados pela aplicação, estão localizados na pasta **./pages/UiKit/components**.
+
+Acessando a rota **/uikit** temos a implementação de cada componente.
