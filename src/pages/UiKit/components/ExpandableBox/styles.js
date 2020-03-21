@@ -4,7 +4,6 @@ export const ExpandableBox = styled.div`
   background: ${props => props.theme.colors.primary};
   color: #fff;
   font-size: 1em;
-  padding: 1em;
   border: 1px solid ${props => props.theme.colors.primaryDark};
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
@@ -16,12 +15,13 @@ export const ExpandableBoxHeader = styled.div`
   flex: 1;
   align-items: center;
   position: relative;
+  padding: 1em;
 `
 export const ExpandableBoxHeaderIcon = styled.div`
   position: absolute;
-  right:0px;
+  right: 1em;
 `
 export const ExpandableBoxBody = styled.div`
   display: flex;
-  margin-top: 1em;
+  padding: 1em;
 `
