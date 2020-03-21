@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from './components/Input'
+import { ExpandableBox, Input } from './components'
 
 const AllComponents = () => {
     return (
@@ -8,6 +8,7 @@ const AllComponents = () => {
             placeholder={"Teste placeholder"} 
             onChange={(e) => console.log(e.target.value)}    
         />
+        <ExpandableBox header={<div>Header works</div>} body={<div>Body works</div>} />
       </div>
     );
   };
