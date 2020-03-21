@@ -9,7 +9,6 @@ export const ContainerBox = styled.div`
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
   flex-direction: row;
-  width: 100%;
 `;
 
 export const Input = styled.input`
