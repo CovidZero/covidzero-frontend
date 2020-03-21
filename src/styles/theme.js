@@ -10,5 +10,5 @@ export default {
     primary: "#282731",
     primaryDark: "#16161B"
   },
-  borderRadius: "4px"
+  borderRadius: "8px"
 };

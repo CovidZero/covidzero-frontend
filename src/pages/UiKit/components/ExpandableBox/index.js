@@ -9,7 +9,7 @@ const ExpandableBox = (props) => {
     return (
         <ExpandableBoxStyle>
             <ExpandableBoxHeader onClick={() => setOpen(!open)}>
-                {props.header}
+                { !open ? props.header : props.headerExpaned}
                 <ExpandableBoxHeaderIcon >
                     { open ? <ArrowIosUpwardOutline color="white" size="20px" /> : <ArrowIosDownwardOutline color="white" size="20px" />    }
                 </ExpandableBoxHeaderIcon>

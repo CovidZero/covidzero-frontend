@@ -4,11 +4,14 @@ export const ContainerBox = styled.div`
   background: ${props => props.theme.colors.primary};
   color: #fff;
   font-size: 1em;
-  padding: 1em;
   border: 1px solid ${props => props.theme.colors.primaryDark};
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
   flex-direction: row;
+  height: 48px;
+  align-items:center;
+  padding-left: 1em;
+  padding-right: 1em;
 `;
 
 export const Input = styled.input`
@@ -28,8 +31,5 @@ export const Input = styled.input`
 `;
 
 export const InputIcon = styled.div`
-  min-height: 16px;
-  min-width: 16px;
-  background: white;
-  margin-right: .25em;
+  margin-right: .5em;
 `
