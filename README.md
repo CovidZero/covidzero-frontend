@@ -174,3 +174,13 @@ function App() {
 
 export default App;
 ```
+
+## Libs para organização do projeto
+
+Foram instalar duas libs para deixar ainda mais organizado o projeto. A primeira é: `commitzen`, ela ajuda quando formos dar commit, é bem simples de usar, logo apos usar o `git add` ao invés de usar `git commit -m` você vai usar o `yarn commit` depois de rodar isso ira aparecer algumas perguntar sobre o que é esse commit que você está dand, basta preencher, com titulo, e descrição e pronto, ao final o commit será dado da mesma forma.
+
+A segunda lib é o eslint, com ele é colocado um outro arquivo de configurações chamado prettierrc, com essa lib a formatação do código fica melhor, alguns erros de syntaxe o proprio eslint corrigi pra nós, as configurações adicionadas ao arquivo são próprias para utilizar com Redux, então já está pronto pra uso.
+
+## Icons Libs
+
+Existe duas libs famosas em icones de React adicionadas ao projetos, são elas: `React vector icons` e `React icons` entrando na documentação de cada podemos ver todos que estão disponiveis para uso no projeto.
