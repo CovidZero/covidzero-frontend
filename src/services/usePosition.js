@@ -16,12 +16,17 @@ const usePosition = () => {
     };
 
     useEffect(() => {
+        const options = {
+            enableHighAccuracy: false,
+            timeout: Infinity,
+            maximumAge: 0,
+        };
         const geo = navigator.geolocation;
         if (!geo) {
             setError('Geolocation is not supported');
             return;
         }
-        let watcher = geo.watchPosition(onChange, onError);
+        let watcher = geo.watchPosition(onChange, onError, options);
         return () => geo.clearWatch(watcher);
     }, []);
 

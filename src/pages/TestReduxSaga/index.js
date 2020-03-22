@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { getGithubInfo } from "./actions";
 import { Input, Button } from "./styles";
-import usePosition from '../../services/usePosition';
+import usePosition from '~/services/usePosition';
 
 
 const TestReduxSaga = () => {
