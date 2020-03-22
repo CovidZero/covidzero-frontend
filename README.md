@@ -180,3 +180,8 @@ export default App;
 Os componentes que componhe os UiKit (inputs, selected, containers e etc), que são compartilhados pela aplicação, estão localizados na pasta **./pages/UiKit/components**.
 
 Acessando a rota **/uikit** temos a implementação de cada componente.
+
+## Grid layout
+
+Adicionado ao projeto o grid layout utilizando o projeto [React Layout Grid](https://github.com/material-components/material-components-web-react/tree/master/packages/layout-grid).
+
