@@ -1,27 +1,53 @@
 import React from "react";
+import { Cell, Grid, Row } from "@material/react-layout-grid";
 import { useTranslation } from "react-i18next";
-import usePosition from '~/services/usePosition';
 
+import { CardStats } from "~/components";
+import logo from "~/assets/images/logo.png";
 
-export default function Map() {
+const Map = () => {
   const [t] = useTranslation();
-  const { latitude, longitude, error } = usePosition();
+
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>{t("menu.map")}</h1>
-      <h3>Localização</h3>
-      <div>
-        {error
-          ? (<p>error: {error}</p>)
-          : (
-            <>
-              <p>latitude: {latitude}<br /></p>
-              <p>longitude: {longitude}<br /></p>
-            </>
-          )
-        }
-      </div>
-    </>
-  )
+      <img src={logo} className="main-logo" />
+      <Grid>
+        <Row>
+          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={6}>
+            <CardStats
+              status="confirmed"
+              title={<div>Confirmados</div>}
+              count="{quantity}"
+            />
+          </Cell>
+          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={6}>
+            <CardStats
+              status="suspect"
+              title={<div>Suspeitos</div>}
+              count="{quantity}"
+            />
+          </Cell>
+        </Row>
 
-}
+        <Row>
+          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={6}>
+            <CardStats
+              status="recovered"
+              title={<div>Recuperados</div>}
+              count="{quantity}"
+            />
+          </Cell>
+          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={6}>
+            <CardStats
+              status="death"
+              title={<div>Óbitos</div>}
+              count="{quantity}"
+            />
+          </Cell>
+        </Row>
+      </Grid>
+    </>
+  );
+};
+
+export default Map;
