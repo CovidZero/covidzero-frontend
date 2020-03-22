@@ -1,0 +1,50 @@
+$blue-lighter: #a885fd;
+$black-lighter: #141414;
+$gray: #d8d8d8;
+$dark-gray: #141418;
+$medium-gray: #afafaf;
+$light-gray: #e6e6e6;
+$white-smoke: #f3f3f3;
+$section-bg: #fcfcfc;
+
+$white: #fff;
+$gray-10: #f8f8f8;
+$gray-20: #d7dde2;
+$gray-30: #7f7f7f;
+$gray-40: #828282;
+$gray-50: #918e8c;
+$gray-60: #3a3a3a;
+$gray-70: #282832;
+$gray-80: #16171c;
+$black: #000;
+
+$magenta: #fe008c;
+$blue: #50afe6;
+$light-blue: #f1f9ff;
+$light-green: #ecf7eb;
+$green: #0fb969;
+$dark-green: #004b50;
+$yellow: #ffc837;
+$light-yellow: #ffeb8c;
+$orange: #fa8728;
+$purple: #502350;
+$red: #ff0000;
+
+/* Fonts */
+$font-size-40: 40px;
+$font-size-30: 30px;
+$font-size-26: 26px;
+$font-size-18: 18px;
+$font-size-16: 16px;
+$font-size-14: 14px;
+
+$transition-speed: 600ms;
+$default-font-family: "Ubuntu", sans-serif;
+$default-font-size: $font-size-16;
+
+$breakpoints: (
+  "mobile": 575px,
+  "mobile-xl": 768px,
+  "tablet": 992px,
+  "desktop": 1200px
+);
