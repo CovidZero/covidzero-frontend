@@ -180,3 +180,57 @@ export default App;
 Os componentes que componhe os UiKit (inputs, selected, containers e etc), que são compartilhados pela aplicação, estão localizados na pasta **./pages/UiKit/components**.
 
 Acessando a rota **/uikit** temos a implementação de cada componente.
+
+
+## Criando novas chamadas a API
+Foi adotado o typescript como padrão para construção das chamadas a API para faciliar a utilização pelos demais devs. Os returns são tipados por interfaces baseados nos modelos de dados, isso facilita os demais a saber exatemente quais props os objetos possuem, sem que precisem conhecer os responses dos endpoints. 
+
+- Exemplo para o endpoint que retorna todos os casos do Brasil:  
+```typescript
+//Interface utiizada para tipar os returns no service de Cases
+export interface Cases {
+    activeCases: number,
+    suspectedCase: number,
+    recoveredCases: number,
+    deaths: number,
+}
+
+//Aqui serão definidos todos as chamadas relacionadas aos casos
+export default function CasesService(casesBaseURL: string) {
+    const axiosInstance = axios;
+
+    async function getAll(): Promise<Cases[]> {
+        const response = await axiosInstance.get(
+            `${casesBaseURL}${URL.all}`
+        )
+        const cases: Cases[] = response.data;
+        return cases;
+    }
+
+    return {
+        getAll
+    }
+}
+
+```
+
+## Utilizando as chamadas a API 
+
+Os return e params das função estão tipados (baseados no data model), então você sabe exatamente a estrutura dos objetos que irá receber. Assim pode fazer uso do auto complete oferecido pela sua IDE ou editor de código.
+
+- Exemplo para o endpoint que retorna todos os casos do Brasil:  
+```typescript
+import API from '~/API';
+
+const cases = await API.cases.getAll();
+
+```
+
+
+- Dispatch de uma action:
+
+```javascript
+const dispatch =  useDispatch();
+...
+dispatch(action());
+```
