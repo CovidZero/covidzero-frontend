@@ -7,7 +7,8 @@ import {
   CardStats,
   CardNews,
   ArticleNewsHeader,
-  Dots
+  Dots,
+  Chips
 } from "~/components";
 
 import { Search } from "@styled-icons/evil/Search";
@@ -69,6 +70,18 @@ const AllComponents = () => {
         </Row>
       </Grid>
 
+      <br/>
+
+      <Chips text="Default"/>
+      <br/>
+      <Chips text="Você" type="you"/>
+      <br/>
+      <Chips text="Suspeitos" type="suspect"/>
+      <br/>
+      <Chips text="Confirmados" type="confirmed"/>
+      <br/>
+      <Chips text="Recuperados" type="recovered"/>
+      
       <br/><br/><br/><br/>
       
     </div>
