@@ -1,6 +1,5 @@
 import React from 'react';
 import { Style } from './styles';
-import Truncate from 'react-truncate';
 
 const ArticleNewsHeader = (props) => {
     return (

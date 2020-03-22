@@ -4,6 +4,7 @@ import Buttons from './Buttons';
 import CardStats from './CardStats'
 import CardNews from './CardNews'
 import ArticleNewsHeader from './ArticleNewsHeader'
+import Dots from './Dots'
 
 export {
     Input,
@@ -11,5 +12,6 @@ export {
     Buttons,
     CardStats,
     CardNews,
-    ArticleNewsHeader
+    ArticleNewsHeader,
+    Dots
 }
