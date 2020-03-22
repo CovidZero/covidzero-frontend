@@ -2,7 +2,7 @@ import React from "react";
 import {
   ExpandableBox,
   Input,
-  Buttons,
+  Button,
   CardStats,
   CardNews,
   ArticleNewsHeader
@@ -56,7 +56,16 @@ const AllComponents = () => {
 
       <ArticleNewsHeader source={ImageArticle} title={<div>Como os gestores devem se comportar na crise Coronavírus?</div>}/>
       <br/><br/><br/><br/>
-      
+      <Button styleButton='sm-fi-btn' disable={false} textButton='button' />
+      <Button styleButton='md-fi-btn' disable={false} textButton='button' />
+      <Button styleButton='lg-fi-btn' disable={true} textButton='button' />
+      <br />
+      <Button styleButton='sm-un-btn' disable={false} textButton='button' />
+      <Button styleButton='md-un-btn' disable={false} textButton='button' />
+      <Button styleButton='lg-un-btn' disable={true} textButton='button' />
+      <br />
+      <Button styleButton='txt-btn' sizeButton={16} disable={false} textButton='button' />
+      <Button styleButton='txt-btn' sizeButton={16} disable={true} textButton='button' />
     </div>
   );
 };
