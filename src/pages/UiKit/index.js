@@ -1,5 +1,4 @@
 import React from 'react'
-import { ExpandableBox, Input, Buttons } from './components'
 import { ExpandableBox, Input, Buttons, CardStats, CardNews } from './components'
 import { Search } from '@styled-icons/evil/Search'
 
