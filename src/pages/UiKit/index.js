@@ -4,9 +4,12 @@ import {
   Input,
   Buttons,
   CardStats,
-  CardNews
+  CardNews,
+  ArticleNewsHeader
 } from "~/components";
+
 import { Search } from "@styled-icons/evil/Search";
+import ImageArticle from '~/assets/images/img-reuniao.jpg'
 
 const AllComponents = () => {
   const longContentCardNews =
@@ -31,48 +34,29 @@ const AllComponents = () => {
         onCloseClick={() => alert("Close clicked")}
         onChange={e => console.log(e.target.value)}
       />
+      <br />
+      <ExpandableBox header={<div>Header works</div>} headerExpaned={<div>Header Expaned works</div>}  body={<div>Body works</div>} />
 
       <br />
-      <ExpandableBox
-        header={<div>Header works</div>}
-        headerExpaned={<div>Header Expaned works</div>}
-        body={<div>Body works</div>}
-      />
+      <CardStats title={<div>Title</div>} count="{quantity}"/>
+      <br />
+      <CardStats status="confirmed" title={<div>Confirmados</div>} count="{quantity}"/>
+      <br />
+      <CardStats status="recovered" title={<div>Recuperados</div>} count="{quantity}"/>
+      <br />
+      <CardStats status="suspect" title={<div>Suspeitos</div>} count="{quantity}"/>
+      <br />
+      <CardStats status="death" title={<div>Óbitos</div>} count="{quantity}"/>
+      <br/>
+      <CardNews title="Como os gestores devem se comportar na crise Coronavírus?"
+                content={longContentCardNews}
+                date={new Date()}
+                tag={<div>MAIN_TAG</div>} />
+      <br/>
 
-      <br />
-      <CardStats title={<div>Title</div>} count="{quantity}" />
-      <br />
-      <CardStats
-        status="confirmed"
-        title={<div>Confirmados</div>}
-        count="{quantity}"
-      />
-      <br />
-      <CardStats
-        status="recovered"
-        title={<div>Recuperados</div>}
-        count="{quantity}"
-      />
-      <br />
-      <CardStats
-        status="suspect"
-        title={<div>Suspeitos</div>}
-        count="{quantity}"
-      />
-      <br />
-      <CardStats status="death" title={<div>Óbitos</div>} count="{quantity}" />
-      <br />
-      <CardNews
-        title="Como os gestores devem se comportar na crise Coronavírus?"
-        content={longContentCardNews}
-        date={new Date()}
-        tag={<div>MAIN_TAG</div>}
-      />
-      <br />
-
-      <div>
-        <Buttons />
-      </div>
+      <ArticleNewsHeader source={ImageArticle} title={<div>Como os gestores devem se comportar na crise Coronavírus?</div>}/>
+      <br/><br/><br/><br/>
+      
     </div>
   );
 };
