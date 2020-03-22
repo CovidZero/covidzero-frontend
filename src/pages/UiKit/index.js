@@ -1,8 +1,12 @@
 import React from 'react'
-import { ExpandableBox, Input, CardStats } from './components'
+import { ExpandableBox, Input, CardStats, CardNews } from './components'
 import { Search } from '@styled-icons/evil/Search'
 
+
 const AllComponents = () => {
+  
+  const longContentCardNews = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
   return (
     <div style={{ width: '100%' }} >
       <Input
@@ -27,7 +31,7 @@ const AllComponents = () => {
       <ExpandableBox header={<div>Header works</div>} headerExpaned={<div>Header Expaned works</div>}  body={<div>Body works</div>} />
 
       <br />
-      <CardStats status="" title={<div>Title</div>} count="{quantity}"/>
+      <CardStats title={<div>Title</div>} count="{quantity}"/>
       <br />
       <CardStats status="confirmed" title={<div>Confirmados</div>} count="{quantity}"/>
       <br />
@@ -36,7 +40,13 @@ const AllComponents = () => {
       <CardStats status="suspect" title={<div>Suspeitos</div>} count="{quantity}"/>
       <br />
       <CardStats status="death" title={<div>Óbitos</div>} count="{quantity}"/>
+      <br/>
+      <CardNews title="Como os gestores devem se comportar na crise Coronavírus?"
+                content={longContentCardNews}
+                date={new Date()}
+                tag={<div>MAIN_TAG</div>} />
       <br/><br/><br/><br/>
+      
     </div>
   );
 };

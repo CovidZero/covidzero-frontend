@@ -13,7 +13,10 @@ export default {
     statsConfirmed: "#EF5350",
     statsRecovered: "#2FE441",
     statsSuspect: "#FFCA28",
-    statsDeath: "#72706F"
+    statsDeath: "#72706F",
+    titleCard: "#F5F5F5",
+    contentCard: "#BDBDBD",
+    footerCard: "#C9C9C9"
   },
   borderRadius: "8px"
 };
