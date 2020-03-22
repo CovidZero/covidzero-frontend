@@ -1,5 +1,6 @@
 import React from 'react'
-import { ExpandableBox, Input, CardStats, CardNews } from './components'
+import { ExpandableBox, Input, Buttons } from './components'
+import { ExpandableBox, Input, Buttons, CardStats, CardNews } from './components'
 import { Search } from '@styled-icons/evil/Search'
 
 
@@ -45,9 +46,15 @@ const AllComponents = () => {
                 content={longContentCardNews}
                 date={new Date()}
                 tag={<div>MAIN_TAG</div>} />
-      <br/><br/><br/><br/>
+      <br/>
+                        
+      <div>
+        <Buttons />
+      </div>
+                     
       
     </div>
+                  
   );
 };
 
