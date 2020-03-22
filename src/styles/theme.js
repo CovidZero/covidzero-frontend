@@ -8,7 +8,12 @@
 export default {
   colors: {
     primary: "#282731",
-    primaryDark: "#16161B"
+    primaryDark: "#16161B",
+    statsDefault: "#BDBDBD",
+    statsConfirmed: "#EF5350",
+    statsRecovered: "#2FE441",
+    statsSuspect: "#FFCA28",
+    statsDeath: "#72706F"
   },
   borderRadius: "8px"
 };
