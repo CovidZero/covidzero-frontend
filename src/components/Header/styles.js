@@ -5,8 +5,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  padding: 0 10px;
+  height: 80px;
+  padding: 0 20px;
 `;
 
 export const Title = styled.span`
