@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Track, Thumb } from './styles'
 
-const Switch = ({ onChange }) => {
-  const [active, setActive] = React.useState(false);
+const Switch = ({ onChange, value }) => {
+  const [active, setActive] = React.useState(!!value || false);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setActive(!!value);
+  }, [value]);
+
+  useEffect(() => {
     onChange && onChange(active);
   }, [onChange, active]);
 
