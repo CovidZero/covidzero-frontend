@@ -3,14 +3,15 @@ import { Cell, Grid, Row } from "@material/react-layout-grid";
 import { useTranslation } from "react-i18next";
 
 import { CardStats } from "~/components";
-import logo from "~/assets/images/logo.png";
+import { Header } from "~/components";
 
 const Map = () => {
   const [t] = useTranslation();
 
   return (
     <>
-      <img src={logo} className="main-logo" />
+      <Header title={t("header.map")} />
+
       <Grid>
         <Row>
           <Cell desktopColumns={6} phoneColumns={2} tabletColumns={6}>
