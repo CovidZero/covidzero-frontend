@@ -8,7 +8,8 @@ import {
   CardNews,
   ArticleNewsHeader,
   Dots,
-  Chips
+  Chips,
+  Switch
 } from "~/components";
 
 import { Search } from "@styled-icons/evil/Search";
@@ -59,14 +60,14 @@ const AllComponents = () => {
 
       <ArticleNewsHeader source={ImageArticle} title={<div>Como os gestores devem se comportar na crise Coronavírus?</div>}/>
       <br/>
-      
+
       <Grid>
         <Row cols={5}>
-            <Dots /> 
-            <Dots dot="you"/> 
-            <Dots dot="suspect"/> 
-            <Dots dot="confirmed"/> 
-            <Dots dot="recovered"/> 
+            <Dots />
+            <Dots dot="you"/>
+            <Dots dot="suspect"/>
+            <Dots dot="confirmed"/>
+            <Dots dot="recovered"/>
         </Row>
       </Grid>
 
@@ -81,7 +82,7 @@ const AllComponents = () => {
       <Chips text="Confirmados" type="confirmed"/>
       <br/>
       <Chips text="Recuperados" type="recovered"/>
-      
+
       <br/><br/><br/><br/>
       <Button styleButton='sm-fi-btn' disable={false} textButton='button' />
       <Button styleButton='md-fi-btn' disable={false} textButton='button' />
@@ -93,6 +94,8 @@ const AllComponents = () => {
       <br />
       <Button styleButton='txt-btn' sizeButton={16} disable={false} textButton='button' />
       <Button styleButton='txt-btn' sizeButton={16} disable={true} textButton='button' />
+      <br />
+      <Switch />
     </div>
   );
 };

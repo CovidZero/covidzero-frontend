@@ -6,6 +6,7 @@ import CardNews from './CardNews'
 import ArticleNewsHeader from './ArticleNewsHeader'
 import Dots from './Dots'
 import Chips from './Chips'
+import Switch from './Switch'
 
 export {
     Input,
@@ -15,5 +16,6 @@ export {
     CardNews,
     ArticleNewsHeader,
     Dots,
-    Chips
+    Chips,
+    Switch,
 }
