@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardBoxStyle = styled.div`
-    background: ${props => props.theme.colors.primary};
+    /* background: ${props => props.theme.colors.primary}; */
     color: #fff;
     font-size: 1em;
     padding: 1em;
@@ -9,6 +9,14 @@ export const CardBoxStyle = styled.div`
     border-radius: ${props => props.theme.borderRadius};
     display: flex;
     flex-direction: column;
+    
+    background: #232328;
+    margin-bottom: 8px;
+
+    @media all and (min-width: 768px) {
+        margin: 10px;
+        max-width: 354px;
+    }
 `;
 
 export const CardBoxTitle = styled.div`
@@ -16,6 +24,11 @@ export const CardBoxTitle = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
+
+    @media all and (min-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
 `;
 
 export const CardBoxContent = styled.div`
@@ -23,6 +36,11 @@ export const CardBoxContent = styled.div`
     font-size: 12px;
     margin: 8px 0;
     line-height: 18px;
+
+    @media all and (min-width: 768px) {
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+    }
 `;
 
 export const CardBoxFooter = styled.div`
@@ -33,5 +51,7 @@ export const CardBoxFooter = styled.div`
     display: flex;
     justify-content: space-between;
 `;
+
+
 
 export const Style = { CardBoxStyle, CardBoxTitle, CardBoxContent, CardBoxFooter };

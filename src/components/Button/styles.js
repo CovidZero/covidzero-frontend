@@ -100,14 +100,13 @@ export const LargeUnfiledButton = styled(SmallUnfiledButton)`
 
 export const TextButton = styled.button`
     background: transparent;
-    padding: 6px 16px;
+    padding: 6px 0px;
     text-transform: uppercase;
     border: 0px;
     letter-spacing: 1px;
     font-size: ${props => props.size + 'px'};
     font-weight: 500;
     outline: none;
-    margin: 10px;
     ${props => 
         props.disabled
         ? css`color: rgba(238, 119, 100, .50);`
