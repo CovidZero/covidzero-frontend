@@ -16,6 +16,8 @@ const Switch = ({ onChange, value }) => {
     <Container>
       <Track>
         <Thumb
+          role="checkbox"
+          aria-checked={active}
           active={active}
           onClick={() => setActive(!active)}
         />
