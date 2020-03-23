@@ -11,5 +11,12 @@
     "help": "Help",
     "news": "News"
   },
+  "header": {
+    "map": "Brazil in real time",
+    "cities": "Cities",
+    "area": "Your area",
+    "help": "Help",
+    "news": "News"
+  },
   "searchGithub": "Search your Github informations"
 }

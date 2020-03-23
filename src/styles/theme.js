@@ -22,7 +22,8 @@ export default {
     dotConfirmed: "#EF5350",
     dotRecovered: "#2FE441",
     dotDefault: "#BDBDBD",
-    dotBorder: "#F5F5F5"
+    dotBorder: "#F5F5F5",
+    textColor: "#C9C9C9"
   },
   borderRadius: "8px"
 };
