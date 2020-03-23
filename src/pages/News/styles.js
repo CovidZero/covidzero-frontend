@@ -48,6 +48,7 @@ export const FakeTitle = styled.h2`
     font-size: 1.5rem;
     line-height: 2.25rem;
     display: none;
+    margin-top: 0px;
 
     @media all and (min-width: 768px) {
         display: block;
@@ -55,6 +56,7 @@ export const FakeTitle = styled.h2`
 `;
 
 export const Notification = styled(FakeNews)`
+    width: 30%;
     display: none;
 
     @media all and (min-width: 768px) {
