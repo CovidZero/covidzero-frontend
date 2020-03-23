@@ -3,7 +3,7 @@ import { Cell, Grid, Row, Column } from "@material/react-layout-grid";
 import {
   ExpandableBox,
   Input,
-  Buttons,
+  Button,
   CardStats,
   CardNews,
   ArticleNewsHeader,
@@ -83,7 +83,16 @@ const AllComponents = () => {
       <Chips text="Recuperados" type="recovered"/>
       
       <br/><br/><br/><br/>
-      
+      <Button styleButton='sm-fi-btn' disable={false} textButton='button' />
+      <Button styleButton='md-fi-btn' disable={false} textButton='button' />
+      <Button styleButton='lg-fi-btn' disable={true} textButton='button' />
+      <br />
+      <Button styleButton='sm-un-btn' disable={false} textButton='button' />
+      <Button styleButton='md-un-btn' disable={false} textButton='button' />
+      <Button styleButton='lg-un-btn' disable={true} textButton='button' />
+      <br />
+      <Button styleButton='txt-btn' sizeButton={16} disable={false} textButton='button' />
+      <Button styleButton='txt-btn' sizeButton={16} disable={true} textButton='button' />
     </div>
   );
 };

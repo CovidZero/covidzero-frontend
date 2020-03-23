@@ -1,6 +1,6 @@
 import ExpandableBox from './ExpandableBox';
 import Input from './Input';
-import Buttons from './Buttons';
+import Button from './Button';
 import CardStats from './CardStats'
 import CardNews from './CardNews'
 import ArticleNewsHeader from './ArticleNewsHeader'
@@ -10,7 +10,7 @@ import Chips from './Chips'
 export {
     Input,
     ExpandableBox,
-    Buttons,
+    Button,
     CardStats,
     CardNews,
     ArticleNewsHeader,
