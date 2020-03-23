@@ -20,8 +20,6 @@ const Button = (props) => {
                   return <styled.LargeUnfiledButton disabled={props.disable}>{props.textButton}</styled.LargeUnfiledButton>;
                 case "txt-btn":
                   return <styled.TextButton size={props.sizeBtn} disabled={props.disable}>{props.textButton}</styled.TextButton>;
-                case "txt-btn":
-                  return <styled.TextButton size={props.sizeBtn} disabled={props.disable}>{props.textButton}</styled.TextButton>;
                 default:
                   return<div></div>;
             }
