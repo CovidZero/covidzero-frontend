@@ -1,11 +1,14 @@
 import React from "react";
+import { Cell, Grid, Row, Column } from "@material/react-layout-grid";
 import {
   ExpandableBox,
   Input,
   Buttons,
   CardStats,
   CardNews,
-  ArticleNewsHeader
+  ArticleNewsHeader,
+  Dots,
+  Chips
 } from "~/components";
 
 import { Search } from "@styled-icons/evil/Search";
@@ -55,6 +58,30 @@ const AllComponents = () => {
       <br/>
 
       <ArticleNewsHeader source={ImageArticle} title={<div>Como os gestores devem se comportar na crise Coronavírus?</div>}/>
+      <br/>
+      
+      <Grid>
+        <Row cols={5}>
+            <Dots /> 
+            <Dots dot="you"/> 
+            <Dots dot="suspect"/> 
+            <Dots dot="confirmed"/> 
+            <Dots dot="recovered"/> 
+        </Row>
+      </Grid>
+
+      <br/>
+
+      <Chips text="Default"/>
+      <br/>
+      <Chips text="Você" type="you"/>
+      <br/>
+      <Chips text="Suspeitos" type="suspect"/>
+      <br/>
+      <Chips text="Confirmados" type="confirmed"/>
+      <br/>
+      <Chips text="Recuperados" type="recovered"/>
+      
       <br/><br/><br/><br/>
       
     </div>

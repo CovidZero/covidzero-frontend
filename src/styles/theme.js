@@ -16,7 +16,13 @@ export default {
     statsDeath: "#72706F",
     titleCard: "#F5F5F5",
     contentCard: "#BDBDBD",
-    footerCard: "#C9C9C9"
+    footerCard: "#C9C9C9",
+    dotYou: "#337EC3",
+    dotSuspect: "#FFCA28",
+    dotConfirmed: "#EF5350",
+    dotRecovered: "#2FE441",
+    dotDefault: "#BDBDBD",
+    dotBorder: "#F5F5F5"
   },
   borderRadius: "8px"
 };
