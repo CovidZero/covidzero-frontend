@@ -42,6 +42,11 @@
   color: $light-gray;
 }
 
+.nav-link.-active {
+  filter: grayscale(0%) opacity(1);
+  color: $light-gray;
+}
+
 .link-text {
   display: none;
   margin-left: 1rem;

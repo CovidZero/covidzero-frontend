@@ -1,45 +1,51 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { MapAlt } from "@styled-icons/boxicons-solid/MapAlt";
-import { Map } from "@styled-icons/boxicons-regular/Map";
-import { City } from "@styled-icons/boxicons-solid/City";
-import { HelpCircle } from "@styled-icons/boxicons-solid/HelpCircle";
-import { News } from "@styled-icons/boxicons-solid/News";
 import { PlusMedical } from "@styled-icons/boxicons-regular/PlusMedical";
 
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import Logo from "~assets/images/logo.svg";
+import { ReactComponent as NewsIcon } from "~assets/icons/newspaper.svg";
+import { ReactComponent as NewsIconActive } from "~assets/icons/newspaper-active.svg";
+import { ReactComponent as Map } from "~assets/icons/map.svg";
+import { ReactComponent as MapActive } from "~assets/icons/map-active.svg";
+import { ReactComponent as City } from "~assets/icons/city.svg";
+import { ReactComponent as CityActive } from "~assets/icons/city-active.svg";
+import { ReactComponent as Area } from "~assets/icons/area.svg";
+import { ReactComponent as AreaActive } from "~assets/icons/area-active.svg";
+import { ReactComponent as Help } from "~assets/icons/help.svg";
+import { ReactComponent as HelpActive } from "~assets/icons/help-active.svg";
 
-const Sidebar = () => {
+const Sidebar = props => {
+  const { pathname } = props.location;
   const [t] = useTranslation();
 
   const routes = [
     {
       title: "menu.map",
       path: "/",
-      icon: <MapAlt />
+      icon: pathname === "/" ? <MapActive /> : <Map />
     },
     {
       title: "menu.cities",
       path: "/cities",
-      icon: <City />
+      icon: pathname === "/cities" ? <CityActive /> : <City />
     },
     {
       title: "menu.area",
       path: "/area",
-      icon: <Map />
+      icon: pathname === "/area" ? <AreaActive /> : <Area />
     },
     {
       title: "menu.help",
       path: "/help",
-      icon: <HelpCircle />
+      icon: pathname === "/help" ? <HelpActive /> : <Help />
     },
     {
       title: "menu.news",
       path: "/news",
-      icon: <News />
+      icon: pathname === "/news" ? <NewsIconActive /> : <NewsIcon />
     }
   ];
 
@@ -57,7 +63,10 @@ const Sidebar = () => {
 
         {routes.map(route => (
           <li key={route.title} className="nav-item">
-            <Link to={route.path} className="nav-link">
+            <Link
+              to={route.path}
+              className={`nav-link ${route.path === pathname && "-active"}`}
+            >
               {route.icon}
               <span className="link-text">{t(route.title)}</span>
             </Link>
@@ -68,4 +77,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);
