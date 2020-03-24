@@ -8,6 +8,7 @@ import Dots from "./Dots";
 import Chips from "./Chips";
 import Switch from "./Switch";
 import Header from "./Header";
+import MapHome from "./MapHome";
 
 export {
   Input,
@@ -19,5 +20,6 @@ export {
   Dots,
   Chips,
   Switch,
-  Header
+  Header,
+  MapHome
 };
