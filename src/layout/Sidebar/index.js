@@ -31,16 +31,16 @@ const Sidebar = props => {
       path: "/cities",
       icon: pathname === "/cities" ? <CityActive /> : <City />
     },
-    {
-      title: "menu.area",
-      path: "/area",
-      icon: pathname === "/area" ? <AreaActive /> : <Area />
-    },
-    {
-      title: "menu.help",
-      path: "/help",
-      icon: pathname === "/help" ? <HelpActive /> : <Help />
-    },
+    // {
+    //   title: "menu.area",
+    //   path: "/area",
+    //   icon: pathname === "/area" ? <AreaActive /> : <Area />
+    // },
+    // {
+    //   title: "menu.help",
+    //   path: "/help",
+    //   icon: pathname === "/help" ? <HelpActive /> : <Help />
+    // },
     {
       title: "menu.news",
       path: "/news",

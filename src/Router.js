@@ -13,11 +13,11 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={Brazil} />
       <Route path="/cities" exact component={Cities} />
-      <Route path="/area" exact component={Area} />
-      <Route path="/help" exact component={Help} />
+      {/* <Route path="/area" exact component={Area} /> */}
+      {/* <Route path="/help" exact component={Help} /> */}
       <Route path="/news" exact component={News} />
       <Route path="/news/item/:id" exact component={NewsItem} />
-      <Route path="/uikit" exact component={UiKit} />{" "}
+      {/* <Route path="/uikit" exact component={UiKit} />{" "} */}
       <Route path="/" component={() => <h1>404</h1>} />
     </Switch>
   );
