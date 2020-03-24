@@ -81,3 +81,24 @@ export const PageTitle = styled.h1`
   line-height: 3rem;
   margin-bottom: 0px;
 `;
+
+export const Content = styled.div`
+  @media all and (min-width: 768px) {
+    width: 70vw;
+    max-width: 700px;
+    display: table;
+    margin: 0 auto;
+  }
+`;
+
+export const Title = styled.h1`
+  display: none;
+
+  @media all and (min-width: 768px) {
+    display: block;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 48px;
+  }
+`;

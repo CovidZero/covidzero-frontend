@@ -15,13 +15,14 @@ export const Container = styled.div`
 
 export const Title = styled.span`
   color: ${props => props.theme.colors.textColor};
-  font-weight: bold;
   font-size: ${props => props.theme.header.title};
+  font-weight: bold;
   line-height: 24px;
   letter-spacing: 1px;
   margin-left: 10px;
 
   @media all and (min-width: 768px) {
+    color ${props => props.theme.colors.largeHeaderTitle};
     font-size: ${props => props.theme.header.largeTitle};
   }
 `;
