@@ -1,7 +1,7 @@
 import React,{ useState }from "react";
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 import { useTranslation }  from "react-i18next";
-import ReactTooltip        from "react-tooltip";
+import ReactTooltip        from "react-tooltip"; 
 
 import * as Styled from './styles.js';
 
@@ -11,8 +11,9 @@ import { MapHome } from "~/components";
 
 const Map = () => {
   const [t] = useTranslation();
-  const [content, setContent] = useState("");
-
+  const  [content, setContent] = useState("");
+  
+ 
 
   return (
     <>
@@ -23,7 +24,7 @@ const Map = () => {
 
      <Styled.ContainerMap>
         <MapHome setTooltipContent={setContent}/>
-        <ReactTooltip>{content}</ReactTooltip>
+        <ReactTooltip html="true">{content}</ReactTooltip>
      </Styled.ContainerMap>
 
       <Grid>

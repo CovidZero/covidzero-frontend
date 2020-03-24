@@ -9,6 +9,11 @@ import {
 } from "react-simple-maps";
 
 import BrStates from "~assets/data/br-states.json";
+import BrAll    from "~assets/data/brazil-map.json";
+
+import CasesBrazil      from "~assets/data/casos_240320.json"; 
+
+
 
 /*const geoUrl =
   "https://gist.githubusercontent.com/ruliana/1ccaaab05ea113b0dff3b22be3b4d637/raw/196c0332d38cb935cfca227d28f7cecfa70b412e/br-states.json";*/
@@ -16,15 +21,77 @@ import BrStates from "~assets/data/br-states.json";
 const geoUrl=BrStates;
 
 
+ 
 const MapHome = ({ setTooltipContent }) => {
  
+ 
+ let gradationColors= [
+                { color: '#2fe441', range: [1, 10], label: '1 a 10' },
+                { color: '#ffca28', range: [10, 24], label: '10 a 24' },
+                { color: '#ef5350', range: [25, 49], label: '25 a 49' },
+                { color: '#ef5350', range: [50, 10000], label: 'Acima de 50' },
+      ];
+
+ let  markerSize=[
+        { size:1, range: [1, 10] },
+        { size:2, range: [10, 24] },
+        { size:3, range: [25, 49] },
+        { size:4, range: [50, 10000] },
+      ];    
+ 
+ let pointsMarker=[];
+  
 
   function isMobile () {
     return window.innerWidth < 950;
   }
 
-  console.log(isMobile());
 
+   function getColor(numberCases) {
+     
+    let color = null
+
+     gradationColors.forEach((item,) => {
+            const min = item.range[0]
+            const max = item.range[1]
+
+            if (numberCases > (min -1) && numberCases < (max + 1)) {
+              color = item.color
+            }
+      });
+
+          if (!color) {
+            color = '#efefef'
+          }
+
+    return color
+  }    
+
+
+  function  getMarkerSize(numberCases) {
+           let size = 0
+
+          markerSize.forEach((item,) => {
+                const min = item.range[0]
+                const max = item.range[1]
+
+                if (numberCases > (min -1) && numberCases < (max + 1)) {
+                       size = item.size
+                }
+          });
+
+          if (!isMobile()) {
+            size *= 1
+          } else if (isMobile()) {
+            size *= 2
+          }
+ 
+
+    return size
+  }
+   
+ 
+  
 
   return (
     <>
@@ -61,11 +128,11 @@ const MapHome = ({ setTooltipContent }) => {
                       outline: "none",
                    },
                     hover: {
-                      fill: "#ef7764",
+                      fill: "#C9C9C9",
                       outline: "none"
                     },
                     pressed: {
-                      fill: "#E42",
+                      fill: "#C9C9C9",
                       outline: "none"
                     }
                   }}
@@ -74,49 +141,63 @@ const MapHome = ({ setTooltipContent }) => {
             }
           </Geographies>
 
-               <Marker  coordinates={ [-44.3044,-2.5283]}
+          {
+            
+            CasesBrazil.map((ret, index)=>{
+
+              return (
+               <Marker  coordinates={ [ret.long,ret.lat]}
                    style={{
                      default: { fill: "#FF5722" },
                      hover: { fill: "#FFFFFF" },
-                     pressed: { fill: "#FF5722" },
+                     pressed: { fill: "#C9C9C9" },
                    }}
                 >
                   <circle
                       cx={0}
                       cy={0}
-                      r={6}
+                      r={getMarkerSize(ret.totalCases)}
                       style={{
-                        stroke: "#EF5350",
-                        fill: "#EF5350",
-                        strokeWidth:30,
-                        strokeOpacity: 0.7,
+                        stroke: getColor(ret.totalCases),
+                        fill: getColor(ret.totalCases),
+                        strokeWidth:10,
+                        strokeOpacity: 0.5,
                       }}
+                       onMouseEnter={() => {
+                             setTooltipContent(`
+                                          <strong>Município:</strong> ${ret.uf_nome} <br>
+                                          <strong>Casos:</strong> ${ret.totalCases} <br>
+                                        `);
+                        }}
+                         
                    />
-                    <circle
+
+                  <circle
                       cx={0}
                       cy={0}
-                      r={7}
+                      r={getMarkerSize(ret.totalCases)}
                       style={{
                         stroke: "#F5F5F5",
-                        fill: "#ffca28",
-                        strokeWidth:5,
-                        strokeOpacity:1,
+                        fill: "#F5F5F5",
+                        strokeWidth:3,
                       }}
                    />
       
                     <circle
                       cx={0}
                       cy={0}
-                      r={5}
+                      r={getMarkerSize(ret.totalCases)}
                       style={{
-                        stroke: "#EF5350",
-                        fill: "#EF5350",
-                        strokeWidth:4,
-                        strokeOpacity:1,
+                        stroke:getColor(ret.totalCases),
+                        fill: getColor(ret.totalCases),
+                        strokeWidth:2, 
                       }}
-                   />
+                   />                   
+                    
                 </Marker> 
-
+               )}
+                )
+              }
 
         </ZoomableGroup>
       </ComposableMap>

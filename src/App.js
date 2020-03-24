@@ -13,7 +13,7 @@ function App() {
     i18n.changeLanguage(lang);
   }
 
-  handleChangeLang('pt');
+   
 
   return (
     <Layout>
