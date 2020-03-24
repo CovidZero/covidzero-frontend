@@ -61,9 +61,7 @@ a {
   margin-right: auto;
   width: 35%;
 }
-.container{
-  
-}
+
 @include respond-to(tablet) {
   .main-logo {
     width: 20%;
