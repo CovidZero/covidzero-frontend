@@ -21,10 +21,9 @@ const NewsItem = props => {
         actionLeftIcon={() => history.push("/news")}
         rightIcon={ShareIcon}
       />
-
-      <Grid className="news-item-header">
+      <Grid className="main-content-grid">
         <Row>
-          <Cell desktopColumns={12} tabletColumns={8} phoneColumns={4}>
+          <Cell desktopColumns={8} tabletColumns={8} phoneColumns={4}>
             <div className="news-item-header-image">
               <img
                 className="news-item-image"
@@ -34,9 +33,6 @@ const NewsItem = props => {
             </div>
           </Cell>
         </Row>
-      </Grid>
-
-      <Grid>
         <Row>
           <Cell desktopColumns={6} tabletColumns={4} phoneColumns={2}>
             <div className="news-info">{`Publicado por: {AUTHOR}`} </div>
@@ -45,9 +41,6 @@ const NewsItem = props => {
             <div className="news-info news-date">{`{DD / MM / YYYY, TIME}`}</div>
           </Cell>
         </Row>
-      </Grid>
-
-      <Grid>
         <Row>
           <Cell desktopColumns={12} tabletColumns={8} phoneColumns={4}>
             <div className="news-info news-content">
@@ -91,6 +84,18 @@ const NewsItem = props => {
           </Cell>
         </Row>
       </Grid>
+      <Grid className="news-item-header">
+
+      </Grid>
+
+      <Grid>
+       
+      </Grid>
+
+      <Grid>
+        
+      </Grid>
+
     </>
   );
 };
