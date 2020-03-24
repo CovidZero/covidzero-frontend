@@ -31,9 +31,5 @@ export default {
     title: "16px",
     largeTitle: "24px"
   },
-  sidebar: {
-    heigth: "80px",
-    mobileHeigth: "60px"
-  },
   borderRadius: "8px"
 };
