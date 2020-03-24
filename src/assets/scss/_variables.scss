@@ -9,7 +9,7 @@ $section-bg: #fcfcfc;
 
 $white: #fff;
 $gray-10: #f8f8f8;
-$gray-20: #d7dde2;
+$gray-20: #a4a4a4;
 $gray-30: #7f7f7f;
 $gray-40: #828282;
 $gray-50: #918e8c;
@@ -48,8 +48,8 @@ $default-font-family: "Ubuntu", sans-serif;
 $default-font-size: $font-size-16;
 
 $breakpoints: (
-  "mobile": 575px,
+  "mobile": 576px,
   "mobile-xl": 768px,
   "tablet": 992px,
-  "desktop": 1200px,
+  "desktop": 1200px
 );

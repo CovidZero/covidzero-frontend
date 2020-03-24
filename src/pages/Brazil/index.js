@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { CardStats } from "~/components";
 import { Header } from "~/components";
 
-const Map = () => {
+const Brazil = () => {
   const [t] = useTranslation();
 
   return (
@@ -51,4 +51,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default Brazil;
