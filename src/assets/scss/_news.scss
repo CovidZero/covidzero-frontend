@@ -1,48 +1,100 @@
-.news-item-header {
-  padding: 0;
-}
-
-.news-item-header-image {
-  position: relative;
-  text-align: center;
-}
-
-.news-info {
-  color: $gray-20;
-  font-size: 12px;
-}
-
-.news-item-image {
-  height: 100px;
-  width: 100%;
-  filter: blur(1px) brightness(80%);
-}
-
-.news-item-title {
-  position: absolute;
-  bottom: 20px;
-  left: 16px;
-  font-weight: bold;
-}
-
-.news-info {
-  color: $gray-20;
-  font-size: 11px;
-}
-
-@include respond-to(mobile-xl) {
-  //tablet
-  .news-info,
-  .new-content {
-    font-size: 14px;
-  }
-
-  .news-item-image {
-    height: 200px;
-  }
-}
-
-.news-date {
-  float: right;
-  margin-right: 10px;
-}
+    @include respond-to('mobile') {
+        .news-item-header-image img {
+            height: 200px;
+        }
+    }
+    
+    @include respond-to('mobile-xl') {
+        .main-content-grid {
+            padding-left: calc(100%/10);
+            padding-right: calc(100%/10);
+        }
+        .news-item-header-image img {
+            height: 200px;
+        }
+    }
+    
+    @include respond-to('tablet') {
+        .main-content-grid {
+            padding-left: calc(100%/7);
+            padding-right: calc(100%/7);
+        }
+        .news-info,
+        .new-content {
+            font-size: 14px;
+        }
+        .news-item-header-image img {
+            height: 200px;
+        }
+    }
+    
+    @include respond-to('desktop') {
+        .main-content-grid {
+            padding-left: calc(100%/5);
+            padding-right: calc(100%/5);
+        }
+    }
+    
+    .news-item-header {
+        padding: 0;
+    }
+    
+    .news-item-header-image {
+        position: relative;
+        text-align: center;
+    }
+    
+    .news-info {
+        display: flex;
+        color: $gray-20;
+        font-size: 11px;
+        justify-content: space-between;
+        align-items: flex-end;
+        .group-info {
+            display: flex;
+            color: $gray-20;
+            font-size: 12px;
+            justify-content: space-between;
+        }
+        .share-button {
+            color:$white;
+            span {
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+    }
+    
+    .news-content {
+        color: $gray-10;
+        font-size: 15px;
+    }
+    
+    .news-date {
+        margin-right: 10px;
+    }
+    
+    .share-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .share-button {
+        span {
+            margin-left: 5px;
+        }
+    }
+    
+    .news-item-image {
+        height: 100px;
+        width: 100%;
+        filter: blur(1px) brightness(80%);
+    }
+    
+    .news-item-title {
+        position: absolute;
+        bottom: 20px;
+        left: 16px;
+        font-weight: bold;
+    }
