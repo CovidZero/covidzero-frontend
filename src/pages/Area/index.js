@@ -12,7 +12,6 @@ export default function Area() {
   return (
     <>
       <Header title={t("header.area")} />
-      <h1 style={{ textAlign: "center" }}>{t("menu.area")}</h1>
       <Map lat={latitude} lng={longitude} markers={[]} />
     </>
   );

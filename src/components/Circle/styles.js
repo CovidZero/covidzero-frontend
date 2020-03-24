@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const CircleStyle = styled.div`
     border-radius: 50%;
     display: flex;
-    min-height: 80px;
-    min-width: 80px;
+    height: 80px;
+    width: 80px;
     align-items: center;
     justify-content: center;
     ${props => props.type === 'you' && `background-color: ${props.theme.colors.dotYou}25`}
