@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
     width: 90vw;
-    margin: 1em auto;
+    margin: 0.5em auto;
     display: flex;
     flex-wrap: wrap;
 `;
@@ -12,7 +12,7 @@ export const InternContainer = styled.div`
 `;
 
 export const FakeNews = styled.div`
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -39,7 +39,7 @@ export const FakeNewsHeader = styled.div`
         width: 290px;
         margin-right: 90px;
     }
-    
+
 `;
 
 export const FakeTitle = styled.h2`
@@ -62,7 +62,7 @@ export const Notification = styled(FakeNews)`
     @media all and (min-width: 768px) {
         display: block;
 }
-    
+
 `;
 
 export const DivTitle = styled.div`
@@ -85,5 +85,3 @@ export const PageTitle = styled.h1`
     line-height: 3rem;
     margin-bottom: 0px;
 `;
-
-
