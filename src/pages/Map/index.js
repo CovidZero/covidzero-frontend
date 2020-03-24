@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { CardStats } from "~/components";
 import { Header } from "~/components";
+import { MapHome } from "~/components";
 
 const Map = () => {
   const [t] = useTranslation();
@@ -11,6 +12,10 @@ const Map = () => {
   return (
     <>
       <Header title={t("header.map")} />
+
+      <MapHome/>
+
+
 
       <Grid>
         <Row>
