@@ -9,7 +9,7 @@ export const CardBoxStyle = styled.div`
     border-radius: ${props => props.theme.borderRadius};
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em
+    /*margin-bottom: 1em*/
 `;
 
 export const CardBoxStatsDefault = styled.div`
