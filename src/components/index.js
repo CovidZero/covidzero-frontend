@@ -9,6 +9,7 @@ import Chips from "./Chips";
 import Switch from "./Switch";
 import Header from "./Header";
 import Map from "./Map";
+import Circle from "./Circle";
 
 export {
   Input,
@@ -21,5 +22,6 @@ export {
   Chips,
   Switch,
   Header,
-  Map
+  Map,
+  Circle
 };

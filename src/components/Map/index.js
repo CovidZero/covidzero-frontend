@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import React from "react";
+import GoogleMapReact from "google-map-react";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import { GMAP_KEY } from "~/utils/constants";
+import { Circle } from "~/components";
 
-const Map = ({ lat, lng }) => {
-    console.log({ lat, lng})
+
+const Map = (props) => {
+    console.log(props)
     return (
         <div style={{ height: '100vh', width: '100%' }}>
-            {lat && lng &&
+            {props.lat && props.lng &&
                 <GoogleMapReact
-                    //bootstrapURLKeys={{ key: /* YOUR KEY HERE */ }}
-                    defaultCenter={[lat, lng]}
+                    bootstrapURLKeys={{ key: GMAP_KEY }}
+                    defaultCenter={[props.lat, props.lng]}
                     defaultZoom={11}
                 >
-                    <AnyReactComponent
-                        lat={lat}
-                        lng={lng}
-                        text="My Marker"
+                    <Circle type="you"
+                        lat={props.lat}
+                        lng={props.lng}
                     />
                 </GoogleMapReact>
             }
