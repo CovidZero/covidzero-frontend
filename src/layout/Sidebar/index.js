@@ -10,6 +10,8 @@ import { PlusMedical } from "@styled-icons/boxicons-regular/PlusMedical";
 
 import { Link } from "react-router-dom";
 
+import Logo from "~assets/images/logo.svg";
+
 const Sidebar = () => {
   const [t] = useTranslation();
 
@@ -46,7 +48,9 @@ const Sidebar = () => {
       <ul className="navbar-nav">
         <li className="logo">
           <Link to="/" className="nav-link">
-            <span className="link-text logo-text">CovidZero</span>
+            <span className="link-text logo-text">
+              <img src={Logo} alt="logo" />
+            </span>
             <PlusMedical />
           </Link>
         </li>
