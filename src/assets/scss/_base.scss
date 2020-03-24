@@ -6,20 +6,7 @@
 main {
   margin-left: 5rem;
 }
-@media only screen and (min-width:map-get($map: $breakpoints, $key: "desktop")){
-  main {
-    animation: marginLeft 1s ease;
-    margin-left: 16rem;
-  }
-}
-@keyframes marginLeft{
-  from{
-    margin-left: 5rem;
-  }
-  to{
-    margin-left: 16rem;
-  }
-}
+
 body {
   color: $white;
   background: $gray-80;

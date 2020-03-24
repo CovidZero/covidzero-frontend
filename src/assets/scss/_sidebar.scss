@@ -113,7 +113,6 @@
       margin: 6px 0 0 0;
       display: block;
       font-size: $font-size-12;
-      
     }
   }
 
@@ -158,63 +157,5 @@
 
   .navbar:hover .logo-text {
     left: 0px;
-  }
-}
-@media only screen and (min-width: map-get($map: $breakpoints, $key: "desktop")){
-  .navbar {
-    top: 0;
-    width: 16rem;
-    height: 100vh;
-    position: fixed;
-    
-    .logo-text{
-      
-        left: 0px;
-      
-    }
-  }
-  .linkt-text{
-    display: inline;
-    white-space: nowrap;
-  }
-  .nav-link {
-
-    .link-text {
-      margin: 6px 0 0 0;
-      display: block;
-      animation: fadeInLoad 2.5s;
-    }
-  }
-  .logo{
-    svg{
-      display:none;
-    }
-    .nav-link{
-      justify-content: center;
-      
-        filter: grayscale(0%) opacity(1);
-        background: $dark-gray;
-        color: $light-gray;
-      
-    }
-    .nav-link:hover{
-      background: $gray-70;
-    }
-    .logo-text{
-      position:relative;
-      background:none ;
-      color: none;
-    }
-    .link-text{
-      margin-left:0;
-    }
-  }
-}
-@keyframes fadeInLoad {
-  from {
-      opacity:0;
-  }
-  to {
-      opacity:1;
   }
 }
