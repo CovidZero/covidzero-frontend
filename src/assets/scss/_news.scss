@@ -1,0 +1,17 @@
+.news-info {
+  color: $gray-20;
+  font-size: 11px;
+}
+
+@include respond-to(mobile-xl) {
+  //tablet
+  .news-info,
+  .new-content {
+    font-size: 14px;
+  }
+}
+
+.news-date {
+  float: right;
+  margin-right: 10px;
+}
