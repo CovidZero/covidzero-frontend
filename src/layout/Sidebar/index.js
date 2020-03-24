@@ -45,21 +45,17 @@ const Sidebar = () => {
     <nav className="navbar">
       <ul className="navbar-nav">
         <li className="logo">
-          <Link to="/">
-            <a href="#" className="nav-link">
-              <span className="link-text logo-text">CovidZero</span>
-              <PlusMedical />
-            </a>
+          <Link to="/" className="nav-link">
+            <span className="link-text logo-text">CovidZero</span>
+            <PlusMedical />
           </Link>
         </li>
 
         {routes.map(route => (
           <li key={route.title} className="nav-item">
-            <Link to={route.path}>
-              <a href="#" className="nav-link">
-                {route.icon}
-                <span className="link-text">{t(route.title)}</span>
-              </a>
+            <Link to={route.path} className="nav-link">
+              {route.icon}
+              <span className="link-text">{t(route.title)}</span>
             </Link>
           </li>
         ))}

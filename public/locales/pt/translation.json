@@ -11,5 +11,12 @@
     "help": "Ajuda",
     "news": "Notícias"
   },
+  "header": {
+    "map": "Brasil em tempo real",
+    "cities": "Cidades",
+    "area": "Sua área",
+    "help": "Ajuda",
+    "news": "Notícias"
+  },
   "searchGithub": "Pesquisar suas informações do Github"
 }
