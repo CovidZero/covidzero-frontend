@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "google-map-react": "^1.1.7",
     "history": "^4.10.1",
     "i18next": "^19.3.3",
     "i18next-browser-languagedetector": "^4.0.2",
