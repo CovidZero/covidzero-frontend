@@ -1,3 +1,30 @@
+.news-item-header {
+  padding: 0;
+}
+
+.news-item-header-image {
+  position: relative;
+  text-align: center;
+}
+
+.news-info {
+  color: $gray-20;
+  font-size: 12px;
+}
+
+.news-item-image {
+  height: 100px;
+  width: 100%;
+  filter: blur(1px) brightness(80%);
+}
+
+.news-item-title {
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  font-weight: bold;
+}
+
 .news-info {
   color: $gray-20;
   font-size: 11px;
@@ -8,6 +35,10 @@
   .news-info,
   .new-content {
     font-size: 14px;
+  }
+
+  .news-item-image {
+    height: 200px;
   }
 }
 
