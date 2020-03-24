@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CircleStyle = styled.div`
+const CircleStyle = styled.div`
     border-radius: 50%;
     display: flex;
     height: 80px;
@@ -13,4 +13,13 @@ export const CircleStyle = styled.div`
     ${props => props.type === 'recovered' && `background-color: ${props.theme.colors.dotRecovered}25`}
 `;
 
-export const Style = { CircleStyle };
+
+const CirclePointsText = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+  color: #FFF;
+  letter-spacing: 1px;
+`;
+
+export const Style = { CircleStyle, CirclePointsText };

@@ -4,8 +4,11 @@ import Dots from '../Dots'
 
 const Circle = (props) => {
     return (
-        <Style.CircleStyle type={props.type}>
-            <Dots dot={props.type} />
+        <Style.CircleStyle onClick={props.onClick} type={props.type}>
+            {props.isCluster
+                ? <Style.CirclePointsText type={props.type}>{props.pointCount}</Style.CirclePointsText>
+                : <Dots dot={props.type} />
+            }
         </Style.CircleStyle>
     );
 };

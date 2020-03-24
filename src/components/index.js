@@ -8,7 +8,7 @@ import Dots from "./Dots";
 import Chips from "./Chips";
 import Switch from "./Switch";
 import Header from "./Header";
-import Map from "./Map";
+import MapArea from "./MapArea";
 import Circle from "./Circle";
 
 export {
@@ -22,6 +22,6 @@ export {
   Chips,
   Switch,
   Header,
-  Map,
+  MapArea,
   Circle
 };
