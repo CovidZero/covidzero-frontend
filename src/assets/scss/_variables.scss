@@ -37,6 +37,11 @@ $font-size-26: 26px;
 $font-size-18: 18px;
 $font-size-16: 16px;
 $font-size-14: 14px;
+$font-size-12: 12px;
+
+/* Sidebar */
+$sidebar-mobile-height: 60px;
+$sidebar-mobile-icon: 24px;
 
 $transition-speed: 600ms;
 $default-font-family: "Ubuntu", sans-serif;
@@ -46,5 +51,5 @@ $breakpoints: (
   "mobile": 575px,
   "mobile-xl": 768px,
   "tablet": 992px,
-  "desktop": 1200px
+  "desktop": 1200px,
 );

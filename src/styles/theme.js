@@ -25,5 +25,11 @@ export default {
     dotBorder: "#F5F5F5",
     textColor: "#C9C9C9"
   },
+  header: {
+    heigth: "50px",
+    largeHeigth: "80px",
+    title: "16px",
+    largeTitle: "24px"
+  },
   borderRadius: "8px"
 };
