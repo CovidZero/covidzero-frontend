@@ -1,8 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import { PlusMedical } from "@styled-icons/boxicons-regular/PlusMedical";
-
 import { Link, withRouter } from "react-router-dom";
 
 import Logo from "~assets/images/logo.svg";
@@ -16,6 +14,7 @@ import { ReactComponent as Area } from "~assets/icons/area.svg";
 import { ReactComponent as AreaActive } from "~assets/icons/area-active.svg";
 import { ReactComponent as Help } from "~assets/icons/help.svg";
 import { ReactComponent as HelpActive } from "~assets/icons/help-active.svg";
+import { ReactComponent as SmallLogo } from "~/assets/icons/small-log.svg";
 
 const Sidebar = props => {
   const { pathname } = props.location;
@@ -57,7 +56,7 @@ const Sidebar = props => {
             <span className="link-text logo-text">
               <img src={Logo} alt="logo" />
             </span>
-            <PlusMedical />
+            <SmallLogo />
           </Link>
         </li>
 
