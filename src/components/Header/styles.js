@@ -8,20 +8,21 @@ export const Container = styled.div`
   height: ${props => props.theme.header.heigth};
   padding: 0 20px;
 
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 600px) {
     height: ${props => props.theme.header.largeHeigth};
   }
 `;
 
 export const Title = styled.span`
   color: ${props => props.theme.colors.textColor};
-  font-weight: bold;
   font-size: ${props => props.theme.header.title};
+  font-weight: bold;
   line-height: 24px;
   letter-spacing: 1px;
   margin-left: 10px;
 
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 600px) {
+    color ${props => props.theme.colors.largeHeaderTitle};
     font-size: ${props => props.theme.header.largeTitle};
   }
 `;
@@ -37,7 +38,7 @@ export const Icon = styled.img`
 `;
 
 export const LeftIcon = styled(Icon)`
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 600px) {
     display: none;
   }
 `;
