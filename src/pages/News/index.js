@@ -12,7 +12,7 @@ export default function News() {
 
   const longContentCardNews =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
-  
+
   const [t] = useTranslation();
   return(
     <>
@@ -41,12 +41,12 @@ export default function News() {
         </Styled.InternContainer>
       </Styled.Container>
 
-      <Styled.Container>
+      <Styled.Container style={{marginBottom: "5.5em"}}>
         <Styled.DivTitle>
           <Styled.PageTitle>Últimas notícias </Styled.PageTitle>
           <hr />
         </Styled.DivTitle>
-        
+
         <CardNews title="Como os gestores devem se comportar na crise Coronavírus?"
                   content={longContentCardNews}
                   date={new Date()}
