@@ -1,15 +1,25 @@
 import styled from "styled-components";
 
 export const CardBoxStyle = styled.div`
-    background: ${props => props.theme.colors.primary};
-    color: #fff;
-    font-size: 1em;
-    padding: 1em;
-    border: 1px solid ${props => props.theme.colors.primaryDark};
-    border-radius: ${props => props.theme.borderRadius};
-    display: flex;
-    flex-direction: column;
-    /*margin-bottom: 1em*/
+  background: ${props => props.theme.colors.primary};
+  color: #fff;
+  padding: 12px;
+  border: 1px solid ${props => props.theme.colors.primaryDark};
+  border-radius: ${props => props.theme.borderRadius};
+  display: flex;
+  flex-direction: column;
+
+  @media all and (min-width: 600px) {
+    padding: 16px;
+  }
+`;
+
+export const Title = styled.span`
+  font-size: 12px;
+
+  @media all and (min-width: 600px) {
+    font-size: 16px;
+  }
 `;
 
 export const CardBoxStatsDefault = styled.div`
@@ -19,7 +29,6 @@ export const CardBoxStatsDefault = styled.div`
   color: ${props => props.theme.colors.statsDefault};
   text-transform: uppercase;
   letter-spacing: 1px;
-
 `;
 
 export const CardBoxStatsConfirmed = styled.label`
@@ -38,4 +47,12 @@ export const CardBoxStatsDeath = styled.label`
   color: ${props => props.theme.colors.statsDeath};
 `;
 
-export const Style = {CardBoxStyle, CardBoxStatsDefault, CardBoxStatsConfirmed, CardBoxStatsRecovered, CardBoxStatsSuspect, CardBoxStatsDeath};
+export const Style = {
+  CardBoxStyle,
+  CardBoxStatsDefault,
+  CardBoxStatsConfirmed,
+  CardBoxStatsRecovered,
+  CardBoxStatsSuspect,
+  CardBoxStatsDeath,
+  Title
+};
