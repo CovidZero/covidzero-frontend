@@ -99,6 +99,7 @@ const MapHome = ({ setTooltipContent }) => {
         height={isMobile() ? 680 : 550}
         style={{
           width: "100%",
+          maxWidth: "1200px",
         }}
         projectionConfig={{
           scale: isMobile() ? 900 : 550,
@@ -118,7 +119,7 @@ const MapHome = ({ setTooltipContent }) => {
                     const ret = CasesBrazil.find(({ uf_nome }) => uf_nome === nome);
 
                     setTooltipContent(`
-                                          <strong>Município:</strong> ${nome} <br>
+                                          <strong>Estado:</strong> ${nome} <br>
                                           <strong>Casos:</strong> ${ret.totalCases} <br>
                                         `);
                   }}
@@ -172,7 +173,7 @@ const MapHome = ({ setTooltipContent }) => {
                     }}
                     onMouseEnter={() => {
                       setTooltipContent(`
-                                          <strong>Município:</strong> ${ret.uf_nome} <br>
+                                          <strong>Estado:</strong> ${ret.uf_nome} <br>
                                           <strong>Casos:</strong> ${ret.totalCases} <br>
                                         `);
                     }}
