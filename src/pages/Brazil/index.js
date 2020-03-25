@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-  import React from "react";
-=======
 import React, { useState } from "react";
->>>>>>> upstream/master
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 import { useTranslation } from "react-i18next";
 import ReactTooltip from "react-tooltip";
@@ -21,31 +17,11 @@ const Brazil = () => {
     <>
       <Header title={t("header.map")} />
 
-<<<<<<< HEAD
-      <Grid>
-        <Row>
-          <Cell style={{marginBottom:1}} desktopColumns={6} phoneColumns={2} tabletColumns={6}>
-            <CardStats
-              status="confirmed"
-              title={<div>Confirmados</div>}
-              count="{quantity}"
-            />
-          </Cell>
-          <Cell  desktopColumns={6} phoneColumns={2} tabletColumns={6}>
-            <CardStats
-              status="suspect"
-              title={<div>Suspeitos</div>}
-              count="{quantity}"
-            />
-          </Cell>
-        </Row>
-=======
       <Styled.Container>
         <Styled.ContainerMap>
           <MapHome setTooltipContent={setContent} />
-          <ReactTooltip html="true">{content}</ReactTooltip>
+          <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>
->>>>>>> upstream/master
 
         <Styled.MobileBottomIndicators>
           <Grid>

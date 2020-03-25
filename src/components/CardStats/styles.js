@@ -1,20 +1,10 @@
 import styled from "styled-components";
 
 export const CardBoxStyle = styled.div`
-<<<<<<< HEAD
-    background: ${props => props.theme.colors.primary};
-    color: #fff;
-    font-size: 1em;
-    padding: 1em;
-    /* border: 1px solid ${props => props.theme.colors.primaryDark}; */
-    border-radius: ${props => props.theme.borderRadius};
-    display: flex;
-    flex-direction: column;
-=======
   background: ${props => props.theme.colors.primary};
   color: #fff;
   padding: 12px;
-  border: 1px solid ${props => props.theme.colors.primaryDark};
+  /* border: 1px solid ${props => props.theme.colors.primaryDark}; */
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
   flex-direction: column;
@@ -30,7 +20,6 @@ export const Title = styled.span`
   @media all and (min-width: 600px) {
     font-size: 16px;
   }
->>>>>>> upstream/master
 `;
 
 export const CardBoxStatsDefault = styled.div`
