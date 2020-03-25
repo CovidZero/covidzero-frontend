@@ -1,0 +1,6 @@
+{
+    "bracketSpacing": false,
+    "sxBracketSameLine": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }

@@ -184,3 +184,7 @@ Acessando a rota **/uikit** temos a implementação de cada componente.
 ## Commitzen 
 
 Para melhor a padronização dos commites foi adicionado o commitizen. É bom simples de utilizar, após usar o ```git add ``` rode um ```yarn commit``` ou se estiver utilizando o npm use o ```npm commit``` ele vai gerar uma janela que vai facilitar e organizar os commites, caso não queria utilizar bastar seguir normalmente com o ```git commit``` e não ira interferir em nada.
+
+## Eslint e prettier 
+
+Para corrigir problemas de sintaxe foi adicionado o Eslint. Foi adicionado como devDependencies, caso utilize a Visual Studio Code você pode instalar a extenção ESlint. Foi instalado também as rules corretas para uso com Redux.
