@@ -5,7 +5,7 @@ export const CardBoxStyle = styled.div`
     color: #fff;
     font-size: 1em;
     padding: 1em;
-    border: 1px solid ${props => props.theme.colors.primaryDark};
+    /* border: 1px solid ${props => props.theme.colors.primaryDark}; */
     border-radius: ${props => props.theme.borderRadius};
     display: flex;
     flex-direction: column;

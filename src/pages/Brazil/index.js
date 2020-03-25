@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 import { useTranslation } from "react-i18next";
 
@@ -14,14 +14,14 @@ const Brazil = () => {
 
       <Grid>
         <Row>
-          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={6}>
+          <Cell style={{marginBottom:1}} desktopColumns={6} phoneColumns={2} tabletColumns={6}>
             <CardStats
               status="confirmed"
               title={<div>Confirmados</div>}
               count="{quantity}"
             />
           </Cell>
-          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={6}>
+          <Cell  desktopColumns={6} phoneColumns={2} tabletColumns={6}>
             <CardStats
               status="suspect"
               title={<div>Suspeitos</div>}
