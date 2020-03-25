@@ -1,0 +1,218 @@
+[
+ {
+   "state": "SP",
+   "uf_nome": "São Paulo",
+   "totalCases": 745,
+   "deaths": 30,
+   "long": -48.75933253,
+   "lat": -22.25689629
+ },
+ {
+   "state": "AC",
+   "uf_nome": "Acre",
+   "totalCases": 17,
+   "deaths": 0,
+   "long": -72.13278532,
+   "lat": -8.790273369
+ },
+ {
+   "state": "RJ",
+   "uf_nome": "Rio de Janeiro",
+   "totalCases": 233,
+   "deaths": 4,
+   "long": -42.89486166,
+   "lat": -22.48289272
+ },
+ {
+   "state": "AL",
+   "uf_nome": "Alagoas",
+   "totalCases": 8,
+   "deaths": 0,
+   "long": -36.67169365,
+   "lat": -9.78261012
+ },
+ {
+   "state": "ES",
+   "uf_nome": "Espírito Santo",
+   "totalCases": 33,
+   "deaths": 0,
+   "long": -40.67555693,
+   "lat": -19.5962671
+ },
+ {
+   "state": "AM",
+   "uf_nome": "Amazonas",
+   "totalCases": 32,
+   "deaths": 0,
+   "long": -64.68219739,
+   "lat": -4.181781605
+ },
+ {
+   "state": "BA",
+   "uf_nome": "Bahia",
+   "totalCases": 63,
+   "deaths": 0,
+   "long": -41.73416561,
+   "lat": -12.47128057
+ },
+ {
+   "state": "AP",
+   "uf_nome": "Amapá",
+   "totalCases": 1,
+   "deaths": 0,
+   "long": -51.97549803,
+   "lat": 1.391022019
+ },
+ {
+   "state": "DF",
+   "uf_nome": "Distrito Federal",
+   "totalCases": 146,
+   "deaths": 0,
+   "long": -47.79584647,
+   "lat": -15.77756387
+ },
+ {
+   "state": "CE",
+   "uf_nome": "Ceará",
+   "totalCases": 164,
+   "deaths": 0,
+   "long": -39.5850178,
+   "lat": -5.097246159
+ },
+ {
+   "state": "MG",
+   "uf_nome": "Minas Gerais",
+   "totalCases": 128,
+   "deaths": 0,
+   "long": -44.63183484,
+   "lat": -18.44591442
+ },
+ {
+   "state": "RS",
+   "uf_nome": "Rio Grande do Sul",
+   "totalCases": 96,
+   "deaths": 0,
+   "long": -53.33181857,
+   "lat": -29.75305161
+ },
+ {
+   "state": "PE",
+   "uf_nome": "Pernambuco",
+   "totalCases": 42,
+   "deaths": 0,
+   "long": -38.05086543,
+   "lat": -8.330994796
+ },
+ {
+   "state": "GO",
+   "uf_nome": "Goiás",
+   "totalCases": 23,
+   "deaths": 0,
+   "long": -49.60311111,
+   "lat": -16.0467844
+ },
+ {
+   "state": "PR",
+   "uf_nome": "Paraná",
+   "totalCases": 60,
+   "deaths": 0,
+   "long": -51.63564161,
+   "lat": -24.65625532
+ },
+ {
+   "state": "MA",
+   "uf_nome": "Maranhão",
+   "totalCases": 8,
+   "deaths": 0,
+   "long": -45.29536634,
+   "lat": -5.047432049
+ },
+ {
+   "state": "SC",
+   "uf_nome": "Santa Catarina",
+   "totalCases": 86,
+   "deaths": 0,
+   "long": -50.50838917,
+   "lat": -27.24658227
+ },
+ {
+   "state": "MS",
+   "uf_nome": "Mato Grosso do Sul",
+   "totalCases": 21,
+   "deaths": 0,
+   "long": -54.88071217,
+   "lat": -20.32456331
+ },
+ {
+   "state": "RN",
+   "uf_nome": "Rio Grande do Norte",
+   "totalCases": 13,
+   "deaths": 0,
+   "long": -36.68738063,
+   "lat": -5.842578641
+ },
+ {
+   "state": "MT",
+   "uf_nome": "Mato Grosso",
+   "totalCases": 7,
+   "deaths": 0,
+   "long": -55.9009429,
+   "lat": -12.93153781
+ },
+ {
+   "state": "PA",
+   "uf_nome": "Pará",
+   "totalCases": 5,
+   "deaths": 0,
+   "long": -52.4880964,
+   "lat": -5.292059687
+ },
+ {
+   "state": "PB",
+   "uf_nome": "Paraíba",
+   "totalCases": 2,
+   "deaths": 0,
+   "long": -37.77807815,
+   "lat": -6.946955058
+ },
+ {
+   "state": "SE",
+   "uf_nome": "Sergipe",
+   "totalCases": 10,
+   "deaths": 0,
+   "long": -37.44218263,
+   "lat": -10.5944836
+ },
+ {
+   "state": "PI",
+   "uf_nome": "Piauí",
+   "totalCases": 6,
+   "deaths": 0,
+   "long": -43.17488463,
+   "lat": -8.093344997
+ },
+ {
+   "state": "TO",
+   "uf_nome": "Tocantins",
+   "totalCases": 7,
+   "deaths": 0,
+   "long": -48.35472734,
+   "lat": -10.1086123
+ },
+ {
+   "state": "RO",
+   "uf_nome": "Rondônia",
+   "totalCases": 3,
+   "deaths": 0,
+   "long": -63.31891522,
+   "lat": -10.31709036
+ },
+ {
+   "state": "RR",
+   "uf_nome": "Roraima",
+   "totalCases": 2,
+   "deaths": 0,
+   "long": -61.39106106,
+   "lat": 2.100328071
+ }
+]
