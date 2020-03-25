@@ -21,7 +21,7 @@ export const ContainerMap = styled.div`
 export const MobileBottomIndicators = styled.div`
   @media (max-width: 600px) {
     position: absolute;
-    bottom: 0; /* Must be 0 because in physical devices there is the browser header */
+    bottom: 4rem;
     width: 100%;
   }
 `;
