@@ -1,4 +1,4 @@
-import React,{ useState }from "react";
+import React,{ useState }  from "react";
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 import { useTranslation }  from "react-i18next";
 import ReactTooltip        from "react-tooltip"; 
@@ -6,8 +6,8 @@ import ReactTooltip        from "react-tooltip";
 import * as Styled from './styles.js';
 
 import { CardStats } from "~/components";
-import { Header } from "~/components";
-import { MapHome } from "~/components";
+import { Header }    from "~/components";
+import { MapHome }   from "~/components";
 
 const Map = () => {
   const [t] = useTranslation();
