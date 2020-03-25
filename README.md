@@ -180,3 +180,7 @@ export default App;
 Os componentes que componhe os UiKit (inputs, selected, containers e etc), que são compartilhados pela aplicação, estão localizados na pasta **./pages/UiKit/components**.
 
 Acessando a rota **/uikit** temos a implementação de cada componente.
+
+## Commitzen 
+
+Para melhor a padronização dos commites foi adicionado o commitizen. É bom simples de utilizar, após usar o ```git add ``` rode um ```yarn commit``` ou se estiver utilizando o npm use o ```npm commit``` ele vai gerar uma janela que vai facilitar e organizar os commites, caso não queria utilizar bastar seguir normalmente com o ```git commit``` e não ira interferir em nada.
