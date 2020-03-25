@@ -4,7 +4,7 @@ export const CardBoxStyle = styled.div`
   background: ${props => props.theme.colors.primary};
   color: #fff;
   padding: 12px;
-  border: 1px solid ${props => props.theme.colors.primaryDark};
+  /* border: 1px solid ${props => props.theme.colors.primaryDark}; */
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
   flex-direction: column;

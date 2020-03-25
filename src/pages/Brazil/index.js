@@ -20,7 +20,7 @@ const Brazil = () => {
       <Styled.Container>
         <Styled.ContainerMap>
           <MapHome setTooltipContent={setContent} />
-          <ReactTooltip html="true">{content}</ReactTooltip>
+          <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>
 
         <Styled.MobileBottomIndicators>
