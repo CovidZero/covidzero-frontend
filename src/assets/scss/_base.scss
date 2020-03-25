@@ -64,9 +64,12 @@ a {
   width: 35%;
 }
 
+ 
 @include respond-to(tablet) {
   .main-logo {
     width: 20%;
     padding-right: 80px;
   }
 }
+
+
