@@ -34,12 +34,55 @@ const MapArea = (props) => {
         }
     }))
 
+    const apiIsLoaded = (map, maps) => {
+        mapRef.current = map;
+
+        var directionsService = new maps.DirectionsService();
+        var directionsRenderer = new maps.DirectionsRenderer();
+        directionsRenderer.setMap(map);
+
+        directionsService.route(
+            {
+                origin: { query: 'americana, sp - brazil' },
+                destination: { query: 'são paulo, sp - brazil' },
+                travelMode: 'DRIVING'
+            },
+            function (response, status) {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            });
+
+    };
+
     const { clusters, supercluster } = useSupercluster({
         points,
         bounds,
         zoom,
         options: { radius: 150, maxZoom: 20 }
     });
+
+    function createMapOptions(maps) {
+        // next props are exposed at maps
+        // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
+        // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
+        // "DirectionsStatus", "DirectionsTravelMode", "DirectionsUnitSystem", "DistanceMatrixStatus",
+        // "DistanceMatrixElementStatus", "ElevationStatus", "GeocoderLocationType", "GeocoderStatus", "KmlLayerStatus",
+        // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
+        return {
+            zoomControlOptions: {
+                position: maps.ControlPosition.RIGHT_CENTER,
+                style: maps.ZoomControlStyle.SMALL
+            },
+            mapTypeControlOptions: {
+                position: maps.ControlPosition.TOP_RIGHT
+            },
+            mapTypeControl: true
+        };
+    }
+
 
     return (
         <Style.ContainerMap>
@@ -49,9 +92,7 @@ const MapArea = (props) => {
                     defaultCenter={[props.lat, props.lng]}
                     defaultZoom={11}
                     yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={({ map }) => {
-                        mapRef.current = map;
-                    }}
+                    onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
                     onChange={({ zoom, bounds }) => {
                         setZoom(zoom);
                         setBounds([
@@ -61,6 +102,7 @@ const MapArea = (props) => {
                             bounds.nw.lat
                         ])
                     }}
+                    options={createMapOptions}
                 >
 
                     {clusters.map(cluster => {
