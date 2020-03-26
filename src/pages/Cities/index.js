@@ -33,8 +33,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+              header={
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
+              headerExpaned={ 
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -79,8 +91,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+             header={
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
+            headerExpaned={ 
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -125,8 +149,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+              header={
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
+              headerExpaned={ 
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -171,8 +207,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+              header={
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
+              headerExpaned={ 
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -217,8 +265,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+             header={
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
+            headerExpaned={ 
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -263,8 +323,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+             header={
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
+            headerExpaned={ 
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -309,8 +381,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+              header={
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
+              headerExpaned={ 
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -355,8 +439,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+             header={
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
+            headerExpaned={ 
+              <>
+                <div style={{marginRight:20}}>CITY</div>
+                <div>STATE_CODE</div>
+                <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+              </>
+            }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -401,8 +497,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+              header={
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
+              headerExpaned={ 
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
@@ -447,8 +555,20 @@ const Map = () => {
           <Row style={{marginBottom:10}}> 
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}> 
               <ExpandableBox
-              header='teste'
-              headerExpaned='aberto'
+              header={
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
+              headerExpaned={ 
+                <>
+                  <div style={{marginRight:20}}>CITY</div>
+                  <div>STATE_CODE</div>
+                  <div style={{color:'red', marginLeft:'auto', marginRight:30}}>QUANTITY</div>
+                </>
+              }
               body={
               <Grid style={{padding:0}}>
                 <Row > 
