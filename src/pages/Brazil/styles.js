@@ -14,6 +14,7 @@ export const Container = styled.section`
 
 export const ContainerMap = styled.div`
   @media (min-width: 840px) {
+    margin-top: 5%;
     flex: 100%;
   }
 `;

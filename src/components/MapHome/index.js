@@ -102,12 +102,12 @@ const MapHome = ({ setTooltipContent }) => {
           maxWidth: "1200px",
         }}
         projectionConfig={{
-          scale: isMobile() ? 900 : 550,
+          scale: isMobile() ? 900 : 750,
 
 
         }}
       >
-        <ZoomableGroup center={isMobile() ? [-54, -13] : [-54, -21]} disablePanning>
+        <ZoomableGroup center={isMobile() ? [-54, -13] : [-54, -15]} disablePanning>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
