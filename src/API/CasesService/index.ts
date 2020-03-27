@@ -1,120 +1,113 @@
-import axios from 'axios';
+import http from '~/utils/config/http';
+
 
 const URL = {
-    all: '/all',
-    state: '/state',
-    coordinates: '/coordinates',
-    city: '/city',
-
-}
-
-export enum CaseStatus {
-    ACTIVE = 'ACTIVE',
-    SUSPECTED = 'SUSPECTED',
-    RECOVERED = 'RECOVERED',
-    DEAD = 'DEAD'
-}
-export interface Coordinates {
-    latitude: string,
-    longitude: string
+    statesCases: '/state/cases/all',
+    all: '/all'
 }
 export interface Cases {
-    activeCases: number,
-    suspectedCase: number,
-    recoveredCases: number,
-    deaths: number,
+    active: number;
+    suspected: number;
+    recovered: number;
+    deaths: number;
 }
 
-export interface CasesByCity {
-    city: string,
+export interface StateCases {
+    stateName: string,
     stateCode: string,
-    cases: Cases[]
-}
-
-export interface CasesByCoordinates {
-    caseStatus: CaseStatus,
-    location: Coordinates
+    latitude: string,
+    longitude: string,
+    cases: Cases
 }
 
 interface CasesProvider {
-    getAll(): Promise<Cases[]>
-    getByStateCode(stateCode: string): Promise<Cases[]>
-    getByCity(city: string): Promise<CasesByCity>
-    getByCoordinates(coordinates: Coordinates): Promise<CasesByCoordinates[]>
+    getStatesCases(): Promise<StateCases[]>,
+    getAllCases(): Promise<Cases>
 }
 
 export default function CasesService(casesBaseURL: string): CasesProvider {
 
-    const axiosInstance = axios;
-
-    async function getAll(): Promise<Cases[]> {
+    async function getAllCases(): Promise<Cases> {
         try {
-            const response = await axiosInstance.get(
-                `${casesBaseURL}${URL.all}`
-            )
 
-            const cases: Cases[] = response.data;
+            const response = await http.get(`${casesBaseURL}${URL.all}`)
+            const cases: Cases = convertCasesResponse(response.data)
+
             return cases;
-
         } catch (error) {
-            throw (error);
-        }
-    }
-
-    async function getByStateCode(stateCode: string): Promise<Cases[]> {
-        try {
-            const response = await axiosInstance.get(
-                `${casesBaseURL}${URL.state}`,
-                {
-                    params: { stateCode: stateCode }
-                }
-            )
-
-            return response.data;
-        } catch (error) {
+            console.log('error=>', error)
             throw (error)
         }
     }
 
-    async function getByCity(city: string): Promise<CasesByCity> {
+    async function getStatesCases(): Promise<StateCases[]> {
         try {
-            const response = await axiosInstance.get(
-                `${casesBaseURL}${URL.city}`,
-                {
-                    params: { search: city }
-                }
-            )
 
-            return response.data;
+            const response = await http.get(`${casesBaseURL}${URL.statesCases}`)
+            const statesCases: StateCases[] = convertStateCasesResponse(response.data)
+
+            return statesCases;
         } catch (error) {
-            throw (error)
-        }
-    }
-
-    async function getByCoordinates(coordinates: Coordinates): Promise<CasesByCoordinates[]> {
-        try {
-            const response = await axiosInstance.get(
-                `${casesBaseURL}${URL.coordinates}`,
-                {
-                    params: {
-                        latitude: coordinates.latitude,
-                        longitude: coordinates.longitude
-                    }
-                }
-            )
-
-            const cases: CasesByCoordinates[] = response.data;
-            return cases;
-        } catch (error) {
+            console.log('error=>', error)
             throw (error)
         }
     }
 
     return {
-        getAll,
-        getByStateCode,
-        getByCity,
-        getByCoordinates
+        getStatesCases,
+        getAllCases
     }
+
+}
+
+
+
+interface CasesResponse {
+    totalCases?: number,
+    suspectedCase?: number,
+    recoveredCases?: number,
+    deaths?: number,
+}
+
+interface stateCasesResponse {
+    stateCode: string,
+    stateName: string,
+    lat: string,
+    lng: string,
+    cases: CasesResponse
+}
+
+//Utils para convertes o data do endpoint em Tipos mais amigáveis de serem escritos
+function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): StateCases[] {
+    return statesCasesResponse.map(stateCasesResponse => {
+        const cases = stateCasesResponse.cases;
+        const _case: StateCases = {
+            stateCode: stateCasesResponse.stateName,
+            stateName: stateCasesResponse.stateName,
+            latitude: stateCasesResponse.lat,
+            longitude: stateCasesResponse.lng,
+            cases: {
+                active: cases.totalCases ? cases.totalCases : 0,
+                recovered: cases.recoveredCases ? cases.recoveredCases : 0,
+                suspected: cases.suspectedCase ? cases.suspectedCase : 0,
+                deaths: cases.deaths ? cases.deaths : 0
+            }
+        }
+
+        return _case
+    })
+
+}
+
+function convertCasesResponse(casesResponse: CasesResponse): Cases {
+
+    const _case: Cases = {
+        active: casesResponse.totalCases ? casesResponse.totalCases : 0,
+        recovered: casesResponse.recoveredCases ? casesResponse.recoveredCases : 0,
+        suspected: casesResponse.suspectedCase ? casesResponse.suspectedCase : 0,
+        deaths: casesResponse.deaths ? casesResponse.deaths : 0
+    }
+
+    return _case;
 
 }

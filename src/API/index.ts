@@ -1,9 +1,9 @@
 import CasesService from './CasesService';
 
- function API() {
+function API() {
 
     const baseURLs = {
-        cases: '"https://api.github.com',
+        cases: "https://api.covidzero.com.br/data_api/v1/data",
     }
 
     return {
