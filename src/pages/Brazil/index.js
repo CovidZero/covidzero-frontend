@@ -22,11 +22,16 @@ const Brazil = () => {
   const [totalCases, setTotalCases] = useState(initalCases)
 
   const sumStateCases = (stateCases) => {
-    let totalCases = initalCases;
+    let totalCases = {
+      confirmed: 0,
+      suspected: 0,
+      recovered: 0,
+      deaths: 0
+    };
 
     stateCases.map(stateCases => {
       totalCases.confirmed = totalCases.confirmed + stateCases.cases.confirmed;
-      totalCases.suspect = totalCases.suspect + stateCases.cases.suspected;
+      totalCases.suspected = totalCases.suspected + stateCases.cases.suspected;
       totalCases.recovered = totalCases.recovered + stateCases.cases.recovered;
       totalCases.deaths = totalCases.deaths + stateCases.cases.deaths;
     })
