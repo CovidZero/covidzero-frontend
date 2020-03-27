@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import { testReducer } from "../../pages/TestReduxSaga/reducers";
+import { citiesReducer } from "../../pages/Cities/reducers";
 
 const appReducer = combineReducers({
-  testReducer
+  citiesReducer
 });
 
 export default appReducer;
