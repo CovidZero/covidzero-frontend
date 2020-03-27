@@ -87,18 +87,18 @@ const Cities = () => {
                           </Cell>
                           <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
                             <CardStats
-                              status="recovered"
-                              title={<div>Recuperados</div>}
-                              count={city.recovered}
-                            />
-                          </Cell>
-                        </Row>
-                        <Row >
-                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
-                            <CardStats
                               status="death"
                               title={<div>Óbitos</div>}
                               count={city.deaths}
+                            />
+                          </Cell>
+                        </Row>
+                        {/*<Row >
+                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
+                            <CardStats
+                              status="recovered"
+                              title={<div>Recuperados</div>}
+                              count={city.recovered}
                             />
                           </Cell>
                           <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
@@ -108,7 +108,7 @@ const Cities = () => {
                               count={city.suspected}
                             />
                           </Cell>
-                        </Row>
+                        </Row>*/}
                       </Grid>
                     }
                   />
