@@ -11,6 +11,9 @@ const http = axios.create(
  */
 http.interceptors.request.use(
   config => {
+    config.headers = {
+      'Access-Control-Allow-Origin': window.location.href
+    }
     return config;
   },
   error => {
