@@ -82,7 +82,7 @@ function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): S
     return statesCasesResponse.map(stateCasesResponse => {
         const cases = stateCasesResponse.cases;
         const _case: StateCases = {
-            stateCode: stateCasesResponse.stateName,
+            stateCode: stateCasesResponse.stateCode,
             stateName: stateCasesResponse.stateName,
             latitude: stateCasesResponse.lat,
             longitude: stateCasesResponse.lng,
