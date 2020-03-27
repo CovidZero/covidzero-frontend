@@ -45,7 +45,6 @@ export default function CasesService(casesBaseURL: string): CasesProvider {
 
             const response = await http.get(`${casesBaseURL}${URL.statesCases}`)
             const statesCases: StateCases[] = convertStateCasesResponse(response.data)
-
             return statesCases;
         } catch (error) {
             console.log('error=>', error)
@@ -60,10 +59,8 @@ export default function CasesService(casesBaseURL: string): CasesProvider {
 
 }
 
-
-
 interface CasesResponse {
-    totalCases?: number,
+    totalCases: number,
     suspectedCase?: number,
     recoveredCases?: number,
     deaths?: number,
@@ -87,7 +84,7 @@ function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): S
             latitude: stateCasesResponse.lat,
             longitude: stateCasesResponse.lng,
             cases: {
-                active: cases.totalCases ? cases.totalCases : 0,
+                active: calculateActiveCases(cases.totalCases, cases.deaths, cases.recoveredCases),
                 recovered: cases.recoveredCases ? cases.recoveredCases : 0,
                 suspected: cases.suspectedCase ? cases.suspectedCase : 0,
                 deaths: cases.deaths ? cases.deaths : 0
@@ -102,7 +99,7 @@ function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): S
 function convertCasesResponse(casesResponse: CasesResponse): Cases {
 
     const _case: Cases = {
-        active: casesResponse.totalCases ? casesResponse.totalCases : 0,
+        active: calculateActiveCases(casesResponse.totalCases, casesResponse.deaths, casesResponse.recoveredCases),
         recovered: casesResponse.recoveredCases ? casesResponse.recoveredCases : 0,
         suspected: casesResponse.suspectedCase ? casesResponse.suspectedCase : 0,
         deaths: casesResponse.deaths ? casesResponse.deaths : 0
@@ -111,3 +108,14 @@ function convertCasesResponse(casesResponse: CasesResponse): Cases {
     return _case;
 
 }
+
+//Util para tratar possíveis casos de undefined em valores que talvez não estejam incluidos
+//no reponse.data dos endpoints
+function calculateActiveCases(totalCases: number, deaths: number | undefined, recovered: number | undefined) {
+
+    const _deaths = deaths ? deaths : 0;
+    const _recovered = recovered ? recovered : 0;
+    const activeCases = totalCases - _deaths - _recovered
+
+    return activeCases;
+}   
