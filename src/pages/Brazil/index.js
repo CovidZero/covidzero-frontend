@@ -63,7 +63,7 @@ const Brazil = () => {
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="confirmed" title="Confirmados" count={totalCases.confirmed} />
               </Cell>
-              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={2}>
+              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
               </Cell>
             </Row>
