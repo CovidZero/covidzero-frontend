@@ -2,9 +2,9 @@ import axios from "axios";
 
 import { API_URL } from "../constants";
 
-const http = axios.create({
-  baseURL: API_URL
-});
+const http = axios.create(
+  { baseURL: API_URL }
+);
 
 /**
  * Interceptor for all requests

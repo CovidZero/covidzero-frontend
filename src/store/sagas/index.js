@@ -1,8 +1,10 @@
 import { takeLatest, all } from "redux-saga/effects";
 
-import { GET_GITHUB_INFO } from "~/pages/TestReduxSaga/actions";
-import { getGithubInfo } from "~/pages/TestReduxSaga/sagas";
+import { FIND_CITIES } from "~/pages/Cities/actions";
+import { findCities } from "~/pages/Cities/sagas";
 
 export function* root() {
-  yield all([takeLatest(GET_GITHUB_INFO, getGithubInfo)]);
+  yield all([
+    takeLatest(FIND_CITIES, findCities),
+  ]);
 }
