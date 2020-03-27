@@ -1,0 +1,44 @@
+{
+  "cities": [
+    {
+      "id": 1,
+      "city": "São Paulo",
+      "stateCode": "SP",
+      "quantity": 200,
+      "confirmed": 12,
+      "recovered": 1,
+      "deaths": 2,
+      "suspected": 0
+    },
+    {
+      "id": 5,
+      "city": "São Caetano",
+      "stateCode": "SP",
+      "quantity": 200,
+      "confirmed": 12,
+      "recovered": 1,
+      "deaths": 2,
+      "suspected": 0
+    },
+    {
+      "id": 2,
+      "city": "Rio de Janeiro",
+      "stateCode": "RJ",
+      "quantity": 100,
+      "confirmed": 10,
+      "recovered": 2,
+      "deaths": 1,
+      "suspected": 1
+    },
+    {
+      "id": 3,
+      "city": "Fortaleza",
+      "stateCode": "CE",
+      "quantity": 50,
+      "confirmed": 9,
+      "recovered": 2,
+      "deaths": 3,
+      "suspected": 4
+    }
+  ]
+}

@@ -23,7 +23,7 @@ export const Input = styled.input`
   outline: none;
   font-size: 16px;
   flex: 1;
-  display: flex;  
+  display: flex;
 
   ::-webkit-input-placeholder {
       font-style: italic;
