@@ -6,7 +6,7 @@ const URL = {
     all: '/all'
 }
 export interface Cases {
-    active: number;
+    confirmed: number;
     suspected: number;
     recovered: number;
     deaths: number;
@@ -84,7 +84,7 @@ function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): S
             latitude: stateCasesResponse.lat,
             longitude: stateCasesResponse.lng,
             cases: {
-                active: calculateActiveCases(cases.totalCases, cases.deaths, cases.recoveredCases),
+                confirmed: calculateActiveCases(cases.totalCases, cases.deaths, cases.recoveredCases),
                 recovered: cases.recoveredCases ? cases.recoveredCases : 0,
                 suspected: cases.suspectedCase ? cases.suspectedCase : 0,
                 deaths: cases.deaths ? cases.deaths : 0
@@ -99,7 +99,7 @@ function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): S
 function convertCasesResponse(casesResponse: CasesResponse): Cases {
 
     const _case: Cases = {
-        active: calculateActiveCases(casesResponse.totalCases, casesResponse.deaths, casesResponse.recoveredCases),
+        confirmed: calculateActiveCases(casesResponse.totalCases, casesResponse.deaths, casesResponse.recoveredCases),
         recovered: casesResponse.recoveredCases ? casesResponse.recoveredCases : 0,
         suspected: casesResponse.suspectedCase ? casesResponse.suspectedCase : 0,
         deaths: casesResponse.deaths ? casesResponse.deaths : 0
