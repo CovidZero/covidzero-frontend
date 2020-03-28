@@ -1,7 +1,12 @@
 .loader-container {
   position: fixed;
   top: 0;
-  width: 85%;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+  @include respond-to(desktop) {
+    width: 85%;
+  }
   height: 100%;
   z-index: 99999;
   background: #00000082;
