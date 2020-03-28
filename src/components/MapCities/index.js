@@ -8,9 +8,6 @@ import {
 
 } from "react-simple-maps";
 
-import { MapControl } from './styles';
-
-
 import BrStates from "~assets/data/br-states.json";
 import BrAll from "~assets/data/brazil-map.json";
 
@@ -25,12 +22,7 @@ const geoUrl = BrStates;
 
 
 
-const MapHome = ({ setTooltipContent,setStateCases }) => {
-
-    //center={isMobile() ? [-54, -13] : [-54, -15]}
-
-
-   const [position, setPosition] = useState({ coordinates:isMobile() ? [-54, -13] : [-54, -15], zoom: 1 });
+const MapCities = ({ setTooltipContent,setStateCases }) => {
  
  
   let gradationColors = [
@@ -40,6 +32,7 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
     { color: '#EE706E', range: [50, 10000], label: 'Acima de 50' },
   ];
 
+  
   let markerSize = [
     { size: 1, range: [1, 10] },
     { size: 2, range: [10, 24] },
@@ -97,24 +90,9 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
 
     return size
   }
- 
 
 
-
-
-  function handleZoomIn() {
-    if (position.zoom >= 4) return;
-       setPosition(pos => ({ ...pos, zoom: pos.zoom * 1.2 }));
-  }
-
- function handleZoomOut() {
-    if (position.zoom <= 1) return;
-       setPosition(pos => ({ ...pos, zoom: pos.zoom /1.2 }));
-  }
-
-  
-
-  
+ console.log(setStateCases);
 
   return (
     <>
@@ -125,37 +103,28 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
           maxWidth: "1200px",
         }}
         projectionConfig={{
-          scale: isMobile() ? 900 : 750,
+          scale: isMobile() ? 900 : 790,
 
 
         }}
       >
-        /*disablePanning*/
-        <ZoomableGroup 
-          zoom={position.zoom}
-          center={position.coordinates} 
-          
-
-       >
+        <ZoomableGroup center={isMobile() ? [-54, -13] : [-54, -15]} disablePanning>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (
                 <Geography
                   key={geo.rsmKey}
-                  geography={geo} 
+                  geography={geo}
                   onMouseEnter={() => {
                     const { nome } = geo.properties;
                     const ret = setStateCases.find(({ stateName }) => stateName === nome);
 
-                   if(ret){
-                        setTooltipContent(`
-                                              <strong>Estado:</strong> ${nome} <br>
-                                              <strong>Casos:</strong> ${ret.cases.confirmed} <br>
-                                              <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
-                                            `);
-                        }}
-                    }
-
+                    setTooltipContent(`
+                                          <strong>Estado:</strong> ${nome} <br>
+                                          <strong>Casos:</strong> ${ret.cases.confirmed} <br>
+                                          <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
+                                        `);
+                  }}
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
@@ -185,7 +154,6 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
              setStateCases.map((ret, index) => {
 
               return (
-               <>
                 <Marker
                   key={ret.longitude + ret.latitude}
                   coordinates={[ret.longitude, ret.latitude]}
@@ -240,53 +208,8 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
                     }}
                   />
 
-                
-                  <circle
-                    cx={0}
-                    cy={0}
-                    r={getMarkerSize(ret.cases.confirmed)}
-                    style={{
-                      stroke: getColor(ret.cases.confirmed),
-                      fill: "#EF5350",
-                      strokeWidth: 10,
-                      strokeOpacity: 0.5,
-                    }}
 
-                  />
-
-                  <circle
-                    cx={0}
-                    cy={0}
-                    r={getMarkerSize(ret.cases.confirmed)}
-                    style={{
-                      stroke: "#F5F5F5",
-                      fill: "#EF5350",
-                      strokeWidth: 3,
-                    }}
-                  />
-
-                  <circle
-                    cx={0}
-                    cy={0}
-                    r={getMarkerSize(ret.cases.confirmed)}
-                    style={{
-                      stroke: getColor(ret.cases.confirmed),
-                      fill: getColor(ret.cases.confirmed),
-                      strokeWidth: 2,
-                    }}
-                      onMouseEnter={() => {
-                      setTooltipContent(`
-                                          <strong>Estado:</strong> ${ret.stateName} <br>
-                                          <strong>Casos:</strong> ${ret.cases.confirmed} <br>
-                                          <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
-                                        `);
-                    }}
-                    onMouseLeave={() => {
-                      setTooltipContent("");
-                    }}
-                  />
-
-                  { ret.cases.deaths>0 &&
+                { ret.cases.deaths>0 &&
 
                   <>  
   
@@ -337,11 +260,7 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
 
                   </>}
 
-
                 </Marker>
-
-                </>
-
               )
             }
             )
@@ -349,39 +268,8 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
 
         </ZoomableGroup>
       </ComposableMap>
-
-
-     <MapControl>
-            <button onClick={handleZoomIn}>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="3"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-            <button onClick={handleZoomOut}>
-              <svg
-                
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="3"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-      </MapControl>
-
-
-
     </>
   );
 };
 
-export default memo(MapHome);
+export default memo(MapCities);
