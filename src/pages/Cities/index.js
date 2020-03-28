@@ -85,7 +85,7 @@ const Cities = () => {
                               count={city.confirmed}
                             />
                           </Cell>
-                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
+                          {/*<Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
                             <CardStats
                               status="death"
                               title={<div>Óbitos</div>}
@@ -93,7 +93,7 @@ const Cities = () => {
                             />
                           </Cell>
                         </Row>
-                        {/*<Row >
+                        <Row >
                           <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
                             <CardStats
                               status="recovered"
@@ -107,8 +107,8 @@ const Cities = () => {
                               title={<div>Suspeitos</div>}
                               count={city.suspected}
                             />
-                          </Cell>
-                        </Row>*/}
+                          </Cell>*/}
+                        </Row>
                       </Grid>
                     }
                   />
