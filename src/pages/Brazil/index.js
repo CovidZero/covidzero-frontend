@@ -70,9 +70,6 @@ const Brazil = () => {
               </Cell>
             </Row>
             <Row>
-             {/*<Cell desktopColumns={12} phoneColumns={2} tabletColumns={2}>
-                <CardStats status="recovered" title="Recuperados" count={totalCases.recovered} />
-              </Cell>*/}
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
               </Cell>
