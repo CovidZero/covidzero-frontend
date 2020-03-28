@@ -3,7 +3,7 @@ import http from '~/utils/config/http';
 
 const URL = {
     statesCases: '/cases/state',
-    all: '/all',
+    all: '/cases/state/report',
     cityCases:'/cases/city'
 }
 export interface Cases {
