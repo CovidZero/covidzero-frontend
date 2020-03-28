@@ -213,3 +213,17 @@
     opacity: 1;
   }
 }
+
+//smartphones with width < 375px
+
+@media only screen and (max-width: 376px) {
+  .navbar {
+    bottom: 0;
+    width: 100vw;
+    height: $sidebar-mobile-height + 30px;
+  }
+
+  main{
+    padding-bottom: 90px;
+  }
+}
