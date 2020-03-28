@@ -1,0 +1,22 @@
+@include respond-to(mobile-xl) {
+  .cities-scroller {
+    max-height: 78vh;
+    overflow-y: scroll;
+  }
+
+  .cities-grid {
+    width: 50rem;
+  }
+}
+
+.cities-scroller::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+.cities-scroller::-webkit-scrollbar-track {
+  background: $gray-70;
+}
+
+.cities-scroller::-webkit-scrollbar-thumb {
+  background: $gray-50;
+}
