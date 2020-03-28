@@ -16,18 +16,14 @@ import BrAll from "~assets/data/brazil-map.json";
 
 import CasesBrazil from "~assets/data/casos_240320.json";
 
-
-
-/*const geoUrl =
-  "https://gist.githubusercontent.com/ruliana/1ccaaab05ea113b0dff3b22be3b4d637/raw/196c0332d38cb935cfca227d28f7cecfa70b412e/br-states.json";*/
-
+ 
 const geoUrl = BrStates;
 
 
 
 const MapHome = ({ setTooltipContent,setStateCases }) => {
 
-    //center={isMobile() ? [-54, -13] : [-54, -15]}
+ 
 
 
    const [position, setPosition] = useState({ coordinates:isMobile() ? [-54, -13] : [-54, -15], zoom: 1 });
