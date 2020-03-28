@@ -111,22 +111,7 @@ const Cities = () => {
                             />
                           </Cell>
                         </Row>
-                        {/*<Row >
-                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
-                            <CardStats
-                              status="recovered"
-                              title={<div>Recuperados</div>}
-                              count={city.recovered}
-                            />
-                          </Cell>
-                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
-                            <CardStats
-                              status="suspect"
-                              title={<div>Suspeitos</div>}
-                              count={city.suspected}
-                            />
-                          </Cell>
-                        </Row>*/}
+                        
                       </Grid>
                     }
                   />
