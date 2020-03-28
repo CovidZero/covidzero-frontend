@@ -85,9 +85,7 @@ const MapCities = ({ setTooltipContent,setStateCases }) => {
     return size
   }
 
-
- console.log(setStateCases);
-
+ 
   return (
     <>
       <ComposableMap projection="geoMercator" data-tip=""
