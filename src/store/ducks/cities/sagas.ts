@@ -17,7 +17,6 @@ export function* findAllCases() {
 export function* findCitiesCases() {
   try {
     const resp = yield http.get("/cases/city");
-    console.log(resp);
     const cities = orderBy(
       resp.data.cases,
       [(city: City) => city.totalcases],
