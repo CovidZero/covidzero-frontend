@@ -1,28 +1,35 @@
 import React, { useState } from "react";
-import { ArrowIosUpwardOutline, ArrowIosDownwardOutline } from "@styled-icons/evaicons-outline";
-import { ExpandableBox as ExpandableBoxStyle, ExpandableBoxBody, ExpandableBoxHeader, ExpandableBoxHeaderIcon } from './styles'
+import {
+  ArrowIosUpwardOutline,
+  ArrowIosDownwardOutline
+} from "@styled-icons/evaicons-outline";
 
-const ExpandableBox = (props) => {
+import {
+  ExpandableBox as ExpandableBoxStyle,
+  ExpandableBoxBody,
+  ExpandableBoxHeader,
+  ExpandableBoxHeaderIcon
+} from "./styles";
 
-    const [open, setOpen] = useState(false)
+const ExpandableBox = props => {
+  const [open, setOpen] = useState(false);
 
-    return (
-        <ExpandableBoxStyle>
-            <ExpandableBoxHeader onClick={() => setOpen(!open)}>
-                { !open ? props.header : props.headerExpaned}
-                <ExpandableBoxHeaderIcon >
-                    { open ? <ArrowIosUpwardOutline color="white" size="20px" /> : <ArrowIosDownwardOutline color="white" size="20px" />    }
-                </ExpandableBoxHeaderIcon>
+  return (
+    <ExpandableBoxStyle>
+      <ExpandableBoxHeader onClick={() => setOpen(!open)}>
+        {!open ? props.header : props.headerExpaned}
+        <ExpandableBoxHeaderIcon>
+          {open ? (
+            <ArrowIosUpwardOutline color="white" size="20px" />
+          ) : (
+            <ArrowIosDownwardOutline color="white" size="20px" />
+          )}
+        </ExpandableBoxHeaderIcon>
+      </ExpandableBoxHeader>
 
-            </ExpandableBoxHeader>
-
-            {
-                open && <ExpandableBoxBody>{props.body}</ExpandableBoxBody>
-            }
-
-
-        </ExpandableBoxStyle>
-    );
+      {open && <ExpandableBoxBody>{props.body}</ExpandableBoxBody>}
+    </ExpandableBoxStyle>
+  );
 };
 
 export default ExpandableBox;

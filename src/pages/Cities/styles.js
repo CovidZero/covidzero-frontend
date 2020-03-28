@@ -5,17 +5,17 @@ export const Container = styled.section`
     height: 100%;
     top: 0;
     width: 100%;
-    display: flex; 
+    display: flex;
     flex-flow: row-reverse;
-    p{
-      display:none;
+    p {
+      display: none;
     }
   }
-  @media (max-width: 840px){
-    p{
-      font-size:16;
+  @media (max-width: 840px) {
+    p {
+      font-size: 16;
       color: #fff;
-      font-weight: bold
+      font-weight: bold;
     }
   }
 `;
@@ -23,11 +23,9 @@ export const Container = styled.section`
 export const ContainerMap = styled.div`
   @media (min-width: 840px) {
     flex: 100%;
-    margin-top: 5%;
+    margin-top: 2%;
   }
   @media (max-width: 840px) {
     display: none;
   }
 `;
-
-
