@@ -2,8 +2,9 @@ import http from '~/utils/config/http';
 
 
 const URL = {
-    statesCases: '/state/cases/all',
-    all: '/all'
+    statesCases: '/cases/state',
+    all: '/cases/state/report',
+    cityCases:'/cases/city'
 }
 export interface Cases {
     confirmed: number;
@@ -20,9 +21,16 @@ export interface StateCases {
     cases: Cases
 }
 
+export interface CityCases {}
+
+ 
+
+
+
 interface CasesProvider {
     getStatesCases(): Promise<StateCases[]>,
     getAllCases(): Promise<Cases>
+    getCityCases(): Promise<CityCases>
 }
 
 export default function CasesService(casesBaseURL: string): CasesProvider {
@@ -52,9 +60,24 @@ export default function CasesService(casesBaseURL: string): CasesProvider {
         }
     }
 
+
+    async function getCityCases(): Promise<CityCases[]> {
+        try {
+
+            const response = await http.get(`${casesBaseURL}${URL.cityCases}`)
+            const cityCases:CityCases[] = response.data
+            return cityCases;
+        } catch (error) {
+            console.log('error=>', error)
+            throw (error)
+        }
+    }
+
+
     return {
         getStatesCases,
-        getAllCases
+        getAllCases,
+        getCityCases
     }
 
 }

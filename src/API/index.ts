@@ -3,7 +3,7 @@ import CasesService from './CasesService';
 function API() {
 
     const baseURLs = {
-        cases: `https://api.covidzero.com.br/data_api/v1/data`
+        cases: `https://api.covidzero.com.br/data_api/v1`
     }
 
     return {
