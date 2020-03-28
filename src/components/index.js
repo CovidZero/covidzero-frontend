@@ -9,6 +9,8 @@ import Chips from "./Chips";
 import Switch from "./Switch";
 import Header from "./Header";
 import MapHome from "./MapHome";
+import MapCities from "./MapCities";
+
 
 export {
   Input,
@@ -21,5 +23,6 @@ export {
   Chips,
   Switch,
   Header,
-  MapHome
+  MapHome,
+  MapCities
 };

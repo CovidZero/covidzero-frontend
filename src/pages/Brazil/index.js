@@ -17,7 +17,8 @@ const Brazil = () => {
     confirmed: 0,
     suspected: 0,
     recovered: 0,
-    deaths: 0
+    deaths: 0,
+    cases: []
   }
   const [totalCases, setTotalCases] = useState(initalCases)
 
@@ -26,7 +27,8 @@ const Brazil = () => {
       confirmed: 0,
       suspected: 0,
       recovered: 0,
-      deaths: 0
+      deaths: 0,
+      cases: stateCases
     };
 
     stateCases.map(stateCases => {
@@ -35,7 +37,7 @@ const Brazil = () => {
       totalCases.recovered = totalCases.recovered + stateCases.cases.recovered;
       totalCases.deaths = totalCases.deaths + stateCases.cases.deaths;
     })
-    console.log(totalCases)
+     
     return totalCases;
   }
 
@@ -47,13 +49,16 @@ const Brazil = () => {
     )()
   }, [])
 
+
+  
+
   return (
     <>
       <Header title={t("header.map")} />
 
       <Styled.Container>
         <Styled.ContainerMap>
-          <MapHome setTooltipContent={setContent} />
+          <MapHome setTooltipContent={setContent}  setStateCases={totalCases.cases}/>
           <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>
 
@@ -63,6 +68,8 @@ const Brazil = () => {
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="confirmed" title="Confirmados" count={totalCases.confirmed} />
               </Cell>
+            </Row>
+            <Row>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
               </Cell>

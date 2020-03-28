@@ -8,9 +8,13 @@ import { lowerCase, deburr } from 'lodash';
 
 import * as Styled from "./styles.js";
 
-import { Header, ExpandableBox, Input, CardStats, MapHome } from "~/components";
+import { Header, ExpandableBox, Input, CardStats, MapCities } from "~/components";
+import API from "~/API";
+
 
 import { findCities } from './actions';
+
+
 
 const Cities = () => {
   const [t] = useTranslation();
@@ -34,6 +38,20 @@ const Cities = () => {
     return lowerCase(deburr(text))
   }
 
+
+  const [getCasesCites, setCasesCities] = useState([])
+
+    useEffect(() => {
+    (async () => {
+      const stateCases = await API.cases.getStatesCases();
+      setCasesCities(stateCases)
+    }
+    )()
+  }, [])
+
+  
+
+
   return (
     <>
       <Header title={t("header.map")} />
@@ -41,7 +59,7 @@ const Cities = () => {
       <Styled.Container>
 
         <Styled.ContainerMap>
-          <MapHome setTooltipContent={setContent} />
+          <MapCities setTooltipContent={setContent} setStateCases={getCasesCites}/>
           <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>
         <Grid>
@@ -85,7 +103,7 @@ const Cities = () => {
                               count={city.confirmed}
                             />
                           </Cell>
-                          {/*<Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
+                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
                             <CardStats
                               status="death"
                               title={<div>Óbitos</div>}
@@ -93,22 +111,7 @@ const Cities = () => {
                             />
                           </Cell>
                         </Row>
-                        <Row >
-                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
-                            <CardStats
-                              status="recovered"
-                              title={<div>Recuperados</div>}
-                              count={city.recovered}
-                            />
-                          </Cell>
-                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
-                            <CardStats
-                              status="suspect"
-                              title={<div>Suspeitos</div>}
-                              count={city.suspected}
-                            />
-                          </Cell>*/}
-                        </Row>
+                        
                       </Grid>
                     }
                   />
