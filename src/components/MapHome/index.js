@@ -12,14 +12,14 @@ import { MapControl } from './styles';
 
 
 import BrStates from "~assets/data/br-states.json"; 
-
-
+ 
+ 
 const geoUrl = BrStates;
 
 
 
 const MapHome = ({ setTooltipContent,setStateCases }) => {
-
+ 
 
    const [position, setPosition] = useState({ coordinates:isMobile() ? [-54, -13] : [-54, -15], zoom: 1 });
  

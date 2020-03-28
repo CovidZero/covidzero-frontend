@@ -13,8 +13,7 @@ import { MapControl } from './styles';
 import BrStates from "~assets/data/br-states.json";
 import BrAll    from "~assets/data/brazil-map.json";
  
- 
-
+  
 const MapCities = ({ setTooltipContent,setStateCases,setCityCases }) => {
 
   const [position, setPosition] = useState({ coordinates:isMobile() ? [-54, -13] : [-54, -15], zoom: 1 });
@@ -22,7 +21,7 @@ const MapCities = ({ setTooltipContent,setStateCases,setCityCases }) => {
 
   const geoUrl = BrStates;
 
-
+ 
   let gradationColors = [
     { color: '#EE706E', range: [1, 10], label: '1 a 10' },
     { color: '#EE706E', range: [10, 24], label: '10 a 24' },
@@ -88,7 +87,7 @@ const MapCities = ({ setTooltipContent,setStateCases,setCityCases }) => {
 
     return size
   }
-
+ 
   
  function getCityCases() {
     let cityCases = []
@@ -148,7 +147,7 @@ const MapCities = ({ setTooltipContent,setStateCases,setCityCases }) => {
          setPosition(pos => ({ ...pos, zoom: pos.zoom /1.5 }));
     }
     
-  
+   
   return (
     <>
       <ComposableMap projection="geoMercator" data-tip=""
