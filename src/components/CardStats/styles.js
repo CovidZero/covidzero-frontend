@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const CardBoxStyle = styled.div`
+
   background: ${props => props.theme.colors.primary};
   color: #fff;
   padding: 12px;
@@ -20,6 +21,7 @@ export const Title = styled.span`
   @media all and (min-width: 600px) {
     font-size: 16px;
   }
+ 
 `;
 
 export const CardBoxStatsDefault = styled.div`
@@ -29,6 +31,7 @@ export const CardBoxStatsDefault = styled.div`
   color: ${props => props.theme.colors.statsDefault};
   text-transform: uppercase;
   letter-spacing: 1px;
+
 `;
 
 export const CardBoxStatsConfirmed = styled.label`
