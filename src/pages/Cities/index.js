@@ -10,43 +10,48 @@ import * as Styled from "./styles.js";
 
 import { Header, ExpandableBox, Input, CardStats, MapCities } from "~/components";
 import API from "~/API";
-
-
-import { findCities } from './actions';
+ 
 
 
 
 const Cities = () => {
   const [t] = useTranslation();
-  const dispatch = useDispatch();
-  const { cities } = useSelector(state => state.citiesReducer);
+
+  const [getStatesCases, setStatesCases] = useState([])
+  const [getCityCases, setCityCases]    = useState([])
+ 
 
   const [content, setContent] = useState("");
   const [filter, setFilter] = useState("");
+ 
 
-  useEffect(() => {
-    dispatch(findCities())
-  }, []);
+
 
   const citiesByFilter = () => {
     lowerCase(deburr())
-    return !!filter ? cities.filter(item =>
-      rawText(item.city).includes(rawText(filter))) : cities;
+
+       const cases= getCityCases.sort(function(a, b) {
+                        return  a.totalcases < b.totalcases ? 1  : (a.totalcases > b.totalcases ? -1 : 0);                     
+                   });
+
+    return !!filter ? getCityCases.filter(item => rawText(item.city).includes(rawText(filter))) : getCityCases;
   }
 
   function rawText(text) {
     return lowerCase(deburr(text))
   }
+ 
 
-
-  const [getCasesCites, setCasesCities] = useState([])
 
     useEffect(() => {
-    (async () => {
-      const stateCases = await API.cases.getStatesCases();
-      setCasesCities(stateCases)
-    }
-    )()
+          (async () => {
+                const stateCases = await API.cases.getStatesCases();
+                setStatesCases(stateCases);
+
+                const cityCases = await API.cases.getCityCases();
+                setCityCases(Object.values(cityCases.cases));
+          }
+          )()
   }, [])
 
   
@@ -59,12 +64,12 @@ const Cities = () => {
       <Styled.Container>
 
         <Styled.ContainerMap>
-          <MapCities setTooltipContent={setContent} setStateCases={getCasesCites}/>
+          <MapCities setTooltipContent={setContent} setStateCases={getStatesCases}  setCityCases={getCityCases}/>
           <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>
         <Grid>
           <Row style={{ marginBottom: 20 }}>
-            <Cell desktopColumns={10} phoneColumns={4} tabletColumns={6}>
+            <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}>
               <Input
                 placeholder='Digite aqui'
                 value={filter}
@@ -74,22 +79,22 @@ const Cities = () => {
           </Row>
           <p>CIDADES</p>
           {
-            citiesByFilter().map(city =>
-              <Row key={city.id} style={{ marginBottom: 10 }}>
+            citiesByFilter().map((city,index) =>
+              <Row key={index} style={{ marginBottom: 10 }}>
                 <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}>
                   <ExpandableBox
                     header={
                       <>
                         <div style={{ marginRight: 20 }}>{city.city}</div>
                         <div>{city.stateCode}</div>
-                        <div style={{ color: 'red', marginLeft: 'auto', marginRight: 30 }}>{city.quantity}</div>
+                        <div style={{ color: 'red', marginLeft: 'auto', marginRight: 30 }}>{city.totalcases}</div>
                       </>
                     }
                     headerExpaned={
                       <>
                         <div style={{ marginRight: 20 }}>{city.city}</div>
                         <div>{city.stateCode}</div>
-                        <div style={{ color: 'red', marginLeft: 'auto', marginRight: 30 }}>{city.quantity}</div>
+                        <div style={{ color: 'red', marginLeft: 'auto', marginRight: 30 }}>{city.totalcases}</div>
                       </>
                     }
                     body={
@@ -100,16 +105,17 @@ const Cities = () => {
                               style={{ padding: 0 }}
                               status="confirmed"
                               title={<div>Confirmados</div>}
-                              count={city.confirmed}
+                              count={city.totalcases}
                             />
                           </Cell>
-                          <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
+                        {/*<Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
                             <CardStats
                               status="death"
                               title={<div>Óbitos</div>}
                               count={city.deaths}
                             />
-                          </Cell>
+                          </Cell>*/}
+
                         </Row>
                         {/*<Row >
                           <Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
