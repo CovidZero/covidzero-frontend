@@ -37,7 +37,7 @@ const Brazil = () => {
       totalCases.recovered = totalCases.recovered + stateCases.cases.recovered;
       totalCases.deaths = totalCases.deaths + stateCases.cases.deaths;
     })
-     
+
     return totalCases;
   }
 
@@ -50,7 +50,7 @@ const Brazil = () => {
   }, [])
 
 
-  
+
 
   return (
     <>
@@ -68,12 +68,15 @@ const Brazil = () => {
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="confirmed" title="Confirmados" count={totalCases.confirmed} />
               </Cell>
-            </Row>
-            <Row>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
               </Cell>
             </Row>
+            {/*<Row>
+              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
+                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
+              </Cell>
+            </Row>*/}
           </Grid>
         </Styled.MobileBottomIndicators>
       </Styled.Container>
