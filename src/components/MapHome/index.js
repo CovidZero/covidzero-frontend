@@ -16,19 +16,19 @@ import BrAll from "~assets/data/brazil-map.json";
 
 import CasesBrazil from "~assets/data/casos_240320.json";
 
- 
+
 const geoUrl = BrStates;
 
 
 
 const MapHome = ({ setTooltipContent,setStateCases }) => {
 
- 
+
 
 
    const [position, setPosition] = useState({ coordinates:isMobile() ? [-54, -13] : [-54, -15], zoom: 1 });
- 
- 
+
+
   let gradationColors = [
     { color: '#EE706E', range: [1, 10], label: '1 a 10' },
     { color: '#EE706E', range: [10, 24], label: '10 a 24' },
@@ -93,7 +93,7 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
 
     return size
   }
- 
+
 
 
 
@@ -108,29 +108,29 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
        setPosition(pos => ({ ...pos, zoom: pos.zoom /1.2 }));
   }
 
-  
 
-  
+
+
 
   return (
     <>
       <ComposableMap projection="geoMercator" data-tip=""
-        height={isMobile() ? 680 : 550}
+        height={isMobile() ? 800 : 550}
         style={{
           width: "100%",
           maxWidth: "1200px",
         }}
         projectionConfig={{
-          scale: isMobile() ? 900 : 750,
+          scale: isMobile() ? 1000 : 750,
 
 
         }}
       >
         /*disablePanning*/
-        <ZoomableGroup 
+        <ZoomableGroup
           zoom={position.zoom}
-          center={position.coordinates} 
-          
+          center={position.coordinates}
+
 
        >
           <Geographies geography={geoUrl}>
@@ -138,7 +138,7 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
               geographies.map(geo => (
                 <Geography
                   key={geo.rsmKey}
-                  geography={geo} 
+                  geography={geo}
                   onMouseEnter={() => {
                     const { nome } = geo.properties;
                     const ret = setStateCases.find(({ stateName }) => stateName === nome);
@@ -236,7 +236,7 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
                     }}
                   />
 
-                
+
                   <circle
                     cx={0}
                     cy={0}
@@ -284,8 +284,8 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
 
                   { ret.cases.deaths>0 &&
 
-                  <>  
-  
+                  <>
+
                 <circle
                     cx={0}
                     cy={14}
@@ -296,7 +296,7 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
                       strokeWidth: 10,
                       strokeOpacity: 0.5,
                     }}
- 
+
                   />
 
                   <circle
@@ -362,7 +362,7 @@ const MapHome = ({ setTooltipContent,setStateCases }) => {
             </button>
             <button onClick={handleZoomOut}>
               <svg
-                
+
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
