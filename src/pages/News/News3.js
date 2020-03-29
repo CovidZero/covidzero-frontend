@@ -78,7 +78,7 @@ const News3 = props => {
                 <p>"Em tempos de paz, nunca enfrentamos uma luta econômica como essa", disse Sunak, que também prometeu apoio a aeroportos e companhias aéreas nos próximos dias, depois que os britânicos foram desaconselhados a todas as viagens não essenciais. </p>
                 <p>Johnson sugeriu na terça-feira que as escolas poderão fechar em breve. Mas ele ainda enfrenta críticas por falta de clareza, incluindo sua decisão de instar as pessoas a evitar bares e restaurantes, mas não a ordenar seu fechamento. De fato, o governo agora pretende equilibrar as leis temporariamente aplicadas para permitir que os bares fiquem abertos e produzam comida para viagem. </p>
                 <p>Para a vergonha de Johnson, um dos que prometeu visitar o pub local era seu próprio pai, Stanley Johnson. </p>
-                <p>Fonte: New York Times</p> 
+                <p>Fonte: <a href="https://www.nytimes.com/2020/03/17/world/europe/coronavirus-imperial-college-johnson.html?utm_source=covidzero.com.br">New York Times</a></p>
               </div>
             </Cell>
           </Row>
