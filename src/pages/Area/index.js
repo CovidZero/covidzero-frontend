@@ -7,7 +7,7 @@ import { MapArea } from "~/components";
 
 export default function Area() {
   const [t] = useTranslation();
-  const { latitude, longitude, error } = usePosition();
+  const { latitude, longitude } = usePosition();
 
   return (
     <>

@@ -15,16 +15,16 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={Brazil} />
       <Route path="/cities" exact component={Cities} />
-      {/* <Route path="/area" exact component={Area} /> */}
+      <Route path="/area" exact component={Area} />
       {/* <Route path="/help" exact component={Help} /> */}
       <Route path="/news" exact component={News} />
 
-      {/* <Route path="/uikit" exact component={UiKit} />{" "} */}
+      <Route path="/uikit" exact component={UiKit} />{" "}
 
       {/* News section /> */}
-        <Route path="/news/Universidade_de_Oxford_recruta_para_testes_de_vacina_criada_para_erradicar_o_COVID-19" exact component={News1} />
-        <Route path="/news/Diretor-Geral_da_OMS_apela_ao_G20_para_combater_unir_e_inflamar_o_COVID-19" exact component={News2} />
-        <Route path="/news/Por_trás_do_relatório_que_pôs_os_EUA_e_o_Reino_Unido_em_ação_contra_o_vírus_COVID-19" exact component={News3} />
+      <Route path="/news/Universidade_de_Oxford_recruta_para_testes_de_vacina_criada_para_erradicar_o_COVID-19" exact component={News1} />
+      <Route path="/news/Diretor-Geral_da_OMS_apela_ao_G20_para_combater_unir_e_inflamar_o_COVID-19" exact component={News2} />
+      <Route path="/news/Por_trás_do_relatório_que_pôs_os_EUA_e_o_Reino_Unido_em_ação_contra_o_vírus_COVID-19" exact component={News3} />
       <Route path="/" component={() => <h1>Desculpe, um erro ocorreu. Estaremos verificando o que aconteceu.</h1>} />
     </Switch>
   );

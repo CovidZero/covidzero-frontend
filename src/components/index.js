@@ -13,6 +13,7 @@ import MapCities from "./MapCities";
 import SocialShare from "./SocialShare";
 import MapArea from "./MapArea";
 import Circle from "./Circle";
+import Marker from "./Marker";
 
 export {
   Input,
@@ -29,5 +30,6 @@ export {
   MapCities,
   SocialShare,
   MapArea,
-  Circle
+  Circle,
+  Marker
 };

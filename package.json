@@ -31,7 +31,6 @@
     "styled-icons": "^10.2.1",
     "supercluster": "^7.0.0",
     "use-supercluster": "^0.2.6",
-    "styled-icons": "^10.2.1",
     "typesafe-actions": "^5.1.0",
     "typescript": "^3.8.3"
   },

@@ -4,6 +4,7 @@ import useSupercluster from "use-supercluster";
 
 import { GMAP_KEY } from "~/utils/constants";
 import { Circle } from "~/components";
+import { Marker } from "~/components";
 import { Style } from './styles';
 
 const confirmed = require('~/assets/data/casos_240320.json');
@@ -13,8 +14,9 @@ const recovered = [];
 const MapArea = (props) => {
 
     const mapRef = useRef();
-    const [zoom, setZoom] = useState(11);
+    const [zoom, setZoom] = useState(14);
     const [bounds, setBounds] = useState(null);
+    const [markersHospital, setMarkersHospital] = useState([]);
 
     confirmed.map(item => {
         item['type'] = 'confirmed'
@@ -34,17 +36,18 @@ const MapArea = (props) => {
         }
     }))
 
-    const apiIsLoaded = (map, maps) => {
-        mapRef.current = map;
+    const createRoute = (map, maps, placeId) => {
 
         var directionsService = new maps.DirectionsService();
         var directionsRenderer = new maps.DirectionsRenderer();
         directionsRenderer.setMap(map);
 
+        let origin = new maps.LatLng(props.lat, props.lng);
+
         directionsService.route(
             {
-                origin: { query: 'americana, sp - brazil' },
-                destination: { query: 'são paulo, sp - brazil' },
+                origin,
+                destination: { placeId },
                 travelMode: 'DRIVING'
             },
             function (response, status) {
@@ -53,6 +56,32 @@ const MapArea = (props) => {
                 } else {
                     window.alert('Directions request failed due to ' + status);
                 }
+            });
+
+
+    }
+
+    const apiIsLoaded = (map, maps) => {
+        mapRef.current = map;
+
+        let pyrmont = new maps.LatLng(props.lat, props.lng);
+        let places = new maps.places.PlacesService(map);
+
+        var request = {
+            location: pyrmont,
+            radius: '5000',
+            type: ['hospital']
+        };
+
+        //createRoute(map, maps, 'ChIJC_-xjJ-QyJQR1yqVAokq4GY')
+
+        places.nearbySearch(
+            request,
+            function (results, status, pagination) {
+                console.log(status)
+                if (status !== 'OK') return;
+                console.log(results)
+                setMarkersHospital(results)
             });
 
     };
@@ -73,7 +102,7 @@ const MapArea = (props) => {
         // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
         return {
             zoomControlOptions: {
-                position: maps.ControlPosition.RIGHT_CENTER,
+                position: maps.ControlPosition.RIGHT_BOTTOM,
                 style: maps.ZoomControlStyle.SMALL
             },
             mapTypeControlOptions: {
@@ -83,14 +112,13 @@ const MapArea = (props) => {
         };
     }
 
-
     return (
         <Style.ContainerMap>
             {props.lat && props.lng &&
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: GMAP_KEY }}
+                    bootstrapURLKeys={{ key: GMAP_KEY, libraries: ['places'] }}
                     defaultCenter={[props.lat, props.lng]}
-                    defaultZoom={11}
+                    defaultZoom={zoom}
                     yesIWantToUseGoogleMapApiInternals
                     onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
                     onChange={({ zoom, bounds }) => {
@@ -138,6 +166,17 @@ const MapArea = (props) => {
                         lat={props.lat}
                         lng={props.lng}
                     />
+
+                    {markersHospital.map((hospital, index) => {
+                        const { lat, lng } = hospital.geometry.location;
+                        return (
+                            <Marker key={index} type='hospital'
+                                lat={lat()}
+                                lng={lng()}
+                            />
+                        )
+                    })}
+
                 </GoogleMapReact>
             }
         </Style.ContainerMap>
