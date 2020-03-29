@@ -2,15 +2,18 @@ import axios from "axios";
 
 import { API_URL } from "../constants";
 
-const http = axios.create({
-  baseURL: API_URL
-});
+const http = axios.create(
+  { baseURL: API_URL }
+);
 
 /**
  * Interceptor for all requests
  */
 http.interceptors.request.use(
   config => {
+    config.headers = {
+      'Access-Control-Allow-Origin': window.location.href
+    }
     return config;
   },
   error => {

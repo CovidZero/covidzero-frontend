@@ -2,16 +2,19 @@ import React from "react";
 
 import LogoSvg from "~/assets/icons/small-log.svg";
 import Notification from "~/assets/icons/bell.svg";
-import { Container, AlignItem, Title, Icon } from "./styles";
+import { Container, AlignItem, Title, Icon, LeftIcon } from "./styles";
+import { Link } from 'react-router-dom';
 
-const Header = ({ leftIcon, title, rightIcon }) => {
+const Header = ({ leftIcon, title, rightIcon, actionLeftIcon }) => {
   return (
     <Container>
       <AlignItem>
-        <Icon src={leftIcon || LogoSvg} />
+        <LeftIcon src={leftIcon || LogoSvg} onClick={actionLeftIcon} />
         <Title>{title}</Title>
       </AlignItem>
-      <Icon src={rightIcon || Notification} />
+      <Link to="/sobre">
+        <Icon src={rightIcon || Notification} />
+      </Link>
     </Container>
   );
 };

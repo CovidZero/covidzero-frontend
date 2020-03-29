@@ -2,6 +2,30 @@
 
 [Protótipo em andamento](https://www.figma.com/file/hy6XetQQ1cuq1RaPrd5MhN/CovidZero?node-id=0%3A1)
 
+## Getting Started (Começando)
+Assim que clonado o repositório, rodar na base do projeto
+``` yarn ``` ou ```npm install```.
+
+Para rodar a aplicação:
+```
+  yarn start
+```
+
+ou
+```
+  npm start
+```
+
+### json-server
+
+Os dados da listagem das cidades para teste, por enquanto está sendo feita através do json-server. Ele basicamente roda uma api fake.
+Para saber mais: [json-server](https://github.com/typicode/json-server).
+
+Assim que instalado basta rodar:
+```
+  json-server --watch db.json --port 5000
+```
+
 ## React-Redux
 
 Para utilização do Redux foi criado uma estrutura de pastas para as actions, reducers e types. Cada página (rota) deverá ter, se necessário, as pastas actions, reducers. A pasta actions irá conter um arquivo com a definição dos types e das actions em si. A pasta reducers irá conter um arquivo com a configuração do state para manipulaçao da store do redux;

@@ -5,7 +5,7 @@ import { Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 
 import App from "./App";
-import store from "./store/store";
+import store from "./store";
 import history from "./services/history";
 import "./i18n";
 import theme from "./styles/theme";
@@ -16,7 +16,7 @@ ReactDOM.render(
     <Router history={history}>
       <GlobalFonts />
       <ThemeProvider theme={theme}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Carregando...</div>}>
           <App />
         </Suspense>
       </ThemeProvider>
