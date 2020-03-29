@@ -23,11 +23,12 @@ export const CardBoxStyle = styled.div`
 export const CardBoxTitle = styled.div`
   color: ${props => props.theme.colors.titleCard};
   font-weight: 500;
-  font-size: 14px;
+  //font-size: 14px;
   line-height: 18px;
 
   @media all and (min-width: 768px) {
-    font-size: 1rem;
+    //font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.5rem;
   }
 `;
