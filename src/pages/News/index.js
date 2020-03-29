@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 
 import { Header, CardNews } from "~/components";
-import ShareIcon from "~/assets/icons/share.svg";
+import Notification from "~/assets/icons/bell.svg";
 
 import * as Styled from "./styles.js";
 
@@ -14,7 +14,7 @@ export default function News() {
 
   return (
     <>
-      <Header title={t("header.news")} rightIcon={ShareIcon} />
+      <Header title={t("header.news")} rightIcon={Notification} />
 
       <Grid>
         <Row>

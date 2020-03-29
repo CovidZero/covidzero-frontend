@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 
 import { Header,SocialShare } from "~/components";
-import ShareIcon from "~/assets/icons/share.svg";
+import Notification from "~/assets/icons/bell.svg";
 import ArrowLeft from "~/assets/icons/arrow-left.svg";
 import { Content, Title } from "./styles";
 
@@ -20,7 +20,7 @@ const News3 = props => {
         title={t("header.news")}
         leftIcon={ArrowLeft}
         actionLeftIcon={() => history.push("/news")}
-        rightIcon={ShareIcon}
+        rightIcon={Notification}
       />
       <Content>
         <Title>CovidZero - Por trás do relatório que pôs os EUA e o Reino Unido em ação contra o vírus COVID-19</Title>
