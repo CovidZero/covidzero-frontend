@@ -36,7 +36,7 @@ export default function News() {
             <CardNews
               title="Universidade de Oxford recruta para testes de vacina criada para erradicar o COVID-19"
               content={<p>Pesquisadores da Universidade de Oxford que trabalham em um esforço sem precedentes no desenvolvimento de vacinas para impedir o COVID-19 começaram a rastrear voluntários saudáveis (entre 18 e 55 anos) hoje para o próximo teste de vacina ChAdOx1 nCoV-19 na região do Vale do Tamisa.</p>}
-              date={new Date()}
+              date={new Date(2020, 2, 27, 12)}
               tag={<div>#vacina</div>}
             />
           </Cell>
@@ -48,7 +48,7 @@ export default function News() {
             <CardNews
               title="Diretor-Geral da OMS apela ao G20 para combater, unir e inflamar o COVID-19"
               content={<p>O Dr. Tedros Adhanom Ghebreyesus, Diretor-Geral da Organização Mundial da Saúde, reuniu com Chefes de Estado na extraordinária Cúpula de Líderes do G20 de hoje, focada no COVID-19. Durante o encontro, Tedros disse: “Vocês se uniram para enfrentar a crise de saúde que define o nosso tempo: estamos em guerra com um vírus que ameaça nos separar; se deixarmos”. Também elogiou a iniciativa do G20 de encontrar soluções conjuntas e trabalhar em conjunto: “Esta é uma crise global que requer uma resposta global”.</p>}
-              date={new Date()}
+              date={new Date(2020, 2, 26, 12)}
               tag={<div>#união</div>}
             />
           </Cell> 
@@ -60,7 +60,7 @@ export default function News() {
             <CardNews
               title="Por trás do relatório de vírus que pôs os EUA e o Reino Unido em ação"
               content={<p>Quando Boris Johnson estava em campanha para que a Grã-Bretanha deixasse a União Europeia em 2016 - um caminho que muitos especialistas alertaram que terminaria em desastre para o país - um de seus aliados próximos, Michael Gove, declarou que “as pessoas neste país tiveram número suficiente de especialistas."</p>}
-              date={new Date()}
+              date={new Date(2020, 2, 17, 12)}
               tag={<div>#pesquisa</div>}
             />
           </Cell>
