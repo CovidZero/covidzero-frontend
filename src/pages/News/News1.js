@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 
-import { Header } from "~/components";
+import { Header,SocialShare } from "~/components";
 import ShareIcon from "~/assets/icons/share.svg";
 import ArrowLeft from "~/assets/icons/arrow-left.svg";
 import { Content, Title } from "./styles";
@@ -48,6 +48,11 @@ const News1 = props => {
             </Cell>
           </Row>
         </Grid>
+ 
+           
+        <SocialShare></SocialShare>
+           
+
 
         <Grid>
           <Row>
