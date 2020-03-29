@@ -10,6 +10,7 @@ import Switch from "./Switch";
 import Header from "./Header";
 import MapHome from "./MapHome";
 import MapCities from "./MapCities"; 
+import SocialShare from "./SocialShare"; 
 export {
   Input,
   ExpandableBox,
@@ -21,8 +22,8 @@ export {
   Chips,
   Switch,
   Header,
-
   MapHome,
-  MapCities
+  MapCities,
+  SocialShare
  
 };

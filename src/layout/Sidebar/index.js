@@ -49,6 +49,7 @@ const Sidebar = props => {
   ];
 
   return (
+    
     <nav className="navbar">
       <ul className="navbar-nav">
         <li className="logo">
@@ -59,6 +60,7 @@ const Sidebar = props => {
             <SmallLogo />
           </Link>
         </li>
+        
 
         {routes.map(route => (
           <li key={route.title} className="nav-item">
