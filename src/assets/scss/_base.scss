@@ -7,6 +7,21 @@ main {
   margin-left: 5rem;
 }
 
+@media only screen and (min-width: map-get($map: $breakpoints, $key: "tablet")) {
+  main {
+    animation: marginLeft 1s ease;
+    margin-left: 16rem;
+  }
+}
+@keyframes marginLeft {
+  from {
+    margin-left: 5rem;
+  }
+  to {
+    margin-left: 16rem;
+  }
+}
+
 body {
   color: $white;
   background: $gray-80;
@@ -23,11 +38,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: #1e1e24;
+  background: $gray-80;
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: $gray-60;
 }
 
 html {
@@ -40,6 +55,7 @@ html {
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 .main-logo {
@@ -49,9 +65,30 @@ a {
   width: 35%;
 }
 
+ 
 @include respond-to(tablet) {
   .main-logo {
     width: 20%;
     padding-right: 80px;
   }
+}
+ 
+.mdc-layout-grid {
+  width: 100%;
+}
+
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+circle{
+    animation: zoominoutsinglefeatured 3s infinite ;
 }

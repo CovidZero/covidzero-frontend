@@ -9,7 +9,7 @@ $section-bg: #fcfcfc;
 
 $white: #fff;
 $gray-10: #f8f8f8;
-$gray-20: #d7dde2;
+$gray-20: #a4a4a4;
 $gray-30: #7f7f7f;
 $gray-40: #828282;
 $gray-50: #918e8c;
@@ -29,6 +29,7 @@ $light-yellow: #ffeb8c;
 $orange: #fa8728;
 $purple: #502350;
 $red: #ff0000;
+$logo-color: #ef7663;
 
 /* Fonts */
 $font-size-40: 40px;
@@ -37,13 +38,18 @@ $font-size-26: 26px;
 $font-size-18: 18px;
 $font-size-16: 16px;
 $font-size-14: 14px;
+$font-size-12: 12px;
+
+/* Sidebar */
+$sidebar-mobile-height: 60px;
+$sidebar-mobile-icon: 24px;
 
 $transition-speed: 600ms;
 $default-font-family: "Ubuntu", sans-serif;
 $default-font-size: $font-size-16;
 
 $breakpoints: (
-  "mobile": 575px,
+  "mobile": 576px,
   "mobile-xl": 768px,
   "tablet": 992px,
   "desktop": 1200px

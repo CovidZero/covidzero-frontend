@@ -8,6 +8,9 @@ import Dots from "./Dots";
 import Chips from "./Chips";
 import Switch from "./Switch";
 import Header from "./Header";
+import MapHome from "./MapHome";
+import MapCities from "./MapCities";
+import SocialShare from "./SocialShare";
 import Map from "./Map";
 import Circle from "./Circle";
 
@@ -21,6 +24,10 @@ export {
   Dots,
   Chips,
   Switch,
+  Header,
+  MapHome,
+  MapCities,
+  SocialShare
   Header,
   Map,
   Circle

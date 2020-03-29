@@ -1,2 +1,1 @@
-export const API_URL = "https://api.github.com";
-export const GMAP_KEY = "AIzaSyBon7nuyzpbd8eo6ZplOsZbs8w8nY1QWl4"
+export const API_URL = "https://api.covidzero.com.br/data_api/v1";
