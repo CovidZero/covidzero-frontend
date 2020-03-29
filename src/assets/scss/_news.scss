@@ -59,3 +59,9 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 767px) {
+  .news-item-image {
+    opacity: 0.5;
+  }
+}
