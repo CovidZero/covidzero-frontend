@@ -16,7 +16,7 @@ ReactDOM.render(
     <Router history={history}>
       <GlobalFonts />
       <ThemeProvider theme={theme}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Carregando...</div>}>
           <App />
         </Suspense>
       </ThemeProvider>
