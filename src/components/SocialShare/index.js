@@ -1,12 +1,16 @@
 import React from "react";
 
-const SocialShare = () => (
-    <div className="social-share">
-            <amp-social-share class="share-button" type="system"></amp-social-share>
-            <amp-social-share class="share-button" type="whatsapp"></amp-social-share>
+const SocialShare = () => {
+    const link = window.location.href;
+
+    return (
+        <div className="social-share">
+            <amp-social-share class="share-button" type="system" data-param-text={link}></amp-social-share>
+            <amp-social-share class="share-button" type="whatsapp" ></amp-social-share>
             <amp-social-share class="share-button" type="linkedin"></amp-social-share>
             <amp-social-share class="share-button" type="twitter"></amp-social-share>
-    </div>
-);
+        </div>
+    );
+}
 
 export default SocialShare;
