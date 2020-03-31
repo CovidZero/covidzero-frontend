@@ -6,17 +6,68 @@ import { GMAP_KEY } from "~/utils/constants";
 import { Circle } from "~/components";
 import { Marker } from "~/components";
 import { Style } from './styles';
+import BrAll from "~assets/data/brazil-map.json";
 
 const confirmed = require('~/assets/data/casos_240320.json');
 const suspect = [];
 const recovered = [];
 
-const MapArea = (props) => {
+
+const MapArea = ({ lat, lng, citiesCases }) => {
 
     const mapRef = useRef();
     const [zoom, setZoom] = useState(14);
     const [bounds, setBounds] = useState(null);
     const [markersHospital, setMarkersHospital] = useState([]);
+
+    function getCityCases() {
+        let cityCases = [];
+
+        citiesCases.map(cases => {
+            if (cases.ibge_id && cityCases.indexOf(cases.ibge_id) === -1) {
+                cityCases.push(cases);
+            }
+        });
+
+        return cityCases;
+    }
+
+    function getCasesCity() {
+        let cityCases = [];
+
+        const _getCityCases = getCityCases();
+        const cityProp = BrAll.objects.BR_LEVE.geometries;
+
+        _getCityCases.map(city => {
+            for (let _key in cityProp) {
+                if (city.ibge_id === cityProp[_key].properties.id) {
+                    let { id, centroide, NM_MUNICIP: cityName } = cityProp[
+                        _key
+                    ].properties;
+
+                    centroide = centroideFormat(centroide);
+                    cityCases.push({
+                        id,
+                        cityName,
+                        totalCases: city.totalcases,
+                        longitude: centroide[0],
+                        latitude: centroide[1]
+                    });
+                }
+            }
+        });
+
+        return cityCases;
+    }
+
+    function centroideFormat(value) {
+        return value
+            .replace("(", "")
+            .replace(")", "")
+            .split(",");
+    }
+
+    console.log(getCasesCity())
 
     confirmed.map(item => {
         item['type'] = 'confirmed'
@@ -42,7 +93,7 @@ const MapArea = (props) => {
         var directionsRenderer = new maps.DirectionsRenderer();
         directionsRenderer.setMap(map);
 
-        let origin = new maps.LatLng(props.lat, props.lng);
+        let origin = new maps.LatLng(lat, lng);
 
         directionsService.route(
             {
@@ -61,10 +112,14 @@ const MapArea = (props) => {
 
     }
 
+    const onDragEnd = (map) => {
+        console.log(map.getCenter())
+    }
+
     const apiIsLoaded = (map, maps) => {
         mapRef.current = map;
 
-        let pyrmont = new maps.LatLng(props.lat, props.lng);
+        let pyrmont = new maps.LatLng(lat, lng);
         let places = new maps.places.PlacesService(map);
 
         var request = {
@@ -78,9 +133,9 @@ const MapArea = (props) => {
         places.nearbySearch(
             request,
             function (results, status, pagination) {
-                console.log(status)
+                //console.log(status)
                 if (status !== 'OK') return;
-                console.log(results)
+                //console.log(results)
                 setMarkersHospital(results)
             });
 
@@ -108,18 +163,28 @@ const MapArea = (props) => {
             mapTypeControlOptions: {
                 position: maps.ControlPosition.TOP_RIGHT
             },
-            mapTypeControl: true
+            mapTypeControl: true,
+            restriction: {
+                latLngBounds: {
+                    west: -103.8386805338,
+                    south: -43.054008204,
+                    east: -15.3869376826,
+                    north: 16.2780526563,
+                },
+                strictBounds: true
+            },
         };
     }
 
     return (
         <Style.ContainerMap>
-            {props.lat && props.lng &&
+            {lat && lng &&
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: GMAP_KEY, libraries: ['places'] }}
-                    defaultCenter={[props.lat, props.lng]}
+                    defaultCenter={[lat, lng]}
                     defaultZoom={zoom}
                     yesIWantToUseGoogleMapApiInternals
+                    onDragEnd={onDragEnd}
                     onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
                     onChange={({ zoom, bounds }) => {
                         setZoom(zoom);
@@ -163,8 +228,8 @@ const MapArea = (props) => {
                     })}
 
                     <Circle type='you'
-                        lat={props.lat}
-                        lng={props.lng}
+                        lat={lat}
+                        lng={lng}
                     />
 
                     {markersHospital.map((hospital, index) => {
