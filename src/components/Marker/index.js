@@ -14,7 +14,7 @@ const Icon = ({ type }) => {
 
 const Marker = (props) => {
     return (
-        <Style.MarkerStyle onClick={props.onClick} type={props.type}>
+        <Style.MarkerStyle onClick={props.onClick} onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave} type={props.type}>
             <Icon type={props.type} />
         </Style.MarkerStyle>
     );

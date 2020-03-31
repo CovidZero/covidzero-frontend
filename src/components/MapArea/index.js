@@ -8,15 +8,24 @@ import { Marker } from "~/components";
 import { Style } from './styles';
 import BrAll from "~assets/data/brazil-map.json";
 
-const confirmed = require('~/assets/data/casos_240320.json');
 const suspect = [];
 const recovered = [];
 
+const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
 
-const MapArea = ({ lat, lng, citiesCases }) => {
+    const defaultOptions = {
+        zoom: 14,
+        southAmericaBounds: {
+            west: -103.8386805338,
+            south: -43.054008204,
+            east: -15.3869376826,
+            north: 16.2780526563,
+        }
+    }
 
     const mapRef = useRef();
-    const [zoom, setZoom] = useState(14);
+    const mapsRef = useRef();
+    const [zoom, setZoom] = useState(defaultOptions.zoom);
     const [bounds, setBounds] = useState(null);
     const [markersHospital, setMarkersHospital] = useState([]);
 
@@ -67,7 +76,7 @@ const MapArea = ({ lat, lng, citiesCases }) => {
             .split(",");
     }
 
-    console.log(getCasesCity())
+    let confirmed = getCasesCity()
 
     confirmed.map(item => {
         item['type'] = 'confirmed'
@@ -77,12 +86,12 @@ const MapArea = ({ lat, lng, citiesCases }) => {
 
     const points = markers.map((marker, index) => ({
         type: "Feature",
-        properties: { cluster: false, category: marker.type, id: index },
+        properties: { cluster: false, category: marker.type, id: index, totalCases: marker.totalCases },
         geometry: {
             type: "Point",
             coordinates: [
-                marker.long,
-                marker.lat
+                marker.longitude,
+                marker.latitude
             ]
         }
     }))
@@ -112,32 +121,52 @@ const MapArea = ({ lat, lng, citiesCases }) => {
 
     }
 
-    const onDragEnd = (map) => {
-        console.log(map.getCenter())
+    const _onChange = ({ zoom, bounds }) => {
+
+        getHospitals()
+
+        setZoom(zoom);
+        setBounds([
+            bounds.nw.lng,
+            bounds.se.lat,
+            bounds.se.lng,
+            bounds.nw.lat
+        ])
+
     }
 
-    const apiIsLoaded = (map, maps) => {
-        mapRef.current = map;
+    const getHospitals = () => {
+
+        const map = mapRef.current;
+        const maps = mapsRef.current;
+
+        if (!map || !maps) return
+        //let bounds = map.getBounds()
 
         let pyrmont = new maps.LatLng(lat, lng);
         let places = new maps.places.PlacesService(map);
 
         var request = {
             location: pyrmont,
+            //bounds,
             radius: '5000',
-            type: ['hospital']
+            type: ['hospital'],
         };
-
-        //createRoute(map, maps, 'ChIJC_-xjJ-QyJQR1yqVAokq4GY')
 
         places.nearbySearch(
             request,
             function (results, status, pagination) {
-                //console.log(status)
                 if (status !== 'OK') return;
-                //console.log(results)
                 setMarkersHospital(results)
             });
+
+    }
+
+    const _apiIsLoaded = (map, maps) => {
+        mapRef.current = map;
+        mapsRef.current = maps;
+        getHospitals()
+        //createRoute(map, maps, 'ChIJC_-xjJ-QyJQR1yqVAokq4GY')
 
     };
 
@@ -148,7 +177,7 @@ const MapArea = ({ lat, lng, citiesCases }) => {
         options: { radius: 150, maxZoom: 20 }
     });
 
-    function createMapOptions(maps) {
+    function _createMapOptions(maps) {
         // next props are exposed at maps
         // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
         // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
@@ -164,16 +193,21 @@ const MapArea = ({ lat, lng, citiesCases }) => {
                 position: maps.ControlPosition.TOP_RIGHT
             },
             mapTypeControl: true,
+            fullscreenControl: false,
             restriction: {
-                latLngBounds: {
-                    west: -103.8386805338,
-                    south: -43.054008204,
-                    east: -15.3869376826,
-                    north: 16.2780526563,
-                },
-                strictBounds: true
+                latLngBounds: defaultOptions.southAmericaBounds,
+                strictBounds: false
             },
         };
+    }
+
+    const _onChildMouseEnter = (key, marker) => {
+        //const markerId = childProps.marker.get('id');
+        //console.log(marker)
+        //const index = this.props.markers.findIndex(m => m.get('id') === markerId);
+        //if (this.props.onMarkerHover) {
+        //    this.props.onMarkerHover(index);
+        // }
     }
 
     return (
@@ -182,20 +216,12 @@ const MapArea = ({ lat, lng, citiesCases }) => {
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: GMAP_KEY, libraries: ['places'] }}
                     defaultCenter={[lat, lng]}
-                    defaultZoom={zoom}
+                    defaultZoom={defaultOptions.zoom}
                     yesIWantToUseGoogleMapApiInternals
-                    onDragEnd={onDragEnd}
-                    onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
-                    onChange={({ zoom, bounds }) => {
-                        setZoom(zoom);
-                        setBounds([
-                            bounds.nw.lng,
-                            bounds.se.lat,
-                            bounds.se.lng,
-                            bounds.nw.lat
-                        ])
-                    }}
-                    options={createMapOptions}
+                    onGoogleApiLoaded={({ map, maps }) => _apiIsLoaded(map, maps)}
+                    onChange={_onChange}
+                    options={_createMapOptions}
+                    onChildMouseEnter={_onChildMouseEnter}
                 >
 
                     {clusters.map(cluster => {
