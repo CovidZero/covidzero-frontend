@@ -5,7 +5,6 @@ import useSupercluster from "use-supercluster";
 import { GMAP_KEY } from "~/utils/constants";
 import { Circle } from "~/components";
 import { Marker } from "~/components";
-import { Style } from './styles';
 import BrAll from "~assets/data/brazil-map.json";
 
 const suspect = [];
@@ -86,7 +85,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
 
     const points = markers.map((marker, index) => ({
         type: "Feature",
-        properties: { cluster: false, category: marker.type, id: index, totalCases: marker.totalCases },
+        properties: { cluster: false, category: marker.type, id: index, totalCases: marker.totalCases, cityName: marker.cityName },
         geometry: {
             type: "Point",
             coordinates: [
@@ -143,7 +142,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         if (!map || !maps) return
         //let bounds = map.getBounds()
 
-        let pyrmont = new maps.LatLng(lat, lng);
+        let pyrmont = new maps.LatLng(map.getCenter().lat(), map.getCenter().lng());
         let places = new maps.places.PlacesService(map);
 
         var request = {
@@ -201,76 +200,72 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         };
     }
 
-    const _onChildMouseEnter = (key, marker) => {
-        //const markerId = childProps.marker.get('id');
-        //console.log(marker)
-        //const index = this.props.markers.findIndex(m => m.get('id') === markerId);
-        //if (this.props.onMarkerHover) {
-        //    this.props.onMarkerHover(index);
-        // }
-    }
-
     return (
-        <Style.ContainerMap>
-            {lat && lng &&
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key: GMAP_KEY, libraries: ['places'] }}
-                    defaultCenter={[lat, lng]}
-                    defaultZoom={defaultOptions.zoom}
-                    yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={({ map, maps }) => _apiIsLoaded(map, maps)}
-                    onChange={_onChange}
-                    options={_createMapOptions}
-                    onChildMouseEnter={_onChildMouseEnter}
-                >
+        <GoogleMapReact
+            bootstrapURLKeys={{ key: GMAP_KEY, libraries: ['places'] }}
+            defaultCenter={[lat, lng]}
+            defaultZoom={defaultOptions.zoom}
+            yesIWantToUseGoogleMapApiInternals
+            onGoogleApiLoaded={({ map, maps }) => _apiIsLoaded(map, maps)}
+            onChange={_onChange}
+            options={_createMapOptions}
+        >
 
-                    {clusters.map(cluster => {
-                        const [longitude, latitude] = cluster.geometry.coordinates;
-                        const { cluster: isCluster, point_count: pointCount, category, id } = cluster.properties
+            {clusters.map(cluster => {
+                const [longitude, latitude] = cluster.geometry.coordinates;
+                const { cluster: isCluster, point_count: pointCount, category, id, cityName, totalCases } = cluster.properties
 
-                        if (isCluster) {
-                            return (
-                                <Circle id={id} isCluster={isCluster} pointCount={pointCount} type="confirmed"
-                                    lat={latitude}
-                                    lng={longitude}
-                                    onClick={() => {
-                                        const expansionZoom = Math.min(
-                                            supercluster.getClusterExpansionZoom(cluster.id), 20
-                                        );
-                                        mapRef.current.setZoom(expansionZoom);
-                                        mapRef.current.panTo({ lat: latitude, lng: longitude })
-                                    }}
-                                />
-                            )
-                        }
+                if (isCluster) {
+                    return (
+                        <Circle key={id} isCluster={isCluster} pointCount={pointCount} type="confirmed"
+                            lat={latitude}
+                            lng={longitude}
+                            onClick={() => {
+                                const expansionZoom = Math.min(
+                                    supercluster.getClusterExpansionZoom(cluster.id), 20
+                                );
+                                mapRef.current.setZoom(expansionZoom);
+                                mapRef.current.panTo({ lat: latitude, lng: longitude })
+                            }}
+                        />
+                    )
+                }
 
-                        return (
-                            <Circle id={id} type={category}
-                                lat={latitude}
-                                lng={longitude}
-                            />
-                        )
-
-                    })}
-
-                    <Circle type='you'
-                        lat={lat}
-                        lng={lng}
+                return (
+                    <Circle key={id} type={category}
+                        lat={latitude}
+                        lng={longitude}
+                        onMouseEnter={() => {
+                            console.log(cityName, totalCases)
+                            setTooltipContent(`
+                                                <strong>Cidade:</strong> ${cityName} <br>
+                                                <strong>Casos:</strong> ${totalCases} <br>
+                                              `);
+                        }}
+                        onMouseLeave={() => {
+                            setTooltipContent("");
+                        }}
                     />
+                )
 
-                    {markersHospital.map((hospital, index) => {
-                        const { lat, lng } = hospital.geometry.location;
-                        return (
-                            <Marker key={index} type='hospital'
-                                lat={lat()}
-                                lng={lng()}
-                            />
-                        )
-                    })}
+            })}
 
-                </GoogleMapReact>
-            }
-        </Style.ContainerMap>
+            <Circle key={-1} type='you'
+                lat={lat}
+                lng={lng}
+            />
+
+            {markersHospital.map((hospital, index) => {
+                const { lat, lng } = hospital.geometry.location;
+                return (
+                    <Marker key={index} type='hospital'
+                        lat={lat()}
+                        lng={lng()}
+                    />
+                )
+            })}
+
+        </GoogleMapReact>
     );
 }
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ReactTooltip from "react-tooltip";
 
+import * as Styled from "./styles.js";
+
 import usePosition from "~/services/usePosition";
 import { Header } from "~/components";
 import { MapArea } from "~/components";
@@ -28,13 +30,18 @@ export default function Area() {
   return (
     <>
       <Header title={t("header.area")} />
-      <MapArea
-        setTooltipContent={setContent}
-        lat={latitude}
-        lng={longitude}
-        citiesCases={citiesCases.cases}>
-        <ReactTooltip html={true}>{content}</ReactTooltip>
-      </MapArea>
+      <Styled.Container>
+        {latitude && longitude &&
+          <Styled.ContainerMap>
+            <MapArea
+              setTooltipContent={setContent}
+              lat={latitude}
+              lng={longitude}
+              citiesCases={citiesCases.cases} />
+            <ReactTooltip html={true}>{content}</ReactTooltip>
+          </Styled.ContainerMap>
+        }
+      </Styled.Container>
     </>
   );
 }
