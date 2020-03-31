@@ -43,7 +43,7 @@ const Cities = () => {
 
   useEffect(() => {
     dispatch(findCitiesCases());
-    dispatch(findStatesCases());
+   //dispatch(findStatesCases());
   }, []);
 
   return (
@@ -55,7 +55,7 @@ const Cities = () => {
         <Styled.ContainerMap>
           <MapCities
             setTooltipContent={setContent}
-            statesCases={states}
+             
             citiesCases={cities}
           />
           <ReactTooltip html={true}>{content}</ReactTooltip>

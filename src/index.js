@@ -8,6 +8,8 @@ import App from "./App";
 import store from "./store";
 import history from "./services/history";
 import "./i18n";
+
+
 import theme from "./styles/theme";
 import GlobalFonts from "./styles/fonts";
 
