@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerMap = styled.div`
     width: 100%;
-    height: 95vh;
+    height: calc(100vh - 80px);
 
     @media (max-width: 600px){
     }

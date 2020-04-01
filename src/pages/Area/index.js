@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
-
 import usePosition from "~/services/usePosition";
 import { Header } from "~/components";
 import { MapArea } from "~/components";

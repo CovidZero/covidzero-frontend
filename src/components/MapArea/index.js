@@ -1,11 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
+import ReactTooltip from "react-tooltip";
 
 import { GMAP_KEY } from "~/utils/constants";
 import { Circle } from "~/components";
 import { Marker } from "~/components";
 import BrAll from "~assets/data/brazil-map.json";
+import * as Styled from "./styles.js";
 
 const suspect = [];
 const recovered = [];
@@ -28,7 +30,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
     const [bounds, setBounds] = useState(null);
     const [markersHospital, setMarkersHospital] = useState([]);
 
-    function getCityCases() {
+    const getCityCases = () => {
         let cityCases = [];
 
         citiesCases.map(cases => {
@@ -40,7 +42,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         return cityCases;
     }
 
-    function getCasesCity() {
+    const getCasesCity = () => {
         let cityCases = [];
 
         const _getCityCases = getCityCases();
@@ -68,7 +70,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         return cityCases;
     }
 
-    function centroideFormat(value) {
+    const centroideFormat = value => {
         return value
             .replace("(", "")
             .replace(")", "")
@@ -95,6 +97,13 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         }
     }))
 
+    const { clusters, supercluster } = useSupercluster({
+        points,
+        bounds,
+        zoom,
+        options: { radius: 150, maxZoom: 20 }
+    });
+
     const createRoute = (map, maps, placeId) => {
 
         var directionsService = new maps.DirectionsService();
@@ -116,21 +125,6 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
                     window.alert('Directions request failed due to ' + status);
                 }
             });
-
-
-    }
-
-    const _onChange = ({ zoom, bounds }) => {
-
-        getHospitals()
-
-        setZoom(zoom);
-        setBounds([
-            bounds.nw.lng,
-            bounds.se.lat,
-            bounds.se.lng,
-            bounds.nw.lat
-        ])
 
     }
 
@@ -161,6 +155,47 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
 
     }
 
+    useEffect(() => {
+        if (zoom <= 10) {
+            setMarkersHospital([])
+        } else {
+            getHospitals();
+        }
+    }, [bounds, zoom]);
+
+    const isOpen = async (placeId) => {
+
+        const maps = mapsRef.current
+        const map = mapRef.current
+
+        let request = {
+            placeId,
+        }
+
+        let places = new maps.places.PlacesService(map);
+
+        let isOpen = await places.getDetails(request, (place, status) => {
+            if (status == maps.places.PlacesServiceStatus.OK) {
+                return (place.opening_hours && place.opening_hours.isOpen())
+            } else {
+                return false
+            }
+        });
+
+        return isOpen
+
+    }
+
+    const _onChange = ({ zoom, bounds }) => {
+        setZoom(zoom);
+        setBounds([
+            bounds.nw.lng,
+            bounds.se.lat,
+            bounds.se.lng,
+            bounds.nw.lat
+        ])
+    }
+
     const _apiIsLoaded = (map, maps) => {
         mapRef.current = map;
         mapsRef.current = maps;
@@ -169,14 +204,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
 
     };
 
-    const { clusters, supercluster } = useSupercluster({
-        points,
-        bounds,
-        zoom,
-        options: { radius: 150, maxZoom: 20 }
-    });
-
-    function _createMapOptions(maps) {
+    const _createMapOptions = (maps) => {
         // next props are exposed at maps
         // "Animation", "ControlPosition", "MapTypeControlStyle", "MapTypeId",
         // "NavigationControlStyle", "ScaleControlStyle", "StrokePosition", "SymbolPath", "ZoomControlStyle",
@@ -197,7 +225,13 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
                 latLngBounds: defaultOptions.southAmericaBounds,
                 strictBounds: false
             },
+            minZoom: 4,
+            maxZoom: 16
         };
+    }
+
+    const _onChildClick = () => {
+
     }
 
     return (
@@ -209,6 +243,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
             onGoogleApiLoaded={({ map, maps }) => _apiIsLoaded(map, maps)}
             onChange={_onChange}
             options={_createMapOptions}
+            onChildClick={_onChildClick}
         >
 
             {clusters.map(cluster => {
@@ -217,7 +252,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
 
                 if (isCluster) {
                     return (
-                        <Circle key={id} isCluster={isCluster} pointCount={pointCount} type="confirmed"
+                        <Circle key={cluster.id} isCluster={isCluster} pointCount={pointCount} type="confirmed"
                             lat={latitude}
                             lng={longitude}
                             onClick={() => {
@@ -232,36 +267,50 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
                 }
 
                 return (
-                    <Circle key={id} type={category}
+
+                    <Styled.ContainerMarker
                         lat={latitude}
                         lng={longitude}
-                        onMouseEnter={() => {
-                            console.log(cityName, totalCases)
-                            setTooltipContent(`
-                                                <strong>Cidade:</strong> ${cityName} <br>
-                                                <strong>Casos:</strong> ${totalCases} <br>
-                                              `);
-                        }}
-                        onMouseLeave={() => {
-                            setTooltipContent("");
-                        }}
-                    />
+                        key={id}
+                        data-tip={`
+                        <strong>Cidade:</strong> ${cityName} <br>
+                        <strong>Casos:</strong> ${totalCases} <br>
+                        `}
+                    >
+                        <Circle type={category} />
+                        <ReactTooltip html={true} />
+                    </Styled.ContainerMarker>
+
                 )
 
             })}
 
-            <Circle key={-1} type='you'
+            <Styled.ContainerMarker
                 lat={lat}
                 lng={lng}
-            />
+                key={-1}
+                data-tip='Você'
+            >
+                <Circle type='you' />
+                <ReactTooltip />
+            </Styled.ContainerMarker>
 
-            {markersHospital.map((hospital, index) => {
+            {markersHospital.map((hospital) => {
                 const { lat, lng } = hospital.geometry.location;
                 return (
-                    <Marker key={index} type='hospital'
+                    <Styled.ContainerMarker
                         lat={lat()}
                         lng={lng()}
-                    />
+                        key={hospital.id}
+                        data-tip={`
+                        ${hospital.name} </br>
+                        ${hospital.opening_hours && hospital.opening_hours.open_now ? "Aberto" : ''} <!-- deprecated -->
+                        `}
+                    >
+                        <Marker type='hospital' />
+                        <ReactTooltip html={true} />
+                    </Styled.ContainerMarker>
+
                 )
             })}
 
