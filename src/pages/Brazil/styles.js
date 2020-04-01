@@ -42,7 +42,7 @@ export const ContainerMap = styled.div`
 export const MobileBottomIndicators = styled.div`
   @media (max-width: 600px) {
     position: absolute;
-    top: 75vh;
+    top: 65vh;
     width: 100%;
   }
 `;
