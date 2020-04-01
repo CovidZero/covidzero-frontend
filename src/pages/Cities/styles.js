@@ -28,4 +28,19 @@ export const ContainerMap = styled.div`
   @media (max-width: 840px) {
     display: none;
   }
+
+   svg {
+  touch-action: pan-left pan-down;
+  circle {
+    transition: all .25s ease-in-out;
+    cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.25);
+    }
+
+    &:active {
+      transform: scale(1.75);
+    }
+  }
 `;

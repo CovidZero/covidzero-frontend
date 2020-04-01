@@ -17,7 +17,7 @@ const geoUrl = BrStates;
 
 const MapHome = ({ setTooltipContent, setStateCases }) => {
   const [position, setPosition] = useState({
-    coordinates: isMobile() ? [-54, -13] : [-54, -15],
+    coordinates: isMobile() ? [-54, -17] : [-54, -17],
     zoom: 1
   });
 
@@ -82,31 +82,62 @@ const MapHome = ({ setTooltipContent, setStateCases }) => {
   }
 
   function handleZoomIn() {
-    if (position.zoom >= 4) return;
-    setPosition(pos => ({ ...pos, zoom: pos.zoom * 1.2 }));
+    if (position.zoom > 35) return;
+    setPosition(pos => ({ ...pos, zoom: pos.zoom * 2.1 }));
   }
 
   function handleZoomOut() {
+      console.log(position.zoom);
     if (position.zoom <= 1) return;
-    setPosition(pos => ({ ...pos, zoom: pos.zoom / 1.2 }));
+    setPosition(pos => ({ ...pos, zoom: pos.zoom / 2.5 }));
   }
+
+
+
+  function getHeightMap(){
+    let height = 0;
+    const sectionMap = document.querySelector('.box-map');
+
+        if (sectionMap) {
+          height = sectionMap.clientHeight;
+        }
+
+        return height;
+  }
+
+  function getWidthMap(){
+    let width = 0
+
+        const sectionMap = document.querySelector('.box-map')
+
+        if (sectionMap) {
+          width = sectionMap.clientWidth
+        }
+
+        return width
+  } 
+
+  
 
   return (
     <>
       <ComposableMap
         projection="geoMercator"
         data-tip=""
-        height={isMobile() ? 800 : 550}
+        
+        width={getWidthMap()}
+        height={getHeightMap()}
         style={{
           width: "100%",
-          maxWidth: "1200px"
+          height: "auto",
         }}
         projectionConfig={{
-          scale: isMobile() ? 1000 : 750
+          scale: isMobile() ? 500 : 750,
+          
         }}
       >
         /*disablePanning*/
-        <ZoomableGroup zoom={position.zoom} center={position.coordinates}>
+        <ZoomableGroup zoom={position.zoom} center={position.coordinates} onZoomEnd={position.zoom}>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map(geo => (

@@ -57,7 +57,7 @@ const Brazil = () => {
       <Header title={t("header.map")} />
 
       <Styled.Container>
-        <Styled.ContainerMap>
+        <Styled.ContainerMap className="box-map">
           <MapHome setTooltipContent={setContent}  setStateCases={totalCases.cases}/>
           <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>

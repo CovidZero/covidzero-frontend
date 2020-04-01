@@ -72,9 +72,9 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) => {
     });
 
     if (!isMobile()) {
-      size *= 0.01;
+      size *= 0.50;
     } else if (isMobile()) {
-      size *= 0.01;
+      size *= 0.50;
     }
 
     return size;
@@ -128,12 +128,12 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) => {
 
   function handleZoomIn() {
     if (position.zoom >= 4) return;
-    setPosition(pos => ({ ...pos, zoom: pos.zoom * 1.5 }));
+    setPosition(pos => ({ ...pos, zoom: pos.zoom * 2.1 }));
   }
 
   function handleZoomOut() {
     if (position.zoom <= 1) return;
-    setPosition(pos => ({ ...pos, zoom: pos.zoom / 1.5 }));
+    setPosition(pos => ({ ...pos, zoom: pos.zoom / 2.3 }));
   }
 
   return (
@@ -157,22 +157,7 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  onMouseEnter={() => {
-                    const { nome } = geo.properties;
-                    const ret = statesCases.find(
-                      ({ stateName }) => stateName === nome
-                    );
-                    if (ret) {
-                      setTooltipContent(`
-                      <strong>Estado:</strong> ${nome} <br>
-                      <strong>Casos:</strong> ${ret.cases.totalCases} <br>
-                      <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
-                    `);
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    setTooltipContent("");
-                  }}
+                 
                   style={{
                     default: {
                       fill: "#3e3d46",
@@ -210,9 +195,8 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) => {
                   cy={0}
                   r={getMarkerSize(50)}
                   style={{
-                    stroke: getColor(50),
                     fill: getColor(50),
-                    strokeWidth: 10
+                    strokeWidth: 15
                   }}
                   onMouseEnter={() => {
                     setTooltipContent(`
