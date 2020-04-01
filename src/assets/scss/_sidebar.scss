@@ -217,12 +217,6 @@
 //smartphones with width < 375px
 
 @media only screen and (max-width: 376px) {
-  .navbar {
-    bottom: 0;
-    width: 100vw;
-    height: $sidebar-mobile-height + 30px;
-  }
-
   main{
     padding-bottom: 90px;
   }
@@ -244,8 +238,8 @@
 @media only screen and (min-device-width : 414px) and (max-device-height : 896px) and (-webkit-device-pixel-ratio : 2) {
   .navbar {
     bottom: 0;
-    width: 100vw;
-    height: 90px;
+    width: 16rem;
+    height: 100vh;
   }
 }
 

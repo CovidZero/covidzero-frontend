@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect  } from "react";
+import React, { memo, useState, useEffect } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -12,15 +12,11 @@ import { MapControl } from "./styles";
 import BrStates from "~assets/data/br-states.json";
 import BrAll from "~assets/data/brazil-map.json";
 
-const MapCities = ({ setTooltipContent, statesCases, citiesCases }) =>  {
+const MapCities = ({ setTooltipContent, statesCases, citiesCases }) => {
   const [position, setPosition] = useState({
     coordinates: isMobile() ? [-54, -13] : [-54, -15],
     zoom: 1
   });
-
-  const [getCasesMap, setCasesMap] = useState([]);
-  
-
 
   const geoUrl = BrStates;
 
@@ -84,33 +80,37 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) =>  {
     return size;
   }
 
-  
-
-  function getCasesCity() { 
-
+  function getCityCases() {
     let cityCases = [];
- 
+
+    citiesCases.map(cases => {
+      if (cases.ibge_id && cityCases.indexOf(cases.ibge_id) === -1) {
+        cityCases.push(cases.ibge_id);
+      }
+    });
+
+    return cityCases;
+  }
+
+  function getCasesCity() {
+    let cityCases = [];
+
+    const _getCityCases = getCityCases();
     const cityProp = BrAll.objects.BR_LEVE.geometries;
-    
 
-    citiesCases.map(ret => { 
-
+    _getCityCases.map(idCity => {
       for (let _key in cityProp) {
-         
-        if (ret.ibge_id === cityProp[_key].properties.id) {
-          
-              let { id, centroide, NM_MUNICIP: cityName } = cityProp[
-                _key
-              ].properties;
- 
-               centroide = centroideFormat(centroide);
-          
+        if (idCity === cityProp[_key].properties.id) {
+          let { id, centroide, NM_MUNICIP: cityName } = cityProp[
+            _key
+          ].properties;
+
+          centroide = centroideFormat(centroide);
           cityCases.push({
             id,
             cityName,
             longitude: centroide[0],
-            latitude: centroide[1],
-            totalcases:ret.totalcases
+            latitude: centroide[1]
           });
         }
       }
@@ -118,8 +118,6 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) =>  {
 
     return cityCases;
   }
-  
- 
 
   function centroideFormat(value) {
     return value
@@ -130,15 +128,14 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) =>  {
 
   function handleZoomIn() {
     if (position.zoom >= 4) return;
-    setPosition(pos => ({ ...pos, zoom: pos.zoom * 1.5 }));
+    setPosition(pos => ({ ...pos, zoom: pos.zoom * 2.1 }));
   }
 
   function handleZoomOut() {
     if (position.zoom <= 1) return;
-    setPosition(pos => ({ ...pos, zoom: pos.zoom / 1.5 }));
+    setPosition(pos => ({ ...pos, zoom: pos.zoom / 2.3 }));
   }
-  
- 
+
   return (
     <>
       <ComposableMap
@@ -160,7 +157,8 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) =>  {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                 style={{
+                 
+                  style={{
                     default: {
                       fill: "#3e3d46",
                       stroke: "#282731",
@@ -197,13 +195,12 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) =>  {
                   cy={0}
                   r={getMarkerSize(50)}
                   style={{
-                    fill: getColor(50), 
+                    fill: getColor(50),
+                    strokeWidth: 15
                   }}
                   onMouseEnter={() => {
                     setTooltipContent(`
                       <strong>Município:</strong> ${ret.cityName} <br>
-                      <strong>Casos:</strong>    ${ret.totalcases} <br>
-                      
                     `);
                   }}
                   onMouseLeave={() => {
@@ -213,7 +210,7 @@ const MapCities = ({ setTooltipContent, statesCases, citiesCases }) =>  {
               </Marker>
             );
           })}
-              </ZoomableGroup>
+        </ZoomableGroup>
       </ComposableMap>
 
       <MapControl>

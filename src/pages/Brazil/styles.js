@@ -13,16 +13,36 @@ export const Container = styled.section`
 `;
 
 export const ContainerMap = styled.div`
-  @media (min-width: 840px) {
-    margin-top: 5%;
-    flex: 100%;
+  height:100vh;
+  width:100vw;
+
+  @media (max-width:840px) {
+    height:70vh;
   }
+
+   
+
+ svg {
+  touch-action: pan-left pan-down;
+  circle {
+    transition: all .25s ease-in-out;
+    cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.25);
+    }
+
+    &:active {
+      transform: scale(1.75);
+    }
+  }
+}
 `;
 
 export const MobileBottomIndicators = styled.div`
   @media (max-width: 600px) {
     position: absolute;
-    bottom: 4.3rem;
+    top: 75vh;
     width: 100%;
   }
 `;

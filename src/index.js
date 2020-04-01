@@ -8,8 +8,6 @@ import App from "./App";
 import store from "./store";
 import history from "./services/history";
 import "./i18n";
-
-
 import theme from "./styles/theme";
 import GlobalFonts from "./styles/fonts";
 
@@ -18,7 +16,7 @@ ReactDOM.render(
     <Router history={history}>
       <GlobalFonts />
       <ThemeProvider theme={theme}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Carregando...</div>}>
           <App />
         </Suspense>
       </ThemeProvider>

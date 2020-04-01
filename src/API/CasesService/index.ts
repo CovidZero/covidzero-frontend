@@ -23,7 +23,7 @@ export interface StateCases {
 
 export interface CityCases {}
 
- 
+
 
 
 
@@ -107,7 +107,7 @@ function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): S
             latitude: stateCasesResponse.lat,
             longitude: stateCasesResponse.lng,
             cases: {
-                confirmed: calculateActiveCases(cases.totalCases, cases.deaths, cases.recoveredCases),
+                confirmed: cases.totalCases ? cases.totalCases : 0,
                 recovered: cases.recoveredCases ? cases.recoveredCases : 0,
                 suspected: cases.suspectedCase ? cases.suspectedCase : 0,
                 deaths: cases.deaths ? cases.deaths : 0
@@ -122,7 +122,7 @@ function convertStateCasesResponse(statesCasesResponse: stateCasesResponse[]): S
 function convertCasesResponse(casesResponse: CasesResponse): Cases {
 
     const _case: Cases = {
-        confirmed: calculateActiveCases(casesResponse.totalCases, casesResponse.deaths, casesResponse.recoveredCases),
+        confirmed: casesResponse.totalCases ? casesResponse.totalCases : 0,
         recovered: casesResponse.recoveredCases ? casesResponse.recoveredCases : 0,
         suspected: casesResponse.suspectedCase ? casesResponse.suspectedCase : 0,
         deaths: casesResponse.deaths ? casesResponse.deaths : 0
@@ -141,4 +141,4 @@ function calculateActiveCases(totalCases: number, deaths: number | undefined, re
     const activeCases = totalCases - _deaths - _recovered
 
     return activeCases;
-}   
+}

@@ -12,9 +12,9 @@ const Header = ({ leftIcon, title, rightIcon, actionLeftIcon }) => {
         <LeftIcon src={leftIcon || LogoSvg} onClick={actionLeftIcon} />
         <Title>{title}</Title>
       </AlignItem>
-      <Link to="/sobre">
+      <a href="https://covidzero.com.br/sobre">
         <Icon src={rightIcon || Notification} />
-      </Link>
+      </a>
     </Container>
   );
 };

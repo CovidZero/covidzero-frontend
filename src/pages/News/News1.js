@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 
 import { Header,SocialShare } from "~/components";
-import ShareIcon from "~/assets/icons/share.svg";
+import Notification from "~/assets/icons/bell.svg";
 import ArrowLeft from "~/assets/icons/arrow-left.svg";
 import { Content, Title } from "./styles";
 
@@ -20,7 +20,7 @@ const News1 = props => {
         title={t("header.news")}
         leftIcon={ArrowLeft}
         actionLeftIcon={() => history.push("/news")}
-        rightIcon={ShareIcon}
+        rightIcon={Notification}
       />
       <Content>
         <Title>CovidZero - Universidade de Oxford recruta para testes de vacina criada para erradicar o COVID-19</Title>
@@ -70,7 +70,7 @@ const News1 = props => {
                 <p>Ao mesmo tempo em que realiza o primeiro ensaio clínico, a produção da vacina está sendo ampliada para testes maiores e, potencialmente, para implantação futura. Ao iniciar a expansão da fabricação da vacina imediatamente, a equipe pode garantir que doses suficientes de vacina estejam disponíveis o mais rápido possível - especialmente para trabalhadores do National Health Service -NHS (sistema público de saúde da Inglaterra), idosos e pessoas com condições de saúde subjacentes - se os ensaios comprovarem que a vacina é segura e eficaz. </p>
                 <p>Sandy Douglas, que lidera o projeto de ampliação da fabricação de vacinas, disse: “A escala dessa epidemia representa um enorme desafio para a fabricação de vacinas. Precisamos seguir padrões rigorosos de segurança e isso leva tempo. Ao iniciar o trabalho de fabricação em larga escala imediatamente, esperamos acelerar a disponibilidade de vacinas seguras e de alta qualidade.” </p>
                 <p>A professora Teresa Lambe, líder dos estágios iniciais do desenvolvimento de vacinas, disse: “O compromisso, a compaixão e o benefício percebido durante todo o esforço de todos com quem trabalhamos foram incríveis. Agradecemos profundamente o apoio de todos os nossos colaboradores, financiadores e equipes ao nosso redor para chegar a esse estágio com a velocidade que temos.” </p>
-                <p>Fonte: Universidade de Oxford</p>
+                <p>Fonte: <a href="http://www.ox.ac.uk/news/2020-03-27-oxford-covid-19-vaccine-programme-opens-clinical-trial-recruitment?utm_source=covidzero.com.br" target="_blank">Universidade de Oxford</a></p>
               </div>
             </Cell>
           </Row>

@@ -43,8 +43,7 @@ const Cities = () => {
 
   useEffect(() => {
     dispatch(findCitiesCases());
-   //dispatch(findStatesCases());
-  }, []);
+     }, []);
 
   return (
     <>
@@ -55,7 +54,6 @@ const Cities = () => {
         <Styled.ContainerMap>
           <MapCities
             setTooltipContent={setContent}
-             
             citiesCases={cities}
           />
           <ReactTooltip html={true}>{content}</ReactTooltip>
@@ -121,13 +119,7 @@ const Cities = () => {
                               count={city.totalcases}
                             />
                           </Cell>
-                          {/*<Cell desktopColumns={6} phoneColumns={2} tabletColumns={3}>
-                            <CardStats
-                              status="death"
-                              title={<div>Óbitos</div>}
-                              count={city.deaths}
-                            />
-                          </Cell>*/}
+                         
                         </Row>
                       </Grid>
                     }

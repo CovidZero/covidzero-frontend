@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Cell, Grid, Row } from "@material/react-layout-grid";
 
 import { Header,SocialShare } from "~/components";
-import ShareIcon from "~/assets/icons/share.svg";
+import Notification from "~/assets/icons/bell.svg";
 import ArrowLeft from "~/assets/icons/arrow-left.svg";
 import { Content, Title } from "./styles";
 
@@ -20,7 +20,7 @@ const News3 = props => {
         title={t("header.news")}
         leftIcon={ArrowLeft}
         actionLeftIcon={() => history.push("/news")}
-        rightIcon={ShareIcon}
+        rightIcon={Notification}
       />
       <Content>
         <Title>CovidZero - Por trás do relatório que pôs os EUA e o Reino Unido em ação contra o vírus COVID-19</Title>
@@ -78,7 +78,7 @@ const News3 = props => {
                 <p>"Em tempos de paz, nunca enfrentamos uma luta econômica como essa", disse Sunak, que também prometeu apoio a aeroportos e companhias aéreas nos próximos dias, depois que os britânicos foram desaconselhados a todas as viagens não essenciais. </p>
                 <p>Johnson sugeriu na terça-feira que as escolas poderão fechar em breve. Mas ele ainda enfrenta críticas por falta de clareza, incluindo sua decisão de instar as pessoas a evitar bares e restaurantes, mas não a ordenar seu fechamento. De fato, o governo agora pretende equilibrar as leis temporariamente aplicadas para permitir que os bares fiquem abertos e produzam comida para viagem. </p>
                 <p>Para a vergonha de Johnson, um dos que prometeu visitar o pub local era seu próprio pai, Stanley Johnson. </p>
-                <p>Fonte: New York Times</p> 
+                <p>Fonte: <a href="https://www.nytimes.com/2020/03/17/world/europe/coronavirus-imperial-college-johnson.html?utm_source=covidzero.com.br">New York Times</a></p>
               </div>
             </Cell>
           </Row>
