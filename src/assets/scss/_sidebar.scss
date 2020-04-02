@@ -156,7 +156,7 @@
   height: 35px;
   transition: $transition-speed;
 
-  @media only screen and (min-width: map-get($map: $breakpoints, $key: "tablet")) {
+@media only screen and (min-width: map-get($map: $breakpoints, $key: "tablet")) {
     display: none;
   }
 }
@@ -238,8 +238,8 @@
 @media only screen and (min-device-width : 414px) and (max-device-height : 896px) and (-webkit-device-pixel-ratio : 2) {
   .navbar {
     bottom: 0;
-    width: 16rem;
-    height: 100vh;
+    width: 100vw;
+    height: 90px;
   }
 }
 
