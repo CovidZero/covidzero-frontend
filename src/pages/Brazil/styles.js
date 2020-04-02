@@ -20,14 +20,14 @@ export const ContainerMap = styled.div`
     height:70vh;
   }
 
-   
+
 
  svg {
   touch-action: pan-left pan-down;
   circle {
     transition: all .25s ease-in-out;
     cursor: pointer;
-    
+
     &:hover {
       transform: scale(1.25);
     }
@@ -42,7 +42,23 @@ export const ContainerMap = styled.div`
 export const MobileBottomIndicators = styled.div`
   @media (max-width: 600px) {
     position: absolute;
-    top: 65vh;
+    bottom: 9vh;
     width: 100%;
+  }
+
+  @media screen and (device-width: 768px) {
+    position: absolute;
+    width: 90%;
+  }
+
+  /* iPad Pro 12.9" */
+  /* Portrait and Landscape */
+  @media only screen
+    and (min-device-width: 1024px)
+    and (max-device-width: 1366px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+      position: absolute;
+      bottom: 9vh;
+      width: 100%;
   }
 `;
