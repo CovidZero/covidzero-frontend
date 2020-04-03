@@ -9,7 +9,8 @@ import {
   ArticleNewsHeader,
   Dots,
   Chips,
-  Switch
+  Switch,
+  Circle
 } from "~/components";
 
 import { Search } from "@styled-icons/evil/Search";
@@ -96,6 +97,17 @@ const AllComponents = () => {
       <Button styleButton='txt-btn' sizeButton={16} disable={true} textButton='button' />
       <br />
       <Switch />
+      <br />
+
+      <Grid>
+        <Row cols={5}>
+            <Circle type="you"/>
+            <Circle type="suspect"/>
+            <Circle type="confirmed"/>
+            <Circle type="recovered"/>
+        </Row>
+      </Grid>
+
     </div>
   );
 };

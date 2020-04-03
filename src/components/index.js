@@ -9,8 +9,12 @@ import Chips from "./Chips";
 import Switch from "./Switch";
 import Header from "./Header";
 import MapHome from "./MapHome";
-import MapCities from "./MapCities"; 
-import SocialShare from "./SocialShare"; 
+import MapCities from "./MapCities";
+import SocialShare from "./SocialShare";
+import MapArea from "./MapArea";
+import Circle from "./Circle";
+import Marker from "./Marker";
+
 export {
   Input,
   ExpandableBox,
@@ -24,6 +28,8 @@ export {
   Header,
   MapHome,
   MapCities,
-  SocialShare
- 
+  SocialShare,
+  MapArea,
+  Circle,
+  Marker
 };
