@@ -215,7 +215,6 @@ const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
     const _apiIsLoaded = (map, maps) => {
         mapRef.current = map;
         mapsRef.current = maps;
-        console.log(userLat, userLng)
         getHospitals()
         //createRoute(map, maps, 'ChIJC_-xjJ-QyJQR1yqVAokq4GY')
 
