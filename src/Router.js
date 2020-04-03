@@ -16,7 +16,7 @@ export default function Routes() {
       <Route path="/" exact component={Brazil} />
       <Route path="/cities" exact component={Cities} />
       <Route path="/area" exact component={Area} />
-      <Route path="/help" exact component={Help} />
+      {/* <Route path="/help" exact component={Help} /> */}
       <Route path="/news" exact component={News} />
 
       <Route path="/uikit" exact component={UiKit} />{" "}
