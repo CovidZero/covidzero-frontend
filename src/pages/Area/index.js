@@ -10,13 +10,23 @@ import API from "~/API";
 
 export default function Area() {
   const [t] = useTranslation();
-  const { latitude, longitude } = usePosition();
+  let { latitude, longitude, error } = usePosition();
+
+  let initialZoom
+
+  if (error) {
+    /* se não conseguir pegar o lat e lng do usário coloca do Brasil */
+    initialZoom = 4
+    latitude = -14.2350044
+    longitude = -51.9252815
+  } else {
+    initialZoom = 14
+  }
 
   const initalCases = {
     cases: []
   }
   const [citiesCases, setTotalCases] = useState(initalCases)
-  const [content, setContent] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -30,14 +40,14 @@ export default function Area() {
     <>
       <Header title={t("header.area")} />
       <Styled.Container>
-        {latitude && longitude &&
+        {((latitude && longitude) || error) &&
           <Styled.ContainerMap>
             <MapArea
-              setTooltipContent={setContent}
-              lat={latitude}
-              lng={longitude}
+              error={error}
+              userLat={latitude}
+              userLng={longitude}
+              initialZoom={initialZoom}
               citiesCases={citiesCases.cases} />
-            <ReactTooltip html={true}>{content}</ReactTooltip>
           </Styled.ContainerMap>
         }
       </Styled.Container>

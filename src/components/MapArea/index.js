@@ -12,16 +12,17 @@ import * as Styled from "./styles.js";
 const suspect = [];
 const recovered = [];
 
-const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
+const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
 
     const defaultOptions = {
-        zoom: 14,
+        zoom: initialZoom,
+        /*limites mapa*/
         southAmericaBounds: {
             west: -103.8386805338,
             south: -43.054008204,
             east: -15.3869376826,
             north: 16.2780526563,
-        }
+        },
     }
 
     const mapRef = useRef();
@@ -29,6 +30,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
     const [zoom, setZoom] = useState(defaultOptions.zoom);
     const [bounds, setBounds] = useState(null);
     const [markersHospital, setMarkersHospital] = useState([]);
+    const [circleSize, setCircleSize] = useState(80);
 
     const getCityCases = () => {
         let cityCases = [];
@@ -110,7 +112,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         var directionsRenderer = new maps.DirectionsRenderer();
         directionsRenderer.setMap(map);
 
-        let origin = new maps.LatLng(lat, lng);
+        let origin = new maps.LatLng(userLat, userLng);
 
         directionsService.route(
             {
@@ -161,6 +163,20 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         } else {
             getHospitals();
         }
+
+        let minPixelSize = 80;
+        let maxPixelSize = 350;
+
+        let relativePixelSize = Math.round(Math.pow(zoom, 2.1));
+
+        if (relativePixelSize > maxPixelSize)
+            relativePixelSize = maxPixelSize;
+
+        if (relativePixelSize < minPixelSize)
+            relativePixelSize = minPixelSize;
+
+        setCircleSize(relativePixelSize)
+
     }, [bounds, zoom]);
 
     const isOpen = async (placeId) => {
@@ -175,7 +191,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
         let places = new maps.places.PlacesService(map);
 
         let isOpen = await places.getDetails(request, (place, status) => {
-            if (status == maps.places.PlacesServiceStatus.OK) {
+            if (status === maps.places.PlacesServiceStatus.OK) {
                 return (place.opening_hours && place.opening_hours.isOpen())
             } else {
                 return false
@@ -199,6 +215,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
     const _apiIsLoaded = (map, maps) => {
         mapRef.current = map;
         mapsRef.current = maps;
+        console.log(userLat, userLng)
         getHospitals()
         //createRoute(map, maps, 'ChIJC_-xjJ-QyJQR1yqVAokq4GY')
 
@@ -237,7 +254,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
     return (
         <GoogleMapReact
             bootstrapURLKeys={{ key: GMAP_KEY, libraries: ['places'] }}
-            defaultCenter={[lat, lng]}
+            defaultCenter={[userLat, userLng]}
             defaultZoom={defaultOptions.zoom}
             yesIWantToUseGoogleMapApiInternals
             onGoogleApiLoaded={({ map, maps }) => _apiIsLoaded(map, maps)}
@@ -252,7 +269,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
 
                 if (isCluster) {
                     return (
-                        <Circle key={cluster.id} isCluster={isCluster} pointCount={pointCount} type="confirmed"
+                        <Circle key={cluster.id} width={circleSize} height={circleSize} isCluster={isCluster} pointCount={pointCount} type="confirmed"
                             lat={latitude}
                             lng={longitude}
                             onClick={() => {
@@ -277,7 +294,7 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
                         <strong>Casos:</strong> ${totalCases} <br>
                         `}
                     >
-                        <Circle type={category} />
+                        <Circle width={circleSize} height={circleSize} type={category} />
                         <ReactTooltip html={true} />
                     </Styled.ContainerMarker>
 
@@ -285,15 +302,17 @@ const MapArea = ({ lat, lng, citiesCases, setTooltipContent }) => {
 
             })}
 
-            <Styled.ContainerMarker
-                lat={lat}
-                lng={lng}
-                key={-1}
-                data-tip='Você'
-            >
-                <Circle type='you' />
-                <ReactTooltip />
-            </Styled.ContainerMarker>
+            {userLat && userLng && !error &&
+                <Styled.ContainerMarker
+                    lat={userLat}
+                    lng={userLng}
+                    key={-1}
+                    data-tip='Você'
+                >
+                    <Circle type='you' />
+                    <ReactTooltip />
+                </Styled.ContainerMarker>
+            }
 
             {markersHospital.map((hospital) => {
                 const { lat, lng } = hospital.geometry.location;
