@@ -1,18 +1,23 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { memo, useState, useRef, useEffect, useContext } from "react";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import ReactTooltip from "react-tooltip";
+import ReactDOM from 'react-dom';
+import { ThemeContext } from 'styled-components';
 
 import { GMAP_KEY } from "~/utils/constants";
 import { Circle } from "~/components";
 import { Marker } from "~/components";
 import BrAll from "~assets/data/brazil-map.json";
 import * as Styled from "./styles.js";
+import { Chips } from "~/components";
 
 const suspect = [];
 const recovered = [];
 
 const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
+
+    const themeContext = useContext(ThemeContext);
 
     const defaultOptions = {
         zoom: initialZoom,
@@ -105,6 +110,7 @@ const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
         zoom,
         options: { radius: 150, maxZoom: 20 }
     });
+    
 
     const createRoute = (map, maps, placeId) => {
 
@@ -212,11 +218,28 @@ const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
         ])
     }
 
+    const _youClick = () => {
+        const map = mapRef.current
+        map.setZoom(14);
+        map.panTo({ lat: userLat, lng: userLng })
+    }
+
     const _apiIsLoaded = (map, maps) => {
         mapRef.current = map;
         mapsRef.current = maps;
         getHospitals()
         //createRoute(map, maps, 'ChIJC_-xjJ-QyJQR1yqVAokq4GY')
+
+        /* */
+        const legendsDiv = document.createElement('div');
+        ReactDOM.render(
+            <Styled.ContainerChips>
+                <Chips height={10} onClick={_youClick} theme={themeContext} text="Você" type="you" />
+                <Chips height={10} theme={themeContext} text="Confirmados" type="confirmed" />
+            </Styled.ContainerChips>
+            , legendsDiv);
+        map.controls[maps.ControlPosition.BOTTOM_CENTER].push(legendsDiv);
+        /**/
 
     };
 
@@ -247,7 +270,7 @@ const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
     }
 
     const _onChildClick = () => {
-
+        
     }
 
     return (
@@ -336,4 +359,4 @@ const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
     );
 }
 
-export default MapArea;
+export default memo(MapArea);

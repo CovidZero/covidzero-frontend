@@ -4,9 +4,9 @@ import Dots from '../Dots'
 
 const Chips = (props) => {
     return (
-        <Style.ChipStyle>
-            <Style.ColumnDot>
-                <Dots dot={props.type} />
+        <Style.ChipStyle onClick={props.onClick} height={props.height} theme={props.theme}>
+            <Style.ColumnDot theme={props.theme}>
+                <Dots theme={props.theme} dot={props.type} />
             </Style.ColumnDot>
             {props.text}
         </Style.ChipStyle>

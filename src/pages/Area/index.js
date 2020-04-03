@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 import usePosition from "~/services/usePosition";
