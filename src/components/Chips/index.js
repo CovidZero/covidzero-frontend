@@ -8,7 +8,7 @@ const Chips = (props) => {
             <Style.ColumnDot theme={props.theme}>
                 <Dots theme={props.theme} dot={props.type} />
             </Style.ColumnDot>
-            {props.text}
+            {props.text} {props.lastUpdate}
         </Style.ChipStyle>
     );
 };

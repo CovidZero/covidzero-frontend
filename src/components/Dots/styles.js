@@ -45,4 +45,8 @@ export const DotConfirmed = styled.div`
     border-radius:50%;
 `;
 
-export const Style = { DotDefault, DotYou, DotSuspect, DotRecovered, DotConfirmed };
+export const DotHidden = styled.div`
+    display: none;
+`;
+
+export const Style = { DotDefault, DotYou, DotSuspect, DotRecovered, DotConfirmed, DotHidden };
