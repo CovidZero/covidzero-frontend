@@ -78,7 +78,7 @@ const Brazil = () => {
               </Cell>
             </Row>*/}
             <Row style={{ marginBottom: "1em" }}>
-              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <DailyCases status="dailyCases" title="Novos casos confirmados diários" />
               </Cell>
             </Row>

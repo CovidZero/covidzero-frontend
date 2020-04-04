@@ -17,7 +17,8 @@ export const CardBoxStyle = styled.div`
 
 export const Title = styled.span`
   font-size: 12px;
-
+  margin-bottom: 1em;
+  
   @media all and (min-width: 600px) {
     font-size: 16px;
   }
@@ -31,6 +32,10 @@ export const CardBoxStatsDefault = styled.div`
   color: ${props => props.theme.colors.statsDefault};
   text-transform: uppercase;
   letter-spacing: 1px;
+
+`;
+
+export const Canvas = styled.canvas`
 
 `;
 
