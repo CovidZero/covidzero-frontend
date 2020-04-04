@@ -10,7 +10,8 @@ import Switch from "./Switch";
 import Header from "./Header";
 import MapHome from "./MapHome";
 import MapCities from "./MapCities"; 
-import SocialShare from "./SocialShare"; 
+import SocialShare from "./SocialShare";
+import DailyCases from "./Charts/DailyCases";
 export {
   Input,
   ExpandableBox,
@@ -24,6 +25,7 @@ export {
   Header,
   MapHome,
   MapCities,
-  SocialShare
+  SocialShare,
+  DailyCases,
  
 };

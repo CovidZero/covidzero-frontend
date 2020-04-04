@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
-import { CardStats } from "~/components";
+import { CardStats, DailyCases } from "~/components";
 import { Header } from "~/components";
 import { MapHome } from "~/components";
 import API from "~/API";
@@ -77,6 +77,11 @@ const Brazil = () => {
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
               </Cell>
             </Row>*/}
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
+                <DailyCases status="dailyCases" title="Novos casos confirmados diários" />
+              </Cell>
+            </Row>
           </Grid>
         </Styled.MobileBottomIndicators>
       </Styled.Container>
