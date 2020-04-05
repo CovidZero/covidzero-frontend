@@ -6,15 +6,15 @@ const Dots = (props) => {
         (() => {
             switch(props.dot) {
                 case "recovered":
-                    return <Style.DotRecovered />;
+                    return <Style.DotRecovered theme={props.theme} />;
                 case "confirmed":
-                    return <Style.DotConfirmed />;
+                    return <Style.DotConfirmed theme={props.theme} />;
                 case "suspect":
-                    return <Style.DotSuspect />;
+                    return <Style.DotSuspect theme={props.theme} />;
                 case "you":
-                    return <Style.DotYou />;
+                    return <Style.DotYou theme={props.theme} />;
                 default:
-                    return <Style.DotDefault />;
+                    return <Style.DotDefault theme={props.theme} />;
             }
         })()
     );

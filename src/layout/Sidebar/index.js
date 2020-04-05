@@ -31,11 +31,11 @@ const Sidebar = props => {
       path: "/cities",
       icon: pathname === "/cities" ? <CityActive /> : <City />
     },
-    // {
-    //   title: "menu.area",
-    //   path: "/area",
-    //   icon: pathname === "/area" ? <AreaActive /> : <Area />
-    // },
+    {
+      title: "menu.area",
+      path: "/area",
+      icon: pathname === "/area" ? <AreaActive /> : <Area />
+    },
     // {
     //   title: "menu.help",
     //   path: "/help",
@@ -49,7 +49,7 @@ const Sidebar = props => {
   ];
 
   return (
-    
+
     <nav className="navbar">
       <ul className="navbar-nav">
         <li className="logo">
@@ -60,7 +60,7 @@ const Sidebar = props => {
             <SmallLogo />
           </Link>
         </li>
-        
+
 
         {routes.map(route => (
           <li key={route.title} className="nav-item">
