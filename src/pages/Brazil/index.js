@@ -92,7 +92,11 @@ const Brazil = () => {
                 <RegionCases title="Casos confirmados por Região" />
               </Cell>
             </Row>
-            
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <TotalDeaths title="Óbitos totais no Brasil" />
+              </Cell>
+            </Row>
           </Grid>
         </Styled.MobileBottomIndicators>
       </Styled.Container>
