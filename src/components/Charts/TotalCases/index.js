@@ -1,18 +1,29 @@
 import React from 'react';
 import { Style } from '../styles';
 
-import {Bar} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js';
 
-const DailyCases = (props) => {
+const TotalCases = (props) => {
  
     const data = {
-        labels: ['01/4', '02/4', '03/4', '04/4', '05/4', '06/4', '07/4', '08/4', '09/4', '10/4'],
+        labels: ['01/4', '02/4', '03/4', '04/4', '05/4', '06/4', '07/4', '08/4', '09/4', '10/4', '11/4', '12/4', '13/4'],
         datasets: [
           {
+            fill: false,
+            lineTension: 0.1,
             backgroundColor: '#EF5350',
-            hoverbackgroundColor: '#EF5350',
-            data: [65, 59, 80, 70, 59, 80, 90, 70, 100, 65, 65, 65],
+            borderColor: '#EF5350',
+            borderCapStyle: 'round',
+            borderJoinStyle: 'miter',
+            pointBorderColor: '#EF5350',
+            pointBackgroundColor: '#EF5350',
+            borderWidth: 4,
+            pointBorderWidth: 2,
+            pointHoverRadius: 5,
+            pointRadius: 0,
+            pointHitRadius: 10,
+            data: [20, 50, 65, 102, 125, 153, 200, 260, 350, 400, 460, 530, 600],
           }
         ]
     };
@@ -21,11 +32,10 @@ const DailyCases = (props) => {
         <Style.CardBoxStyle>
             <Style.Title>{props.title}</Style.Title>
             <Style.CardBoxStatsDefault>
-                <Bar
+                <Line
                     data={data}
-                    height={100}
+                    height={130}
                     options={{
-                        maintainAspectRatio: false,
                         legend:{
                             display: false,
                         },
@@ -57,4 +67,4 @@ const DailyCases = (props) => {
 
 }
 
-export default DailyCases;
+export default TotalCases;

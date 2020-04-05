@@ -12,6 +12,9 @@ import MapHome from "./MapHome";
 import MapCities from "./MapCities"; 
 import SocialShare from "./SocialShare";
 import DailyCases from "./Charts/DailyCases";
+import TotalCases from "./Charts/TotalCases";
+import RegionCases from "./Charts/RegionCases";
+import TotalDeaths from "./Charts/TotalDeaths";
 export {
   Input,
   ExpandableBox,
@@ -27,5 +30,8 @@ export {
   MapCities,
   SocialShare,
   DailyCases,
+  TotalCases,
+  RegionCases,
+  TotalDeaths,
  
 };

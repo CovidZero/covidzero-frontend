@@ -35,12 +35,28 @@ export const CardBoxStatsDefault = styled.div`
 
 `;
 
-export const Canvas = styled.canvas`
+export const CardBoxStatsConfirmed = styled.label`
+  color: ${props => props.theme.colors.statsConfirmed};
+`;
 
+export const CardBoxStatsRecovered = styled.label`
+  color: ${props => props.theme.colors.statsRecovered};
+`;
+
+export const CardBoxStatsSuspect = styled.label`
+  color: ${props => props.theme.colors.statsSuspect};
+`;
+
+export const CardBoxStatsDeath = styled.label`
+  color: ${props => props.theme.colors.statsDeath};
 `;
 
 export const Style = {
-    CardBoxStyle,
-    CardBoxStatsDefault,
-    Title
+  CardBoxStyle,
+  CardBoxStatsDefault,
+  CardBoxStatsConfirmed,
+  CardBoxStatsRecovered,
+  CardBoxStatsSuspect,
+  CardBoxStatsDeath,
+  Title
 };
