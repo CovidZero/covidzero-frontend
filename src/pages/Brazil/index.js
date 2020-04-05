@@ -49,9 +49,6 @@ const Brazil = () => {
     )()
   }, [])
 
-
-
-
   return (
     <>
       <Header title={t("header.map")} />
