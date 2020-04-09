@@ -23,7 +23,7 @@ const News1 = props => {
         rightIcon={Notification}
       />
       <Content>
-        <Title>CovidZero - Universidade de Oxford recruta para testes de vacina criada para erradicar o COVID-19</Title>
+        <Title>Universidade de Oxford recruta para testes de vacina criada para erradicar o COVID-19</Title>
         <Grid className="news-item-header">
           <Row>
             <Cell desktopColumns={12} tabletColumns={8} phoneColumns={4}>

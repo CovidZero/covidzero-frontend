@@ -23,7 +23,7 @@ const News3 = props => {
         rightIcon={Notification}
       />
       <Content>
-        <Title>CovidZero - Por trás do relatório que pôs os EUA e o Reino Unido em ação contra o vírus COVID-19</Title>
+        <Title>Por trás do relatório que pôs os EUA e o Reino Unido em ação contra o vírus COVID-19</Title>
         <Grid className="news-item-header">
           <Row>
             <Cell desktopColumns={12} tabletColumns={8} phoneColumns={4}>

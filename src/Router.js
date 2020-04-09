@@ -8,6 +8,9 @@ import News from "./pages/News";
 import News1 from "./pages/News/News1";
 import News2 from "./pages/News/News2";
 import News3 from "./pages/News/News3";
+import News4 from "./pages/News/News4";
+import News5 from "./pages/News/News5";
+import News6 from "./pages/News/News6";
 import UiKit from "./pages/UiKit";
 
 export default function Routes() {
@@ -25,6 +28,10 @@ export default function Routes() {
       <Route path="/news/Universidade_de_Oxford_recruta_para_testes_de_vacina_criada_para_erradicar_o_COVID-19" exact component={News1} />
       <Route path="/news/Diretor-Geral_da_OMS_apela_ao_G20_para_combater_unir_e_inflamar_o_COVID-19" exact component={News2} />
       <Route path="/news/Por_trás_do_relatório_que_pôs_os_EUA_e_o_Reino_Unido_em_ação_contra_o_vírus_COVID-19" exact component={News3} />
+      <Route path="/news/projeto_de_ventilador_recebe_sinal_verde_do_governo_do_Reino Unido_para_avançar_à_próxima_etapa_dos_testes" exact component={News4} />
+      <Route path="/news/medidas_básicas_de_proteção_contra_o_novo_coronavírus" exact component={News5} />
+      <Route path="/news/Revelando_a_origem_e_transmissão_do_COVID-19" exact component={News6} />
+
       <Route path="/" component={() => <h1>Desculpe, um erro ocorreu. Estaremos verificando o que aconteceu.</h1>} />
     </Switch>
   );
