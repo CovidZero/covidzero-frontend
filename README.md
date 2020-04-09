@@ -209,3 +209,13 @@ Acessando a rota **/uikit** temos a implementação de cada componente.
 
 Adicionado ao projeto o grid layout utilizando o projeto [React Layout Grid](https://github.com/material-components/material-components-web-react/tree/master/packages/layout-grid).
 
+## Variáveis de ambiente
+
+Para que o mapa da aba **Sua Área** funcione localmente crie um arquivo `.env` na raiz do projeto seguindo o arquivo `.env.example` e adicione a sua chave do **Google Maps**.
+
+Ex:
+
+```env
+REACT_APP_GMAP_KEY=1234567890
+```
+
