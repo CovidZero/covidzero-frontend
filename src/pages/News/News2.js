@@ -23,7 +23,7 @@ const News2 = props => {
         rightIcon={Notification}
       />
       <Content>
-        <Title>CovidZero - Diretor-Geral da OMS apela ao G20 para combater, unir e inflamar o COVID-19</Title>
+        <Title>Diretor-Geral da OMS apela ao G20 para combater, unir e inflamar o COVID-19</Title>
         <Grid className="news-item-header">
           <Row>
             <Cell desktopColumns={12} tabletColumns={8} phoneColumns={4}>
