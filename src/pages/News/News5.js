@@ -30,7 +30,7 @@ const News5 = props => {
               <div className="news-item-header-image">
                 <img
                   className="news-item-image"
-                  src={require("~/assets/images/medidas_básicas_de_proteção_contra_o_novo_coronavírus.jpg")}
+                  src={require("~/assets/images/medidas_basicas_de_protecao_contra_o_novo_coronavirus.jpg")}
                 />
                 <div className="news-item-title">Medidas básicas de proteção contra o novo coronavírus</div>
               </div>

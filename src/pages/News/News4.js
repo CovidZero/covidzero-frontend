@@ -30,7 +30,7 @@ const News4 = props => {
               <div className="news-item-header-image">
                 <img
                   className="news-item-image"
-                  src={require("~/assets/images/projeto_de_ventilador_recebe_sinal_verde_do_governo_do_Reino Unido_para_avançar_à_próxima_etapa_dos_testes.jpg")}
+                  src={require("~/assets/images/projeto_de_ventilador_recebe_sinal_verde_do_governo_do_Reino_Unido_para_avancar_a_proxima_etapa_dos_testes.jpg")}
                 />
                 <div className="news-item-title">Projeto de ventilador recebe sinal verde do governo do Reino Unido para avançar à próxima etapa dos testes</div>
               </div>

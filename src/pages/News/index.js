@@ -32,7 +32,7 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
-           <a href="/news/Revelando_a_origem_e_transmissão_do_COVID-19">
+           <a href="/news/Revelando_a_origem_e_transmissao_do_COVID-19">
             <CardNews
               title="Revelando a origem e transmissão do COVID-19"
               content={<p>O novo coronavírus infectou milhares de pessoas na China desde dezembro de 2019, aumentando uma preocupação global de saúde pública. Estudos recentes (Huang et al., Chan et al. e Zhou et al.) forneceram informações oportunas sobre sua origem e capacidade de se espalhar entre os seres humanos, informando a prevenção de infecções e práticas de controle.</p>}
@@ -46,7 +46,7 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
-           <a href="/news/medidas_básicas_de_proteção_contra_o_novo_coronavírus">
+           <a href="/news/medidas_basicas_de_protecao_contra_o_novo_coronavirus">
             <CardNews
               title="Medidas básicas de proteção contra o novo coronavírus"
               content={<p>Fique atento às últimas informações sobre o surto de COVID-19, disponíveis no site da OMS e através de sua autoridade nacional e local de saúde pública. A maioria das pessoas infectadas experimenta sintomas leves e se recupera, mas pode ser mais grave para outras pessoas. Cuide de sua saúde e proteja os outros fazendo o seguinte: </p>}
@@ -60,7 +60,7 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
-           <a href="/news/projeto_de_ventilador_recebe_sinal_verde_do_governo_do_Reino Unido_para_avançar_à_próxima_etapa_dos_testes">
+           <a href="/news/projeto_de_ventilador_recebe_sinal_verde_do_governo_do_Reino_Unido_para_avançar_a_proxima_etapa_dos_testes">
             <CardNews
               title="Projeto de ventilador recebe sinal verde do governo do Reino Unido para avançar à próxima etapa dos testes"
               content={<p>Uma equipe multidisciplinar de engenheiros e médicos da Universidade de Oxford e do King's College London, OxVent, foi selecionada pelo governo do Reino Unido para passar à próxima etapa de testes de segurança e usabilidade do protótipo de ventilador.</p>}
