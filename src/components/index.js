@@ -9,12 +9,12 @@ import Chips from "./Chips";
 import Switch from "./Switch";
 import Header from "./Header";
 import MapHome from "./MapHome";
-import MapCities from "./MapCities";
+import MapCities from "./MapCities"; 
 import SocialShare from "./SocialShare";
-import MapArea from "./MapArea";
-import Circle from "./Circle";
-import Marker from "./Marker";
-
+import DailyCases from "./Charts/DailyCases";
+import TotalCases from "./Charts/TotalCases";
+import RegionCases from "./Charts/RegionCases";
+import TotalDeaths from "./Charts/TotalDeaths";
 export {
   Input,
   ExpandableBox,
@@ -29,7 +29,9 @@ export {
   MapHome,
   MapCities,
   SocialShare,
-  MapArea,
-  Circle,
-  Marker
+  DailyCases,
+  TotalCases,
+  RegionCases,
+  TotalDeaths,
+ 
 };

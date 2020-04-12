@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
-import { CardStats } from "~/components";
+import { CardStats, DailyCases, TotalCases,  RegionCases, TotalDeaths} from "~/components";
 import { Header } from "~/components";
 import { MapHome } from "~/components";
 import API from "~/API";
@@ -49,9 +49,6 @@ const Brazil = () => {
     )()
   }, [])
 
-
-
-
   return (
     <>
       <Header title={t("header.map")} />
@@ -77,6 +74,26 @@ const Brazil = () => {
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
               </Cell>
             </Row>*/}
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <DailyCases title="Novos casos confirmados diários" />
+              </Cell>
+            </Row>
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <TotalCases title="Casos confirmados totais no Brasil" />
+              </Cell>
+            </Row>
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <RegionCases title="Casos confirmados por Região" />
+              </Cell>
+            </Row>
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <TotalDeaths title="Óbitos totais no Brasil" />
+              </Cell>
+            </Row>
           </Grid>
         </Styled.MobileBottomIndicators>
       </Styled.Container>
