@@ -6,6 +6,7 @@ import CardNews from "./CardNews";
 import ArticleNewsHeader from "./ArticleNewsHeader";
 import Dots from "./Dots";
 import Chips from "./Chips";
+import Circle from "./Circle";
 import Switch from "./Switch";
 import Header from "./Header";
 import MapHome from "./MapHome";
@@ -15,6 +16,8 @@ import DailyCases from "./Charts/DailyCases";
 import TotalCases from "./Charts/TotalCases";
 import RegionCases from "./Charts/RegionCases";
 import TotalDeaths from "./Charts/TotalDeaths";
+import MapArea from "./MapArea";
+import Marker from "./Marker";
 export {
   Input,
   ExpandableBox,
@@ -24,6 +27,7 @@ export {
   ArticleNewsHeader,
   Dots,
   Chips,
+  Circle,
   Switch,
   Header,
   MapHome,
@@ -33,5 +37,7 @@ export {
   TotalCases,
   RegionCases,
   TotalDeaths,
+  MapArea,
+  Marker,
  
 };

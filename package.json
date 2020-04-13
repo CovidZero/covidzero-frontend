@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
+    "google-map-react": "^1.1.7",
     "history": "^4.10.1",
     "i18next": "^19.3.3",
     "i18next-browser-languagedetector": "^4.0.2",
@@ -31,9 +32,9 @@
     "styled-components": "^5.0.1",
     "styled-icons": "^10.2.1",
     "supercluster": "^7.0.0",
-    "use-supercluster": "^0.2.6",
     "typesafe-actions": "^5.1.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "use-supercluster": "^0.2.6"
   },
   "scripts": {
     "start": "react-app-rewired start",
