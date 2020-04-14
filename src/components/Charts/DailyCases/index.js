@@ -11,10 +11,10 @@ const DailyCases = (props) => {
     const [twentyDaysAgo, setTwentyDaysAgo] = useState('');
     const [lastDayUsed, setLastDayUsed] = useState();
     let daysAgo = {};
-    const [arrayTest, setArrayTest] = useState([]);
-    const [arrayTest2, setArrayTest2] = useState([]);
-    let outroArray = [];
-    let outroArray2 = [];
+    const [arrayDM, setArrayDM] = useState([]);
+    const [arrayYMD, setArrayYMD] = useState([]);
+    let dayDM = [];
+    let dayYMD = [];
     let lastDayReturned = '';
     let lastDayReturnedFormated = '';
 
@@ -51,10 +51,14 @@ const DailyCases = (props) => {
             //retorna hoje e os ultimos 20 dias
             while(i >= 0){
                 day = moment(lastDayReturned).subtract(i, 'days');
-                outroArray2.push(moment(day).format('YYYY-MM-DD'));
-                outroArray.push(moment(day._d).format('l').split('/').reverse().slice(1).join('/'));
-                setArrayTest(outroArray);
-                setArrayTest2(outroArray2);
+
+                //coloca no array o dia no formato da api y-m-d
+                dayYMD.push(moment(day).format('YYYY-MM-DD'));
+
+                //coloca no array o dia no formato dd/m
+                dayDM.push(moment(day._d).format('l').split('/').reverse().slice(1).join('/'));
+                setArrayDM(dayDM);
+                setArrayYMD(dayYMD);
                 i--;
             };
 
@@ -72,8 +76,8 @@ const DailyCases = (props) => {
     
     console.log(lastDayUsed);
     console.log(twentyDaysAgo);
-    console.log(arrayTest);
-    console.log(arrayTest2);
+    console.log(arrayDM);
+    console.log(arrayYMD);
  
     const data = {
         labels: ['01/4', '02/4', '03/4', '04/4', '05/4', '06/4', '07/4', '08/4', '09/4', '10/4'],
