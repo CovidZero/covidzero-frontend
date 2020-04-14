@@ -13,6 +13,8 @@ const Dots = (props) => {
                     return <Style.DotSuspect theme={props.theme} />;
                 case "you":
                     return <Style.DotYou theme={props.theme} />;
+                case "hidden":
+                    return <Style.DotHidden theme={props.theme} />;
                 default:
                     return <Style.DotDefault theme={props.theme} />;
             }

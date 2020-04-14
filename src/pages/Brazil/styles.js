@@ -62,3 +62,52 @@ export const MobileBottomIndicators = styled.div`
       width: 100%;
   }
 `;
+
+export const ContainerChips = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+
+  /* iPhone/iPad */
+  @media only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 568px) {
+      /*max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;*/
+      justify-content: space-between;
+      font-size: 0.54em;
+  }
+
+  @media only screen
+  and (min-width: 360px)
+  and (max-width: 640px) {
+    /*max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;*/
+    justify-content: space-between;
+    font-size: 0.6em;
+  }
+`;
+
+export const ContainerDiv = styled.div`
+    background: #282731;
+    color: #fff;
+    font-size: 1em;
+    padding: 8px 16px;
+    margin: 0 5px;
+    line-height: 18px;
+    border-radius: 8px;
+    display: flex;
+    min-height: 10px;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+
+    @media only screen
+      and (min-device-width: 320px)
+      and (max-device-width: 568px) {
+        width: 100%;
+        justify-content: center;
+      }
+`;

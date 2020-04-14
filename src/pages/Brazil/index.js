@@ -8,9 +8,11 @@ import * as Styled from "./styles.js";
 import { CardStats } from "~/components";
 import { Header } from "~/components";
 import { MapHome } from "~/components";
+import { Chips } from "~/components";
 import API from "~/API";
 
 const Brazil = () => {
+  const now = new Date();
   const [t] = useTranslation();
   const [content, setContent] = useState("");
   const initalCases = {
@@ -49,12 +51,16 @@ const Brazil = () => {
     )()
   }, [])
 
-
-
-
   return (
     <>
       <Header title={t("header.map")} />
+
+      <Styled.ContainerChips>
+        <Chips height="10" type="confirmed" text="Confirmados" />
+        <Chips height="10" text="Óbitos" />
+        {/*<Chips height="10" type="hidden" text="Atualizado em: " lastUpdate={now.getHours()+':'+now.getMinutes()} />*/}
+        <Styled.ContainerDiv>Atualizado as: 18:30</Styled.ContainerDiv>
+      </Styled.ContainerChips>
 
       <Styled.Container>
         <Styled.ContainerMap className="box-map">
