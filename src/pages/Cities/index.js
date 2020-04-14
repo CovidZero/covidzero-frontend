@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Cell, Grid, Row } from "@material/react-layout-grid";
@@ -20,16 +20,21 @@ import Loading from "~/components/Loading/index.js";
 
 import { findCitiesCases, findStatesCases } from "~/store/ducks/cities/actions";
 
+import BrUF from "~assets/data/brazil-states.json";
+
 const Cities = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
 
   const { cities, loadingCities, states, loadingState } = useSelector(
-    state => state.citiesReducer
+    state => getCitiesStates(state.citiesReducer)
+    
   );
 
+ 
   const [content, setContent] = useState("");
   const [filter, setFilter] = useState("");
+ 
 
   const citiesByFilter = () => {
     return !!filter
@@ -41,9 +46,46 @@ const Cities = () => {
     return lowerCase(deburr(text));
   }
 
+
+  
+
+  function  getCitiesStates(state) { 
+     
+       let   cityCases = [];
+
+
+       if(Object.keys(state.cities).length>0){
+          
+          
+          const cityProp = BrUF.UF;
+
+                  
+          state.cities.map(city => { 
+                    
+                  for (let _key in cityProp) { 
+                    if (city.ibge_id.substring(0,2) === cityProp[_key].CD_GEOCUF) {
+                        let {NM_ESTADO,NM_REGIAO,NM_SIGLA} = cityProp[
+                            _key
+                        ]; 
+                        
+                        cityCases.push({...city,NM_ESTADO,NM_REGIAO,NM_SIGLA}); 
+                    }
+                }
+            }); 
+
+        } 
+
+        return {...state,'cities':cityCases};
+}
+ 
+
+   
+
   useEffect(() => {
-    dispatch(findCitiesCases());
+       dispatch(findCitiesCases()); 
+        
      }, []);
+
 
   return (
     <>
@@ -76,31 +118,37 @@ const Cities = () => {
                   <ExpandableBox
                     header={
                       <>
-                        <div style={{ marginRight: 20 }}>{city.city}</div>
+                        <div style={{ marginRight: 20 }}>{city.city}, {city.NM_SIGLA}</div>
                         <div>{city.stateCode}</div>
                         <div
                           style={{
                             color: "red",
                             marginLeft: "auto",
-                            marginRight: 30
+                            marginRight: 30, 
+                            fontSize: '15px',
+                            lineHeight: '15px',
+                            fontWeight: 'bold'
                           }}
                         >
-                          {city.totalcases}
+                          {city.totalcases.toLocaleString()}
                         </div>
                       </>
                     }
                     headerExpaned={
                       <>
-                        <div style={{ marginRight: 20 }}>{city.city}</div>
+                        <div style={{ marginRight: 20 }}>{city.city}, {city.NM_SIGLA}</div>
                         <div>{city.stateCode}</div>
                         <div
                           style={{
                             color: "red",
                             marginLeft: "auto",
-                            marginRight: 30
+                            marginRight: 30,
+                            fontSize: '15px',
+                            lineHeight: '15px',
+                            fontWeight: 'bold'
                           }}
                         >
-                          {city.totalcases}
+                          {city.totalcases.toLocaleString()}
                         </div>
                       </>
                     }
