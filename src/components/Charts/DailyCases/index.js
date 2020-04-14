@@ -1,10 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Style } from '../styles';
+import moment from 'moment';
+
+import api from '../api';
 
 import {Bar} from 'react-chartjs-2';
 import Chart from 'chart.js';
 
 const DailyCases = (props) => {
+    const [twentyDaysAgo, setTwentyDaysAgo] = useState('');
+    const [lastDayUsed, setLastDayUsed] = useState();
+    let daysAgo = {};
+    const [arrayTest, setArrayTest] = useState([]);
+    const [arrayTest2, setArrayTest2] = useState([]);
+    let outroArray = [];
+    let outroArray2 = [];
+    let lastDayReturned = '';
+    let lastDayReturnedFormated = '';
+
+    useEffect(() => {
+        async function loadCases(){
+            
+            const response = await api.get(`https://api.covidzero.com.br/data_api/v1/cases/datasus`);
+
+            const resultsData = response.data.sus_list;
+
+            const days = resultsData.map(item => {
+                console.log(item.newcases);
+                
+                //deixa data no formato dd/m
+                const formatedDate = moment(item.date).format('l').split('/').reverse().slice(1).join('/');
+                console.log(formatedDate);
+                
+                //retorna ultimo dia computado na api - consequentemente é o ultimo item retornado da chamada (pensar outra forma de pegar ele)
+                lastDayReturned = item.date;
+
+                //ultimo dia computado no formato dd/m
+                lastDayReturnedFormated = formatedDate;
+                return (item);
+            });
+
+            //seta no estado do react o ultimo dia formatado ja em dd/m
+            setLastDayUsed(lastDayReturnedFormated);
+
+            //pega o 21 dia antes do último dia retornado pela api
+            daysAgo = moment(lastDayReturned).subtract(20, 'days');
+
+            let i = 20;
+            let day = [{}];
+            //retorna hoje e os ultimos 20 dias
+            while(i >= 0){
+                day = moment(lastDayReturned).subtract(i, 'days');
+                outroArray2.push(moment(day).format('YYYY-MM-DD'));
+                outroArray.push(moment(day._d).format('l').split('/').reverse().slice(1).join('/'));
+                setArrayTest(outroArray);
+                setArrayTest2(outroArray2);
+                i--;
+            };
+
+
+
+            //seta o 21º dia antes do último no formato dd/m
+            setTwentyDaysAgo(moment(daysAgo._d).format('l').split('/').reverse().slice(1).join('/'));
+
+        }
+
+        loadCases();
+
+    }, []);
+
+    
+    console.log(lastDayUsed);
+    console.log(twentyDaysAgo);
+    console.log(arrayTest);
+    console.log(arrayTest2);
  
     const data = {
         labels: ['01/4', '02/4', '03/4', '04/4', '05/4', '06/4', '07/4', '08/4', '09/4', '10/4'],
