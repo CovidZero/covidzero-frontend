@@ -6,7 +6,27 @@ import { Header } from "~/components";
 
 export default function Area() {
   const [t] = useTranslation();
+<<<<<<< Updated upstream
   const { latitude, longitude, error } = usePosition();
+=======
+  const { latitude, longitude } = usePosition();
+
+  
+
+  const initalCases = {
+    cases: []
+  }
+  const [citiesCases, setTotalCases] = useState(initalCases)
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      const citiesCases = await API.cases.getCityCases();
+      setTotalCases(citiesCases)
+    }
+    fetchData();
+  }, []);
+>>>>>>> Stashed changes
 
   return (
     <>

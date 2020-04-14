@@ -12,7 +12,7 @@ const Dots = (props) => {
                 case "suspect":
                     return <Style.DotSuspect />;
                 case "you":
-                    return <Style.DotYou />;
+                    return <Style.DotYou {...props}/>;
                 default:
                     return <Style.DotDefault />;
             }
