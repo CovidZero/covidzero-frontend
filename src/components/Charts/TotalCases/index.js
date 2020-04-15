@@ -43,14 +43,10 @@ const TotalCases = (props) => {
 
         const newValues = daysYMD.map(day => {
             let totalNewCasesBr = responseAPI.reduce((currentTotal, item) => {
-                console.log(item.date);
-                console.log(day);
                 if(item.date == day){
                     return currentTotal + item.totalcases
                 }
-                console.log(currentTotal);
                 return currentTotal
-                
 
             }, 0);
 
