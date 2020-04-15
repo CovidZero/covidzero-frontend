@@ -26,21 +26,32 @@ const Cities = () => {
   const dispatch = useDispatch();
   const [t] = useTranslation();
 
-  const { cities, loadingCities, states, loadingState } = useSelector(
-    state => getCitiesStates(state.citiesReducer)
-    
+  const {cities, loadingCities, states, loadingState } = useSelector(
+    state => getCitiesStates(state.citiesReducer)    
   );
 
+  
  
   const [content, setContent] = useState("");
   const [filter, setFilter] = useState("");
  
+ 
 
-  const citiesByFilter = () => {
-    return !!filter
+  const citiesByFilter = () => { 
+    return !!filter                             
       ? cities.filter(item => rawText(item.city).includes(rawText(filter)))
       : cities;
   };
+
+
+  const statesByFilter = () => { 
+      return !!filter
+      ? states.filter(item => rawText(item.stateName).includes(rawText(citiesByFilter()[0] ? citiesByFilter()[0].NM_ESTADO : filter )))
+      : states;
+
+
+  };
+
 
   function rawText(text) {
     return lowerCase(deburr(text));
@@ -76,6 +87,9 @@ const Cities = () => {
         } 
 
         return {...state,'cities':cityCases};
+
+
+        
 }
  
 
@@ -83,8 +97,8 @@ const Cities = () => {
 
   useEffect(() => {
        dispatch(findCitiesCases()); 
-        
-     }, []);
+       dispatch(findStatesCases());
+  }, []);
 
  
 
@@ -111,7 +125,92 @@ const Cities = () => {
               />
             </Cell>
           </Row>
-          <p>CIDADES</p>
+           
+          <div><p>Estados</p></div>
+
+          <div className="cities-scroller states-scroller">
+            {statesByFilter().map((state, index) => (
+              <Row key={index} style={{ marginBottom: 10 }}>
+                <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}>
+                  <ExpandableBox
+                    header={
+                      <>
+                        <div style={{ marginRight: 20 }}>{state.stateName}</div>
+                         
+                        <div
+                          style={{
+                            color: "red",
+                            marginLeft: "auto",
+                            marginRight: 30, 
+                            fontSize: '15px',
+                            lineHeight: '15px',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          {state.cases.totalCases.toLocaleString()}
+                        </div>
+                      </>
+                    }
+                    headerExpaned={
+                      <>
+                        <div style={{ marginRight: 20 }}>{state.stateName}</div>
+                        
+                        <div
+                          style={{
+                            color: "red",
+                            marginLeft: "auto",
+                            marginRight: 30,
+                            fontSize: '15px',
+                            lineHeight: '15px',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          {state.cases.totalCases.toLocaleString()}
+                        </div>
+                      </>
+                    }
+                    body={
+                      <Grid style={{ padding: 0 }}>
+                        <Row>
+                          <Cell
+                            desktopColumns={6}
+                            phoneColumns={2}
+                            tabletColumns={3}
+                          >
+                            <CardStats
+                              style={{ padding: 0 }}
+                              status="confirmed"
+                              title={<div>Confirmados</div>}
+                              count={state.cases.totalCases.toLocaleString()}
+                            />
+ 
+                          </Cell>
+                          <Cell
+                            desktopColumns={6}
+                            phoneColumns={2}
+                            tabletColumns={3}
+                          >
+                             
+                            <CardStats
+                              style={{ padding: 0 }}
+                              status="death"
+                              title={<div>Óbitos</div>}
+                              count={state.cases.deaths.toLocaleString()}
+                            />
+                          </Cell>
+                        </Row>
+ 
+                      </Grid>
+                    }
+                  />
+                </Cell>
+              </Row>
+            ))}
+          </div> 
+
+         
+         <div><p>Cidades</p></div>
+           
           <div className="cities-scroller">
             {citiesByFilter().map((city, index) => (
               <Row key={index} style={{ marginBottom: 10 }}>

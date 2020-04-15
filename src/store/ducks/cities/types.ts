@@ -32,7 +32,7 @@ export interface State {
   stateName: string;
   lat: string;
   lng: string;
-  cases: Case[];
+  cases: Case;
 }
 
 /**
