@@ -99,7 +99,7 @@ const TotalDeaths = (props) => {
 
         setResponseAPI(resultsData);
 
-        const lastItem = resultsData.pop();
+        const lastItem = resultsData[resultsData.length - 1];
 
         const lastItemFormated = moment(lastItem.date).format('l').split('/').reverse().slice(1).join('/');
 

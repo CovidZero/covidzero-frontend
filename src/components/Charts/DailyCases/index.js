@@ -49,6 +49,7 @@ const DailyCases = (props) => {
         const newValues = daysYMD.map(day => {
             let totalNewCases = responseAPI.reduce((currentTotal, item) => {
                 if(item.date == day){
+                    
                     return currentTotal + item.newcases
                 }
                 return currentTotal
@@ -90,7 +91,7 @@ const DailyCases = (props) => {
 
         setResponseAPI(resultsData);
 
-        const lastItem = resultsData.pop();
+        const lastItem = resultsData[resultsData.length - 1];
 
         const lastItemFormated = moment(lastItem.date).format('l').split('/').reverse().slice(1).join('/');
 
