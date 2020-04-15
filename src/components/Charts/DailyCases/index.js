@@ -38,12 +38,12 @@ const DailyCases = (props) => {
         for(let index = 0; index <= maxDays; index++){
             //pega o "i" dia antes do último retornado pela api 
             let day = moment(lastDay).subtract(index, 'days');
-
             //coloca no array o dia no formato da api y-m-d
             daysYMD.push(moment(day).format('YYYY-MM-DD'));
-
+            
             //coloca no array o dia no formato dd/m
             daysMD.push(moment(day._d).format('l').split('/').reverse().slice(1).join('/'));
+            
         }
 
         const newValues = daysYMD.map(day => {
