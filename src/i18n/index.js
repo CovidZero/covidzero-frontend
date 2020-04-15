@@ -5,7 +5,8 @@ import Backend from "i18next-xhr-backend";
 
 import LanguageDetector from "i18next-browser-languagedetector";
 
-const Languages = ["pt", "en"];
+export const Languages = [{ label: "Português", value: "pt" }, { label: "English", value: "en"}]
+
 const debugging = process.env.NODE_ENV === "development";
 i18n
   .use(Backend)
@@ -14,7 +15,7 @@ i18n
   .init({
     fallbackLng: "pt",
     debug: debugging,
-    whitelist: Languages,
+    whitelist: Languages.map(({ value }) => value),
 
     interpolation: {
       escapeValue: false

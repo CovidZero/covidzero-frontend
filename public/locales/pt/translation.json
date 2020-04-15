@@ -18,5 +18,10 @@
     "help": "Ajuda",
     "news": "Conteúdos relevantes"
   },
+  "pages": {
+    "confirmed": "Confirmados",
+    "deaths": "Óbitos",
+    "updatedAt": "Atualizado as"
+  },
   "searchGithub": "Pesquisar suas informações do Github"
 }
