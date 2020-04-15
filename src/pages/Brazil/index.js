@@ -46,6 +46,7 @@ const Brazil = () => {
   useEffect(() => {
     (async () => {
       const stateCases = await API.cases.getStatesCases();
+      console.log('casos',stateCases)
       setTotalCases(sumStateCases(stateCases))
     }
     )()
@@ -56,10 +57,10 @@ const Brazil = () => {
       <Header title={t("header.map")} />
 
       <Styled.ContainerChips>
-        <Chips height="10" type="confirmed" text="Confirmados" />
-        <Chips height="10" text="Óbitos" />
+        <Chips height="10" type="confirmed" text={t('pages.confirmed')} />
+        <Chips height="10" text={t('pages.deaths')} />
         {/*<Chips height="10" type="hidden" text="Atualizado em: " lastUpdate={now.getHours()+':'+now.getMinutes()} />*/}
-        <Styled.ContainerDiv>Atualizado as: 18:30</Styled.ContainerDiv>
+        <Styled.ContainerDiv>{t('pages.updatedAt')}: 18:30</Styled.ContainerDiv>
       </Styled.ContainerChips>
 
       <Styled.Container>
@@ -72,10 +73,10 @@ const Brazil = () => {
           <Grid>
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="confirmed" title="Confirmados" count={totalCases.confirmed.toLocaleString()} />
+                <CardStats status="confirmed" title={t('pages.confirmed')} count={totalCases.confirmed.toLocaleString()} />
               </Cell>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="death" title="Óbitos" count={totalCases.deaths.toLocaleString()} />
+                <CardStats status="death" title={t('pages.deaths')} count={totalCases.deaths.toLocaleString()} />
               </Cell>
             </Row>
             {/*<Row>

@@ -42,3 +42,34 @@ export const LeftIcon = styled(Icon)`
     display: none;
   }
 `;
+
+export const AlignRight = styled.div`
+  display: flex;
+  > * {
+    margin: 0 10px;
+  }
+`;
+
+export const SelectContainer = styled.div`
+  min-width: 100px;
+  min-height: 28px;
+  select {
+      width: 100%;
+      display: block;
+      background: none;
+      color: #fff;
+      font-size: 16px;
+      appearance: none;
+      border: 1px solid #fff;
+      padding: 5px 25px 5px 10px;
+    }
+    svg {
+      position: absolute;
+      right: 33px;
+      top: 30px;
+
+      @media all and (max-width: 600px) {
+        top: 16px;
+      }
+    }
+`;

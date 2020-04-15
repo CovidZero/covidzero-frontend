@@ -1,22 +1,27 @@
 {
-  "title": "Testando o store do Redux",
+  "title": "Testing the Redux store",
   "buttons": {
-    "1": "Diminuir",
-    "2": "Adicionar"
+    "1": "Decrease",
+    "2": "Add"
   },
   "menu": {
-    "map": "Brasil",
-    "cities": "Cidades",
-    "area": "Sua área",
-    "help": "Ajuda",
-    "news": "Conteúdos"
+    "map": "Brazil",
+    "cities": "Cities",
+    "area": "You area",
+    "help": "Help",
+    "news": "News"
   },
   "header": {
-    "map": "Brasil em tempo real",
-    "cities": "Cidades",
-    "area": "Sua área",
-    "help": "Ajuda",
-    "news": "Conteúdos"
+    "map": "Brazil in real time",
+    "cities": "Cities",
+    "area": "You area",
+    "help": "Help",
+    "news": "News"
   },
-  "searchGithub": "Pesquisar suas informações do Github"
+  "pages": {
+    "confirmed": "Confirmed",
+    "deaths": "Deaths",
+    "updatedAt": "Updated at"
+  },
+  "searchGithub": "Search your Github information"
 }

@@ -69,6 +69,7 @@ const Sidebar = props => {
               className={`nav-link ${route.path === pathname && "-active"}`}
             >
               {route.icon}
+              {console.log(t(route.title))}
               <span className="link-text">{t(route.title)}</span>
             </Link>
           </li>
