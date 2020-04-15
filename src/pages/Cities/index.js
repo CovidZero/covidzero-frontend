@@ -91,7 +91,7 @@ const Cities = () => {
   return (
     <>
       <Loading spinning={loadingCities || loadingState} />
-      <Header title={t("header.map")} />
+      <Header title={t("header.cities")} />
 
       <Styled.Container>
         <Styled.ContainerMap>
