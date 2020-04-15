@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.covidzero.app",
+               "sha256_cert_fingerprints": ["BB:EC:7C:BB:3E:7C:46:8B:ED:46:4F:FA:AF:CD:0E:01:66:98:20:E2:FB:AB:06:E8:AB:F4:ED:42:5A:77:26:F1"] }
+}]
