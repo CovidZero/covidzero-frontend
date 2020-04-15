@@ -41,13 +41,13 @@ export const ContainerMap = styled.div`
 
 export const MobileBottomIndicators = styled.div`
   @media (max-width: 600px) {
-    position: absolute;
+    position: relative;
     bottom: 9vh;
     width: 100%;
   }
 
   @media screen and (device-width: 768px) {
-    position: absolute;
+    position: relative;
     width: 90%;
   }
 
@@ -57,7 +57,7 @@ export const MobileBottomIndicators = styled.div`
     and (min-device-width: 1024px)
     and (max-device-width: 1366px)
     and (-webkit-min-device-pixel-ratio: 2) {
-      position: absolute;
+      position: relative;
       bottom: 9vh;
       width: 100%;
   }
