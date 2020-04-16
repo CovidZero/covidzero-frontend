@@ -17,14 +17,14 @@ export default function News() {
       <Header title={t("header.news")} rightIcon={Notification} />
 
       <Grid>
-        <Row>
+      {/*  <Row>
           <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
             <Styled.DivTitle>
               <Styled.PageTitle>Conteúdos relevantes</Styled.PageTitle>
               <hr />
             </Styled.DivTitle>
           </Cell>
-        </Row>
+        </Row> */}  
 
         <Row>
           <Cell
