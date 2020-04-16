@@ -6,17 +6,17 @@
   },
   "menu": {
     "map": "Brasil",
-    "cities": "Cidades",
+    "cities": "Regiões",
     "area": "Sua área",
     "help": "Ajuda",
     "news": "Conteúdos"
   },
   "header": {
     "map": "Brasil em tempo real",
-    "cities": "Cidades",
+    "cities": "Estados e Cidades",
     "area": "Sua área",
     "help": "Ajuda",
-    "news": "Conteúdos"
+    "news": "Conteúdos relevantes"
   },
   "searchGithub": "Pesquisar suas informações do Github"
 }

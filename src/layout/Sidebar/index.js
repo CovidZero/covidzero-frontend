@@ -15,6 +15,8 @@ import { ReactComponent as AreaActive } from "~assets/icons/area-active.svg";
 import { ReactComponent as Help } from "~assets/icons/help.svg";
 import { ReactComponent as HelpActive } from "~assets/icons/help-active.svg";
 import { ReactComponent as SmallLogo } from "~/assets/icons/small-log.svg";
+import { ReactComponent as AboutActive } from "~assets/icons/about-active.svg";
+import { ReactComponent as About } from "~/assets/icons/about.svg";
 
 const Sidebar = props => {
   const { pathname } = props.location;
@@ -48,6 +50,14 @@ const Sidebar = props => {
     }
   ];
 
+  const routeStaticAbout = [
+    {
+      title: "Sobre",
+      path: "https://covidzero.com.br/sobre/",
+      icon: pathname === "https://covidzero.com.br/sobre/" ? <AboutActive /> : <About />
+    }
+  ];
+
   return (
 
     <nav className="navbar">
@@ -71,6 +81,18 @@ const Sidebar = props => {
               {route.icon}
               <span className="link-text">{t(route.title)}</span>
             </Link>
+          </li>
+        ))}
+
+        {routeStaticAbout.map(route => (
+          <li key={route.title} className="nav-item">
+            <a
+              href={route.path}
+              className={`nav-link ${route.path === pathname && "-active"}`}
+            >
+              {route.icon}
+              <span className="link-text">{t(route.title)}</span>
+            </a>
           </li>
         ))}
       </ul>

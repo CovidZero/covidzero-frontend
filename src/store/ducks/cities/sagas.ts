@@ -2,7 +2,7 @@ import { put } from "redux-saga/effects";
 import http from "~/utils/config/http";
 import { orderBy } from "lodash";
 
-import { City } from "./types";
+import { City,State } from "./types";
 import { setAllCases, setCitiesCases, setStatesCases } from "./actions";
 
 export function* findAllCases() {
@@ -30,8 +30,13 @@ export function* findCitiesCases() {
 
 export function* findStatesCases() {
   try {
-    const resp = yield http.get("/cases/state");
-    yield put(setStatesCases(resp.data));
+    const resp = yield http.get("/cases/state");    
+    const states = orderBy(
+      resp.data,
+      [(state: State) => state.cases.totalCases],
+      ["desc"]       
+    );
+    yield put(setStatesCases(states));
   } catch (error) {
     yield put(setStatesCases([]));
   }

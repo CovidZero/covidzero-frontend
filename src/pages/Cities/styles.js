@@ -8,7 +8,7 @@ export const Container = styled.section`
     display: flex;
     flex-flow: row-reverse;
     p {
-      display: none;
+      display: block;
     }
   }
   @media (max-width: 840px) {
@@ -26,7 +26,7 @@ export const ContainerMap = styled.div`
     margin-top: 2%;
   }
   @media (max-width: 840px) {
-    display: none;
+    display: block;
   }
 
    svg {

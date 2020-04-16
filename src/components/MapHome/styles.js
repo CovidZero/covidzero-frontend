@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MapControl = styled.div`
     right: 0.5rem;
-    top: 3.5rem;
+    top: 6rem;
     position: absolute;
     display: flex;
     justify-content: flex-start;
@@ -16,7 +16,7 @@ export const MapControl = styled.div`
 
     @media all and (min-width: 600px) {
       right: 0.5rem;
-      top: 5.5rem;
+      top: 8rem;
     }
 
     @media all and (min-width: 768px) {
