@@ -21,6 +21,7 @@ import Loading from "~/components/Loading/index.js";
 import { findCitiesCases, findStatesCases } from "~/store/ducks/cities/actions";
 
 import BrUF from "~assets/data/brazil-states.json";
+import API from "~/API";
 
 const Cities = () => {
   const dispatch = useDispatch();
@@ -34,24 +35,53 @@ const Cities = () => {
  
   const [content, setContent] = useState("");
   const [filter, setFilter] = useState("");
+
+  const [getCases, setCases] = useState({UfCases:[],cityCases:[]})
+  const [getStadeCases, setStateCases] = useState([])
+
+  const [loadingStatus, setloadingStatus] = useState(true)
+
+    
  
  
 
   const citiesByFilter = () => { 
-    return !!filter                             
-      ? cities.filter(item => rawText(item.city).includes(rawText(filter)))
-      : cities;
+ 
+    
+    let cityCases =!!filter                             
+                    ? getCases.cityCases.filter(item => rawText(item.city).includes(rawText(filter)))
+                    : getCases.cityCases;
+
+                
+      return {cityCases:cityCases,stateCases:getState(cityCases)};
+ 
   };
+
+
+
+  function getState(cases){
+        let cityIdentifiers = []
+
+        Object.values(cases).map((elem,) => { cityIdentifiers[elem.NM_SIGLA]=elem;})
+
+       return Object.values(cityIdentifiers);
+  }
 
 
   const statesByFilter = () => { 
-      return !!filter
-      ? states.filter(item => rawText(item.stateName).includes(rawText(citiesByFilter()[0] ? citiesByFilter()[0].NM_ESTADO : filter )))
-      : states;
+      
+      /*return !!filter
+      ? getCases.UfCases.filter(item => rawText(item.NM_ESTADO).includes(rawText( filter )))
+      : getCases.UfCases; */
 
-
+      return [];
+ 
   };
 
+   
+
+  
+  
 
   function rawText(text) {
     return lowerCase(deburr(text));
@@ -63,10 +93,11 @@ const Cities = () => {
   function  getCitiesStates(state) { 
      
        let   cityCases = [];
+       let   UfCases = [];
 
 
        if(Object.keys(state.cities).length>0){
-          
+ 
           
           const cityProp = BrUF.UF;
 
@@ -74,44 +105,78 @@ const Cities = () => {
           state.cities.map(city => { 
                     
                   for (let _key in cityProp) { 
-                    if (city.ibge_id.substring(0,2) === cityProp[_key].CD_GEOCUF) {
+                    if(city.ibge_id.substring(0,2) === cityProp[_key].CD_GEOCUF) {
                         let {NM_ESTADO,NM_REGIAO,NM_SIGLA} = cityProp[
                             _key
                         ]; 
-                        
-                        cityCases.push({...city,NM_ESTADO,NM_REGIAO,NM_SIGLA}); 
+
+                        const {cases: UF_CASES} = state.states.find(
+                          ({ stateCode }) => stateCode === NM_SIGLA
+                        ); 
+
+                         
+
+                        cityCases.push({...city,NM_ESTADO,NM_REGIAO,NM_SIGLA,UF_CASES}); 
                     }
                 }
             }); 
 
-        } 
 
-        return {...state,'cities':cityCases};
+             
 
+              cityCases= cityCases.sort(function(a, b) {
+                      return  b.totalcases-a.totalcases;
+              });
+        }  
+     
 
+     
+ 
+
+         
         
+
+      return {cityCases};
+ 
+        //return {...state,'cities':cityCases}; 
 }
  
 
    
 
-  useEffect(() => {
-       dispatch(findCitiesCases()); 
-       dispatch(findStatesCases());
-  }, []);
+  /*useEffect(() => {
+       //dispatch(findCitiesCases()); 
+       //dispatch(findStatesCases());
+  }, []);*/
 
+  useEffect(() => {
+    (async () => {
+      const cityCases = await API.cases.getCityCases();
+      const stateCases = await API.cases.getStatesCases();
+      let cases={
+                cities:cityCases.cases,
+                states:stateCases
+      }
+
+      setCases(getCitiesStates(cases));
+
+      setloadingStatus(false);
+      
+    }
+    )()
+  }, [])
  
 
   return (
     <>
-      <Loading spinning={loadingCities || loadingState} />
+      <Loading spinning={loadingStatus} />
       <Header title={t("header.map")} />
 
       <Styled.Container>
         <Styled.ContainerMap>
           <MapCities
             setTooltipContent={setContent}
-            citiesCases={cities}
+            citiesCases={getCases.cityCases}
           />
           <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>
@@ -119,8 +184,7 @@ const Cities = () => {
           <Row style={{ marginBottom: 20 }}>
             <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}>
               <Input
-                placeholder="Digite aqui"
-                value={filter}
+                placeholder="Digite aqui" 
                 onChange={e => setFilter(e.target.value)}
               />
             </Cell>
@@ -129,13 +193,15 @@ const Cities = () => {
           <div><p>Estados</p></div>
 
           <div className="cities-scroller states-scroller">
-            {statesByFilter().map((state, index) => (
+            {citiesByFilter().stateCases.map((state, index) => (
+                 
+
               <Row key={index} style={{ marginBottom: 10 }}>
                 <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}>
                   <ExpandableBox
                     header={
                       <>
-                        <div style={{ marginRight: 20 }}>{state.stateName}</div>
+                        <div style={{ marginRight: 20 }}>{state.NM_ESTADO}</div>
                          
                         <div
                           style={{
@@ -147,13 +213,13 @@ const Cities = () => {
                             fontWeight: 'bold'
                           }}
                         >
-                          {state.cases.totalCases.toLocaleString()}
+                          {state.UF_CASES.confirmed.toLocaleString()}
                         </div>
                       </>
                     }
                     headerExpaned={
                       <>
-                        <div style={{ marginRight: 20 }}>{state.stateName}</div>
+                        <div style={{ marginRight: 20 }}>{state.NM_ESTADO}</div>
                         
                         <div
                           style={{
@@ -165,7 +231,7 @@ const Cities = () => {
                             fontWeight: 'bold'
                           }}
                         >
-                          {state.cases.totalCases.toLocaleString()}
+                          {state.UF_CASES.confirmed.toLocaleString()}
                         </div>
                       </>
                     }
@@ -181,7 +247,7 @@ const Cities = () => {
                               style={{ padding: 0 }}
                               status="confirmed"
                               title={<div>Confirmados</div>}
-                              count={state.cases.totalCases.toLocaleString()}
+                              count={state.UF_CASES.confirmed.toLocaleString()}
                             />
  
                           </Cell>
@@ -195,7 +261,7 @@ const Cities = () => {
                               style={{ padding: 0 }}
                               status="death"
                               title={<div>Óbitos</div>}
-                              count={state.cases.deaths.toLocaleString()}
+                              count={state.UF_CASES.deaths.toLocaleString()}
                             />
                           </Cell>
                         </Row>
@@ -206,78 +272,78 @@ const Cities = () => {
                 </Cell>
               </Row>
             ))}
-          </div> 
+                  </div> 
 
          
-         <div><p>Cidades</p></div>
+                  <div><p>Cidades</p></div>
            
-          <div className="cities-scroller">
-            {citiesByFilter().map((city, index) => (
-              <Row key={index} style={{ marginBottom: 10 }}>
-                <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}>
-                  <ExpandableBox
-                    header={
-                      <>
-                        <div style={{ marginRight: 20 }}>{city.city}, {city.NM_SIGLA}</div>
-                        <div>{city.stateCode}</div>
-                        <div
-                          style={{
-                            color: "red",
-                            marginLeft: "auto",
-                            marginRight: 30, 
-                            fontSize: '15px',
-                            lineHeight: '15px',
-                            fontWeight: 'bold'
-                          }}
-                        >
-                          {city.totalcases.toLocaleString()}
-                        </div>
-                      </>
-                    }
-                    headerExpaned={
-                      <>
-                        <div style={{ marginRight: 20 }}>{city.city}, {city.NM_SIGLA}</div>
-                        <div>{city.stateCode}</div>
-                        <div
-                          style={{
-                            color: "red",
-                            marginLeft: "auto",
-                            marginRight: 30,
-                            fontSize: '15px',
-                            lineHeight: '15px',
-                            fontWeight: 'bold'
-                          }}
-                        >
-                          {city.totalcases.toLocaleString()}
-                        </div>
-                      </>
-                    }
-                    body={
-                      <Grid style={{ padding: 0 }}>
-                        <Row>
-                          <Cell
-                            desktopColumns={6}
-                            phoneColumns={2}
-                            tabletColumns={3}
-                          >
-                            <CardStats
-                              style={{ padding: 0 }}
-                              status="confirmed"
-                              title={<div>Confirmados</div>}
-                              count={city.totalcases}
-                            />
-                          </Cell>
-                         
-                        </Row>
-                      </Grid>
-                    }
-                  />
-                </Cell>
-              </Row>
-            ))}
-          </div>
+           <div className="cities-scroller">
+             {citiesByFilter().cityCases.slice(0,15).map((city, index) => (
+               <Row key={index} style={{ marginBottom: 10 }}>
+                 <Cell desktopColumns={12} phoneColumns={4} tabletColumns={8}>
+                   <ExpandableBox
+                     header={
+                       <>
+                         <div style={{ marginRight: 20 }}>{city.city}, {city.NM_SIGLA}</div>
+                         <div>{city.stateCode}</div>
+                         <div
+                           style={{
+                             color: "red",
+                             marginLeft: "auto",
+                             marginRight: 30, 
+                             fontSize: '15px',
+                             lineHeight: '15px',
+                             fontWeight: 'bold'
+                           }}
+                         >
+                           {city.totalcases.toLocaleString()}
+                         </div>
+                       </>
+                     }
+                     headerExpaned={
+                       <>
+                         <div style={{ marginRight: 20 }}>{city.city}, {city.NM_SIGLA}</div>
+                         <div>{city.stateCode}</div>
+                         <div
+                           style={{
+                             color: "red",
+                             marginLeft: "auto",
+                             marginRight: 30,
+                             fontSize: '15px',
+                             lineHeight: '15px',
+                             fontWeight: 'bold'
+                           }}
+                         >
+                           {city.totalcases.toLocaleString()}
+                         </div>
+                       </>
+                     }
+                     body={
+                       <Grid style={{ padding: 0 }}>
+                         <Row>
+                           <Cell
+                             desktopColumns={6}
+                             phoneColumns={2}
+                             tabletColumns={3}
+                           >
+                             <CardStats
+                               style={{ padding: 0 }}
+                               status="confirmed"
+                               title={<div>Confirmados</div>}
+                               count={city.totalcases}
+                             />
+                           </Cell>
+                          
+                         </Row>
+                       </Grid>
+                     }
+                   />
+                 </Cell>
+               </Row>
+             ))}
+           </div>
         </Grid>
-      </Styled.Container>
+                  </Styled.Container> 
     </>
   );
 };
