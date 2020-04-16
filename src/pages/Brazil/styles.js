@@ -85,7 +85,7 @@ export const ContainerChips = styled.div`
     /*max-width: 90%;
     margin-left: auto;
     margin-right: auto;*/
-    justify-content: space-between;
+    justify-content: center;
     font-size: 0.6em;
   }
 `;

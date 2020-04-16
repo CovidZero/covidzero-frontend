@@ -6,8 +6,8 @@ export const ChipStyle = styled.div`
     font-size: 1em;
     padding: 8px 16px;
     margin: 0 5px;
-    line-height: 18px;
-    border-radius: ${props => props.theme.borderRadius};
+    line-height: 0px;
+    border-radius: 4px;
     display: flex;
     min-height: ${props => props.height || `47`}px;
     flex-direction: row;

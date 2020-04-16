@@ -59,7 +59,7 @@ const Brazil = () => {
         <Chips height="10" type="confirmed" text="Confirmados" />
         <Chips height="10" text="Óbitos" />
         {/*<Chips height="10" type="hidden" text="Atualizado em: " lastUpdate={now.getHours()+':'+now.getMinutes()} />*/}
-        <Styled.ContainerDiv>Atualizado as: 18:30</Styled.ContainerDiv>
+        {/*<Styled.ContainerDiv>Atualizado as: 18:30</Styled.ContainerDiv>*/}
       </Styled.ContainerChips>
 
       <Styled.Container>
