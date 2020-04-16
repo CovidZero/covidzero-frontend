@@ -25,14 +25,15 @@ const MapHome = ({ setTooltipContent, setStateCases }) => {
     { color: "#EE706E", range: [1, 10], label: "1 a 10" },
     { color: "#EE706E", range: [10, 24], label: "10 a 24" },
     { color: "#EE706E", range: [25, 49], label: "25 a 49" },
-    { color: "#EE706E", range: [50, 10000], label: "Acima de 50" }
+    { color: "#EE706E", range: [50, 80000], label: "Acima de 50" }
   ];
 
   let markerSize = [
     { size: 1, range: [1, 10] },
     { size: 2, range: [10, 24] },
     { size: 3, range: [25, 49] },
-    { size: 4, range: [50, 10000] }
+    { size: 4, range: [50, 10000] },
+    { size: 5, range: [10001, 80000] }
   ];
 
   let pointsMarker = [];
@@ -153,8 +154,8 @@ const MapHome = ({ setTooltipContent, setStateCases }) => {
                     if (ret) {
                       setTooltipContent(`
                                               <strong>Estado:</strong> ${nome} <br>
-                                              <strong>Casos:</strong> ${ret.cases.confirmed} <br>
-                                              <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
+                                              <strong>Casos:</strong> ${ret.cases.confirmed.toLocaleString()} <br>
+                                              <strong>Óbitos:</strong> ${ret.cases.deaths.toLocaleString()} <br>
                                             `);
                     }
                   }}
@@ -230,8 +231,8 @@ const MapHome = ({ setTooltipContent, setStateCases }) => {
                       if (ret) {
                         setTooltipContent(`
                                           <strong>Estado:</strong> ${ret.stateName} <br>
-                                          <strong>Casos:</strong> ${ret.cases.confirmed} <br>
-                                          <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
+                                          <strong>Casos:</strong> ${ret.cases.confirmed.toLocaleString()} <br>
+                                          <strong>Óbitos:</strong> ${ret.cases.deaths.toLocaleString()} <br>
                                         `);
                       }
                     }}
@@ -276,8 +277,8 @@ const MapHome = ({ setTooltipContent, setStateCases }) => {
                       if (ret) {
                         setTooltipContent(`
                                           <strong>Estado:</strong> ${ret.stateName} <br>
-                                          <strong>Casos:</strong> ${ret.cases.confirmed} <br>
-                                          <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
+                                          <strong>Casos:</strong> ${ret.cases.confirmed.toLocaleString()} <br>
+                                          <strong>Óbitos:</strong> ${ret.cases.deaths.toLocaleString()} <br>
                                         `);
                       }
                     }}
@@ -324,8 +325,8 @@ const MapHome = ({ setTooltipContent, setStateCases }) => {
                           if (ret) {
                             setTooltipContent(`
                                           <strong>Estado:</strong> ${ret.stateName} <br>
-                                          <strong>Casos:</strong> ${ret.cases.confirmed} <br>
-                                          <strong>Óbitos:</strong> ${ret.cases.deaths} <br>
+                                          <strong>Casos:</strong> ${ret.cases.confirmed.toLocaleString()} <br>
+                                          <strong>Óbitos:</strong> ${ret.cases.deaths.toLocaleString()} <br>
                                         `);
                           }
                         }}
