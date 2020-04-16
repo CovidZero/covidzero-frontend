@@ -31,8 +31,6 @@ const Cities = () => {
     state => getCitiesStates(state.citiesReducer)    
   );
 
-  
- 
   const [content, setContent] = useState("");
   const [filter, setFilter] = useState("");
 
@@ -40,9 +38,6 @@ const Cities = () => {
   const [getStadeCases, setStateCases] = useState([])
 
   const [loadingStatus, setloadingStatus] = useState(true)
-
-    
- 
  
 
   const citiesByFilter = () => { 
@@ -57,8 +52,7 @@ const Cities = () => {
  
   };
 
-
-
+ 
   function getState(cases){
         let cityIdentifiers = []
 
