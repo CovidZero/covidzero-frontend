@@ -20,7 +20,8 @@ const MapArea = ({ userLat, userLng, initialZoom, citiesCases, error }) => {
     const themeContext = useContext(ThemeContext);
 
     const defaultOptions = {
-        zoom: initialZoom,
+				zoom: initialZoom,
+				gestureHandling: 'greedy',
         /*limites mapa*/
         southAmericaBounds: {
             west: -103.8386805338,

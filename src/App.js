@@ -6,6 +6,8 @@ import "@material/react-layout-grid/index.scss";
 import Layout from "~/layout";
 import Routes from "./Router";
 
+import ReactGA from 'react-ga';
+
 function App() {
   const [t, i18n] = useTranslation();
 
@@ -22,4 +24,11 @@ function App() {
   );
 }
 
+function initializeReactGA() {
+  ReactGA.initialize('UA-161000549-1');
+  ReactGA.pageview('/');
+}
+
 export default App;
+
+
