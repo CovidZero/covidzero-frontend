@@ -92,3 +92,43 @@ a {
 circle{
     animation: zoominoutsinglefeatured 3s infinite ;
 }
+
+// neoron chatbot
+.rsc-header {
+  background: #FCFCFC;
+}
+
+.rsc-content {
+  background: #282731;
+  padding: 1rem;
+
+    button {
+      border-color: #FCFCFC !important;
+      color: #FCFCFC !important;
+    }
+}
+
+.rsc-ts-bubble {
+  background: #d6d6d6;
+  color: #1f1f1f;
+}
+
+.rsc-ts-user {
+  .rsc-ts-bubble {
+    background: #FFF;
+  }
+}
+
+.rsc-os-options {
+  margin: 0;
+  padding: 0;
+
+.rsc-os-option {
+  width: 100%;
+
+  button {
+    width: 100%;
+    font-weight: bold;
+  }
+}
+}
