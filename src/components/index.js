@@ -1,6 +1,7 @@
 import ExpandableBox from "./ExpandableBox";
 import Input from "./Input";
 import Button from "./Button";
+import CardDonations from "./CardDonations";
 import CardStats from "./CardStats";
 import CardNews from "./CardNews";
 import ArticleNewsHeader from "./ArticleNewsHeader";
@@ -22,6 +23,7 @@ export {
   Input,
   ExpandableBox,
   Button,
+  CardDonations,
   CardStats,
   CardNews,
   ArticleNewsHeader,

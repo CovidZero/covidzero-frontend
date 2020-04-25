@@ -47,6 +47,11 @@ const Sidebar = props => {
       title: "menu.news",
       path: "/news",
       icon: pathname === "/news" ? <NewsIconActive /> : <NewsIcon />
+    },
+    {
+      title: "menu.donations",
+      path: "/donations",
+      icon: pathname === "/donations" ? <NewsIconActive /> : <NewsIcon />
     }
   ];
 

@@ -13,6 +13,11 @@ import News5 from "./pages/News/News5";
 import News6 from "./pages/News/News6";
 import UiKit from "./pages/UiKit";
 
+import Donations from "./pages/Donations";
+import Details   from "./pages/Donations/details";
+import Checkout  from "./pages/Donations/checkoutCartao";
+
+
 export default function Routes() {
   return (
     <Switch>
@@ -21,6 +26,10 @@ export default function Routes() {
       <Route path="/area" exact component={Area} />
       {/* <Route path="/help" exact component={Help} /> */}
       <Route path="/news" exact component={News} />
+
+      <Route path="/donations"           exact component={Donations} />
+      <Route path="/donations/details"   exact component={Details} />
+      <Route path="/donations/checkout"  exact component={Checkout} />
 
       <Route path="/uikit" exact component={UiKit} />{" "}
 
