@@ -1,24 +1,69 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
+import {useParams } from "react-router-dom";
 import { useTranslation }          from "react-i18next";
 import { Cell, Grid, Row }         from "@material/react-layout-grid";
 import history                     from "~/services/history";
-import { Header,Button,CardStats } from "~/components";
+import { Header,Button,CardStats,Loading } from "~/components";
 
 import * as Styled from "./styles.js";
 
+ import API from "~/API";
 
 export default function Details() {
-    const [t] = useTranslation();
+    const [t]  = useTranslation();    
+    let { id } = useParams();
+    
+    const [loadingStatus, setloadingStatus] = useState(true)
+
+    const initalProjects = {
+      id:0,
+      name:"",
+      about:"",
+      goal:0,
+      quota_total:0,
+      quota_value:0,
+      photo:{url:false} 
+    }
+
+    
+    const [Projects, setProjects]     = useState(initalProjects)
+
+    useEffect(() => {
+      (async () => {         
+          API.donations.findProjects(id).
+             then(response =>{
+                setProjects(response);
+                setloadingStatus(false);
+          })
+            .catch(ret=> history.push("/donations"));
+
+            
+       }
+      )()
+
+    },[]);
+
+    
+
+    let formato = { minimumFractionDigits: 2 , currency: 'BRL' }
+
+    
+
+    function formatValor(_value){
+                let value =_value!=null ? _value :0;
+
+         return parseFloat(value).toLocaleString('pt-BR',formato);
+    }
+
 
   return (
     <>
+      <Loading spinning={loadingStatus} />
       <Header title={t("header.donations")} rightIcon={Notification} />
 
           <Styled.ContentImg>
-                  <img
-                    src={require("~/assets/images/donations.jpg")}
-                  />
-                  <div className="title-img">Instituto Ronald McDonald</div>
+                  {Projects.photo.url && <img src={Projects.photo.url} />}
+                  <div className="title-img">{Projects.name}</div>
          </Styled.ContentImg> 
 
          <Styled.MobContainer>
@@ -33,7 +78,7 @@ export default function Details() {
                           >
                            <CardStats 
                             title={<div>Meta</div>} 
-                            count="{quantity}"
+                            count={formatValor(Projects.goal)}
                             className="donation-stats"
                             /> 
                         </Cell>
@@ -44,7 +89,7 @@ export default function Details() {
                           >
                            <CardStats 
                             title={<div>Arrecadado</div>} 
-                            count="{quantity}"
+                            count={formatValor(Projects.quota_total)}
                             className="donation-stats"
                             /> 
                         </Cell>                        
@@ -53,8 +98,23 @@ export default function Details() {
 
 
                 <Styled.ContentText>
-                   <p>Nosso país irá vencer o COVID-19, mas precisamos da sua doação para nos mantermose e superar esse período de luta com todas as nossas crianças em tratamento protegidas.</p>
-                   <p>Nosso país irá vencer o COVID-19, mas precisamos da sua doação para nos mantermose e superar esse período de luta com todas as nossas crianças em tratamento protegidas.</p>
+                 <div class="content-placeholder"  style={loadingStatus? {display:"block"}: {display:"none"}} >
+                      <div class="animated-background  content-1"></div>
+                      <div class="animated-background  content-2"></div>
+                      <div class="animated-background  content-3"></div>
+                      <div class="animated-background  content-4"></div>
+                      <div class="animated-background  content-1"></div>
+                      <div class="animated-background  content-2"></div>
+                      <div class="animated-background  content-3"></div>
+                      <br/>
+                      <div class="animated-background  content-4"></div>
+                      <div class="animated-background  content-1"></div>
+                      <div class="animated-background  content-2"></div>
+                      <div class="animated-background  content-3"></div>
+                      <div class="animated-background  content-4"></div>                                            
+                 </div>       
+
+                   {Projects.about}
                    <p><b>Quanto  o CovidZero ganha?</b></p>
                    <p>Nada! O valor recebido é passado diretamente para a instituição escolhida e o CovidZero não recebe nenhuma doação por isso.</p>
                 </Styled.ContentText> 
@@ -62,9 +122,9 @@ export default function Details() {
                 
                 <Button 
                   styleButton='sm-light-btn'  
-                  textButton='DOE A PARTIR DE R$5'
+                  textButton={'Doe a partir de '+ formatValor(Projects.quota_value) }
                   className="full-light-btn"  
-                  onClick={() => history.push("/donations/checkout/")}                                                    
+                  onClick={() => history.push("/donations/checkout/"+Projects.id)}                                                    
                 />
 
          </Styled.MobContainer>

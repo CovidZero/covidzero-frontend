@@ -28,8 +28,8 @@ export default function Routes() {
       <Route path="/news" exact component={News} />
 
       <Route path="/donations"           exact component={Donations} />
-      <Route path="/donations/details"   exact component={Details} />
-      <Route path="/donations/checkout"  exact component={Checkout} />
+      <Route path="/donations/details/:id"   exact component={Details} />
+      <Route path="/donations/checkout/:id"  exact component={Checkout} />
 
       <Route path="/uikit" exact component={UiKit} />{" "}
 

@@ -9,6 +9,8 @@ export const Container = styled.section`
             
             > div{
                 margin:10px;
+                width: 509px;
+                
             }
     }
 
@@ -119,7 +121,52 @@ export const ContentForm = styled.div`
 
       .label{
         margin:0.5em 0;
+        font-size:14px;
       }
+
+      select{
+            background: #282731;
+            color: #fff;
+            font-size: 1em;
+            border: 1px solid #16161B;
+            border-radius: 8px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            height: 48px;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding-left: 1em;
+            padding-right: 1em;
+            width: 100%;
+      }
+`;
+
+export const ContentFormButton = styled.div`
+    width: 164px;
+    height: 64px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #2E2E32;    
+    opacity: 0.85;
+    border-radius: 4px;
+    padding:1em;
+    margin-bottom:4px;
+    font-size: 12px;
+    line-height: 18px;
+    cursor: pointer;
+
+    .icon{
+        position:absolute;
+        right:1em;
+        top:1em;
+    }
+
 `;
 
 
@@ -133,6 +180,7 @@ export const ContentFormCartao = styled.div`
 
      .label{
         margin:0.5em 0;
+        font-size:14px;
       }
 
       .form-group{
@@ -151,7 +199,5 @@ export const ContentFormCartao = styled.div`
       .form-group>div + div{
           margin-left:15px;
       }
-
-       
 
 `;

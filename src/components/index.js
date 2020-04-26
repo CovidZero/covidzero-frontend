@@ -19,6 +19,7 @@ import RegionCases from "./Charts/RegionCases";
 import TotalDeaths from "./Charts/TotalDeaths";
 import MapArea from "./MapArea";
 import Marker from "./Marker";
+import Loading from "./Loading";
 export {
   Input,
   ExpandableBox,
@@ -41,5 +42,5 @@ export {
   TotalDeaths,
   MapArea,
   Marker,
- 
+  Loading 
 };
