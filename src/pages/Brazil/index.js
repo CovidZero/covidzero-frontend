@@ -55,11 +55,6 @@ const Brazil = () => {
     <>
       <Header title={t("header.map")} />
 
-      <Styled.ContainerChips>
-        <Chips height="10" type="confirmed" text="Confirmados" />
-        <Chips height="10" text="Óbitos" />
-      </Styled.ContainerChips>
-
       <Styled.Container>
         <Styled.ContainerMap className="box-map">
           <MapBrazil

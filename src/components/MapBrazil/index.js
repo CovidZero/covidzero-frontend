@@ -12,12 +12,12 @@ import * as Styled from "./styles.js";
 const MapBrazil = ({ setStateCases, setTooltipContent }) => {
 
     const defaultOptions = {
-        zoom: 4,
+        zoom: isMobile() ? 3 : 4,
         /*limites mapa*/
         southAmericaBounds: {
-            west: -103.8386805338,
+            west: -83.8386805338,
             south: -43.054008204,
-            east: -15.3869376826,
+            east: -25.3869376826,
             north: 16.2780526563,
         },
         /*centro Brasil*/
@@ -92,7 +92,7 @@ const MapBrazil = ({ setStateCases, setTooltipContent }) => {
         // "MaxZoomStatus", "StreetViewStatus", "TransitMode", "TransitRoutePreference", "TravelMode", "UnitSystem"
         return {
             zoomControlOptions: {
-                position: maps.ControlPosition.LEFT_CENTER,
+                position: isMobile() ? maps.ControlPosition.TOP_RIGHT : maps.ControlPosition.LEFT_CENTER,
                 style: maps.ZoomControlStyle.SMALL
             },
             mapTypeControl: false,
@@ -101,7 +101,7 @@ const MapBrazil = ({ setStateCases, setTooltipContent }) => {
                 latLngBounds: defaultOptions.southAmericaBounds,
                 strictBounds: false
             },
-            minZoom: 4,
+            minZoom: 3,
             maxZoom: 16,
             styles: GoogleMapsStyle,
             draggableCursor: 'default',
@@ -110,7 +110,6 @@ const MapBrazil = ({ setStateCases, setTooltipContent }) => {
     }
 
     /* functions MapBrazil.js */
-
     let gradationColors = [
         { color: "#F4C2C2", range: [1, 300], label: "1 a 300" },
         { color: "#FF5C5C", range: [301, 600], label: "301 a 600" },
@@ -141,6 +140,10 @@ const MapBrazil = ({ setStateCases, setTooltipContent }) => {
         }
 
         return color;
+    }
+
+    function isMobile() {
+        return window.innerWidth < 950;
     }
     /* */
 

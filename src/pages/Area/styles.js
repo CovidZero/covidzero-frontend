@@ -10,7 +10,7 @@ export const ContainerMap = styled.div`
 
     /* iPhone X , XS, 11 Pro */
     @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-      height: 71vh;
+      height: 66vh;
     }
 
     /* iPhone XR, 11 */
