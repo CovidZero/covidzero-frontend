@@ -43,7 +43,7 @@ export default function DonationsService(casesBaseURL: string): DonationsProvide
                     const resp = await http.get(`${baseURL}`+"/projects/"+`${id}`);                
                     return resp.data;
                 } catch (error) {
-                    console.log('error=>', error)
+                     
                     throw (error)
                 }
 
@@ -54,7 +54,7 @@ export default function DonationsService(casesBaseURL: string): DonationsProvide
                     const resp = await http.post(`${baseURL}`+"/projects/"+`${id}`+"/donations",param);                
                     return resp.data;
                 }catch (error) {
-                    console.log('error=>', error)
+                     
                     throw (error)
                 }
 
@@ -65,8 +65,8 @@ export default function DonationsService(casesBaseURL: string): DonationsProvide
                     const resp = await http.post(`${baseURL}`+"/donation_checkout/",param);                
                     return resp.data;
                 } catch (error) {
-                    console.log('error=>', error)
-                    throw (error)
+                    
+                    throw (error.response.data)
                 }
 
             }             

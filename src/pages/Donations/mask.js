@@ -8,6 +8,16 @@ export const cpfMask = value => {
   }
 
 
+  export const cnpjMask = value => {  
+    return value
+      .replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1/$2')
+      .replace(/(\d{4})(\d)/, '$1-$2')
+      .replace(/(-\d{2})\d+?$/, '$1')
+  }
+
   export const dataMask = value => {
     return value
       .replace(/\D/g, '') 
@@ -48,4 +58,28 @@ export const cpfMask = value => {
       .replace(/(\d{4})(\d)/, '$1 $2')
       .replace(/(\d{4})(\d)/, '$1 $2')
       .replace(/(\d{4})(\d)/, '$1')
+  }
+
+  export const phoneMask = value => {  
+    return value
+      .replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '($1) $2')
+      .replace(/(\d{4})(\d)/, '$1-$2')
+      .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+      .replace(/(-\d{4})\d+?$/, '$1')
+  }
+
+
+  export const valorMask = value => {  
+           
+
+          var v = value.replace(/\D/g,'');
+              v = (v/100).toFixed(2) + '';
+              v = v.replace(".", ",");
+              v = v.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+              v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
+
+              console.log(v);
+         
+      return v;
   }

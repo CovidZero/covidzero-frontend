@@ -1,17 +1,22 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect}  from "react";
 import {useParams,  }              from "react-router-dom";
 import history                     from "~/services/history";
-import { useTranslation }         from "react-i18next";
+import { useTranslation }          from "react-i18next";
 import {
-  UnlockOutline
+  LockOutline
 } from "@styled-icons/evaicons-outline";
+import {
+  HelpCircle
+} from  "@styled-icons/boxicons-regular/HelpCircle";
 
-import { Header,Button,Input,Loading } from "~/components";
+import { Header,Button,Input,Loading,Switch } from "~/components";
 
 
 import * as Styled from "./styles.js";
-import { cpfMask,dataMask,intMask,cepMask,validadeMask,cardMask } from './mask';
+import { cpfMask,dataMask,cepMask,validadeMask,cardMask,phoneMask,valorMask,cnpjMask } from './mask';
 import API  from "~/API"; 
+
+
 
 export default function CheckoutCartao() {
     const [t] = useTranslation();
@@ -38,13 +43,16 @@ export default function CheckoutCartao() {
       cc_expiration:""
 }
 
-    const [donation,setDonation]       = useState(false) 
-    const [valueCep, setCep]           = useState("")
-    const [values, setValues]          = useState(inital);
+    const [donation,setDonation]                = useState(false) 
+    const [valueCep, setCep]                    = useState("")
+    const [values, setValues]                   = useState(inital);
+
+    const [donationType, setDonationType]       = useState(false);
+    const [donationEmpresa, setDonationEmpresa] = useState(false);
+    const [fomarPagamento, setFomarPagamento]   = useState(1);
+
     const [loadingStatus, setloadingStatus] = useState(false);
-    
-  
-    
+     
      
     const initialState = [false, false, false,false];
     const [activeClasses, setActiveClasses]                   = useState(initialState)
@@ -110,12 +118,16 @@ export default function CheckoutCartao() {
               auxValues[name] =cpfMask(e.target.value)
            else if(name=="birthdate")   
               auxValues[name] =dataMask(e.target.value)
-           else if(name=="valor")   
-              auxValues[name] =intMask(e.target.value)
            else if(name=="cc_expiration")   
               auxValues[name] =validadeMask(e.target.value) 
            else if(name=="card_number")   
-              auxValues[name] =cardMask(e.target.value)              
+              auxValues[name] =cardMask(e.target.value)     
+           else if(name=="phone")   
+              auxValues[name] =phoneMask(e.target.value)                 
+           else if(name=="valor")   
+              auxValues[name] =valorMask(e.target.value) 
+           else if(name=="cnpj")   
+              auxValues[name] =cnpjMask(e.target.value)                               
            else
               auxValues[name] =e.target.value;
 
@@ -159,7 +171,7 @@ export default function CheckoutCartao() {
      
       for(var val in values){
           if(values[val]==''){ 
-                  console.log(val);
+                  //console.log(val);
                 let elem=document.getElementById(val);
                     elem.style.display = "block"; 
 
@@ -190,6 +202,9 @@ export default function CheckoutCartao() {
 
       let dataExpiration=values.cc_expiration.split('/');
 
+      let cnpj        = typeof(values.cnpj)!='undefined' ? values.cnpj : '';
+      let razao_social= typeof(values.razao_social)!='undefined' ? values.razao_social :'';
+
      
 
      let param= {
@@ -214,6 +229,10 @@ export default function CheckoutCartao() {
               "birthdate": values.birthdate,
               "email": values.email,
               "phone": values.phone,
+              "donation_empresa":donationEmpresa,
+              "cnpj":cnpj,
+              "razao_social":razao_social,
+              "anonymous":donationType,
               "address": {
                 "street": values.street,
                 "number": values.number,
@@ -228,10 +247,14 @@ export default function CheckoutCartao() {
         }      
       }
 
-        
+        console.log(param);
 
        API.donations.CheckoutProjects(param).then(response =>{
                  setloadingStatus(false);
+                 
+       }).catch(errs=>{
+            alert("Erro ao processar sua doação, favor verificar os dados informados!");
+            setloadingStatus(false);
        });  
     }
       
@@ -243,8 +266,7 @@ export default function CheckoutCartao() {
       <Loading spinning={loadingStatus} />
       <Header title={t("header.donations")} rightIcon={Notification} />
 
-
-
+      
          <Styled.MobContainer>
                 
                 <p>Quanto você gostaria de doar?</p>
@@ -293,7 +315,8 @@ export default function CheckoutCartao() {
                       <Input
                         placeholder={"Nome"}
                         name={"first_name"}
-                        onChange={setValue}                         
+                        onChange={setValue}  
+                                               
                       />
                       <div className="erro" id="first_name">Informe seu nome</div>
 
@@ -327,7 +350,7 @@ export default function CheckoutCartao() {
                                   
 
                     <div className="label">Telefone</div> 
-                    <Input placeholder={"Seu telefone"}  name={"phone"}   onChange={setValue}  />  
+                    <Input placeholder={"Seu telefone"} value={values.phone} name={"phone"}   onChange={setValue}  />  
                     <div className="erro" id="phone">Infome o telefone</div>  
  
                   
@@ -364,7 +387,7 @@ export default function CheckoutCartao() {
                     <Input placeholder={"Seu telefone"} value={values.city}   name={"city"} onChange={setValue} />  
                     <div className="erro" id="city">Informe a Cidade</div>
                     
-                    <div className="label">Estados</div> 
+                    <div className="label">Estado</div> 
                     <select className="select"  name={"state"} value={values.state} onChange={setValue}>
                           <option value="99"></option>
                           <option value="AC">AC</option>
@@ -397,77 +420,127 @@ export default function CheckoutCartao() {
                     </select>
                     <div className="erro" id="state">Infome o Estado</div>
 
-               </Styled.ContentForm>
-               
-               <Styled.ContentFormCartao>
-                   <div className="form-group">
-                            <div>
-                                <Styled.ContentFormButton>
-                                  Boleto
-                                </Styled.ContentFormButton>
-                            </div>
-      
-                            <div>
-                                <Styled.ContentFormButton>
-                                  Cartão
-                                  <div className="icon">
-                                     <UnlockOutline color="white" size="20px"/>
-                                  </div> 
-                                </Styled.ContentFormButton>
-                            </div>
+
+                    <div className="switch">
+                     <span>Doação anônima?</span>     Não <Switch  className="btn-switch"  onChange={setDonationType}/> Sim
+                     <HelpCircle  color="white" size="24px"/>
                     </div>
 
-                      
+                    <div className="switch">
+                     <span>Doar como Empresa?</span>     Não <Switch  className="btn-switch"  onChange={setDonationEmpresa} /> Sim
+                     <HelpCircle  color="white" size="24px"/>
+                    </div>
+
+                    <div style={donationEmpresa ? {display:"block"}: {display:"none"}} >
+                        <div className="label">Razão Social</div>
+                          <Input
+                            placeholder={"Razão Social"}
+                            name={"razao_social"}
+                            onChange={setValue}  
+                                                  
+                          />
+                          <div className="label">CNPJ</div>
+                          <Input
+                            name={"cnpj"}
+                            value={values.cnpj}
+                            onChange={setValue}   
+                          />                      
+                    </div>
 
 
-                    <div className="label">Número do Cartão</div> 
-                    <Input
-                        placeholder={"Número do Cartão"}
-                        value={values.card_number}
-                        name={"card_number"}
-                        onChange={setValue}
-                      />  
-                      <div className="erro" id="card_number">Informe o  Número do Cartão</div>
+               </Styled.ContentForm>
+               
+               <Styled.ContentFormaPagamento>
+                   <div className="form-group">
+                            <div className={fomarPagamento==0? "form-button-left active-btn":"form-button-left"} >
+                                <Styled.ContentFormButton onClick={e =>setFomarPagamento(0)}>
+                                  Boleto
+                                </Styled.ContentFormButton>
+                                
+                            </div>
+      
+                            <div className={fomarPagamento==1? " form-button-right active-btn ":" form-button-right "}>
+                                <Styled.ContentFormButton  onClick={e =>setFomarPagamento(1)}>
+                                  Cartão de Crédito
+                                </Styled.ContentFormButton>
+                            </div>
+                    </div> 
+                   
+                   <Styled.ContentFormaPagamentoBody className={fomarPagamento==0? " radius-right ":" radius-left"} >
 
-                    <div className="label">Nome do titular</div> 
-                    <Input
-                        placeholder={"Nome conforme impresso no cartão"}
-                        name={"holder_name"}
-                        onChange={setValue}
-                      />  
-                      <div className="erro" id="holder_name">Informe o Nome do titular</div>
+                     <div style={fomarPagamento==0? {display:"block"}: {display:"none"}} >Boleto</div>
+                     <div style={fomarPagamento==1? {display:"block"}: {display:"none"}} >
 
-                     <div className="form-group">
-                        <div>
-                            <div className="label">Validade</div> 
+                            <div className="info">
+                                <div className="icon">
+                                            <LockOutline color="white" size="20px"/>
+                                </div> 
+                                <h2>Ambiente </h2>
+                                <p>Seus dados bancários não serão compartilhados com a ONG e o CovidZero.</p>
+                            </div>
+                            
+                            <div className="label">Número do Cartão</div> 
                             <Input
-                                 value={values.cc_expiration}
-                                 name={"cc_expiration"}
-                                 onChange={setValue}
-                              /> 
-                              <div className="erro" id="cc_expiration">Informe data de Validade</div>
-                        </div>
-                        <div>
-                            <div className="label">Código de Segurança</div> 
-                            <Input
-                                value={values.security_code}
-                                placeholder={"CVV"} 
-                                maxLength={"3"}
-                                name={"security_code"}
+                                placeholder={"Número do Cartão"}
+                                value={values.card_number}
+                                name={"card_number"}
                                 onChange={setValue}
-                              /> 
-                              <div className="erro" id="security_code">Informe o código de Segurança</div>
-                        </div>
-                     </div> 
+                              />  
+                              <div className="erro" id="card_number">Informe o  Número do Cartão</div>
 
+                            <div className="label">Nome do titular</div> 
+                            <Input
+                                placeholder={"Nome conforme impresso no cartão"}
+                                name={"holder_name"}
+                                onChange={setValue}
+                              />  
+                              <div className="erro" id="holder_name">Informe o Nome do titular</div>
 
-                    <Button 
-                      styleButton='sm-light-btn'  
-                      textButton='CONFIRMAR E DOAR'
-                      className="full-light-btn"  
-                      onClick={salvar}                                                                      
-                    />
-               </Styled.ContentFormCartao>               
+                            <div className="form-group form-group-inp">
+                                <div>
+                                    <div className="label">Validade</div> 
+                                    <Input
+                                        value={values.cc_expiration}
+                                        name={"cc_expiration"}
+                                        onChange={setValue}
+                                      /> 
+                                      <div className="erro" id="cc_expiration">Informe data de Validade</div>
+                                </div>
+                                <div>
+                                    <div className="label">Código de Segurança</div> 
+                                    <Input
+                                        value={values.security_code}
+                                        placeholder={"CVV"} 
+                                        maxLength={"3"}
+                                        name={"security_code"}
+                                        onChange={setValue}
+                                      /> 
+                                      <div className="erro" id="security_code">Informe o código de Segurança</div>
+                                </div>
+                            </div> 
+
+                            <Button 
+                              styleButton='sm-light-btn'  
+                              textButton='CONFIRMAR E DOAR'
+                              className="full-light-btn"  
+                              onClick={salvar}                                                                      
+                            />
+
+                       </div>
+
+                      <div  className="termos">
+                            <div className="logo-prime">
+                                <p>Pagamento processado por</p> 
+                                <img  src={require("~/assets/images/preme.png")}/>
+                            </div>
+                                <p>O pagamento será processado por Preme Pay e estará disponível em sua fatura como CovidZero. Ao realizar o pagamento você concorda com os termos de uso.</p>
+                      </div>
+
+                 </Styled.ContentFormaPagamentoBody>
+
+               </Styled.ContentFormaPagamento>   
+
+         
       
 
          </Styled.MobContainer>

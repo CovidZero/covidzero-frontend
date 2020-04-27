@@ -146,10 +146,28 @@ export const ContentForm = styled.div`
             padding-right: 1em;
             width: 100%;
       }
+
+      .switch{
+         font-size: 14px;
+         line-height: 24px;
+         letter-spacing: 1px;
+         color: #BDBDBD;
+         margin-top:24px;
+         position:relative;
+      }
+      .switch span{
+          padding-right:16px;
+      }
+      .switch >div{
+          padding:0 10px;
+      }
+      .switch svg{
+          position:absolute;
+          right:19px;
+      }
 `;
 
 export const ContentFormButton = styled.div`
-    width: 164px;
     height: 64px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background: #2E2E32;    
@@ -170,14 +188,11 @@ export const ContentFormButton = styled.div`
 `;
 
 
-export const ContentFormCartao = styled.div`
-        background: #232328; 
-        border: 1px solid #2E2E32;
+export const ContentFormaPagamento = styled.div`
+        position:relative;
         box-sizing: border-box;
-        border-radius: 4px;
-        padding:8px;
-        
 
+       
      .label{
         margin:0.5em 0;
         font-size:14px;
@@ -188,16 +203,128 @@ export const ContentFormCartao = styled.div`
           overflow: hidden;
           position: relative;
           width: 100%;
-          margin-bottom:24px;
+          top: -2px;
+          z-index: 1;
+          
       }
 
+      .form-group .form-button-left{
+            background: #16171c;
+            padding: 8px;
+            border-bottom-right-radius: 4px; 
+            
+      }
+   
+
+      .form-group .form-button-right{
+           background: #16171c;  
+           padding: 8px;
+           border-bottom-left-radius: 4px;        
+          
+      }
+      .form-group .form-button-left div,
+      .form-group .form-button-right div{
+            color:#BDBDBD;
+        }
+
+      .form-group .active-btn{
+            background: #232328;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            border: 1px solid #2E2E32;
+            border-bottom: 0;
+            color:#F5F5F5;
+      }
+
+      .form-group .active-btn div{
+        color:#F5F5F5;
+
+      }
+
+      .form-group .active-right{
+            background: #232328;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            border: 1px solid #2E2E32;
+            border-bottom: 0;
+      }
+      
+      
       .form-group > div{
           flex:50%;
           overflow: hidden;
       }
 
-      .form-group>div + div{
+      .form-group-inp>div + div{
           margin-left:15px;
       }
+      .form-group-inp{
+          margin-bottom:24px;
+      }
+
+
+      .radius-right{
+          border-top-right-radius:8px;
+      }
+ 
+      .radius-left{
+          border-top-left-radius:8px;
+      }
+     
+
+
+      .info{
+            padding: 5px 0;
+        }
+
+
+      .info h2{
+        font-size: 14px;
+        line-height: 24px; 
+        letter-spacing: 1px;
+        color: #F5F5F5;
+        margin:0;
+        margin-left: 24px;
+      }
+      .info p{
+         font-weight: 300;
+         font-size: 10px;
+         line-height: 16px;
+         color: #BDBDBD;
+         margin:0;
+         
+      }
+
+      .info .icon{
+        position: absolute;
+      }
+     
+
+      .termos{
+          margin-top:25px;
+          font-size: 10px;
+          line-height: 16px;
+          color: #BDBDBD;
+      }
+
+      .termos .logo-prime{
+          text-align:center;
+      }
+      .termos .logo-prime p{
+          margin-bottom:4px;
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 18px;
+      }
+
+`;
+
+export const ContentFormaPagamentoBody = styled.div`
+          position:relative;
+          background: #232328;
+          padding:8px;
+          border-radius: 4px;
+          border: 1px solid #2E2E32;
+          margin-top: -4px;
 
 `;
