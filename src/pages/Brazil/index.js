@@ -5,9 +5,9 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
-import { CardStats, DailyCases, TotalCases,  RegionCases, TotalDeaths} from "~/components";
+import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths } from "~/components";
 import { Header } from "~/components";
-import { MapHome } from "~/components";
+import { MapBrazil } from "~/components";
 import { Chips } from "~/components";
 import API from "~/API";
 
@@ -58,13 +58,15 @@ const Brazil = () => {
       <Styled.ContainerChips>
         <Chips height="10" type="confirmed" text="Confirmados" />
         <Chips height="10" text="Óbitos" />
-        {/*<Chips height="10" type="hidden" text="Atualizado em: " lastUpdate={now.getHours()+':'+now.getMinutes()} />*/}
-        {/*<Styled.ContainerDiv>Atualizado as: 18:30</Styled.ContainerDiv>*/}
       </Styled.ContainerChips>
 
       <Styled.Container>
         <Styled.ContainerMap className="box-map">
-          <MapHome setTooltipContent={setContent}  setStateCases={totalCases.cases}/>
+          <MapBrazil
+            initialZoom={7}
+            setStateCases={totalCases.cases}
+            setTooltipContent={setContent}
+          />
           <ReactTooltip html={true}>{content}</ReactTooltip>
         </Styled.ContainerMap>
 
