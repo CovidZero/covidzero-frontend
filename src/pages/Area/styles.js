@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const ContainerMap = styled.div`
     width: 100%;
     height: 93vh;
@@ -25,6 +26,7 @@ export const ContainerMap = styled.div`
 `;
 
 export const Container = styled.section`
+
   @media (min-width: 840px) {
     height: 100%;
     overflow: hidden;
