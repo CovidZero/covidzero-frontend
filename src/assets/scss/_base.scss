@@ -102,6 +102,11 @@ circle{
 }
 
 // neoron chatbot
+.rsc-float-button {
+  display: none !important;
+}
+
+
 @media only screen and (max-width: 600px) {
   .rsc-float-button {
     background: white !important;
