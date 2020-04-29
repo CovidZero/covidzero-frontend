@@ -10,6 +10,7 @@ import Circle from "./Circle";
 import Switch from "./Switch";
 import Header from "./Header";
 import MapHome from "./MapHome";
+import MapBrazil from "./MapBrazil";
 import MapCities from "./MapCities"; 
 import SocialShare from "./SocialShare";
 import DailyCases from "./Charts/DailyCases";
@@ -39,5 +40,5 @@ export {
   TotalDeaths,
   MapArea,
   Marker,
- 
+  MapBrazil
 };

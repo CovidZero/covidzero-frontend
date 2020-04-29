@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const ContainerMap = styled.div`
     width: 100%;
     height: 93vh;
@@ -10,7 +11,7 @@ export const ContainerMap = styled.div`
 
     /* iPhone X , XS, 11 Pro */
     @media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-      height: 71vh;
+      height: 66vh;
     }
 
     /* iPhone XR, 11 */
@@ -25,6 +26,7 @@ export const ContainerMap = styled.div`
 `;
 
 export const Container = styled.section`
+
   @media (min-width: 840px) {
     height: 100%;
     overflow: hidden;

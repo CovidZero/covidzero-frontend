@@ -93,9 +93,31 @@ circle{
     animation: zoominoutsinglefeatured 3s infinite ;
 }
 
+.gm-style div a, .gm-style div a div, .gmnoprint {
+  display: none;
+}
+
+._hj-f5b2a1eb-9b07_feedback_minimized_label{
+  zoom: 70%;
+}
+
 // neoron chatbot
+.rsc-float-button {
+  display: none !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .rsc-float-button {
+    background: white !important;
+    zoom: 65% !important;
+    bottom: 7rem !important;
+    right: 1rem !important;
+  }
+}
+
 .rsc-header {
-  background: #FCFCFC;
+  background: #FCFCFC !important;
 }
 
 .rsc-content {
@@ -109,26 +131,31 @@ circle{
 }
 
 .rsc-ts-bubble {
-  background: #d6d6d6;
-  color: #1f1f1f;
+  background: #d6d6d6 !important;
+  color: #1f1f1f !important;
+
+  div a b {
+    color: #000 !important;
+    font-weight: normal !important;
+  }
 }
 
 .rsc-ts-user {
   .rsc-ts-bubble {
-    background: #FFF;
+    background: #FFF !important;
   }
 }
 
 .rsc-os-options {
-  margin: 0;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 
-.rsc-os-option {
-  width: 100%;
+  .rsc-os-option {
+    width: 100% !important;
 
-  button {
-    width: 100%;
-    font-weight: bold;
+    button {
+      width: 100% !important;
+      font-weight: bold !important;
+    }
   }
-}
 }
