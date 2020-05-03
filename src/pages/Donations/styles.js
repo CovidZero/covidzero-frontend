@@ -41,6 +41,7 @@ export const MobContainer = styled.section`
         padding: 15px 24px;
         font-size: 16px;
         height: 48px;
+        background: #FFF;
    }
 
    .erro{
@@ -90,10 +91,10 @@ export const ContentButton = styled.div`
             height: 48px;
             background:#2E2E32;
             box-shadow: initial;
-            color: #FCFCFC;
+            color: #FFF;
 
             &:active{
-                background: #ccc;
+                background: #FFF;
                 color: #EE7764;
             }
      }
@@ -104,14 +105,13 @@ export const ContentButton = styled.div`
          margin-left:8px;
      }
 
-     .btn-txt{
-         font-weight: bold;          
+     .btn-txt{        
          line-height: 18px;
          text-transform: unset; 
      }
 
      .active{
-        background: #ccc;
+        background: #FFF;
         color: #EE7764;
      }
 `;

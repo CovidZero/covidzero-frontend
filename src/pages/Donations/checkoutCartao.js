@@ -292,7 +292,7 @@ export default function CheckoutCartao() {
                         <Button  
                            styleButton='sm-light-btn' 
                            className={activeClasses[3]? "lg-light-btn btn-txt active":"lg-light-btn btn-txt"}  
-                           textButton='Outro Valor'   
+                           textButton='Outro valor'   
                            onClick={e => ValorDonation(3)}
                           /> 
                 </Styled.ContentButton>  
