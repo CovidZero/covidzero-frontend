@@ -9,14 +9,16 @@
     "cities": "Regiões",
     "area": "Sua área",
     "help": "Ajuda",
-    "news": "Conteúdos"
+    "news": "Conteúdos",
+    "donations":"Doações"
   },
   "header": {
     "map": "Brasil em tempo real",
     "cities": "Estados e Cidades",
     "area": "Sua área",
     "help": "Ajuda",
-    "news": "Conteúdos relevantes"
+    "news": "Conteúdos relevantes",
+    "donations":"Doações"
   },
   "searchGithub": "Pesquisar suas informações do Github"
 }
