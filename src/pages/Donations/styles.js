@@ -205,22 +205,21 @@ export const ContentFormaPagamento = styled.div`
           width: 100%;
           top: -2px;
           z-index: 1;
-          
       }
 
       .form-group .form-button-left{
             background: #16171c;
             padding: 8px;
             border-bottom-right-radius: 4px; 
-            
+            font-weight: bold;
       }
    
 
       .form-group .form-button-right{
            background: #16171c;  
            padding: 8px;
-           border-bottom-left-radius: 4px;        
-          
+           border-bottom-left-radius: 4px;                  
+           font-weight: bold;
       }
       .form-group .form-button-left div,
       .form-group .form-button-right div{
@@ -307,10 +306,15 @@ export const ContentFormaPagamento = styled.div`
           color: #BDBDBD;
       }
 
-      .termos .logo-prime{
+      .termos .logo-preme{
           text-align:center;
       }
-      .termos .logo-prime p{
+
+      .termos .logo-preme img{
+          max-width: 60px;
+      }
+
+      .termos .logo-preme p{
           margin-bottom:4px;
           font-weight: 300;
           font-size: 12px;

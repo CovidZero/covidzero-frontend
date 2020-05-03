@@ -77,8 +77,8 @@ export default function Details() {
                             tabletColumns={4}
                           >
                            <CardStats 
-                            title={<div>Meta</div>} 
-                            count={formatValor(Projects.goal)}
+                            title={<div>Arrecadado</div>} 
+                            count={formatValor(Projects.quota_total)}
                             className="donation-stats"
                             /> 
                         </Cell>
@@ -88,8 +88,8 @@ export default function Details() {
                             tabletColumns={4}
                           >
                            <CardStats 
-                            title={<div>Arrecadado</div>} 
-                            count={formatValor(Projects.quota_total)}
+                            title={<div>Meta</div>} 
+                            count={formatValor(Projects.goal)}
                             className="donation-stats"
                             /> 
                         </Cell>                        
@@ -122,7 +122,7 @@ export default function Details() {
                 
                 <Button 
                   styleButton='sm-light-btn'  
-                  textButton={'Doe a partir de '+ formatValor(Projects.quota_value) }
+                  textButton='Doe a partir de R$5'
                   className="full-light-btn"  
                   onClick={() => history.push("/donations/checkout/"+Projects.id)}                                                    
                 />

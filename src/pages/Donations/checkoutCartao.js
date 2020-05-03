@@ -313,7 +313,6 @@ export default function CheckoutCartao() {
 
                       <div className="label">Nome</div>
                       <Input
-                        placeholder={"Nome"}
                         name={"first_name"}
                         onChange={setValue}  
                                                
@@ -322,7 +321,6 @@ export default function CheckoutCartao() {
 
                       <div className="label">Sobrenome</div>
                       <Input
-                        placeholder={"Sobrenome"}
                         name={"surname"}
                         onChange={setValue}                        
                       />
@@ -345,12 +343,12 @@ export default function CheckoutCartao() {
                        <div className="erro" id="birthdate">Informe a data de Nascimento</div>                  
 
                     <div className="label">Email</div> 
-                    <Input placeholder={"Seu email"}     name={"email"}   onChange={setValue}  />  
+                    <Input placeholder={"Seu email preferido"} name={"email"}   onChange={setValue}  />  
                     <div className="erro" id="email">Informe um email</div>  
                                   
 
                     <div className="label">Telefone</div> 
-                    <Input placeholder={"Seu telefone"} value={values.phone} name={"phone"}   onChange={setValue}  />  
+                    <Input value={values.phone} name={"phone"}   onChange={setValue}  />  
                     <div className="erro" id="phone">Infome o telefone</div>  
  
                   
@@ -365,26 +363,26 @@ export default function CheckoutCartao() {
                     />  
                     <div className="erro" id="zipcode">Informe o CEP</div>  
 
-                    <div className="label">Rua/Avenida</div> 
+                    <div className="label">Endereço</div> 
                     <Input placeholder={"Rua/Avenida"} name={"street"} value={values.street}  /> 
                     <div className="erro" id="street">Informe o endereço</div>  
 
 
                     <div className="label">Número</div> 
-                    <Input placeholder={"Número"}     name={"number"}  onChange={setValue}  /> 
+                    <Input name={"number"}  onChange={setValue}  /> 
                     <div className="erro" id="number">Informe o Número</div>   
 
                     <div className="label">Complemento</div> 
-                    <Input placeholder={"Complemento"} name={"reference"} onChange={setValue}  />
+                    <Input  name={"reference"} onChange={setValue}  />
                     <div className="erro" id="reference">Informe o Complemento</div>    
 
                     <div className="label">Bairro</div> 
-                    <Input placeholder={"Seu Bairro"} value={values.district}  name={"district"} onChange={setValue} /> 
+                    <Input value={values.district}  name={"district"} onChange={setValue} /> 
                     <div className="erro" id="district">Informe o Bairro</div>  
                      
 
                     <div className="label">Cidade</div> 
-                    <Input placeholder={"Seu telefone"} value={values.city}   name={"city"} onChange={setValue} />  
+                    <Input  value={values.city}   name={"city"} onChange={setValue} />  
                     <div className="erro" id="city">Informe a Cidade</div>
                     
                     <div className="label">Estado</div> 
@@ -434,7 +432,6 @@ export default function CheckoutCartao() {
                     <div style={donationEmpresa ? {display:"block"}: {display:"none"}} >
                         <div className="label">Razão Social</div>
                           <Input
-                            placeholder={"Razão Social"}
                             name={"razao_social"}
                             onChange={setValue}  
                                                   
@@ -475,7 +472,7 @@ export default function CheckoutCartao() {
                                 <div className="icon">
                                             <LockOutline color="white" size="20px"/>
                                 </div> 
-                                <h2>Ambiente </h2>
+                                <h2>Ambiente seguro</h2>
                                 <p>Seus dados bancários não serão compartilhados com a ONG e o CovidZero.</p>
                             </div>
                             
@@ -529,11 +526,11 @@ export default function CheckoutCartao() {
                        </div>
 
                       <div  className="termos">
-                            <div className="logo-prime">
+                            <div className="logo-preme">
                                 <p>Pagamento processado por</p> 
-                                <img  src={require("~/assets/images/preme.png")}/>
+                                <a href="https://www.premepay.com/pt-br?utm_source=covidzero" target="_blank"><img  src={require("~/assets/images/logo-preme.svg")}/></a>
                             </div>
-                                <p>O pagamento será processado por Preme Pay e estará disponível em sua fatura como CovidZero. Ao realizar o pagamento você concorda com os termos de uso.</p>
+                                <p>O pagamento será processado por Preme Pay e estará disponível em sua fatura como CovidZero. Ao realizar o pagamento você concorda com <a href="https://premepay.com/pt-br/terms-and-conditions?utm_source=covidzero" target="_blank">os termos de uso.</a></p>
                       </div>
 
                  </Styled.ContentFormaPagamentoBody>

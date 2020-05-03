@@ -7,6 +7,8 @@ import Logo from "~assets/images/logo.svg";
 import { ReactComponent as NewsIcon } from "~assets/icons/newspaper.svg";
 import { ReactComponent as NewsIconActive } from "~assets/icons/newspaper-active.svg";
 import { ReactComponent as Map } from "~assets/icons/map.svg";
+import { ReactComponent as Donations } from "~assets/icons/donations.svg";
+import { ReactComponent as DonationsActive } from "~assets/icons/donations-active.svg";
 import { ReactComponent as MapActive } from "~assets/icons/map-active.svg";
 import { ReactComponent as City } from "~assets/icons/city.svg";
 import { ReactComponent as CityActive } from "~assets/icons/city-active.svg";
@@ -43,15 +45,15 @@ const Sidebar = props => {
     //   path: "/help",
     //   icon: pathname === "/help" ? <HelpActive /> : <Help />
     // },
-    {
-      title: "menu.news",
-      path: "/news",
-      icon: pathname === "/news" ? <NewsIconActive /> : <NewsIcon />
-    },
+    // {
+    //   title: "menu.news",
+    //   path: "/news",
+    //   icon: pathname === "/news" ? <NewsIconActive /> : <NewsIcon />
+    // },
     {
       title: "menu.donations",
       path: "/donations",
-      icon: pathname === "/donations" ? <NewsIconActive /> : <NewsIcon />
+      icon: pathname === "/donations" ? <DonationsActive /> : <Donations />
     }
   ];
 
