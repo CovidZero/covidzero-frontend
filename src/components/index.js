@@ -1,6 +1,7 @@
 import ExpandableBox from "./ExpandableBox";
 import Input from "./Input";
 import Button from "./Button";
+import CardDonations from "./CardDonations";
 import CardStats from "./CardStats";
 import CardNews from "./CardNews";
 import ArticleNewsHeader from "./ArticleNewsHeader";
@@ -19,10 +20,12 @@ import RegionCases from "./Charts/RegionCases";
 import TotalDeaths from "./Charts/TotalDeaths";
 import MapArea from "./MapArea";
 import Marker from "./Marker";
+import Loading from "./Loading";
 export {
   Input,
   ExpandableBox,
   Button,
+  CardDonations,
   CardStats,
   CardNews,
   ArticleNewsHeader,
@@ -40,5 +43,6 @@ export {
   TotalDeaths,
   MapArea,
   Marker,
-  MapBrazil
+  MapBrazil,
+  Loading,
 };

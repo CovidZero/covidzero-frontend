@@ -1,0 +1,35 @@
+import axios from "axios";
+import { API_URL_DONATION } from "../constants";
+
+const http = axios.create(
+  { baseURL: API_URL_DONATION }
+);
+
+ 
+/**
+ * Interceptor for all requests
+ */
+http.interceptors.request.use(
+  config => {
+    config.headers = {
+      'Access-Control-Allow-Origin': window.location.href
+    }
+    return config;
+  },
+  error => {
+    /**
+     * Add your error handlers here
+     */
+    return Promise.reject(error);
+  }
+);
+
+/**
+ * Interceptor for all responses
+ */
+http.interceptors.response.use(null, error => {
+  return Promise.reject(error);
+});
+
+export default http;
+ 
