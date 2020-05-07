@@ -13,9 +13,12 @@ import News5 from "./pages/News/News5";
 import News6 from "./pages/News/News6";
 import UiKit from "./pages/UiKit";
 
-import Donations from "./pages/Donations";
-import Details   from "./pages/Donations/details";
-import Checkout  from "./pages/Donations/checkoutCartao";
+import Donations       from "./pages/Donations";
+import Details         from "./pages/Donations/details";
+import Checkout        from "./pages/Donations/checkoutCartao";
+import checkoutBoleto  from "./pages/Donations/checkoutBoleto";
+import confirmed       from "./pages/Donations/confirmed";
+
 
 
 export default function Routes() {
@@ -30,6 +33,9 @@ export default function Routes() {
       <Route path="/donations"           exact component={Donations} />
       <Route path="/donations/details/:id"   exact component={Details} />
       <Route path="/donations/checkout/:id"  exact component={Checkout} />
+      <Route path="/donations/boleto/:id"    exact component={checkoutBoleto} />
+      <Route path="/donations/confirmed"     exact component={confirmed} />
+      
 
       <Route path="/uikit" exact component={UiKit} />{" "}
 

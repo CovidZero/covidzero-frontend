@@ -126,6 +126,14 @@ export default function Details() {
                   className="full-light-btn"  
                   onClick={() => history.push("/donations/checkout/"+Projects.id)}                                                    
                 />
+               
+               <Styled.ContentText style={{fontSize:"12px",lineHeight:"18px",margin:"17px 8px 8px 8px",textAlign:"center"}}>
+                       Captação promovida por
+               </Styled.ContentText>
+
+               <div style={{textAlign:"center",margin:"0px 0px 20px 0px"}}>
+                 <img  src={require("~/assets/images/cap-table.svg")}/>
+               </div>  
 
          </Styled.MobContainer>
 

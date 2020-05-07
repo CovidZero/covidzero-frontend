@@ -49,6 +49,31 @@ export const MobContainer = styled.section`
      font-size:12px;
      display:none;
    }
+
+
+   .termos{
+          margin-top:25px;
+          font-size: 10px;
+          line-height: 16px;
+          color: #BDBDBD;
+      }
+
+      .termos .logo-preme{
+          text-align:center;
+      }
+
+      .termos .logo-preme img{
+          max-width: 60px;
+      }
+
+      .termos .logo-preme p{
+          margin-bottom:4px;
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 18px;
+      }
+
+
 `;
 
 export const ContentImg = styled.div`
@@ -69,6 +94,7 @@ export const ContentImg = styled.div`
         
    }
 `;
+
 export const ContentText = styled.div`
     font-family: Ubuntu;
     font-style: normal;
@@ -297,29 +323,7 @@ export const ContentFormaPagamento = styled.div`
       .info .icon{
         position: absolute;
       }
-     
 
-      .termos{
-          margin-top:25px;
-          font-size: 10px;
-          line-height: 16px;
-          color: #BDBDBD;
-      }
-
-      .termos .logo-preme{
-          text-align:center;
-      }
-
-      .termos .logo-preme img{
-          max-width: 60px;
-      }
-
-      .termos .logo-preme p{
-          margin-bottom:4px;
-          font-weight: 300;
-          font-size: 12px;
-          line-height: 18px;
-      }
 
 `;
 

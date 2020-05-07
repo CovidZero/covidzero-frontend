@@ -49,7 +49,7 @@ export default function CheckoutCartao() {
 
     const [donationType, setDonationType]       = useState(false);
     const [donationEmpresa, setDonationEmpresa] = useState(false);
-    const [fomarPagamento, setFomarPagamento]   = useState(1);
+    const [fomarPagamento, setFomarPagamento]   = useState(0);
 
     const [loadingStatus, setloadingStatus] = useState(false);
      
@@ -166,6 +166,10 @@ export default function CheckoutCartao() {
     }
 
 
+    const gerarBoleto=()=>{
+        history.push('/donations/boleto/1');
+    }
+
 
     const salvar=()=>{
      
@@ -250,6 +254,7 @@ export default function CheckoutCartao() {
         console.log(param);
 
        API.donations.CheckoutProjects(param).then(response =>{
+                 history.push("/donations/confirmed");
                  setloadingStatus(false);
                  
        }).catch(errs=>{
@@ -465,7 +470,15 @@ export default function CheckoutCartao() {
                    
                    <Styled.ContentFormaPagamentoBody className={fomarPagamento==0? " radius-right ":" radius-left"} >
 
-                     <div style={fomarPagamento==0? {display:"block"}: {display:"none"}} >Boleto</div>
+                     <div style={fomarPagamento==0? {display:"block"}: {display:"none"}} >
+                           <Button 
+                              styleButton='sm-light-btn'  
+                              textButton='Gerar Boleto'
+                              className="full-light-btn"  
+                              onClick={gerarBoleto}                                                                      
+                            />
+
+                     </div>
                      <div style={fomarPagamento==1? {display:"block"}: {display:"none"}} >
 
                             <div className="info">
