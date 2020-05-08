@@ -19,6 +19,7 @@
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
+    "react-document-meta": "^3.0.0-beta.2",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
     "react-i18next": "^11.3.3",

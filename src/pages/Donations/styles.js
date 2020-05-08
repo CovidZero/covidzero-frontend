@@ -4,12 +4,14 @@ import styled from "styled-components";
 export const Container = styled.section`
 
     @media all and (min-width: 600px) {
-                display: flex;
+                display: block;
                 padding:24px;
-            
+                
             > div{
                 margin:10px;
-                width: 509px;
+                width: 580px;
+                display:inline-flex;
+                
                 
             }
     }
