@@ -1,17 +1,20 @@
-import React,{useEffect,useState} from "react";
-import {useParams } from "react-router-dom";
+import React,{useEffect,useState}  from "react";
+import {useParams }                from "react-router-dom";
+import DocumentMeta                from 'react-document-meta';
 import { useTranslation }          from "react-i18next";
 import { Cell, Grid, Row }         from "@material/react-layout-grid";
 import history                     from "~/services/history";
 import { Header,Button,CardStats,Loading } from "~/components";
 
 import * as Styled from "./styles.js";
+import API from "~/API";
 
- import API from "~/API";
+import ProjectsJson from "./projects.json";
 
 export default function Details() {
     const [t]  = useTranslation();    
-    let { id } = useParams();
+    let { id:idProjecto,capitation } = useParams();
+    
     
     const [loadingStatus, setloadingStatus] = useState(true)
 
@@ -25,25 +28,55 @@ export default function Details() {
       photo:{url:false} 
     }
 
-    
+    const initalMeta = {
+      title:'CovidZero',
+      description:'CovidZero - Combate ao COVID-19'
+     };
+
+    const [meta, _setMeta]             = useState(initalMeta)
     const [Projects, setProjects]     = useState(initalProjects)
 
-    useEffect(() => {
-      (async () => {         
-          API.donations.findProjects(id).
-             then(response =>{
-                setProjects(response);
-                setloadingStatus(false);
-          })
-            .catch(ret=> history.push("/donations"));
+    
+    const setMeta=(response)=>{
+        let meta = {
+                title:`${response.name}`+ ' | CovidZero',
+                description:`${response.name}`+ ' | CovidZero  - Combate ao COVID-19'
+        }
+        
+        _setMeta(meta);
+    }
 
-            
+
+
+    useEffect(() => {
+        
+       if(capitation==1){
+            (async () => {         
+                API.donations.findProjects(idProjecto).
+                  then(response =>{ 
+                      setMeta(response);
+                      setProjects(response);
+                      setloadingStatus(false);
+                }).catch(ret=> history.push("/donations"));
+            }
+            )()
        }
-      )()
+
+      else{
+         const projectsJson=ProjectsJson.find(({ id }) => id==idProjecto);
+               if(typeof projectsJson !="undefined"){
+                     setMeta(projectsJson);
+                     setProjects(projectsJson);
+                     setloadingStatus(false);
+               }else{
+                    history.push("/donations");
+               }
+                
+      }
 
     },[]);
 
-    
+    console.log(meta);
 
     let formato = { minimumFractionDigits: 2 , currency: 'BRL' }
 
@@ -58,6 +91,7 @@ export default function Details() {
 
   return (
     <>
+      <DocumentMeta {...meta}>
       <Loading spinning={loadingStatus} />
       <Header title={t("header.donations")} rightIcon={Notification} />
 
@@ -132,14 +166,22 @@ export default function Details() {
                </Styled.ContentText>
 
                <div style={{textAlign:"center",margin:"0px 0px 20px 0px"}}>
- 
+                 {capitation==1 &&
                   <a href="https://captable.com.br/?utm_source=covidzero" target="_blank">
                     <img  src={require("~/assets/images/cap-table.svg")}/>
                   </a>
+                 }
  
+                {capitation==2 &&
+                  <a href="#" target="_blank">
+                    <img  src={require("~/assets/images/logo-ribon.svg")}/>
+                  </a>
+                 }
+
                </div>  
 
          </Styled.MobContainer>
+         </DocumentMeta>
 
     </>
   ); 

@@ -31,7 +31,7 @@ export default function Routes() {
       <Route path="/news" exact component={News} />
 
       <Route path="/donations"           exact component={Donations} />
-      <Route path="/donations/details/:id"   exact component={Details} />
+      <Route path="/donations/details/:capitation/:id"   exact component={Details} /> 
       <Route path="/donations/checkout/:id"  exact component={Checkout} />
       <Route path="/donations/boleto/:id"    exact component={checkoutBoleto} />
       <Route path="/donations/confirmed"     exact component={confirmed} />
