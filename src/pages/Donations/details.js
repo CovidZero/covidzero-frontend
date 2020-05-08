@@ -132,7 +132,9 @@ export default function Details() {
                </Styled.ContentText>
 
                <div style={{textAlign:"center",margin:"0px 0px 20px 0px"}}>
-                 <img  src={require("~/assets/images/cap-table.svg")}/>
+                  <a href="https://captable.com.br/?utm_source=covidzero" target="_blank">
+                    <img  src={require("~/assets/images/cap-table.svg")}/>
+                  </a>
                </div>  
 
          </Styled.MobContainer>
