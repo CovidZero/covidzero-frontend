@@ -173,8 +173,8 @@ export default function Details() {
                  }
  
                 {capitation==2 &&
-                  <a href="#" target="_blank">
-                    <img  src={require("~/assets/images/logo-ribon.svg")}/>
+                  <a href="https://home.ribon.io/?utm_source=covidzero" target="_blank">
+                    <img src={require("~/assets/images/logo-ribon.svg")} id="ribon"/>
                   </a>
                  }
 
