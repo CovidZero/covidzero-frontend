@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
-import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths, DailyDeaths, CasesAndDeaths, NewCasesPrediction } from "~/components";
+import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths, DailyDeaths, CasesAndDeaths, NewCasesPrediction, TotalPredictionWeek } from "~/components";
 import { Header } from "~/components";
 import { MapBrazil } from "~/components";
 import { Chips } from "~/components";
@@ -115,7 +115,7 @@ const Brazil = () => {
                 <NewCasesPrediction title="Predição de novos casos" />
               </Cell>
               <Cell desktopColumns={6} phoneColumns={1} tabletColumns={2}>
-                <NewCasesPrediction title="Predição de novos casos" />
+                <TotalPredictionWeek title="Predição total da semana" />
               </Cell>
             </Row>
             <Row style={{ marginBottom: "1em" }}>
