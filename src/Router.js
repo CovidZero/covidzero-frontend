@@ -11,6 +11,7 @@ import News3 from "./pages/News/News3";
 import News4 from "./pages/News/News4";
 import News5 from "./pages/News/News5";
 import News6 from "./pages/News/News6";
+import News7 from "./pages/News/News7";
 import UiKit from "./pages/UiKit";
 
 export default function Routes() {
@@ -31,6 +32,7 @@ export default function Routes() {
       <Route path="/news/projeto_de_ventilador_recebe_sinal_verde_do_governo_do_Reino_Unido_para_avançar_a_proxima_etapa_dos_testes" exact component={News4} />
       <Route path="/news/medidas_basicas_de_protecao_contra_o_novo_coronavirus" exact component={News5} />
       <Route path="/news/Revelando_a_origem_e_transmissao_do_COVID-19" exact component={News6} />
+      <Route path="/news/o-mercado-brasileiro-e-as-mudanças-no-consumo" exact component={News7} />
 
       <Route path="/" component={() => <h1>Desculpe, um erro ocorreu. Estaremos verificando o que aconteceu.</h1>} />
     </Switch>
