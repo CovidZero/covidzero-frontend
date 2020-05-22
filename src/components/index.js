@@ -17,6 +17,10 @@ import DailyCases from "./Charts/DailyCases";
 import TotalCases from "./Charts/TotalCases";
 import RegionCases from "./Charts/RegionCases";
 import TotalDeaths from "./Charts/TotalDeaths";
+import DailyDeaths from "./Charts/DailyDeaths";
+import CasesAndDeaths from "./Charts/CasesAndDeaths";
+import NewCasesPrediction from "./Charts/NewCasesPrediction";
+import TotalPredictionWeek from "./Charts/TotalPredictionWeek";
 import MapArea from "./MapArea";
 import Marker from "./Marker";
 export {
@@ -38,6 +42,10 @@ export {
   TotalCases,
   RegionCases,
   TotalDeaths,
+  DailyDeaths,
+  CasesAndDeaths,
+  NewCasesPrediction,
+  TotalPredictionWeek,
   MapArea,
   Marker,
   MapBrazil
