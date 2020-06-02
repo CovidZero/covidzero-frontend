@@ -30,7 +30,7 @@ const News7 = props => {
               <div className="news-item-header-image">
                 <img
                   className="news-item-image"
-                  src={require("~/assets/images/o-mercado-brasileiro-e-as-mudanças-no-consumo.jpg")}
+                  src={require("~/assets/images/o-mercado-brasileiro-e-as-mudanças-no-consumo.jpg")}
                 />
                 <div className="news-item-title">O mercado brasileiro e as mudanças no consumo</div>
               </div>
