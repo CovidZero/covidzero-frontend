@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Style } from '../styles';
 import moment from 'moment';
 
-import api from '../api';
-
 import last30DaysService from '../../../services/last30Days';
 
 import {Bar} from 'react-chartjs-2';
