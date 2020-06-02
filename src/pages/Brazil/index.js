@@ -5,11 +5,13 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
-import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths } from "~/components";
+import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths, CasesAndDeaths } from "~/components";
 import { Header } from "~/components";
 import { MapBrazil } from "~/components";
 import { Chips } from "~/components";
 import API from "~/API";
+
+import totalCasesService from "../../services/totalCases";
 
 const Brazil = () => {
   const now = new Date();
@@ -22,7 +24,11 @@ const Brazil = () => {
     deaths: 0,
     cases: []
   }
+
   const [totalCases, setTotalCases] = useState(initalCases)
+
+  const [totalCasesStates, setTotalCasesStates] = useState(0);
+  const [totalDeathsStates, setTotalDeathsStates] = useState(0);
 
   const sumStateCases = (stateCases) => {
     let totalCases = {
@@ -43,12 +49,24 @@ const Brazil = () => {
     return totalCases;
   }
 
+  async function totalCasesState(){
+    const response = await totalCasesService.get().then(response => {
+      return response.data;
+    });
+
+    setTotalCasesStates(response[0].totalCases);
+    setTotalDeathsStates(response[0].totalDeaths);
+
+  }
+
   useEffect(() => {
     (async () => {
       const stateCases = await API.cases.getStatesCases();
       setTotalCases(sumStateCases(stateCases))
     }
     )()
+
+    totalCasesState();
   }, [])
 
   return (
@@ -69,22 +87,13 @@ const Brazil = () => {
           <Grid>
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="confirmed" title="Confirmados" count={totalCases.confirmed.toLocaleString()} />
+                <CardStats status="confirmed" title="Confirmados" count={totalCasesStates.toLocaleString()} />
               </Cell>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="death" title="Óbitos" count={totalCases.deaths.toLocaleString()} />
+                <CardStats status="death" title="Óbitos" count={totalDeathsStates.toLocaleString()} />
               </Cell>
             </Row>
-            {/*<Row>
-              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
-              </Cell>
-            </Row>
-            <Row style={{ marginBottom: "1em" }}>
-              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
-                <DailyCases title="Novos casos confirmados diários" />
-              </Cell>
-            </Row>
+            
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <TotalCases title="Casos confirmados totais no Brasil" />
@@ -99,7 +108,25 @@ const Brazil = () => {
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <TotalDeaths title="Óbitos totais no Brasil" />
               </Cell>
-            </Row>*/}
+            </Row>
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <CasesAndDeaths title="Casos Confirmados e Óbitos totais no Brasil comparados" />
+              </Cell>
+            </Row>
+            {/*
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <DailyCases title="Novos casos confirmados diários" />
+              </Cell>
+            </Row>
+            <Row>
+              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
+                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
+              </Cell>
+            </Row>
+            
+            */}
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <p className="aboutOpenSource">Somos um projeto OpenSource. Para acesso ao nosso código fonte e fontes utilizadas, <a href="https://github.com/CovidZero" target="_blank">clique aqui</a>.</p>
