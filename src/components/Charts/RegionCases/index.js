@@ -40,8 +40,6 @@ const RegionCases = (props) => {
 
         const sudesteValue = responseAPI.reduce((currentTotal, item) => {
             if(item.date == lastDay && item.region == 'Sudeste' && item.codmun == null){
-                console.log(currentTotal);
-                console.log(currentTotal + item.totalCases);
                 return currentTotal + item.totalCases
             }
             return currentTotal;
