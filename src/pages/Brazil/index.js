@@ -103,16 +103,17 @@ const Brazil = () => {
                 <TotalCases title="Casos confirmados totais no Brasil" />
               </Cell>
             </Row>
-            {/*<Row>
-              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
-              </Cell>
-            </Row>
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <RegionCases title="Casos confirmados por Região" />
               </Cell>
             </Row>
+            {/*<Row>
+              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
+                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
+              </Cell>
+            </Row>
+            
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <TotalDeaths title="Óbitos totais no Brasil" />

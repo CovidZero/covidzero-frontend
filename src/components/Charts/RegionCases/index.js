@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Style } from '../styles';
 import moment from 'moment';
 
-import api from '../api';
+import regionCasesService from '../../../services/regionCases';
 
 import {Doughnut} from 'react-chartjs-2';
 import Chart from 'chart.js';
@@ -21,7 +21,7 @@ const RegionCases = (props) => {
     const [graphic, setGraphic] = useState(null);
 
     useEffect(() => {
-        getLastDay();
+        getRegionCases();
     }, []);
 
     useEffect(() => {
@@ -31,42 +31,41 @@ const RegionCases = (props) => {
         }
 
         const sulValue = responseAPI.reduce((currentTotal, item) => {
-            if(item.date == lastDay && item.region == 'Sul'){
-                return currentTotal + item.totalcases
+            
+            if(item.date == lastDay && item.region == 'Sul' && item.codmun == null){
+                return currentTotal + item.totalCases
             }
-            return currentTotal
+            return currentTotal;
         }, 0);
 
         const sudesteValue = responseAPI.reduce((currentTotal, item) => {
-            if(item.date == lastDay && item.region == 'Sudeste'){
-                return currentTotal + item.totalcases
+            if(item.date == lastDay && item.region == 'Sudeste' && item.codmun == null){
+                console.log(currentTotal);
+                console.log(currentTotal + item.totalCases);
+                return currentTotal + item.totalCases
             }
-            return currentTotal
+            return currentTotal;
         }, 0);
 
         const centroOesteValue = responseAPI.reduce((currentTotal, item) => {
-            if(item.date == lastDay && item.region === 'Centro-Oeste'){
-                // console.log(currentTotal);
-                // console.log(item.totalcases);
-                // console.log(item.state);
-                return currentTotal + item.totalcases
+            if(item.date == lastDay && item.region === 'Centro-Oeste' && item.codmun == null){
+                return currentTotal + item.totalCases;
             }
-            // console.log(currentTotal);
-            return currentTotal
+            return currentTotal;
         }, 0);
 
         const nordesteValue = responseAPI.reduce((currentTotal, item) => {
-            if(item.date == lastDay && item.region == 'Nordeste'){
-                return currentTotal + item.totalcases
+            if(item.date == lastDay && item.region == 'Nordeste' && item.codmun == null){
+                return currentTotal + item.totalCases
             }
-            return currentTotal
+            return currentTotal;
         }, 0);
 
         const norteValue = responseAPI.reduce((currentTotal, item) => {
-            if(item.date == lastDay && item.region == 'Norte'){
-                return currentTotal + item.totalcases
+            if(item.date == lastDay && item.region == 'Norte' && item.codmun == null){
+                return currentTotal + item.totalCases
             }
-            return currentTotal
+            return currentTotal;
         }, 0);
 
         setSul(sulValue);
@@ -100,17 +99,16 @@ const RegionCases = (props) => {
         );
     }, [sul, sudeste, centroOeste, nordeste, norte]);
 
-    async function getLastDay(){
-        const response = await api.get(`https://api.covidzero.com.br/data_api/v1/cases/datasus`);
+    async function getRegionCases(){
+        const response = await regionCasesService.get().then(response => {
+            return response.data;
+        });
 
-        const resultsData = response.data.sus_list;
+        setResponseAPI(response);
 
-        setResponseAPI(resultsData);
+        const lastDay = response[1].date;
 
-        const lastItem = resultsData[resultsData.length - 1];
-
-        setLastDay(lastItem.date);
-
+        setLastDay(lastDay);
     };
 
     return(
