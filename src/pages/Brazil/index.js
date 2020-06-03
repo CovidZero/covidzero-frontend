@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
-import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths, CasesAndDeaths } from "~/components";
+import { CardStats, DailyCases, DailyDeaths, TotalCases, RegionCases, TotalDeaths, CasesAndDeaths } from "~/components";
 import { Header } from "~/components";
 import { MapBrazil } from "~/components";
 import { Chips } from "~/components";
@@ -96,12 +96,22 @@ const Brazil = () => {
             
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <DailyCases title="Novos casos confirmados diários" />
+              </Cell>
+            </Row>
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <TotalCases title="Casos confirmados totais no Brasil" />
               </Cell>
             </Row>
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <RegionCases title="Casos confirmados por Região" />
+              </Cell>
+            </Row>
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <DailyDeaths title="Novos óbitos confirmados diários" />
               </Cell>
             </Row>
             <Row style={{ marginBottom: "1em" }}>
@@ -115,11 +125,7 @@ const Brazil = () => {
               </Cell>
             </Row>
             {/*
-            <Row style={{ marginBottom: "1em" }}>
-              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
-                <DailyCases title="Novos casos confirmados diários" />
-              </Cell>
-            </Row>
+            
             <Row>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
