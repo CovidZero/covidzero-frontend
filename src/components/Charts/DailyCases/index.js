@@ -53,7 +53,7 @@ const DailyCases = (props) => {
 
             let totalNewCases = responseAPI.reduce((currentTotal, item) => {
                 if(item.date == day){
-                    return item.totalDeaths;
+                    return item.newCases;
                 }
                 return currentTotal
             }, 0);
