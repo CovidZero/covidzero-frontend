@@ -114,11 +114,6 @@ const Brazil = () => {
                 <DailyDeaths title="Novos óbitos confirmados diários" />
               </Cell>
             </Row>
-            {/* <Row>
-              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
-              </Cell>
-            </Row> */}
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <TotalDeaths title="Óbitos totais no Brasil" />
@@ -129,6 +124,12 @@ const Brazil = () => {
                 <CasesAndDeaths title="Casos Confirmados e Óbitos totais no Brasil comparados" />
               </Cell>
             </Row>
+
+            {/* <Row>
+              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
+                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
+              </Cell>
+            </Row> */}
             
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
