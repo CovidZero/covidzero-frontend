@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
-import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths, CasesAndDeaths } from "~/components";
+import { CardStats, DailyCases, TotalCases, RegionCases, TotalDeaths, CasesAndDeaths, DailyDeaths } from "~/components";
 import { Header } from "~/components";
 import { MapBrazil } from "~/components";
 import { Chips } from "~/components";
@@ -111,6 +111,16 @@ const Brazil = () => {
             </Row>
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
+                <DailyDeaths title="Novos óbitos confirmados diários" />
+              </Cell>
+            </Row>
+            {/* <Row>
+              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
+                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
+              </Cell>
+            </Row> */}
+            <Row style={{ marginBottom: "1em" }}>
+              <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <TotalDeaths title="Óbitos totais no Brasil" />
               </Cell>
             </Row>
@@ -119,15 +129,7 @@ const Brazil = () => {
                 <CasesAndDeaths title="Casos Confirmados e Óbitos totais no Brasil comparados" />
               </Cell>
             </Row>
-            {/*
             
-            <Row>
-              <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
-                <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
-              </Cell>
-            </Row>
-            
-            */}
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <p className="aboutOpenSource">Somos um projeto OpenSource. Para acesso ao nosso código fonte e fontes utilizadas, <a href="https://github.com/CovidZero" target="_blank">clique aqui</a>.</p>
