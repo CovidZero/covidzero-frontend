@@ -32,6 +32,20 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
+           <a href="/news/o_inicio_da_pandemia_e_o_isolamento_social_no_brasil">
+            <CardNews
+              title="O início da pandemia e o isolamento social no Brasil"
+              content={<p>O mundo está vivendo um momento raro na história das epidemias globais. Seja em relação ao número de mortos em contraste com uma época em que a tecnologia evoluiu a ponto de termos a inteligência artificial atuando no lugar de pessoas. Mesmo com tanta informação, grande parte da população não acredita no poder de contágio da Covid-19.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
            <a href="/news/seja-criativo-para-anunciar-durante-o-isolamento-social">
             <CardNews
               title="Seja criativo para anunciar durante o isolamento social"
