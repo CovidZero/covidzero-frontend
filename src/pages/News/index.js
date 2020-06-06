@@ -32,6 +32,20 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
+           <a href="/news/saude_mental_em_tempos_de_pandemia">
+            <CardNews
+              title="Saúde mental em tempos de pandemia"
+              content={<p>É sempre difícil lidar com uma crise, seja pelas mudanças que acarreta, pelos riscos que demanda ou pelo processo em si. O Brasil vive hoje uma das maiores crises dos últimos tempos e a pandemia do novo coronavírus já matou quase 30 mil pessoas.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
            <a href="/news/o_impacto_da_COVID-19_nas_relacoes_de_trabalho">
             <CardNews
               title="O impacto da COVID-19 nas relações de trabalho"
