@@ -19,6 +19,7 @@ import News10 from "./pages/News/News10";
 import News11 from "./pages/News/News11";
 import News12 from "./pages/News/News12";
 import News13 from "./pages/News/News13";
+import News14 from "./pages/News/News14";
 
 export default function Routes() {
   return (
@@ -45,6 +46,7 @@ export default function Routes() {
       <Route path="/news/seja-criativo-para-anunciar-durante-o-isolamento-social" exact component={News11} />
       <Route path="/news/o_inicio_da_pandemia_e_o_isolamento_social_no_brasil" exact component={News12} />
       <Route path="/news/o_impacto_da_COVID-19_nas_relacoes_de_trabalho" exact component={News13} />
+      <Route path="/news/saude_mental_em_tempos_de_pandemia" exact component={News14} />
 
       <Route path="/" component={() => <h1>Desculpe, um erro ocorreu. Estaremos verificando o que aconteceu.</h1>} />
     </Switch>
