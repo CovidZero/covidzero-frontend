@@ -5,6 +5,7 @@ import Cities from "./pages/Cities";
 import Area from "./pages/Area";
 import Help from "./pages/Help";
 import News from "./pages/News";
+import UiKit from "./pages/UiKit";
 import News1 from "./pages/News/News1";
 import News2 from "./pages/News/News2";
 import News3 from "./pages/News/News3";
@@ -14,7 +15,11 @@ import News6 from "./pages/News/News6";
 import News7 from "./pages/News/News7";
 import News8 from "./pages/News/News8";
 import News9 from "./pages/News/News9";
-import UiKit from "./pages/UiKit";
+import News10 from "./pages/News/News10";
+import News11 from "./pages/News/News11";
+import News12 from "./pages/News/News12";
+import News13 from "./pages/News/News13";
+import News14 from "./pages/News/News14";
 
 export default function Routes() {
   return (
@@ -37,6 +42,11 @@ export default function Routes() {
       <Route path="/news/o-mercado-brasileiro-e-as-mudanças-no-consumo" exact component={News7} />
       <Route path="/news/as-mudancas-nas-relacoes-de-consumo-durante-a-pandemia" exact component={News8} />
       <Route path="/news/qual-o-impacto-da-crise-do-coronavirus-na-midia" exact component={News9} />
+      <Route path="/news/como-manter-a-eficacia-da-midia-durante-a-pandemia" exact component={News10} />
+      <Route path="/news/seja-criativo-para-anunciar-durante-o-isolamento-social" exact component={News11} />
+      <Route path="/news/o_inicio_da_pandemia_e_o_isolamento_social_no_brasil" exact component={News12} />
+      <Route path="/news/o_impacto_da_COVID-19_nas_relacoes_de_trabalho" exact component={News13} />
+      <Route path="/news/saude_mental_em_tempos_de_pandemia" exact component={News14} />
 
       <Route path="/" component={() => <h1>Desculpe, um erro ocorreu. Estaremos verificando o que aconteceu.</h1>} />
     </Switch>
