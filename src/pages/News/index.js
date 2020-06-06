@@ -32,6 +32,20 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
+           <a href="/news/o_impacto_da_COVID-19_nas_relacoes_de_trabalho">
+            <CardNews
+              title="O impacto da COVID-19 nas relações de trabalho"
+              content={<p>Muito tem se falado sobre o “novo normal” durante a pandemia da Covid-19 e se ele permanecerá nas nossas vidas, pelo menos em parte. Ainda não se sabe se ele é promissor ou não, apenas que o mundo precisou se adaptar para vencer essa doença, que começou na China e já tomou conta do mundo inteiro.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
            <a href="/news/o_inicio_da_pandemia_e_o_isolamento_social_no_brasil">
             <CardNews
               title="O início da pandemia e o isolamento social no Brasil"
