@@ -131,7 +131,7 @@ export default function News() {
           phoneColumns={4}
           tabletColumns={4}
           >
-           <a href="/news/Por_trás_do_relatório_que_pôs_os_EUA_e_o_Reino_Unido_em_ação_contra_o_vírus_COVID-19">
+           <a href="/news/por_tras_do_relatorio_que_pos_os_EUA_e_o_Reino_Unido_em_acao_contra_o_virus_COVID-19">
             <CardNews
               title="Por trás do relatório de vírus que pôs os EUA e o Reino Unido em ação"
               content={<p>Quando Boris Johnson estava em campanha para que a Grã-Bretanha deixasse a União Europeia em 2016 - um caminho que muitos especialistas alertaram que terminaria em desastre para o país - um de seus aliados próximos, Michael Gove, declarou que “as pessoas neste país tiveram número suficiente de especialistas."</p>}
