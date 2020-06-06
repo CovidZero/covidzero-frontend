@@ -32,6 +32,20 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
+           <a href="/news/seja-criativo-para-anunciar-durante-o-isolamento-social">
+            <CardNews
+              title="Seja criativo para anunciar durante o isolamento social"
+              content={<p>Desde que o Brasil foi tomado pela crise do novo coronavírus, a criatividade tem sido uma importante aliada para driblar o momento complicado e inovar no mercado. Empresários de todos os ramos têm encontrado novas formas de fazer negócios e divulgá-los para continuar mantendo seu consumidor fiel. Com a mudança de comportamento causada pelo isolamento social, foi preciso redescobrir esse público, entender o que é importante nesse período e entregar ainda mais valor.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
            <a href="/news/como-manter-a-eficacia-da-midia-durante-a-pandemia">
             <CardNews
               title="Como manter a eficácia da mídia durante a pandemia"
