@@ -13,6 +13,7 @@ import News5 from "./pages/News/News5";
 import News6 from "./pages/News/News6";
 import News7 from "./pages/News/News7";
 import News8 from "./pages/News/News8";
+import News9 from "./pages/News/News9";
 import UiKit from "./pages/UiKit";
 
 export default function Routes() {
@@ -35,6 +36,7 @@ export default function Routes() {
       <Route path="/news/Revelando_a_origem_e_transmissao_do_COVID-19" exact component={News6} />
       <Route path="/news/o-mercado-brasileiro-e-as-mudanças-no-consumo" exact component={News7} />
       <Route path="/news/as-mudancas-nas-relacoes-de-consumo-durante-a-pandemia" exact component={News8} />
+      <Route path="/news/qual-o-impacto-da-crise-do-coronavirus-na-midia" exact component={News9} />
 
       <Route path="/" component={() => <h1>Desculpe, um erro ocorreu. Estaremos verificando o que aconteceu.</h1>} />
     </Switch>

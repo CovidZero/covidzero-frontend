@@ -32,6 +32,20 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
+           <a href="/news/qual-o-impacto-da-crise-do-coronavirus-na-midia">
+            <CardNews
+              title="Qual o impacto da crise do coronavírus na mídia?"
+              content={<p>Estamos diante de um cenário distópico, uma sociedade caracterizada por uma nova normalidade em nível mundial. O motivo é conhecido por todos e, segundo a OMS, a única maneira de lidar com a pandemia no momento é manter todos em casa. Mas essa medida traz uma série de consequências que, independentemente de serem boas ou más, temos que estar preparados para uma ágil adaptação.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
            <a href="/news/as-mudancas-nas-relacoes-de-consumo-durante-a-pandemia">
             <CardNews
               title="As mudanças nas relações de consumo durante a pandemia"
