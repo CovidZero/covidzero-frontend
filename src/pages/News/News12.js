@@ -9,7 +9,7 @@ import Notification from "~/assets/icons/bell.svg";
 import ArrowLeft from "~/assets/icons/arrow-left.svg";
 import { Content, Title } from "./styles";
 
-const News11 = props => {
+const News12 = props => {
   const { id } = props.match.params;
 
   const [t] = useTranslation();
@@ -116,4 +116,4 @@ const News11 = props => {
   );
 };
 
-export default News11;
+export default News12;
