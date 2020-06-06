@@ -32,6 +32,20 @@ export default function News() {
             phoneColumns={4}
             tabletColumns={4}
           >
+           <a href="/news/como-manter-a-eficacia-da-midia-durante-a-pandemia">
+            <CardNews
+              title="Como manter a eficácia da mídia durante a pandemia"
+              content={<p>O mundo já viveu, ao longo dos séculos, outras pandemias e, de maneiras diferentes, conseguiu se adaptar e superar todas elas. Um exemplo de uma pandemia ocorrida no século XIV foi a peste bubônica, também conhecida como peste negra. Ela matou entre 75 e 200 milhões de pessoas por toda Europa, reduzindo sua população a um terço.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
            <a href="/news/qual-o-impacto-da-crise-do-coronavirus-na-midia">
             <CardNews
               title="Qual o impacto da crise do coronavírus na mídia?"
