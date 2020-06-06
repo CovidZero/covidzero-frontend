@@ -24,10 +24,24 @@ export default function News() {
               <hr />
             </Styled.DivTitle>
           </Cell>
-        </Row> */}  
+        </Row> */}
 
         <Row>
-        <Cell
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/as-mudancas-nas-relacoes-de-consumo-durante-a-pandemia">
+            <CardNews
+              title="As mudanças nas relações de consumo durante a pandemia"
+              content={<p>A pandemia é uma realidade e já estamos vivendo nela há algum tempo. Sabemos que muita coisa mudou e estamos todos tentando nos adaptar. Por sorte, o homem é um ser adaptável.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
             desktopColumns={3}
             phoneColumns={4}
             tabletColumns={4}
@@ -110,7 +124,7 @@ export default function News() {
               tag={<div>#união</div>}
             />
             </a>
-          </Cell> 
+          </Cell>
 
           <Cell
           desktopColumns={3}
