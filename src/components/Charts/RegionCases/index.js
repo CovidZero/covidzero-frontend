@@ -22,16 +22,16 @@ const RegionCases = (props) => {
 
     useEffect(() => {
         getRegionCases();
-    }, []);
+    }, [getRegionCases]);
 
     useEffect(() => {
-        
+
         if(!lastDay){
             return
         }
 
         const sulValue = responseAPI.reduce((currentTotal, item) => {
-            
+
             if(item.date == lastDay && item.region == 'Sul' && item.codmun == null){
                 return currentTotal + item.totalCases
             }
@@ -72,7 +72,7 @@ const RegionCases = (props) => {
         setNordeste(nordesteValue);
         setNorte(norteValue);
 
-    }, [lastDay]);
+    }, [lastDay, responseAPI]);
 
     useEffect(() => {
 
@@ -90,7 +90,7 @@ const RegionCases = (props) => {
                         ],
                     borderWidth: 0.6,
                     data: [sul, sudeste, centroOeste, nordeste, norte],
-                    
+
                 }
                 ],
             }
@@ -104,7 +104,7 @@ const RegionCases = (props) => {
 
         setResponseAPI(response);
 
-        const lastDay = response[1].date;
+        // const lastDay = response[1].date;
 
         setLastDay(lastDay);
     };
@@ -117,7 +117,7 @@ const RegionCases = (props) => {
                     data={graphic}
                     options={{
                     cutoutPercentage: 80,
-                        
+
                         legend:{
                             display: true,
                             labels: {
@@ -132,7 +132,7 @@ const RegionCases = (props) => {
                         },
                     }}
                 /> }
-                
+
             </Style.CardBoxStatsDefault>
         </Style.CardBoxStyle>
     );

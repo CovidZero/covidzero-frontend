@@ -25,7 +25,7 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={Brazil} />
-      <Route path="/cities" exact component={Cities} />
+      {/* <Route path="/cities" exact component={Cities} />*/}
       <Route path="/area" exact component={Area} />
       {/* <Route path="/help" exact component={Help} /> */}
       <Route path="/news" exact component={News} />
