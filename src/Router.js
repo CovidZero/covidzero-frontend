@@ -15,10 +15,13 @@ import UiKit from "./pages/UiKit";
 
 import Donations       from "./pages/Donations";
 import Details         from "./pages/Donations/details";
-import Checkout        from "./pages/Donations/checkoutCartao";
+import CheckoutCartaoCaptable  from "./pages/Donations/checkoutCartaoCaptable";
 import checkoutBoleto  from "./pages/Donations/checkoutBoleto";
-import confirmed       from "./pages/Donations/confirmed";
+import confirmedPreme       from "./pages/Donations/confirmedPreme";
+import confirmedCaptable     from "./pages/Donations/confirmedCaptable";
 
+import checkoutBoletoPreme  from "./pages/Donations/checkoutBoletoPreme";
+import CheckoutCartaoPreme  from "./pages/Donations/checkoutCartaoPreme";
 
 
 export default function Routes() {
@@ -31,11 +34,15 @@ export default function Routes() {
       <Route path="/news" exact component={News} />
 
       <Route path="/donations"           exact component={Donations} />
-      <Route path="/donations/details/:capitation/:id"   exact component={Details} /> 
-      <Route path="/donations/checkout/:id"  exact component={Checkout} />
-      <Route path="/donations/boleto/:id"    exact component={checkoutBoleto} />
-      <Route path="/donations/confirmed"     exact component={confirmed} />
+      <Route path="/donations/details/:capitation/:id"   exact component={Details} />       
+      <Route path="/donations/checkout/captable/:id"     exact component={CheckoutCartaoCaptable} />
+      <Route path="/donations/boleto/:id"                exact component={checkoutBoleto} />
+      <Route path="/donations/confirmed/captable/:id"    exact component={confirmedCaptable} />
       
+      
+      <Route path="/donations/checkout/preme/:id"     exact component={CheckoutCartaoPreme} />
+      <Route path="/donations/confirmed/preme/stores/:storeId/orders/:orderNumber"  exact component={confirmedPreme} />
+      <Route path="/donations/boleto/preme/stores/:storeId/orders/:orderNumber"     exact component={checkoutBoletoPreme} />
 
       <Route path="/uikit" exact component={UiKit} />{" "}
 

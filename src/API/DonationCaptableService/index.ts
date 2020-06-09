@@ -1,5 +1,5 @@
 import http from '~/utils/config/httpDonations';
-import { API_URL_DONATION  as baseURL} from "~/utils/constants";
+import { API_URL_DONATION_CAPTABLE  as baseURL} from "~/utils/constants";
 
  
 
@@ -24,7 +24,7 @@ interface DonationsProvider {
 }
 
 
-export default function DonationsService(casesBaseURL: string): DonationsProvider {
+export default function DonationsCapTableService(casesBaseURL: string): DonationsProvider {
 
             async function findAllProjects() {
                 try {

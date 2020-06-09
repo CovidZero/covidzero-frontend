@@ -1,34 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
 import { API_URL } from "../constants";
 
-const http = axios.create(
-  { baseURL: API_URL }
-);
-
-/**
- * Interceptor for all requests
- */
-http.interceptors.request.use(
-  config => {
-    config.headers = {
-      'Access-Control-Allow-Origin': window.location.href
-    }
-    return config;
+const http = axios.create({
+  baseURL: API_URL,
+  responseType: 'json',
+  headers: {
+    Accept: 'application/json',
   },
-  error => {
-    /**
-     * Add your error handlers here
-     */
-    return Promise.reject(error);
-  }
-);
-
-/**
- * Interceptor for all responses
- */
-http.interceptors.response.use(null, error => {
-  return Promise.reject(error);
 });
 
+
 export default http;
+
+
+

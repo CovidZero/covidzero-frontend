@@ -12,7 +12,8 @@ import API from "~/API";
 import ProjectsJson from "./projects.json";
 
 export default function Details() {
-    const [t]  = useTranslation();    
+    const [t]  = useTranslation(); 
+       
     let { id:idProjecto,capitation } = useParams();
     
     
@@ -33,26 +34,25 @@ export default function Details() {
       description:'CovidZero - Combate ao COVID-19'
      };
 
-    const [meta, _setMeta]             = useState(initalMeta)
+    const [meta, _setMeta]            = useState(initalMeta)
     const [Projects, setProjects]     = useState(initalProjects)
 
     
     const setMeta=(response)=>{
-        let meta = {
-                title:`${response.name}`+ ' | CovidZero',
-                description:`${response.name}`+ ' | CovidZero  - Combate ao COVID-19'
-        }
         
-        _setMeta(meta);
+        initalMeta.title      =`${response.name}`+ ' | CovidZero';
+        initalMeta.description=`${response.name}`+ ' | CovidZero  - Combate ao COVID-19';
+        
+        _setMeta(initalMeta);
     }
 
 
 
     useEffect(() => {
         
-       if(capitation==1){
+       if(capitation=='captable'){
             (async () => {         
-                API.donations.findProjects(idProjecto).
+                API.donationsCaptable.findProjects(idProjecto).
                   then(response =>{ 
                       setMeta(response);
                       setProjects(response);
@@ -75,8 +75,7 @@ export default function Details() {
       }
 
     },[]);
-
-    console.log(meta);
+ 
 
     let formato = { minimumFractionDigits: 2 , currency: 'BRL' }
 
@@ -132,20 +131,20 @@ export default function Details() {
 
 
                 <Styled.ContentText>
-                 <div class="content-placeholder"  style={loadingStatus? {display:"block"}: {display:"none"}} >
-                      <div class="animated-background  content-1"></div>
-                      <div class="animated-background  content-2"></div>
-                      <div class="animated-background  content-3"></div>
-                      <div class="animated-background  content-4"></div>
-                      <div class="animated-background  content-1"></div>
-                      <div class="animated-background  content-2"></div>
-                      <div class="animated-background  content-3"></div>
+                 <div className="content-placeholder"  style={loadingStatus? {display:"block"}: {display:"none"}} >
+                      <div className="animated-background  content-1"></div>
+                      <div className="animated-background  content-2"></div>
+                      <div className="animated-background  content-3"></div>
+                      <div className="animated-background  content-4"></div>
+                      <div className="animated-background  content-1"></div>
+                      <div className="animated-background  content-2"></div>
+                      <div className="animated-background  content-3"></div>
                       <br/>
-                      <div class="animated-background  content-4"></div>
-                      <div class="animated-background  content-1"></div>
-                      <div class="animated-background  content-2"></div>
-                      <div class="animated-background  content-3"></div>
-                      <div class="animated-background  content-4"></div>                                            
+                      <div className="animated-background  content-4"></div>
+                      <div className="animated-background  content-1"></div>
+                      <div className="animated-background  content-2"></div>
+                      <div className="animated-background  content-3"></div>
+                      <div className="animated-background  content-4"></div>                                            
                  </div>       
 
                    {Projects.about}
@@ -158,7 +157,7 @@ export default function Details() {
                   styleButton='sm-light-btn'  
                   textButton='Doe a partir de R$5'
                   className="full-light-btn"  
-                  onClick={() => history.push("/donations/checkout/"+Projects.id)}                                                    
+                  onClick={() => history.push(`/donations/checkout/${capitation}/${Projects.id}`)}                                                    
                 />
                
                <Styled.ContentText style={{fontSize:"12px",lineHeight:"18px",margin:"17px 8px 8px 8px",textAlign:"center"}}>
@@ -166,15 +165,15 @@ export default function Details() {
                </Styled.ContentText>
 
                <div style={{textAlign:"center",margin:"0px 0px 20px 0px"}}>
-                 {capitation==1 &&
+                 {capitation=='captable' &&
                   <a href="https://captable.com.br/?utm_source=covidzero" target="_blank">
                     <img  src={require("~/assets/images/cap-table.svg")}/>
                   </a>
                  }
  
-                {capitation==2 &&
+                {capitation=='preme' &&
                   <a href="#" target="_blank">
-                    <img  src={require("~/assets/images/logo-ribon.svg")}/>
+                    <img  src={require("~/assets/images/logo-preme.svg")}/>
                   </a>
                  }
 

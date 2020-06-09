@@ -17,7 +17,7 @@ export default function Donations() {
      
     useEffect(() => {
         (async () => {          
-            API.donations.findAllProjects().then(response => setAllProjects(response));
+            API.donationsCaptable.findAllProjects().then(response => setAllProjects(response));
          }
         )()       
      },[]);
@@ -41,13 +41,13 @@ export default function Donations() {
                         <Button 
                             styleButton='sm-light-btn'  
                             textButton='Doar'   
-                            onClick={() => history.push("/donations/details/1/"+`${ret.id}`)}                       
+                            onClick={() => history.push("/donations/details/captable/"+`${ret.id}`)}                       
                          />
                       } 
                     />
               ))}
 
-            {/* Ribon */}
+            {/* Preme */}
             {ProjectsJson.map((ret, index) => (
                   <CardDonations
                       title={ret.name} 
@@ -56,7 +56,7 @@ export default function Donations() {
                         <Button 
                             styleButton='sm-light-btn'  
                             textButton='Doar'   
-                            onClick={() => history.push("/donations/details/2/"+`${ret.id}`)}                       
+                            onClick={() => history.push("/donations/details/preme/"+`${ret.id}`)}                       
                          />
                       } 
                     />

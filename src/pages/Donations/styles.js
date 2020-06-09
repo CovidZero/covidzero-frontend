@@ -2,8 +2,15 @@ import styled from "styled-components";
 
 
 export const Container = styled.section`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(100px, auto);
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding:24px;
 
-    @media all and (min-width: 600px) {
+    /*@media all and (min-width: 600px) {
                 display: block;
                 padding:24px;
                 
@@ -14,7 +21,7 @@ export const Container = styled.section`
                 
                 
             }
-    }
+    }*/
 
     @media (max-width: 839px) and (min-width: 480px){
         padding:16px;
