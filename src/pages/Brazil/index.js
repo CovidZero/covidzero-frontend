@@ -93,7 +93,7 @@ const Brazil = () => {
                 <CardStats status="death" title="Óbitos" count={totalDeathsStates.toLocaleString()} />
               </Cell>
             </Row>
-            
+
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <DailyCases title="Novos casos confirmados diários" />
@@ -104,11 +104,11 @@ const Brazil = () => {
                 <TotalCases title="Casos confirmados totais no Brasil" />
               </Cell>
             </Row>
-            <Row style={{ marginBottom: "1em" }}>
+            {/*<Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <RegionCases title="Casos confirmados por Região" />
               </Cell>
-            </Row>
+            </Row>*/}
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
                 <DailyDeaths title="Novos óbitos confirmados diários" />
@@ -125,13 +125,13 @@ const Brazil = () => {
               </Cell>
             </Row>
             {/*
-            
+
             <Row>
               <Cell desktopColumns={12} phoneColumns={2} tabletColumns={4}>
                 <CardStats status="death" title="Óbitos" count={totalCases.deaths} />
               </Cell>
             </Row>
-            
+
             */}
             <Row style={{ marginBottom: "1em" }}>
               <Cell desktopColumns={12} phoneColumns={4} tabletColumns={4}>
