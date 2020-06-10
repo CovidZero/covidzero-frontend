@@ -104,7 +104,7 @@ const RegionCases = (props) => {
 
         setResponseAPI(response);
 
-        // const lastDay = response[1].date;
+        const lastDay = response[1].date;
 
         setLastDay(lastDay);
     };
