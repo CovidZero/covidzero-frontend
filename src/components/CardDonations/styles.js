@@ -14,6 +14,8 @@ export const CardBoxStyle = styled.div`
     background: #232328;
     margin-bottom: 8px;
 
+    position:relative;
+
 `;
 
 export const CardBoxTitle = styled.div`
@@ -34,6 +36,7 @@ export const CardBoxContent = styled.div`
   font-size: 12px;
   margin: 8px 0;
   line-height: 18px;
+  margin-bottom:32px;
 
   @media all and (min-width: 768px) {
     font-size: 0.875rem;
@@ -48,6 +51,9 @@ export const CardBoxFooter = styled.div`
   line-height: 16px;
   display: flex;
   justify-content: space-between;
+
+  position: absolute;
+  bottom: 15px;
 `;
 
 export const Style = {

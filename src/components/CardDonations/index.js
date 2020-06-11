@@ -9,9 +9,9 @@ const CardDonations = (props) => {
                 {props.title}
             </Style.CardBoxTitle>
             <Style.CardBoxContent>
-                <Truncate lines={3} ellipsis="...">
+                {/*<Truncate lines={3} ellipsis="...">*/}
                     {props.content}
-                </Truncate>
+                {/*</Truncate>*/}
             </Style.CardBoxContent>
             <Style.CardBoxFooter>
                {props.footer}

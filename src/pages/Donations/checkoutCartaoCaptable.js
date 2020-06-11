@@ -74,7 +74,7 @@ export default function CheckoutCartao() {
 
     useEffect(() => {
       (async () => {         
-           API.donations.findProjects(id).then(response => {
+           API.donationsCaptable.findProjects(id).then(response => {
                 values.description=response.name;
            }).catch(ret=> history.push("/donations"));;  
            
