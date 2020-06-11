@@ -2,23 +2,30 @@ import styled from "styled-components";
 
 
 export const Container = styled.section`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(100px, auto);
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding:24px;
 
-    @media all and (min-width: 600px) {
+    /*@media all and (min-width: 600px) {
                 display: block;
                 padding:24px;
-                
+
             > div{
                 margin:10px;
                 width: 580px;
                 display:inline-flex;
-                
-                
+
+
             }
-    }
+    }*/
 
     @media (max-width: 839px) and (min-width: 480px){
         padding:16px;
-    }    
+    }
 
     @media (max-width: 479px){
         padding:16px;
@@ -88,12 +95,12 @@ export const ContentImg = styled.div`
         bottom: 20px;
         left: 16px;
    }
-   img{ 
+   img{
         height: 141px;
         width: 100%;
         object-fit: cover;
         opacity:0.5;
-        
+
    }
 `;
 
@@ -111,7 +118,7 @@ export const ContentText = styled.div`
 
 // checkout
 export const ContentButton = styled.div`
-     
+
      .lg-light-btn{
             padding: 13px 14px;
             font-size: 16px;
@@ -128,14 +135,14 @@ export const ContentButton = styled.div`
      }
 
 
-     
+
      .lg-light-btn + .lg-light-btn{
          margin-left:8px;
      }
 
-     .btn-txt{        
+     .btn-txt{
          line-height: 18px;
-         text-transform: unset; 
+         text-transform: unset;
      }
 
      .active{
@@ -198,7 +205,7 @@ export const ContentForm = styled.div`
 export const ContentFormButton = styled.div`
     height: 64px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background: #2E2E32;    
+    background: #2E2E32;
     opacity: 0.85;
     border-radius: 4px;
     padding:1em;
@@ -220,7 +227,7 @@ export const ContentFormaPagamento = styled.div`
         position:relative;
         box-sizing: border-box;
 
-       
+
      .label{
         margin:0.5em 0;
         font-size:14px;
@@ -238,15 +245,15 @@ export const ContentFormaPagamento = styled.div`
       .form-group .form-button-left{
             background: #16171c;
             padding: 8px;
-            border-bottom-right-radius: 4px; 
+            border-bottom-right-radius: 4px;
             font-weight: bold;
       }
-   
+
 
       .form-group .form-button-right{
-           background: #16171c;  
+           background: #16171c;
            padding: 8px;
-           border-bottom-left-radius: 4px;                  
+           border-bottom-left-radius: 4px;
            font-weight: bold;
       }
       .form-group .form-button-left div,
@@ -275,8 +282,8 @@ export const ContentFormaPagamento = styled.div`
             border: 1px solid #2E2E32;
             border-bottom: 0;
       }
-      
-      
+
+
       .form-group > div{
           flex:50%;
           overflow: hidden;
@@ -293,11 +300,11 @@ export const ContentFormaPagamento = styled.div`
       .radius-right{
           border-top-right-radius:8px;
       }
- 
+
       .radius-left{
           border-top-left-radius:8px;
       }
-     
+
 
 
       .info{
@@ -307,7 +314,7 @@ export const ContentFormaPagamento = styled.div`
 
       .info h2{
         font-size: 14px;
-        line-height: 24px; 
+        line-height: 24px;
         letter-spacing: 1px;
         color: #F5F5F5;
         margin:0;
@@ -319,7 +326,7 @@ export const ContentFormaPagamento = styled.div`
          line-height: 16px;
          color: #BDBDBD;
          margin:0;
-         
+
       }
 
       .info .icon{
