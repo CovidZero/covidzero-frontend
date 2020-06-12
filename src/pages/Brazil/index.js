@@ -5,6 +5,7 @@ import ReactTooltip from "react-tooltip";
 
 import * as Styled from "./styles.js";
 
+
 import { CardStats, DailyCases, DailyDeaths, TotalCases, RegionCases, TotalDeaths, CasesAndDeaths } from "~/components";
 import { Header } from "~/components";
 import { MapBrazil } from "~/components";

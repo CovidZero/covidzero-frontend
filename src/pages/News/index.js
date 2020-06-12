@@ -27,6 +27,20 @@ export default function News() {
         </Row> */}
 
         <Row>
+        <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/o-mercado-brasileiro-e-as-mudanças-no-consumo">
+            <CardNews
+              title="O mercado brasileiro e as mudanças no consumo"
+              content={<p>Entender como funciona o consumo neste período é importante, pois ajudará a programar os próximos passos. O mundo já passou por outras crises e as enfrentou utilizando as ferramentas disponíveis na época. Hoje, vivemos uma era digital, onde produtos e serviços já vinham sendo adaptados a essa nova realidade</p>}
+              date={new Date(2020, 4, 16, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
           <Cell
             desktopColumns={3}
             phoneColumns={4}
