@@ -14,9 +14,11 @@ import MapBrazil from "./MapBrazil";
 import MapCities from "./MapCities"; 
 import SocialShare from "./SocialShare";
 import DailyCases from "./Charts/DailyCases";
+import DailyDeaths from "./Charts/DailyDeaths";
 import TotalCases from "./Charts/TotalCases";
 import RegionCases from "./Charts/RegionCases";
 import TotalDeaths from "./Charts/TotalDeaths";
+import CasesAndDeaths from "./Charts/CasesAndDeaths";
 import MapArea from "./MapArea";
 import Marker from "./Marker";
 export {
@@ -35,9 +37,11 @@ export {
   MapCities,
   SocialShare,
   DailyCases,
+  DailyDeaths,
   TotalCases,
   RegionCases,
   TotalDeaths,
+  CasesAndDeaths,
   MapArea,
   Marker,
   MapBrazil

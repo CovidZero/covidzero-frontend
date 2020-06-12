@@ -30,7 +30,7 @@ const News3 = props => {
               <div className="news-item-header-image">
                 <img
                   className="news-item-image"
-                  src={require("~/assets/images/Por_trás_do_relatório_que_pôs_os_EUA_e_o_Reino_Unido_em_ação_contra_o_vírus_COVID-19.jpg")}
+                  src={require("~/assets/images/por_tras_do_relatorio_que_pos_os_EUA_e_o_Reino_Unido_em_acao_contra_o_virus_COVID-19.jpg")}
                 />
                 <div className="news-item-title">Por trás do relatório que pôs os EUA e o Reino Unido em ação contra o vírus COVID-19</div>
               </div>

@@ -93,7 +93,7 @@ circle{
     animation: zoominoutsinglefeatured 3s infinite ;
 }
 
-.gm-style div a, .gm-style div a div, .gmnoprint {
+.gm-style div a, .gm-style div a div, .gm-style-cc, .gmnoprint {
   display: none;
 }
 
@@ -157,5 +157,15 @@ circle{
       width: 100% !important;
       font-weight: bold !important;
     }
+  }
+}
+
+.aboutOpenSource {
+  color: #a4a4a4;
+  font-size: 12px;
+
+  a {
+    color: #a4a4a4;
+    text-decoration: underline;
   }
 }

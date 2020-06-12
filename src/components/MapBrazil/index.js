@@ -149,7 +149,7 @@ const MapBrazil = ({ setStateCases, setTooltipContent }) => {
 
     return (
         <GoogleMapReact
-            bootstrapURLKeys={{ key: GMAP_KEY }}
+            bootstrapURLKeys={{ key: GMAP_KEY, libraries: ['places'] }}
             defaultCenter={[defaultOptions.latitude, defaultOptions.longitude]}
             defaultZoom={defaultOptions.zoom}
             yesIWantToUseGoogleMapApiInternals
