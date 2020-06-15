@@ -65,14 +65,14 @@ a {
   width: 35%;
 }
 
- 
+
 @include respond-to(tablet) {
   .main-logo {
     width: 20%;
     padding-right: 80px;
   }
 }
- 
+
 .mdc-layout-grid {
   width: 100%;
 }
@@ -93,19 +93,22 @@ circle{
     animation: zoominoutsinglefeatured 3s infinite ;
 }
 
-.gm-style div a, .gm-style div a div, .gm-style-cc {
+
+.gm-style div a, .gm-style div a div, .gm-style-cc, .gmnoprint {
   display: none;
+}
+
+.hIOJIb {
+  background-color: #FFF !important;
+}
+
+#neoron button {
+  cursor: pointer;
 }
 
 ._hj-f5b2a1eb-9b07_feedback_minimized_label{
   zoom: 70%;
 }
-
-// neoron chatbot
-.rsc-float-button {
-  display: none !important;
-}
-
 
 @media only screen and (max-width: 600px) {
   .rsc-float-button {
@@ -160,6 +163,12 @@ circle{
   }
 }
 
-#ribon {
-  width: 75px;
+.aboutOpenSource {
+  color: #a4a4a4;
+  font-size: 12px;
+
+  a {
+    color: #a4a4a4;
+    text-decoration: underline;
+  }
 }

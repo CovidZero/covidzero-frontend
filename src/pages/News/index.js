@@ -24,9 +24,135 @@ export default function News() {
               <hr />
             </Styled.DivTitle>
           </Cell>
-        </Row> */}  
+        </Row> */}
 
         <Row>
+        <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/o-mercado-brasileiro-e-as-mudanças-no-consumo">
+            <CardNews
+              title="O mercado brasileiro e as mudanças no consumo"
+              content={<p>Entender como funciona o consumo neste período é importante, pois ajudará a programar os próximos passos. O mundo já passou por outras crises e as enfrentou utilizando as ferramentas disponíveis na época. Hoje, vivemos uma era digital, onde produtos e serviços já vinham sendo adaptados a essa nova realidade</p>}
+              date={new Date(2020, 4, 16, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/saude_mental_em_tempos_de_pandemia">
+            <CardNews
+              title="Saúde mental em tempos de pandemia"
+              content={<p>É sempre difícil lidar com uma crise, seja pelas mudanças que acarreta, pelos riscos que demanda ou pelo processo em si. O Brasil vive hoje uma das maiores crises dos últimos tempos e a pandemia do novo coronavírus já matou quase 30 mil pessoas.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/o_impacto_da_COVID-19_nas_relacoes_de_trabalho">
+            <CardNews
+              title="O impacto da COVID-19 nas relações de trabalho"
+              content={<p>Muito tem se falado sobre o “novo normal” durante a pandemia da Covid-19 e se ele permanecerá nas nossas vidas, pelo menos em parte. Ainda não se sabe se ele é promissor ou não, apenas que o mundo precisou se adaptar para vencer essa doença, que começou na China e já tomou conta do mundo inteiro.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/o_inicio_da_pandemia_e_o_isolamento_social_no_brasil">
+            <CardNews
+              title="O início da pandemia e o isolamento social no Brasil"
+              content={<p>O mundo está vivendo um momento raro na história das epidemias globais. Seja em relação ao número de mortos em contraste com uma época em que a tecnologia evoluiu a ponto de termos a inteligência artificial atuando no lugar de pessoas. Mesmo com tanta informação, grande parte da população não acredita no poder de contágio da Covid-19.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/seja-criativo-para-anunciar-durante-o-isolamento-social">
+            <CardNews
+              title="Seja criativo para anunciar durante o isolamento social"
+              content={<p>Desde que o Brasil foi tomado pela crise do novo coronavírus, a criatividade tem sido uma importante aliada para driblar o momento complicado e inovar no mercado. Empresários de todos os ramos têm encontrado novas formas de fazer negócios e divulgá-los para continuar mantendo seu consumidor fiel. Com a mudança de comportamento causada pelo isolamento social, foi preciso redescobrir esse público, entender o que é importante nesse período e entregar ainda mais valor.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/como-manter-a-eficacia-da-midia-durante-a-pandemia">
+            <CardNews
+              title="Como manter a eficácia da mídia durante a pandemia"
+              content={<p>O mundo já viveu, ao longo dos séculos, outras pandemias e, de maneiras diferentes, conseguiu se adaptar e superar todas elas. Um exemplo de uma pandemia ocorrida no século XIV foi a peste bubônica, também conhecida como peste negra. Ela matou entre 75 e 200 milhões de pessoas por toda Europa, reduzindo sua população a um terço.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/qual-o-impacto-da-crise-do-coronavirus-na-midia">
+            <CardNews
+              title="Qual o impacto da crise do coronavírus na mídia?"
+              content={<p>Estamos diante de um cenário distópico, uma sociedade caracterizada por uma nova normalidade em nível mundial. O motivo é conhecido por todos e, segundo a OMS, a única maneira de lidar com a pandemia no momento é manter todos em casa. Mas essa medida traz uma série de consequências que, independentemente de serem boas ou más, temos que estar preparados para uma ágil adaptação.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/as-mudancas-nas-relacoes-de-consumo-durante-a-pandemia">
+            <CardNews
+              title="As mudanças nas relações de consumo durante a pandemia"
+              content={<p>A pandemia é uma realidade e já estamos vivendo nela há algum tempo. Sabemos que muita coisa mudou e estamos todos tentando nos adaptar. Por sorte, o homem é um ser adaptável.</p>}
+              date={new Date(2020, 5, 6, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
+          <Cell
+            desktopColumns={3}
+            phoneColumns={4}
+            tabletColumns={4}
+          >
+           <a href="/news/o-mercado-brasileiro-e-as-mudanças-no-consumo">
+            <CardNews
+              title="O mercado brasileiro e as mudanças no consumo"
+              content={<p>Entender como funciona o consumo neste período é importante, pois ajudará a programar os próximos passos. O mundo já passou por outras crises e as enfrentou utilizando as ferramentas disponíveis na época. Hoje, vivemos uma era digital, onde produtos e serviços já vinham sendo adaptados a essa nova realidade</p>}
+              date={new Date(2020, 4, 16, 12)}
+              tag={<div>#covid-19</div>}
+            />
+            </a>
+          </Cell>
           <Cell
             desktopColumns={3}
             phoneColumns={4}
@@ -96,14 +222,14 @@ export default function News() {
               tag={<div>#união</div>}
             />
             </a>
-          </Cell> 
+          </Cell>
 
           <Cell
           desktopColumns={3}
           phoneColumns={4}
           tabletColumns={4}
           >
-           <a href="/news/Por_trás_do_relatório_que_pôs_os_EUA_e_o_Reino_Unido_em_ação_contra_o_vírus_COVID-19">
+           <a href="/news/por_tras_do_relatorio_que_pos_os_EUA_e_o_Reino_Unido_em_acao_contra_o_virus_COVID-19">
             <CardNews
               title="Por trás do relatório de vírus que pôs os EUA e o Reino Unido em ação"
               content={<p>Quando Boris Johnson estava em campanha para que a Grã-Bretanha deixasse a União Europeia em 2016 - um caminho que muitos especialistas alertaram que terminaria em desastre para o país - um de seus aliados próximos, Michael Gove, declarou que “as pessoas neste país tiveram número suficiente de especialistas."</p>}

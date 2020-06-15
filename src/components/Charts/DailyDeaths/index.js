@@ -7,8 +7,7 @@ import last30DaysService from '../../../services/last30Days';
 import {Bar} from 'react-chartjs-2';
 import Chart from 'chart.js';
 
-const DailyCases = (props) => {
-   
+const DailyDeaths = (props) => {
     const [responseAPI, setResponseAPI] = useState([]);
 
     const [lastDay, setLastDay] = useState(null);
@@ -25,7 +24,7 @@ const DailyCases = (props) => {
     }, []);
 
     useEffect(() => {
-        
+
         if(!lastDay || !lastDayFormated){
             return
         }
@@ -40,26 +39,22 @@ const DailyCases = (props) => {
             let day = moment(lastDay).subtract(index, 'days');
             //coloca no array o dia no formato da api y-m-d
             daysYMD.push(moment(day).format('YYYY-MM-DD'));
-            
+
             //coloca no array o dia no formato dd/m
             daysMD.push(moment(day._d).format('l').split('/').reverse().slice(1).join('/'));
-            
+
         }
 
         const newValues = daysYMD.map(day => {
-            // let todayItem = responseAPI[0].totalCases;
-
-            // console.log(todayItem);
-
-            let totalNewCases = responseAPI.reduce((currentTotal, item) => {
-                if(item.date == day){
-                    return item.newCases;
-                }
-                return currentTotal
+            let totalNewDeaths = responseAPI.reduce((currentTotal, item) => {
+              if(item.date == day){
+                return item.newDeaths;
+              }
+              return currentTotal
             }, 0);
-            return totalNewCases;
-        });
 
+            return totalNewDeaths;
+        });
 
         setLabels(daysMD);
         setValues(newValues);
@@ -77,8 +72,8 @@ const DailyCases = (props) => {
                 labels: labels.reverse(),
                 datasets: [
                     {
-                    backgroundColor: '#EF5350',
-                    hoverbackgroundColor: '#EF5350',
+                    backgroundColor: '#BDBDBD',
+                    hoverbackgroundColor: '#BDBDBD',
                     data: values.reverse(),
                     }
                 ]
@@ -87,21 +82,20 @@ const DailyCases = (props) => {
     }, [labels, values]);
 
     async function getLastDay(){
-        const response = await last30DaysService.get().then(response => {
-            return response.data;
-        });
+      const response = await last30DaysService.get().then(response => {
+        return response.data;
+      });
 
-        setResponseAPI(response);
+      setResponseAPI(response);
 
-        const lastDay = response[0];
+      const lastDay = response[0];
 
-        const lastDayFormated = moment(lastDay.date).format('l').split('/').reverse().slice(1).join('/');
+      const lastDayFormated = moment(lastDay.date).format('l').split('/').reverse().slice(1).join('/');
 
-        setLastDay(lastDay.date);
-        setLastDayFormated(lastDayFormated);
-
+      setLastDay(lastDay.date);
+      setLastDayFormated(lastDayFormated);
     };
-    
+
 
     return(
         <Style.CardBoxStyle>
@@ -135,14 +129,14 @@ const DailyCases = (props) => {
                                 }, 
                             }],
                         },
-                        
+
                     }}
                 />}
-                
+
             </Style.CardBoxStatsDefault>
         </Style.CardBoxStyle>
     );
 
 }
 
-export default DailyCases;
+export default DailyDeaths; 

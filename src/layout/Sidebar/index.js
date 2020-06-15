@@ -30,11 +30,11 @@ const Sidebar = props => {
       path: "/",
       icon: pathname === "/" ? <MapActive /> : <Map />
     },
-    {
-      title: "menu.cities",
-      path: "/cities",
-      icon: pathname === "/cities" ? <CityActive /> : <City />
-    },
+    // {
+    //  title: "menu.cities",
+    //  path: "/cities",
+    //  icon: pathname === "/cities" ? <CityActive /> : <City />
+    //},
     {
       title: "menu.area",
       path: "/area",
