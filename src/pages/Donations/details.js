@@ -74,7 +74,8 @@ export default function Details() {
 
       }
 
-    },[capitation, idProjecto, setMeta]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
 
 
     let formato = { minimumFractionDigits: 2 , currency: 'BRL' }
@@ -149,7 +150,7 @@ export default function Details() {
 
                    {Projects.about}
                    <p><b>Quanto  o CovidZero ganha?</b></p>
-                   <p>Nada! O valor recebido é passado diretamente para a instituição escolhida e o CovidZero não recebe nenhuma doação por isso.</p>
+                   <p>Nada! O valor recebido é passado diretamente para a instituição escolhida e o CovidZero não recebe nenhuma comissão por isso.</p>
                 </Styled.ContentText>
 
 
@@ -172,8 +173,8 @@ export default function Details() {
                  }
 
                 {capitation=='preme' &&
-                  <a href="#" target="_blank">
-                    <img  src={require("~/assets/images/logo-preme.svg")}/>
+                  <a href="https://home.ribon.io/" target="_blank">
+                    <img id="ribon" alt="Ribon Logo" src={require("~/assets/images/logo-ribon.svg")}/>
                   </a>
                  }
 
