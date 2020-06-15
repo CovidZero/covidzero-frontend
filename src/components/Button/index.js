@@ -19,8 +19,10 @@ const Button = (props) => {
                 case "lg-un-btn":
                   return <styled.LargeUnfiledButton disabled={props.disable}>{props.textButton}</styled.LargeUnfiledButton>;
                 case "txt-btn":
-                  return <styled.TextButton size={props.sizeBtn} disabled={props.disable}>{props.textButton}</styled.TextButton>;
-                default:
+                  return <styled.TextButton  size={props.sizeBtn} disabled={props.disable}>{props.textButton}</styled.TextButton>;
+                case "sm-light-btn":
+                    return <styled.SmallLifiledButton disabled={props.disable} {...props}>{props.textButton}</styled.SmallLifiledButton>;
+                  default:
                   return<div></div>;
             }
         })()}

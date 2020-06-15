@@ -123,3 +123,36 @@ export const TextButton = styled.button`
         color: #FA8875;
     }
 `;
+
+
+export const SmallLifiledButton = styled.button`
+    padding: 6px 16px;
+    text-transform: uppercase;
+    border: 0px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: 500;
+    ${props => 
+        props.disabled
+        ? css`box-shadow: 0 0 0 1px rgba(252, 252, 252, .50) inset;`
+        : css`box-shadow: 0 0 0 1px #FCFCFC inset;`
+    };
+    ${props => 
+        props.disabled
+        ? css`color: rgba(252, 252, 252, .50);`
+        : css`color: #EE7764;`
+    };
+    height: 32px;
+    ${props =>
+        props.disabled
+        ? css`cursor: not-allowed;`
+        : css`cursor: pointer;`
+    };
+    outline: none;
+    
+    &:active{
+        background: #ccc;
+        color: #EE7764;
+    }
+`;

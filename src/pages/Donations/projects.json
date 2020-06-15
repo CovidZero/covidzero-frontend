@@ -1,0 +1,37 @@
+[
+    {
+        "id": 4,
+        "name": "WFP - Programa Mundial de Alimentos Brasil",
+        "about": "Ajude a WFP a continuar distribuindo merendas escolares durante a crise do Coronavírus. Cada R$10 ajudam a higienizar 500 merendas escolares, garantindo alimentação segura para alunos da rede pública.",
+        "goal": "1000.0",
+        "photo": {"url": "http://res.cloudinary.com/hw4d4tgcm/image/upload/v1585760532/uploads/project/photo/1.jpg"},
+        "quota_total": 1000000,
+        "quota_value": "50.0",
+        "ong_name":"WFP",
+        "ong_cnpj":"99.999.949/9999-99"
+    },
+    {
+        "id": 2,
+        "name": "Favela Sem Corona",
+        "about": "Percebendo o descaso que o poder público já pratica com as comunidades do Rio de Janeiro, o projeto Favela sem Corona foi criado com o objetivo de diminuir o impacto da epidemia de coronavírus nas favelas do município, atuando nas áreas de prevenção e apoio ao diagnóstico.",
+        "goal": "1000.0",
+        "photo": {"url": "http://res.cloudinary.com/hw4d4tgcm/image/upload/v1585760532/uploads/project/photo/1.jpg"},
+        "quota_total": 1000000,
+        "quota_value": "50.0",
+        "ong_name":"Favela Sem Corona",
+        "ong_cnpj":"99.999.949/9999-99"
+    },
+    {
+        "id": 3,
+        "name": "Ação da Cidadania",
+        "about": "A rede da Ação da Cidadania hoje está presente em 19 estados do país mais o distrito federal. Cada entidade em seu estado atua com independência completa, operando de acordo com as necessidades de sua região.",
+        "goal": "1000.0",
+        "photo": {"url": "http://res.cloudinary.com/hw4d4tgcm/image/upload/v1585760532/uploads/project/photo/1.jpg"},
+        "quota_total": 1000000,
+        "quota_value": "50.0",
+        "ong_name":"Cidadania",
+        "ong_cnpj":"99.999.949/9999-99"
+    }
+]
+
+
