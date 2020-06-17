@@ -27,7 +27,8 @@ export default function Donations() {
 
   return (
     <>
-      <Header title={t("header.donations")} rightIcon={Notification} />
+      <Header title={t("header.donations")} />
+
 
 
             <Styled.Container>

@@ -102,7 +102,9 @@ export default function CheckoutBoleto() {
   return (
     <>
       <Loading spinning={loadingStatus} />
-      <Header title={t("header.donations")} rightIcon={Notification} />
+
+      <Header title={t("header.donations")} />
+
 
          <Styled.MobContainer>
                 <Styled.ContentText style={{fontSize:"14px",lineHeight:"18px",margin:"17px 8px 0px 8px",color:"#F5F5F5"}}>Obrigado pela sua doação, {dataOrder.customer.firstName}!</Styled.ContentText>

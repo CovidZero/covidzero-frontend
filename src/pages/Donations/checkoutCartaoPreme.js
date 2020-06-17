@@ -16,7 +16,9 @@ import { Header,Button,Input,Loading,Switch } from "~/components";
 import * as Styled from "./styles.js";
 import { cpfMask,dataMask,cepMask,validadeMask,cardMask,phoneMask,valorMask,cnpjMask } from './mask';
 
+
 import API  from "~/API"; 
+
 import ProjectsJson from "./projects.json";
 
 const moment = require('moment');
@@ -25,6 +27,7 @@ const moment = require('moment');
 export default function CheckoutCartao() {
     const [t] = useTranslation();
     let { id:storeId } = useParams();
+
 
     const inital = {           
       description:"", 
@@ -58,7 +61,7 @@ export default function CheckoutCartao() {
     const [donationEmpresa, setDonationEmpresa] = useState(false);
     const [paymentType, setPaymentType]         = useState(0);
     const [loadingStatus, setloadingStatus]     = useState(false);
- 
+
 
     const initalParamPreme={
           storeId:storeId,
@@ -66,7 +69,7 @@ export default function CheckoutCartao() {
           cardId:"",
           token:""
     }
-    
+
     const [paramPreme,setParamPreme]       = useState(initalParamPreme);
     const initialState = [false, false, false,false];
     const [activeClasses, setActiveClasses]          = useState(initialState)
@@ -77,30 +80,34 @@ export default function CheckoutCartao() {
             let arr=[5,50,500,""];
 
 
+
             setActiveClasses(active) 
            
 
             auxValues['valor'] =arr[index];
              
+
             setValues(auxValues)
     }
+
 
 
    
 
     useEffect(() => {
-          
           API.donationsPreme.Authentication().then(response => {
               setParamPreme({
                     ...paramPreme,
                     token:response.token
                   });
+
           });   
                 
         
 
           const projectsJson=ProjectsJson.find(({ id }) => id==storeId);
  
+
                if(typeof projectsJson !="undefined"){
                     setValues({
                       ...values,
@@ -109,7 +116,7 @@ export default function CheckoutCartao() {
                }else{
                     history.push("/donations");
                }
-      
+    
  
     },[]);
 
@@ -147,11 +154,13 @@ export default function CheckoutCartao() {
                   
                   const auxValues = { ...values };
                   
+
                         auxValues["street"]   =response.logradouro;
                         auxValues["zipcode"]  =response.cep;
                         auxValues["district"] =response.bairro;
                         auxValues["city"]     =response.localidade;
                         auxValues["state"]    =response.uf;
+
                      
                      
                      setValues(auxValues);
@@ -181,10 +190,12 @@ export default function CheckoutCartao() {
               auxValues[name] =valorMask(value) 
            else if(name=="cnpj")   
               auxValues[name] =cnpjMask(value)                               
+
            else
               auxValues[name] =value;
 
        setValues(auxValues)
+
     
     }
  
@@ -208,9 +219,10 @@ export default function CheckoutCartao() {
 }    
 
 
+
     const travaBtnValor=()=>{
             var elems = document.getElementById("box-btn").getElementsByClassName("lg-light-btn");
-              
+
             for (var i = 0; i < elems.length; i++) {
                 elems[i].disabled=true;
             }
@@ -227,7 +239,7 @@ export default function CheckoutCartao() {
 
 
 
-   
+
    async function CreateCustomer(){
 
         let cnpj        = typeof(values.cnpj)!='undefined' ? values.cnpj : '';
@@ -255,10 +267,12 @@ export default function CheckoutCartao() {
                   "country": 0
             }
         }
+
        
         try {
               const response = await API.donationsPreme.CreateCustomer(paramPreme, customer);                  
                     
+
               setParamPreme({
                 ...paramPreme,
                   customerId:response.id
@@ -268,6 +282,7 @@ export default function CheckoutCartao() {
             alert('Ocorreu um erro, tente novamente.');
             setloadingStatus(false);
         }
+
         
    } 
    
@@ -281,12 +296,14 @@ export default function CheckoutCartao() {
             "expirationMonth":Number(dataExpiration[0]),
             "expirationYear": Number(dataExpiration[1]),
             "cardNumber": valuesCard.card_number.replace(/\D/g, ''),
+
             "securityCode": valuesCard.security_code	
         }	
 
        
         try {
               const response = await API.donationsPreme.CreateCard(paramPreme,card); 
+
 
               setParamPreme({
                 ...paramPreme,
@@ -296,6 +313,7 @@ export default function CheckoutCartao() {
         }catch (err) {
               alert('Ocorreu um erro, tente novamente.');
               setloadingStatus(false);
+
         }      
       
   }
@@ -310,7 +328,7 @@ export default function CheckoutCartao() {
         else {
           amount = values.valor;
         }
-    
+
         let  data = new Date(Date.now() + 2*86400000);
 
 
@@ -324,6 +342,7 @@ export default function CheckoutCartao() {
                 "installments": 1
               }
         }
+
        
         try{
             const response = await API.donationsPreme.CreateOrder(paramPreme,order); 
@@ -337,17 +356,20 @@ export default function CheckoutCartao() {
              
 
             
-             
+
 
         }catch (err) {
           alert('Ocorreu um erro, tente novamente.');
           setloadingStatus(false);
-        } 
+
+        }
+
   }
 
 
 
   async function Checkout(){
+
     
 
       for(var val in values){
@@ -361,8 +383,10 @@ export default function CheckoutCartao() {
       }  
 
 
+
       if(paymentType==0){
         for(var val in valuesCard){
+
             if(valuesCard[val]==''){ 
                 let elem=document.getElementById(val);
                     elem.style.display = "block"; 
@@ -380,56 +404,61 @@ export default function CheckoutCartao() {
          
          
 
+
          if(response.length > 0) {
             setParamPreme({
               ...paramPreme,
                  customerId:response[0].id,
                  cardId:response[0].card.id
             });
-        }    
+
+        }
         else {
           await CreateCustomer();
         }
-         
+
   }
-      
- 
+
+
+
 
   return (
     <>
       <Loading spinning={loadingStatus} />
-      <Header title={t("header.donations")} rightIcon={Notification} />
 
-      
+      <Header title={t("header.donations")}  />
+
+
          <Styled.MobContainer>
-                
+
                 <p>Quanto você gostaria de doar?</p>
                 <Styled.ContentButton id="box-btn">
-                        <Button  
-                          styleButton='sm-light-btn' 
-                          className={activeClasses[0]? "lg-light-btn active":"lg-light-btn"}     
-                          textButton='R$5'  
+                        <Button
+                          styleButton='sm-light-btn'
+                          className={activeClasses[0]? "lg-light-btn active":"lg-light-btn"}
+                          textButton='R$5'
                           onClick={e => ValorDonation(0)}
-                        /> 
+                        />
 
-                        <Button  
-                          styleButton='sm-light-btn' 
-                          className={activeClasses[1]? "lg-light-btn active":"lg-light-btn"}  
-                          textButton='R$50'  
+                        <Button
+                          styleButton='sm-light-btn'
+                          className={activeClasses[1]? "lg-light-btn active":"lg-light-btn"}
+                          textButton='R$50'
                           onClick={e => ValorDonation(1)}
-                        /> 
-                        <Button  
-                          styleButton='sm-light-btn' 
-                          className={activeClasses[2]? "lg-light-btn active":"lg-light-btn"}  
-                          textButton='R$500'  onClick={e => ValorDonation(2)} /> 
+                        />
+                        <Button
+                          styleButton='sm-light-btn'
+                          className={activeClasses[2]? "lg-light-btn active":"lg-light-btn"}
+                          textButton='R$500'  onClick={e => ValorDonation(2)} />
 
-                        <Button  
-                           styleButton='sm-light-btn' 
-                           className={activeClasses[3]? "lg-light-btn btn-txt active":"lg-light-btn btn-txt"}  
-                           textButton='Outro valor'   
+                        <Button
+                           styleButton='sm-light-btn'
+                           className={activeClasses[3]? "lg-light-btn btn-txt active":"lg-light-btn btn-txt"}
+                           textButton='Outro valor'
                            onClick={e => ValorDonation(3)}
-                          /> 
-                </Styled.ContentButton>  
+                          />
+                </Styled.ContentButton>
+
 
                 <Styled.ContentForm>
                      <div style={activeClasses[3]? {display:"block"}: {display:"none"}} >
@@ -439,32 +468,39 @@ export default function CheckoutCartao() {
                               value={values.valor}
                               name={"valor"}
                               onChange={setValue}
+
                               id={"inp_valor"}                        
                             />
                            
+
                       </div>
                       <div className="erro" id="valor">Informe o valor</div>
 
                       <div className="label">Nome</div>
                       <Input
                         name={"first_name"}
+
                         onChange={setValue}  
                                                
+
                       />
                       <div className="erro" id="first_name">Informe seu nome</div>
 
                       <div className="label">Sobrenome</div>
                       <Input
                         name={"surname"}
+
                         onChange={setValue}                        
                       />
                        <div className="erro" id="surname">Informe o Sobrenome</div>
 
                     <div className="label">CPF</div> 
+
                     <Input
                         value={values.cpf}
                         name={"cpf"}
                         onChange={setValue}
+
                       />    
                        <div className="erro" id="cpf">Informe o CPF</div>            
 
@@ -521,6 +557,7 @@ export default function CheckoutCartao() {
                     
                     <div className="label">Estado</div> 
                     
+
                     <select className="select"  name={"state"} value={values.state} onChange={setValue}>
                           <option value="99"></option>
                           <option value="0">AC</option>
@@ -568,20 +605,24 @@ export default function CheckoutCartao() {
                         <div className="label">Razão Social</div>
                           <Input
                             name={"razao_social"}
+
                             onChange={setValue}  
                                                   
+
                           />
                           <div className="label">CNPJ</div>
                           <Input
                             name={"cnpj"}
                             value={values.cnpj}
+
                             onChange={setValue}   
                           />                      
+
                     </div>
 
 
                </Styled.ContentForm>
-               
+
                <Styled.ContentFormaPagamento>
                    <div className="form-group">
                      {/*
@@ -589,7 +630,7 @@ export default function CheckoutCartao() {
                                 <Styled.ContentFormButton onClick={e =>setPaymentType(1)}>
                                   Boleto
                                 </Styled.ContentFormButton>
-                                
+
                             </div>
                      */}
                             <div className={paymentType==0? " form-button-right active-btn ":" form-button-right "}>
@@ -597,6 +638,7 @@ export default function CheckoutCartao() {
                                   Cartão de Crédito
                                 </Styled.ContentFormButton>
                             </div>
+
                     </div> 
                    
                    <Styled.ContentFormaPagamentoBody className={paymentType==1? " radius-right ":" radius-left"} >
@@ -607,6 +649,7 @@ export default function CheckoutCartao() {
                               textButton='Gerar Boleto'
                               className="full-light-btn"  
                               onClick={Checkout}                                                                      
+
                             />
 
                      </div>
@@ -615,35 +658,44 @@ export default function CheckoutCartao() {
                             <div className="info">
                                 <div className="icon">
                                             <LockOutline color="white" size="20px"/>
+
                                 </div> 
                                 <h2>Ambiente seguro</h2>
                                 <p>Seus dados bancários não serão compartilhados com a ONG e o CovidZero.</p>
                             </div>
                             
                             <div className="label">Número do Cartão</div> 
+
                             <Input
                                 placeholder={"Número do Cartão"}
                                 value={valuesCard.card_number}
                                 name={"card_number"}
                                 onChange={setValueCard}
+
                               />  
                               <div className="erro" id="card_number">Informe o  Número do Cartão</div>
 
                             <div className="label">Nome do titular</div> 
+
                             <Input
                                 placeholder={"Nome conforme impresso no cartão"}
                                 name={"holder_name"}
                                 onChange={setValueCard}
+
                               />  
+
                               <div className="erro" id="holder_name">Informe o Nome do titular</div>
 
                             <div className="form-group form-group-inp">
                                 <div>
+
                                     <div className="label">Validade</div> 
+
                                     <Input
                                         value={valuesCard.cc_expiration}
                                         name={"cc_expiration"}
                                         onChange={setValueCard}
+
                                       /> 
                                       <div className="erro" id="cc_expiration">Informe data de Validade</div>
                                 </div>
@@ -665,13 +717,16 @@ export default function CheckoutCartao() {
                               textButton='CONFIRMAR E DOAR'
                               className="full-light-btn"  
                               onClick={Checkout}                                                                      
+
                             />
 
                        </div>
 
                       <div  className="termos">
                             <div className="logo-preme">
+
                                 <p>Pagamento processado por</p> 
+
                                 <a href="https://www.premepay.com/pt-br?utm_source=covidzero" target="_blank">
                                      <img  src={require("~/assets/images/logo-preme.svg")}/>
                                 </a>
@@ -681,15 +736,19 @@ export default function CheckoutCartao() {
 
                  </Styled.ContentFormaPagamentoBody>
 
+
                </Styled.ContentFormaPagamento>   
 
          
       
 
+
          </Styled.MobContainer>
 
     </>
+
   ); 
 
 
 }
+

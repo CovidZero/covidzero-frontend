@@ -1,8 +1,10 @@
 import React,{useState,useEffect}  from "react";
 import {useParams}              from "react-router-dom";
+
 import { useTranslation }          from "react-i18next"; 
 import { Header,Button,Loading } from "~/components";
 import * as Styled from "./styles.js"; 
+
 
 
 
@@ -14,14 +16,15 @@ export default function CheckoutBoleto() {
 
     useEffect(() => {
       setloadingStatus(false)
-    });
 
-  
+    }, []);
+
+
   return (
     <>
       <Loading spinning={loadingStatus} />
-      <Header title={t("header.donations")} rightIcon={Notification} />
-      
+      <Header title={t("header.donations")}  />
+
          <Styled.MobContainer>
                 <Styled.ContentText style={{fontSize:"14px",lineHeight:"18px",margin:"17px 8px 0px 8px",color:"#F5F5F5"}}>
                      Obrigado pela sua doação, FIRST_NAME!
@@ -29,7 +32,9 @@ export default function CheckoutBoleto() {
 
                <div style={{textAlign:"center",margin:"20px 0"}}>
                  <img  src={require("~/assets/images/icon-ok.svg")}/>
-               </div>  
+
+               </div>
+
 
                 <Styled.ContentText style={{fontSize:"14px",lineHeight:"24px",margin:"8px 8px 17px"}}>
                     <p>Sua doação de AMOUNT foi confirmada e o valor será repassado diretamente para a ONG ONG_NAME.</p>
@@ -40,6 +45,7 @@ export default function CheckoutBoleto() {
 
                    <p>A CovidZero não recebeu nenhuma comissão sobre essa doação.</p>
                 </Styled.ContentText>
+
                 
              
                 <div  className="termos">
@@ -55,3 +61,4 @@ export default function CheckoutBoleto() {
   ); 
 
 }
+
