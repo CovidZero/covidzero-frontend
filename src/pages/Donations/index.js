@@ -30,6 +30,7 @@ export default function Donations() {
       <Header title={t("header.donations")} />
 
 
+
             <Styled.Container>
 
             {/* CapTable */}

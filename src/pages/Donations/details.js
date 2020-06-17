@@ -93,7 +93,9 @@ export default function Details() {
     <>
       <DocumentMeta {...meta}>
       <Loading spinning={loadingStatus} />
+
       <Header title={t("header.donations")}  />
+
 
           <Styled.ContentImg>
                   {Projects.photo.url && <img src={Projects.photo.url} />}
