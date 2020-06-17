@@ -91,7 +91,12 @@ export default function CheckoutBoleto() {
 
     },[paramPreme, paramPreme.token]);
 
-
+    const handleCopyBarcode = () => {
+        let barcode = document.getElementById("barcode-input");
+        barcode.focus();
+        barcode.select();
+        document.execCommand("copy");
+    }
 
    const formatDate=(value)=>{
          if(value!='')
@@ -121,6 +126,7 @@ export default function CheckoutBoleto() {
 
                               </Styled.ContentText>
 
+                              <input type="text" id="barcode-input" value={dataOrder.payment.barcode} />
 
                               <Styled.ContentText style={{fontSize:"12px",lineHeight:"18px",margin:"5px 8px"}}>
                               {dataOrder.payment.barcode}
@@ -136,15 +142,15 @@ export default function CheckoutBoleto() {
                                   styleButton='sm-light-btn'
                                   textButton='COPIAR CÓDIGO DE BARRAS'
                                   className="full-light-btn"
-                                  onClick={()=>console.log("click")}
+                                  onClick={()=>handleCopyBarcode()}
                                 />
 
-                               <Button
+                               {/* <Button
                                   styleButton='sm-light-btn'
                                   textButton='Enviar boleto por email'
                                   className="full-light-btn"
                                   onClick={()=>console.log("click")}
-                                />
+                                /> */}
                         </div>
 
                         <div  className="termos">

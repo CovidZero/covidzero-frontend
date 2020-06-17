@@ -59,7 +59,7 @@ export default function CheckoutCartao() {
     const [valuesCard, setValuesCard]           = useState(initalCard);
     const [donationType, setDonationType]       = useState(false);
     const [donationEmpresa, setDonationEmpresa] = useState(false);
-    const [paymentType, setPaymentType]         = useState(0);
+    const [paymentType, setPaymentType]         = useState(1);
     const [loadingStatus, setloadingStatus]     = useState(false);
 
 
@@ -272,7 +272,6 @@ export default function CheckoutCartao() {
         try {
               const response = await API.donationsPreme.CreateCustomer(paramPreme, customer);                  
                     
-
               setParamPreme({
                 ...paramPreme,
                   customerId:response.id
@@ -403,7 +402,6 @@ export default function CheckoutCartao() {
          const response = await API.donationsPreme.ListCustomer(paramPreme,values.cpf.replace(/\D/g, '')); 
          
          
-
 
          if(response.length > 0) {
             setParamPreme({
@@ -625,14 +623,14 @@ export default function CheckoutCartao() {
 
                <Styled.ContentFormaPagamento>
                    <div className="form-group">
-                     {/*
+                     
                             <div className={paymentType==1? "form-button-left active-btn":"form-button-left"} >
                                 <Styled.ContentFormButton onClick={e =>setPaymentType(1)}>
                                   Boleto
                                 </Styled.ContentFormButton>
 
                             </div>
-                     */}
+                     
                             <div className={paymentType==0? " form-button-right active-btn ":" form-button-right "}>
                                 <Styled.ContentFormButton  onClick={e =>setPaymentType(0)}>
                                   Cartão de Crédito

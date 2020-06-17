@@ -52,6 +52,10 @@ export const MobContainer = styled.section`
         height: 48px;
         background: #FFF;
    }
+   #barcode-input {
+        position: fixed;
+        top: -1000px;
+    }   
 
    .erro{
      color: #E34340;
