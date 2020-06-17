@@ -31,7 +31,6 @@ import confirmedCaptable     from "./pages/Donations/confirmedCaptable";
 import checkoutBoletoPreme  from "./pages/Donations/checkoutBoletoPreme";
 import CheckoutCartaoPreme  from "./pages/Donations/checkoutCartaoPreme";
 
-
 export default function Routes() {
   return (
     <Switch>
