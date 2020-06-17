@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Style } from '../styles';
 import moment from 'moment';
 
-import api from '../api';
+import last30DaysService from '../../../services/last30Days';
 
 import {Line} from 'react-chartjs-2';
 import Chart from 'chart.js';
@@ -47,7 +47,7 @@ const TotalDeaths = (props) => {
         const newValues = daysYMD.map(day => {
             let totalDeaths = responseAPI.reduce((currentTotal, item) => {
                 if(item.date == day){
-                    return currentTotal + item.totaldeaths
+                    return currentTotal + item.totalDeaths
                 }
                 return currentTotal
 
@@ -93,18 +93,18 @@ const TotalDeaths = (props) => {
     }, [labelsTDeaths, valuesTDeaths]);
 
     async function getLastDay(){
-        const response = await api.get(`https://api.covidzero.com.br/data_api/v1/cases/datasus`);
+        const response = await last30DaysService.get().then(response => {
+            return response.data;
+        });
 
-        const resultsData = response.data.sus_list;
+        setResponseAPI(response);
 
-        setResponseAPI(resultsData);
+        const lastDay = response[0];
 
-        const lastItem = resultsData[resultsData.length - 1];
+        const lastDayFormated = moment(lastDay.date).format('l').split('/').reverse().slice(1).join('/');
 
-        const lastItemFormated = moment(lastItem.date).format('l').split('/').reverse().slice(1).join('/');
-
-        setLastDayTDeaths(lastItem.date);
-        setLastDayFormatedTDeaths(lastItemFormated);
+        setLastDayTDeaths(lastDay.date);
+        setLastDayFormatedTDeaths(lastDayFormated);
         
 
     };

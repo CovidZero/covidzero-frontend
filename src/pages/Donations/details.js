@@ -12,11 +12,11 @@ import API from "~/API";
 import ProjectsJson from "./projects.json";
 
 export default function Details() {
-    const [t]  = useTranslation(); 
-       
+    const [t]  = useTranslation();
+
     let { id:idProjecto,capitation } = useParams();
-    
-    
+
+
     const [loadingStatus, setloadingStatus] = useState(true)
 
     const initalProjects = {
@@ -26,7 +26,7 @@ export default function Details() {
       goal:0,
       quota_total:0,
       quota_value:0,
-      photo:{url:false} 
+      photo:{url:false}
     }
 
     const initalMeta = {
@@ -37,23 +37,23 @@ export default function Details() {
     const [meta, _setMeta]            = useState(initalMeta)
     const [Projects, setProjects]     = useState(initalProjects)
 
-    
+
     const setMeta=(response)=>{
-        
+
         initalMeta.title      =`${response.name}`+ ' | CovidZero';
         initalMeta.description=`${response.name}`+ ' | CovidZero  - Combate ao COVID-19';
-        
+
         _setMeta(initalMeta);
     }
 
 
 
     useEffect(() => {
-        
+
        if(capitation=='captable'){
-            (async () => {         
-                API.donationsCaptable.findProjects(idProjecto).
-                  then(response =>{ 
+            (async () => {
+                API.donationsCaptable.findProjects(idProjecto)
+                  .then(response =>{
                       setMeta(response);
                       setProjects(response);
                       setloadingStatus(false);
@@ -71,15 +71,16 @@ export default function Details() {
                }else{
                     history.push("/donations");
                }
-                
+
       }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
- 
+
 
     let formato = { minimumFractionDigits: 2 , currency: 'BRL' }
 
-    
+
 
     function formatValor(_value){
                 let value =_value!=null ? _value :0;
@@ -97,7 +98,7 @@ export default function Details() {
           <Styled.ContentImg>
                   {Projects.photo.url && <img src={Projects.photo.url} />}
                   <div className="title-img">{Projects.name}</div>
-         </Styled.ContentImg> 
+         </Styled.ContentImg>
 
          <Styled.MobContainer>
 
@@ -109,25 +110,25 @@ export default function Details() {
                             phoneColumns={4}
                             tabletColumns={4}
                           >
-                           <CardStats 
-                            title={<div>Arrecadado</div>} 
+                           <CardStats
+                            title={<div>Arrecadado</div>}
                             count={formatValor(Projects.quota_total)}
                             className="donation-stats"
-                            /> 
+                            />
                         </Cell>
                         <Cell
                             desktopColumns={6}
                             phoneColumns={4}
                             tabletColumns={4}
                           >
-                           <CardStats 
-                            title={<div>Meta</div>} 
+                           <CardStats
+                            title={<div>Meta</div>}
                             count={formatValor(Projects.goal)}
                             className="donation-stats"
-                            /> 
-                        </Cell>                        
+                            />
+                        </Cell>
                       </Row>
-                </Grid> 
+                </Grid>
 
 
                 <Styled.ContentText>
@@ -144,22 +145,22 @@ export default function Details() {
                       <div className="animated-background  content-1"></div>
                       <div className="animated-background  content-2"></div>
                       <div className="animated-background  content-3"></div>
-                      <div className="animated-background  content-4"></div>                                            
-                 </div>       
+                      <div className="animated-background  content-4"></div>
+                 </div>
 
                    {Projects.about}
                    <p><b>Quanto  o CovidZero ganha?</b></p>
-                   <p>Nada! O valor recebido é passado diretamente para a instituição escolhida e o CovidZero não recebe nenhuma doação por isso.</p>
-                </Styled.ContentText> 
-                
-                
-                <Button 
-                  styleButton='sm-light-btn'  
+                   <p>Nada! O valor recebido é passado diretamente para a instituição escolhida e o CovidZero não recebe nenhuma comissão por isso.</p>
+                </Styled.ContentText>
+
+
+                <Button
+                  styleButton='sm-light-btn'
                   textButton='Doe a partir de R$5'
-                  className="full-light-btn"  
-                  onClick={() => history.push(`/donations/checkout/${capitation}/${Projects.id}`)}                                                    
+                  className="full-light-btn"
+                  onClick={() => history.push(`/donations/checkout/${capitation}/${Projects.id}`)}
                 />
-               
+
                <Styled.ContentText style={{fontSize:"12px",lineHeight:"18px",margin:"17px 8px 8px 8px",textAlign:"center"}}>
                        Captação promovida por
                </Styled.ContentText>
@@ -170,19 +171,19 @@ export default function Details() {
                     <img  src={require("~/assets/images/cap-table.svg")}/>
                   </a>
                  }
- 
+
                 {capitation=='preme' &&
-                  <a href="#" target="_blank">
-                    <img  src={require("~/assets/images/logo-preme.svg")}/>
+                  <a href="https://home.ribon.io/" target="_blank">
+                    <img id="ribon" alt="Ribon Logo" src={require("~/assets/images/logo-ribon.svg")}/>
                   </a>
                  }
 
-               </div>  
+               </div>
 
          </Styled.MobContainer>
          </DocumentMeta>
 
     </>
-  ); 
+  );
 
 }

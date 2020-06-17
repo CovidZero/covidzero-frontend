@@ -28,29 +28,9 @@ export default function Area() {
   }
   const [citiesCases, setTotalCases] = useState(initalCases)
 
-  useEffect(() => {
-    async function fetchData() {
-      const citiesCases = await API.cases.getCityCases();
-      setTotalCases(citiesCases)
-    }
-    fetchData();
-    addScript('https://d2smc9x58xj6ns.cloudfront.net/neoron.js');
-  }, []);
-
-  let _loaded = {};
-  function addScript(url) {
-    if (!_loaded[url]) {
-      let s = document.createElement('script');
-      s.src = url;
-      document.head.appendChild(s);
-      _loaded[url] = true;
-    }
-  }
 
   return (
     <>
-      <link rel="stylesheet" type="text/css" href="https://d2smc9x58xj6ns.cloudfront.net/neoron.css"></link>
-      <div id="neoron"></div>
       <Header title={t("header.area")} />
       <Styled.Container>
         {((latitude && longitude) || error) &&

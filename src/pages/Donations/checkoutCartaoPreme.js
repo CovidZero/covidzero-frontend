@@ -1,3 +1,4 @@
+
 import React,{useState,useEffect}  from "react";
 import {useParams,  }              from "react-router-dom";
 import history                     from "~/services/history";
@@ -17,6 +18,8 @@ import { cpfMask,dataMask,cepMask,validadeMask,cardMask,phoneMask,valorMask,cnpj
 
 import API  from "~/API"; 
 import ProjectsJson from "./projects.json";
+
+const moment = require('moment');
 
 
 export default function CheckoutCartao() {
@@ -53,7 +56,7 @@ export default function CheckoutCartao() {
     const [valuesCard, setValuesCard]           = useState(initalCard);
     const [donationType, setDonationType]       = useState(false);
     const [donationEmpresa, setDonationEmpresa] = useState(false);
-    const [paymentType, setPaymentType]         = useState(1);
+    const [paymentType, setPaymentType]         = useState(0);
     const [loadingStatus, setloadingStatus]     = useState(false);
  
 
@@ -234,7 +237,7 @@ export default function CheckoutCartao() {
             "firstName": values.first_name,
             "surname":   values.surname,
             "cpf": values.cpf.replace(/\D/g, ''),
-            "birthdate": values.birthdate,
+            "birthdate": moment(values.birthdate, "DD/MM/YYYY").format("YYYY-MM-DD"),
             "email": values.email,
             "phone": values.phone,
             "donationEmpresa":donationEmpresa,
@@ -254,12 +257,12 @@ export default function CheckoutCartao() {
         }
        
         try {
-              const response = await API.donationsPreme.ListCustomer(paramPreme);                  
+              const response = await API.donationsPreme.CreateCustomer(paramPreme, customer);                  
                     
-                   setParamPreme({
-                      ...paramPreme,
-                        customerId:response[0].id
-                    });
+              setParamPreme({
+                ...paramPreme,
+                  customerId:response.id
+              });
 
         }catch (err) {
             alert('Ocorreu um erro, tente novamente.');
@@ -300,12 +303,19 @@ export default function CheckoutCartao() {
 
   async function CreateOrder(){
 
-
+        let amount = 0;
+        if(isNaN(values.valor)) {
+          amount = parseFloat(values.valor.replace(",","."));
+        }
+        else {
+          amount = values.valor;
+        }
     
         let  data = new Date(Date.now() + 2*86400000);
-        
+
+
         let order= {
-              "amount": values.valor,
+              "amount": amount,
               "description":values.description,              
               "payment": {
                 "type": paymentType,
@@ -370,15 +380,16 @@ export default function CheckoutCartao() {
          
          
 
-         if(response[0].id)
+         if(response.length > 0) {
             setParamPreme({
               ...paramPreme,
                  customerId:response[0].id,
                  cardId:response[0].card.id
             });
-            
-        else 
+        }    
+        else {
           await CreateCustomer();
+        }
          
   }
       
@@ -573,13 +584,14 @@ export default function CheckoutCartao() {
                
                <Styled.ContentFormaPagamento>
                    <div className="form-group">
+                     {/*
                             <div className={paymentType==1? "form-button-left active-btn":"form-button-left"} >
                                 <Styled.ContentFormButton onClick={e =>setPaymentType(1)}>
                                   Boleto
                                 </Styled.ContentFormButton>
                                 
                             </div>
-      
+                     */}
                             <div className={paymentType==0? " form-button-right active-btn ":" form-button-right "}>
                                 <Styled.ContentFormButton  onClick={e =>setPaymentType(0)}>
                                   Cartão de Crédito
@@ -678,5 +690,6 @@ export default function CheckoutCartao() {
 
     </>
   ); 
+
 
 }

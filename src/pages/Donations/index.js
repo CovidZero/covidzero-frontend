@@ -13,61 +13,61 @@ export default function Donations() {
 
     const [allProjects, setAllProjects]     = useState([])
 
-       
-     
+
+
     useEffect(() => {
-        (async () => {          
+        (async () => {
             API.donationsCaptable.findAllProjects().then(response => setAllProjects(response));
          }
-        )()       
+        )()
      },[]);
 
-     
-  
- 
+
+
+
   return (
     <>
       <Header title={t("header.donations")} rightIcon={Notification} />
 
-     
+
             <Styled.Container>
-                  
+
             {/* CapTable */}
             {allProjects.map((ret, index) => (
                   <CardDonations
-                      title={ret.name} 
+                      title={ret.name}
                       content={<p>{ret.about}</p>}
                       footer={
-                        <Button 
-                            styleButton='sm-light-btn'  
-                            textButton='Doar'   
-                            onClick={() => history.push("/donations/details/captable/"+`${ret.id}`)}                       
+                        <Button
+                            styleButton='sm-light-btn'
+                            textButton='Doar'
+                            onClick={() => history.push("/donations/details/captable/"+`${ret.id}`)}
                          />
-                      } 
+                      }
                     />
               ))}
 
             {/* Preme */}
             {ProjectsJson.map((ret, index) => (
                   <CardDonations
-                      title={ret.name} 
+                      title={ret.name}
                       content={<p>{ret.about}</p>}
                       footer={
-                        <Button 
-                            styleButton='sm-light-btn'  
-                            textButton='Doar'   
-                            onClick={() => history.push("/donations/details/preme/"+`${ret.id}`)}                       
+                        <Button
+                            styleButton='sm-light-btn'
+                            textButton='Doar'
+                            onClick={() => history.push("/donations/details/preme/"+`${ret.id}`)}
                          />
-                      } 
+                      }
                     />
-              ))} 
+              ))}
 
-          </Styled.Container>   
+          </Styled.Container>
 
-          
+
 
     </>
-  ); 
-  
+  );
+
 
 }
