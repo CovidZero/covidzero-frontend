@@ -5,7 +5,9 @@ import { Header,Button,Loading } from "~/components";
 import history                     from "~/services/history";
 import * as Styled from "./styles.js";
 
+
 import API  from "~/API";
+
 import ProjectsJson from "./projects.json";
 
 
@@ -32,6 +34,7 @@ export default function CheckoutBoleto() {
       photo:{url:false}
     }
 
+
      const [Projects, setProjects]           = useState(initalProjects);
      const [paramPreme,setParamPreme]       = useState(initalParamPreme);
      const [dataOrder,setDataOrder]         = useState({
@@ -45,6 +48,7 @@ export default function CheckoutBoleto() {
       }
 
      });
+
 
 
 
@@ -74,9 +78,11 @@ export default function CheckoutBoleto() {
     },[paramPreme, storeId]);
 
 
+
     useEffect(() => {
       if(paramPreme.token!=""){
               API.donationsPreme.ListOrder(paramPreme).then(response =>{
+
 
                 setDataOrder(response);
 
@@ -92,6 +98,7 @@ export default function CheckoutBoleto() {
           return new Date(value).toLocaleDateString();
    }
 
+
   return (
     <>
       <Loading spinning={loadingStatus} />
@@ -102,12 +109,16 @@ export default function CheckoutBoleto() {
 
                 <Styled.ContentText style={{fontSize:"14px",lineHeight:"24px",margin:"8px 8px 17px"}}>Ao recebermos a confirmação do pagamento do Boleto Bancário, sua doação de {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(dataOrder.payment.amount)} será repassada diretamente para a ONG {Projects.ong_name}.</Styled.ContentText>
 
+
                 <Styled.ContentFormaPagamento>
+
                       <Styled.ContentFormaPagamentoBody>
                         <div>
                               <Styled.ContentText style={{fontSize:"14px",lineHeight:"18px",margin:"5px 8px",color:"#F5F5F5"}}>
                                  Código de barras
+
                               </Styled.ContentText>
+
 
                               <Styled.ContentText style={{fontSize:"12px",lineHeight:"18px",margin:"5px 8px"}}>
                               {dataOrder.payment.barcode}
@@ -116,6 +127,7 @@ export default function CheckoutBoleto() {
                               <Styled.ContentText style={{fontSize:"10px",lineHeight:"16px",margin:"5px 8px"}}>
                                 Vencimento  {formatDate(dataOrder.payment.dueDate)}
                               </Styled.ContentText>
+
 
                               <Button
                                   style={{marginBottom:"8px"}}
@@ -136,6 +148,7 @@ export default function CheckoutBoleto() {
                         <div  className="termos">
                               <div className="logo-preme">
                                   <p>Pagamento processado por</p>
+
                                   <a href="https://www.premepay.com/pt-br?utm_source=covidzero" target="_blank"><img  src={require("~/assets/images/logo-preme.svg")}/></a>
                               </div>
                               <p>O pagamento será processado por Preme Pay e estará disponível em sua fatura como CovidZero. Ao realizar o pagamento você concorda com <a href="https://premepay.com/pt-br/terms-and-conditions?utm_source=covidzero" target="_blank">os termos de uso.</a></p>
@@ -143,6 +156,7 @@ export default function CheckoutBoleto() {
                     </Styled.ContentFormaPagamentoBody>
 
                     <Styled.ContentText style={{fontSize:"14px",lineHeight:"24px",margin:"8px 8px 17px"}}>
+
                          <p>O CNPJ da ONG Ribon é 26.660.577/0001-13. Com ele, você poderá deduzir valores dos seus impostos a serem pagos.</p>
                          <p>Você receberá um email com a confirmação da doação.</p>
                          <p>A CovidZero não receberá nenhuma comissão sobre essa doação.</p>

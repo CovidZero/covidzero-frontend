@@ -8,7 +8,9 @@ export const cpfMask = value => {
   }
 
 
+
   export const cnpjMask = value => {
+
     return value
       .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '$1.$2')
@@ -20,16 +22,19 @@ export const cpfMask = value => {
 
   export const dataMask = value => {
     return value
+
       .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '$1/$2')
       .replace(/(\d{2})(\d)/, '$1/$2')
       .replace(/(\d{4})\d+?$/, '$1')
+
 
   }
 
 
   export const validadeMask = value => {
     return value
+
       .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '$1/$2')
       .replace(/(\d{4})\d+?$/, '$1')
@@ -52,6 +57,7 @@ export const cpfMask = value => {
 
   export const cardMask = value => {
 
+
     return value
       .replace(/\D/g, '')
       .replace(/(\d{4})(\d)/, '$1 $2')
@@ -60,7 +66,9 @@ export const cpfMask = value => {
       .replace(/(\d{4})(\d)/, '$1')
   }
 
+
   export const phoneMask = value => {
+
     return value
       .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '($1) $2')
@@ -70,7 +78,9 @@ export const cpfMask = value => {
   }
 
 
+
   export const valorMask = value => {
+
 
 
           var v = value.replace(/\D/g,'');
@@ -81,5 +91,7 @@ export const cpfMask = value => {
 
               console.log(v);
 
+
       return v;
   }
+
