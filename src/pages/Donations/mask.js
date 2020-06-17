@@ -8,7 +8,9 @@ export const cpfMask = value => {
   }
 
 
-  export const cnpjMask = value => {  
+
+  export const cnpjMask = value => {
+
     return value
       .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '$1.$2')
@@ -20,38 +22,42 @@ export const cpfMask = value => {
 
   export const dataMask = value => {
     return value
-      .replace(/\D/g, '') 
+
+      .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '$1/$2')
       .replace(/(\d{2})(\d)/, '$1/$2')
-      .replace(/(\d{4})\d+?$/, '$1')  
-      
+      .replace(/(\d{4})\d+?$/, '$1')
+
+
   }
 
 
   export const validadeMask = value => {
     return value
-      .replace(/\D/g, '') 
-      .replace(/(\d{2})(\d)/, '$1/$2') 
-      .replace(/(\d{4})\d+?$/, '$1') 
+
+      .replace(/\D/g, '')
+      .replace(/(\d{2})(\d)/, '$1/$2')
+      .replace(/(\d{4})\d+?$/, '$1')
   }
 
-  
+
   export const intMask = value => {
-    return value.replace(/\D/g, '')  
-      
+    return value.replace(/\D/g, '')
+
   }
 
-    
+
   export const cepMask = value => {
     return value
-            .replace(/\D/g, '') 
+            .replace(/\D/g, '')
             .replace(/(\d{5})(\d)/, '$1-$2')
-            .replace(/(-\d{3})\d+?$/, '$1')   
-      
+            .replace(/(-\d{3})\d+?$/, '$1')
+
   }
 
   export const cardMask = value => {
-      
+
+
     return value
       .replace(/\D/g, '')
       .replace(/(\d{4})(\d)/, '$1 $2')
@@ -60,7 +66,9 @@ export const cpfMask = value => {
       .replace(/(\d{4})(\d)/, '$1')
   }
 
-  export const phoneMask = value => {  
+
+  export const phoneMask = value => {
+
     return value
       .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '($1) $2')
@@ -70,8 +78,10 @@ export const cpfMask = value => {
   }
 
 
-  export const valorMask = value => {  
-           
+
+  export const valorMask = value => {
+
+
 
           var v = value.replace(/\D/g,'');
               v = (v/100).toFixed(2) + '';
@@ -80,6 +90,8 @@ export const cpfMask = value => {
               v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
 
               console.log(v);
-         
+
+
       return v;
   }
+
