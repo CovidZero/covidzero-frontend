@@ -143,12 +143,16 @@ export default function CheckoutCartao() {
 
 
     async function objDonation(){
+
+
+
+
           let param={
                 "project_id": id,
-                "value":values.valor
+                "value":parseFloat(values.valor.replace(",","."))
           }
 
-           return  await API.donations.DonationsProjects(id,param);
+           return  await API.donationsCaptable.DonationsProjects(id,param);
 
     }
 
@@ -179,7 +183,7 @@ export default function CheckoutCartao() {
                 let elem=document.getElementById(val);
                     elem.style.display = "block";
 
-                alert(elem.innerHTML);
+                   alert(elem.innerHTML);
                 return false;
             }
       }
@@ -216,20 +220,20 @@ export default function CheckoutCartao() {
           "id": id ? id : donation.id,
           "order": {
             "description":values.description,
-            "amount": values.valor,
+            "amount": parseFloat(values.valor.replace(",",".")),
             "payment": {
               "card": {
                 "holder_name": values.holder_name,
-                "expiration_month": dataExpiration[0],
-                "expiration_year": dataExpiration[1],
-                "card_number": values.card_number,
-                "security_code": values.security_code
+                "expiration_month":Number(dataExpiration[0]),
+                "expiration_year": Number(dataExpiration[1]),
+                "card_number": Number(values.card_number.replace(/\D/g, '')),
+                "security_code":Number(values.security_code)
               }
             },
             "customer": {
               "first_name": values.first_name,
               "surname":   values.surname,
-              "cpf": values.cpf,
+              "cpf": values.cpf.replace(/\D/g, ''),
               "birthdate": values.birthdate,
               "email": values.email,
               "phone": values.phone,
@@ -251,10 +255,11 @@ export default function CheckoutCartao() {
         }
       }
 
-        console.log(param);
 
-       API.donations.CheckoutProjects(param).then(response =>{
-                 history.push("/donations/confirmed");
+
+
+       API.donationsCaptable.CheckoutProjects(param).then(response =>{
+                 history.push("/donations/confirmed/captable/1");
                  setloadingStatus(false);
 
        }).catch(errs=>{
@@ -454,12 +459,12 @@ export default function CheckoutCartao() {
 
                <Styled.ContentFormaPagamento>
                    <div className="form-group">
-                            {/* <div className={fomarPagamento==0? "form-button-left active-btn":"form-button-left"} >
+                            {/*<div className={fomarPagamento==0? "form-button-left active-btn":"form-button-left"} >
                                 <Styled.ContentFormButton onClick={e =>setFomarPagamento(0)}>
                                   Boleto
                                 </Styled.ContentFormButton>
 
-                            </div> */}
+                         </div>*/}
 
                             <div className={fomarPagamento==1? " form-button-right active-btn ":" form-button-right "}>
                                 <Styled.ContentFormButton  onClick={e =>setFomarPagamento(1)}>
