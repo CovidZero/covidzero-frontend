@@ -37,7 +37,6 @@ export default function CasesService(casesBaseURL: string): CasesProvider {
 
     async function getAllCases(): Promise<Cases> {
         try {
-
             const response = await http.get(`${casesBaseURL}${URL.all}`)
             const cases: Cases = convertCasesResponse(response.data)
 

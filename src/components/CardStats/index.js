@@ -3,7 +3,7 @@ import { Style } from "./styles";
 
 const CardStats = props => {
   return (
-    <Style.CardBoxStyle>
+    <Style.CardBoxStyle className={props.className}>
       <Style.Title>{props.title}</Style.Title>
       <Style.CardBoxStatsDefault>
         {(() => {
