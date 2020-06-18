@@ -17,6 +17,7 @@ export interface Projects {
 
 
 interface DonationsProvider {
+    SendEmail(param:Projects, data:any): Promise<any>,
     Authentication(): Promise<Projects>,
     CreateCustomer(param:Projects,data:Object): Promise<Projects>, 
     ListCustomers(param:Projects): Promise<Projects>, 
@@ -46,6 +47,17 @@ export default function DonationsPremeService(baseURL: string): DonationsProvide
                     throw (error)
                 }
 
+            };
+
+            async function SendEmail(param:Projects, data:any) {
+                return http.post(`${baseURL}/stores/${param.storeId}/orders/${data.number}/send_email`,
+                {}
+                ,{
+                    headers: {
+                        'Authorization': `Bearer ${param.token}`,
+                        'Content-Type': "application/json"
+                    }
+                });
             }
      
             
@@ -154,6 +166,7 @@ export default function DonationsPremeService(baseURL: string): DonationsProvide
 
 
             return {
+                SendEmail,
                 Authentication,
                 CreateCustomer,
                 ListCustomers,

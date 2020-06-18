@@ -38,6 +38,7 @@ export default function CheckoutBoleto() {
      const [Projects, setProjects]           = useState(initalProjects);
      const [paramPreme,setParamPreme]       = useState(initalParamPreme);
      const [dataOrder,setDataOrder]         = useState({
+      number: '',
       customer:{
         firstName:''
       },
@@ -48,9 +49,6 @@ export default function CheckoutBoleto() {
       }
 
      });
-
-
-
 
 
     useEffect(() => {
@@ -96,6 +94,20 @@ export default function CheckoutBoleto() {
         barcode.focus();
         barcode.select();
         document.execCommand("copy");
+    }
+
+    const handleSendEmail = () => {
+
+      setloadingStatus(true);
+      API.donationsPreme.SendEmail(paramPreme, dataOrder)
+      .then(response => {
+        alert('E-mail enviado');
+        setloadingStatus(false);
+      })
+      .catch(err => {
+        setloadingStatus(false);
+        alert('Ocorreu um erro, tente novamente.'); 
+      })
     }
 
    const formatDate=(value)=>{
@@ -145,12 +157,12 @@ export default function CheckoutBoleto() {
                                   onClick={()=>handleCopyBarcode()}
                                 />
 
-                               {/* <Button
+                               <Button                                  
                                   styleButton='sm-light-btn'
                                   textButton='Enviar boleto por email'
                                   className="full-light-btn"
-                                  onClick={()=>console.log("click")}
-                                /> */}
+                                  onClick={()=>handleSendEmail()}
+                                />
                         </div>
 
                         <div  className="termos">
