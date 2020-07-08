@@ -108,20 +108,9 @@ export default function Details() {
                 <Grid className="GridCardtats">
                       <Row>
                         <Cell
-                            desktopColumns={6}
-                            phoneColumns={4}
-                            tabletColumns={4}
-                          >
-                           <CardStats
-                            title={<div>Arrecadado</div>}
-                            count={formatValor(Projects.quota_total)}
-                            className="donation-stats"
-                            />
-                        </Cell>
-                        <Cell
-                            desktopColumns={6}
-                            phoneColumns={4}
-                            tabletColumns={4}
+                            desktopColumns={12}
+                            phoneColumns={8}
+                            tabletColumns={8}
                           >
                            <CardStats
                             title={<div>Meta</div>}

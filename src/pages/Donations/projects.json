@@ -1,27 +1,14 @@
 [
     {
         "id": 83,
-        "name": "WFP - Programa Mundial de Alimentos Brasil",
-        "about": "O WFP, ou Programa Mundial de Alimentos, é uma agência da ONU, e vai distribuir kits para higienização de cestas básicas, permitindo que milhares de alunos da rede pública continuem tendo acesso à merenda escolar. Eles distribuirão kits de higienização para as secretarias de educação dos municípios para a descontaminação das cestas básicas entregue aos alunos da rede pública.",
+        "name": "WFP Centro de Excelência Contra a Fome Brasil",
+        "about": "O WFP Centro de Excelência Contra a Fome Brasil é uma agência da ONU, e vai distribuir kits para higienização de cestas básicas, permitindo que milhares de alunos da rede pública continuem tendo acesso à merenda escolar. Eles distribuirão kits de higienização para as secretarias de educação dos municípios para a descontaminação das cestas básicas entregue aos alunos da rede pública.",
         "goal": "50000.0",
         "photo": {"url": "https://d9hhrg4mnvzow.cloudfront.net/home.ribon.io/wfp-home/a64a5d84-img-9177-wfp-natan-giuliano_00000000000000000001o.jpg"},
         "quota_total": 0,
 
         "quota_value": "50.0",
         "ong_name":"WFP",
-        "ong_cnpj":"99.999.949/9999-99"
-    },
-    {
-
-        "id": 84,
-        "name": "Favela Sem Corona",
-        "about": "O projeto visa diminuir o impacto do coronavírus nas favelas do Rio de Janeiro, atuando nas áreas de prevenção e apoio ao diagnóstico. O Favela sem Corona distribui kits de testes de COVID-19 e equipamentos de proteção para as organizações da área da saúde situadas nas favelas. Eles também trabalham com apoio psicológico para os moradores das comunidades.",
-        "goal": "50000.0",
-        "photo": {"url": "https://d9hhrg4mnvzow.cloudfront.net/home.ribon.io/favela-sem-corona-doe/5419f39f-group-33554_00000000000000000001o.jpg"},
-        "quota_total": 0,
-
-        "quota_value": "50.0",
-        "ong_name":"Favela Sem Corona",
         "ong_cnpj":"99.999.949/9999-99"
     },
     {
